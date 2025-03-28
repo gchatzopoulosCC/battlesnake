@@ -11,6 +11,7 @@
 // For more info see docs.battlesnake.com
 
 import runServer from './server.js';
+import { isLeftSafe, isRightSafe, isDownSafe, isUpSafe } from './src/common/move.js';
 
 // info is called when you create your Battlesnake on play.battlesnake.com
 // and controls your Battlesnake's appearance
@@ -77,16 +78,16 @@ function move(gameState) {
   const boardHeight = gameState.board.height;
 
   // Predict next position and check if it would be out of bounds
-  if (myHead.x - 1 < 0) { 
+  if (myHead.x <= 1) {
     isMoveSafe.left = false;
   }
-  if (myHead.x + 1 >= boardWidth) {
+  if (myHead.x >= boardWidth - 1) {
     isMoveSafe.right = false;
   }
-  if (myHead.y - 1 < 0) {
+  if (myHead.y <= 1) {
     isMoveSafe.down = false;
   }
-  if (myHead.y + 1 >= boardHeight) {
+  if (myHead.y >= boardHeight - 1) {
     isMoveSafe.up = false;
   }
 
@@ -101,22 +102,23 @@ function move(gameState) {
       let opponent = opponents[i];
       let opponentBody = opponent.body;
 
-      // Safety check methods
-      const safetyChecks = {
-        isLeftSafe,
-        isRightSafe,
-        isDownSafe,
-        isUpSafe
-      }
+      opponentBody.forEach(opponentBodyPart => {
+        if (!isLeftSafe(myHead, opponentBodyPart)) {
+          isMoveSafe.left = false;
+        }
 
-      // Is an opponent body part in the same column as my head?
-      opponentBody.forEach(opponentBodyPart =>
-        Object.entries(safetyChecks).forEach(([direction, check]) => {
-          if (!check(myHead, opponentBodyPart)) {
-            isMoveSafe[direction] = false;
-          }
-        })
-      )
+        if (!isRightSafe(myHead, opponentBodyPart)) {
+          isMoveSafe.right = false;
+        }
+
+        if (!isUpSafe(myHead, opponentBodyPart)) {
+          isMoveSafe.up = false;
+        }
+
+        if (!isDownSafe(myHead, opponentBodyPart)) {
+          isMoveSafe.down = false;
+        }
+      })
     }
   }
 
