@@ -20,7 +20,7 @@ function info() {
 
   return {
     apiversion: "1",
-    author: "",       // TODO: Your Battlesnake Username
+    author: "gchatzopoulosCC",       // TODO: Your Battlesnake Username
     color: "#888888", // TODO: Choose color
     head: "default",  // TODO: Choose head
     tail: "default",  // TODO: Choose tail
@@ -35,6 +35,11 @@ function start(gameState) {
 // end is called when your Battlesnake finishes a game
 function end(gameState) {
   console.log("GAME OVER\n");
+}
+
+// Print board
+function printBoard(board) {
+  console.log(board)
 }
 
 // move is called on every turn and returns your next move
@@ -66,6 +71,7 @@ function move(gameState) {
     isMoveSafe.up = false;
   }
 
+  printBoard(gameState.board);
   // TODO: Step 1 - Prevent your Battlesnake from moving out of bounds
   // boardWidth = gameState.board.width;
   // boardHeight = gameState.board.height;
