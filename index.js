@@ -72,15 +72,54 @@ function move(gameState) {
   }
 
   printBoard(gameState.board);
-  // TODO: Step 1 - Prevent your Battlesnake from moving out of bounds
-  // boardWidth = gameState.board.width;
-  // boardHeight = gameState.board.height;
+  // Step 1 - Prevent your Battlesnake from moving out of bounds
+  const boardWidth = gameState.board.width;
+  const boardHeight = gameState.board.height;
+
+  // Predict next position and check if it would be out of bounds
+  if (myHead.x - 1 < 0) { 
+    isMoveSafe.left = false;
+  }
+  if (myHead.x + 1 >= boardWidth) {
+    isMoveSafe.right = false;
+  }
+  if (myHead.y - 1 < 0) {
+    isMoveSafe.down = false;
+  }
+  if (myHead.y + 1 >= boardHeight) {
+    isMoveSafe.up = false;
+  }
 
   // TODO: Step 2 - Prevent your Battlesnake from colliding with itself
-  // myBody = gameState.you.body;
+  const myBody = gameState.you.body;
 
   // TODO: Step 3 - Prevent your Battlesnake from colliding with other Battlesnakes
-  // opponents = gameState.board.snakes;
+  const opponents = gameState.board.snakes;
+
+  if (opponents.length > 1) {
+    for (let i = 1; i < opponents.length; i++) {
+      let opponent = opponents[i];
+      let opponentBody = opponent.body;
+
+      // Safety check methods
+      const safetyChecks = {
+        isLeftSafe,
+        isRightSafe,
+        isDownSafe,
+        isUpSafe
+      }
+
+      // Is an opponent body part in the same column as my head?
+      opponentBody.forEach(opponentBodyPart =>
+        Object.entries(safetyChecks).forEach(([direction, check]) => {
+          if (!check(myHead, opponentBodyPart)) {
+            isMoveSafe[direction] = false;
+          }
+        })
+      )
+    }
+  }
+
 
   // Are there any safe moves left?
   const safeMoves = Object.keys(isMoveSafe).filter(key => isMoveSafe[key]);
