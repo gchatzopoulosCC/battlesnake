@@ -11,7 +11,7 @@
 // For more info see docs.battlesnake.com
 
 import runServer from './server.js';
-import { isLeftSafe, isRightSafe, isDownSafe, isUpSafe } from './src/common/move.js';
+import { isLeftSafe, isRightSafe, isDownSafe, isUpSafe, avoidWalls } from './src/common/move.js';
 
 // info is called when you create your Battlesnake on play.battlesnake.com
 // and controls your Battlesnake's appearance
@@ -47,6 +47,11 @@ function printBoard(board) {
 // Valid moves are "up", "down", "left", or "right"
 // See https://docs.battlesnake.com/api/example-move for available data
 function move(gameState) {
+  const boardWidth = gameState.board.width;
+  const boardHeight = gameState.board.height;
+  const myHead = gameState.you.body[0];
+  const myNeck = gameState.you.body[1];
+
 
   let isMoveSafe = {
     up: true,
@@ -56,9 +61,6 @@ function move(gameState) {
   };
 
   // We've included code to prevent your Battlesnake from moving backwards
-  const myHead = gameState.you.body[0];
-  const myNeck = gameState.you.body[1];
-
   if (myNeck.x < myHead.x) {        // Neck is left of head, don't move left
     isMoveSafe.left = false;
 
@@ -72,56 +74,21 @@ function move(gameState) {
     isMoveSafe.up = false;
   }
 
-  printBoard(gameState.board);
-  // Step 1 - Prevent your Battlesnake from moving out of bounds
-  const boardWidth = gameState.board.width;
-  const boardHeight = gameState.board.height;
-
-  // Predict next position and check if it would be out of bounds
-  if (myHead.x <= 1) {
-    isMoveSafe.left = false;
-  }
-  if (myHead.x >= boardWidth - 1) {
-    isMoveSafe.right = false;
-  }
-  if (myHead.y <= 1) {
-    isMoveSafe.down = false;
-  }
-  if (myHead.y >= boardHeight - 1) {
-    isMoveSafe.up = false;
-  }
+  // Prevent out of bounds
+  avoidWalls(gameState, isMoveSafe)
 
   // TODO: Step 2 - Prevent your Battlesnake from colliding with itself
   const myBody = gameState.you.body;
 
   // TODO: Step 3 - Prevent your Battlesnake from colliding with other Battlesnakes
-  const opponents = gameState.board.snakes;
-
-  if (opponents.length > 1) {
-    for (let i = 1; i < opponents.length; i++) {
-      let opponent = opponents[i];
-      let opponentBody = opponent.body;
-
-      opponentBody.forEach(opponentBodyPart => {
-        if (!isLeftSafe(myHead, opponentBodyPart)) {
-          isMoveSafe.left = false;
-        }
-
-        if (!isRightSafe(myHead, opponentBodyPart)) {
-          isMoveSafe.right = false;
-        }
-
-        if (!isUpSafe(myHead, opponentBodyPart)) {
-          isMoveSafe.up = false;
-        }
-
-        if (!isDownSafe(myHead, opponentBodyPart)) {
-          isMoveSafe.down = false;
-        }
-      })
-    }
-  }
-
+  gameState.board.snakes.forEach(snake => {
+    snake.body.forEach(segment => {
+      if (myHead.x === segment.x - 1 && myHead.y === segment.y) isMoveSafe.left = false;
+      if (myHead.x === segment.x + 1 && myHead.y === segment.y) isMoveSafe.right = false;
+      if (myHead.x === segment.x && myHead.y === segment.y - 1) isMoveSafe.down = false;
+      if (myHead.x === segment.x && myHead.y === segment.y + 1) isMoveSafe.up = false;
+    });
+  });
 
   // Are there any safe moves left?
   const safeMoves = Object.keys(isMoveSafe).filter(key => isMoveSafe[key]);

@@ -1,25 +1,18 @@
 
 // Common functions for the move method
+function avoidWalls(gameState, isMoveSafe) {
+  const boardWidth = gameState.board.width;
+  const boardHeight = gameState.board.height;
+  const myHead = gameState.you.body[0];
 
-function isLeftSafe(myHead, pointOfInterest) {
-  return myHead.x != pointOfInterest.x - 1
-}
+  if (myHead.x === 0) isMoveSafe.left = false; // Left wall
+  if (myHead.x === boardWidth - 1) isMoveSafe.right = false; // Right wall
+  if (myHead.y === 0) isMoveSafe.down = false; // Bottom wall
+  if (myHead.y === boardHeight - 1) isMoveSafe.up = false; // Top wall
 
-function isRightSafe(myHead, pointOfInterest) {
-  return myHead.x != pointOfInterest.x + 1
-}
-
-function isUpSafe(myHead, pointOfInterest) {
-  return myHead.y != pointOfInterest.y - 1
-}
-
-function isDownSafe(myHead, pointOfInterest) {
-  return myHead.y != pointOfInterest.y + 1
+  return isMoveSafe;
 }
 
 export {
-  isLeftSafe,
-  isRightSafe,
-  isUpSafe,
-  isDownSafe
+  avoidWalls
 }
