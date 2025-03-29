@@ -47,8 +47,6 @@ function printBoard(board) {
 // Valid moves are "up", "down", "left", or "right"
 // See https://docs.battlesnake.com/api/example-move for available data
 function move(gameState) {
-  const boardWidth = gameState.board.width;
-  const boardHeight = gameState.board.height;
   const myHead = gameState.you.body[0];
   const myNeck = gameState.you.body[1];
 
