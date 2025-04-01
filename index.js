@@ -11,7 +11,7 @@
 // For more info see docs.battlesnake.com
 
 import runServer from './server.js';
-import { avoidWalls, avoidOthers } from './src/common/move.js';
+import { avoidWalls, avoidOthers, avoidSelf } from './src/common/move.js';
 
 // info is called when you create your Battlesnake on play.battlesnake.com
 // and controls your Battlesnake's appearance
@@ -78,27 +78,7 @@ function move(gameState) {
 
   // TODO: Step 2 - Prevent your Battlesnake from colliding with itself
   // Prevent self-collision
-  const myBody = gameState.you.body;
-  // Check each body segment for potential collisions
-  for (let i = 1; i < myBody.length; i++) {
-    const segment = myBody[i];
-    
-    if (segment.x === myHead.x + 1 && segment.y === myHead.y) {
-      isMoveSafe.right = false;
-    }
-    
-    if (segment.x === myHead.x - 1 && segment.y === myHead.y) {
-      isMoveSafe.left = false;
-    }
-    
-    if (segment.x === myHead.x && segment.y === myHead.y + 1) {
-      isMoveSafe.up = false;
-    }
-    
-    if (segment.x === myHead.x && segment.y === myHead.y - 1) {
-      isMoveSafe.down = false;
-    }
-  }
+  avoidSelf(gameState, isMoveSafe)
 
 
   // TODO: Step 3 - Prevent your Battlesnake from colliding with other Battlesnakes
