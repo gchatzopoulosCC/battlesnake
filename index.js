@@ -59,6 +59,7 @@ function move(gameState) {
   };
 
   // We've included code to prevent your Battlesnake from moving backwards
+  // Test comment
   if (myNeck.x < myHead.x) {        // Neck is left of head, don't move left
     isMoveSafe.left = false;
 
