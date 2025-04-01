@@ -76,7 +76,10 @@ function move(gameState) {
   avoidWalls(gameState, isMoveSafe)
 
   // TODO: Step 2 - Prevent your Battlesnake from colliding with itself
+  // Prevent self-collision
   const myBody = gameState.you.body;
+  const bodyPositions = new Set();
+
 
   // TODO: Step 3 - Prevent your Battlesnake from colliding with other Battlesnakes
   avoidOthers(gameState, isMoveSafe)
