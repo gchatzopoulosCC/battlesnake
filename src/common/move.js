@@ -3,85 +3,56 @@
 function avoidGoingBackwards(gameState, isMoveSafe) {
   const myHead = gameState.you.body[0];
   const myNeck = gameState.you.body[1];
-  
-  if (myNeck.x < myHead.x) {        // Neck is left of head, don't move left
-    isMoveSafe.left = false;
 
-  } else if (myNeck.x > myHead.x) { // Neck is right of head, don't move right
-    isMoveSafe.right = false;
-
-  } else if (myNeck.y < myHead.y) { // Neck is below head, don't move down
-    isMoveSafe.down = false;
-
-  } else if (myNeck.y > myHead.y) { // Neck is above head, don't move up
-    isMoveSafe.up = false;
-  }
+  if (myNeck.x < myHead.x) isMoveSafe.left = false;
+  else if (myNeck.x > myHead.x) isMoveSafe.right = false;
+  else if (myNeck.y < myHead.y) isMoveSafe.down = false;
+  else if (myNeck.y > myHead.y) isMoveSafe.up = false;
 }
 
 function avoidWalls(gameState, isMoveSafe) {
   const { width: boardWidth, height: boardHeight } = gameState.board;
   const { x, y } = gameState.you.body[0];
 
-  // Check wall collisions
   if (x === 0) isMoveSafe.left = false;
   if (x === boardWidth - 1) isMoveSafe.right = false;
   if (y === 0) isMoveSafe.down = false;
   if (y === boardHeight - 1) isMoveSafe.up = false;
-
-  return isMoveSafe;
 }
 
 function avoidOthers(gameState, isMoveSafe) {
-  // Early exit if no moves are safe
-  if (!Object.values(isMoveSafe).some(Boolean)) return;
-
   const { x: headX, y: headY } = gameState.you.body[0];
+
+  // Create a collision map
+  const collisionMap = new Set();
   const otherSnakes = gameState.board.snakes.filter(snake => snake.id !== gameState.you.id);
 
-  for (const snake of otherSnakes) {
-    for (const segment of snake.body) {
-      // Check adjacent segments
-      const dx = segment.x - headX;
-      const dy = segment.y - headY;
+  otherSnakes.forEach(snake => {
+    snake.body.forEach(segment => {
+      collisionMap.add(`${segment.x},${segment.y}`);
+    });
+  });
 
-      if (dx === -1 && dy === 0) isMoveSafe.left = false;
-      if (dx === 1 && dy === 0) isMoveSafe.right = false;
-      if (dx === 0 && dy === -1) isMoveSafe.down = false;
-      if (dx === 0 && dy === 1) isMoveSafe.up = false;
-
-      // Early exit if no moves are safe
-      if (!Object.values(isMoveSafe).some(Boolean)) return;
-    }
-  }
+  // Check adjacent positions
+  if (collisionMap.has(`${headX-1},${headY}`)) isMoveSafe.left = false;
+  if (collisionMap.has(`${headX+1},${headY}`)) isMoveSafe.right = false;
+  if (collisionMap.has(`${headX},${headY-1}`)) isMoveSafe.down = false;
+  if (collisionMap.has(`${headX},${headY+1}`)) isMoveSafe.up = false;
 }
 
-function avoidSelf(gameState, isMoveSafe){
-  const myBody = gameState.you.body;
-  const myHead = myBody[0];
-  // Check each body segment for potential collisions
-  for (let i = 1; i < myBody.length; i++) {
-    const segment = myBody[i];
+function avoidSelf(gameState, isMoveSafe) {
+  const { x: headX, y: headY } = gameState.you.body[0];
 
-    if (segment.x === myHead.x + 1 && segment.y === myHead.y) {
-      isMoveSafe.right = false;
-    }
+  // Create a set of body positions (excluding head)
+  const bodyPositions = new Set(
+    gameState.you.body.slice(1).map(segment => `${segment.x},${segment.y}`)
+  );
 
-    if (segment.x === myHead.x - 1 && segment.y === myHead.y) {
-      isMoveSafe.left = false;
-    }
-
-    if (segment.x === myHead.x && segment.y === myHead.y + 1) {
-      isMoveSafe.up = false;
-    }
-
-    if (segment.x === myHead.x && segment.y === myHead.y - 1) {
-      isMoveSafe.down = false;
-    }
-  }
-
-  return isMoveSafe;
+  if (bodyPositions.has(`${headX-1},${headY}`)) isMoveSafe.left = false;
+  if (bodyPositions.has(`${headX+1},${headY}`)) isMoveSafe.right = false;
+  if (bodyPositions.has(`${headX},${headY-1}`)) isMoveSafe.down = false;
+  if (bodyPositions.has(`${headX},${headY+1}`)) isMoveSafe.up = false;
 }
-
 
 export {
   avoidGoingBackwards,
