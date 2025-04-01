@@ -1,4 +1,23 @@
 // Common functions for the move method
+
+function avoidGoingBackwards(gameState, isMoveSafe) {
+  const myHead = gameState.you.body[0];
+  const myNeck = gameState.you.body[1];
+  
+  if (myNeck.x < myHead.x) {        // Neck is left of head, don't move left
+    isMoveSafe.left = false;
+
+  } else if (myNeck.x > myHead.x) { // Neck is right of head, don't move right
+    isMoveSafe.right = false;
+
+  } else if (myNeck.y < myHead.y) { // Neck is below head, don't move down
+    isMoveSafe.down = false;
+
+  } else if (myNeck.y > myHead.y) { // Neck is above head, don't move up
+    isMoveSafe.up = false;
+  }
+}
+
 function avoidWalls(gameState, isMoveSafe) {
   const { width: boardWidth, height: boardHeight } = gameState.board;
   const { x, y } = gameState.you.body[0];
@@ -11,7 +30,6 @@ function avoidWalls(gameState, isMoveSafe) {
 
   return isMoveSafe;
 }
-
 
 function avoidOthers(gameState, isMoveSafe) {
   // Early exit if no moves are safe
@@ -66,6 +84,7 @@ function avoidSelf(gameState, isMoveSafe){
 
 
 export {
+  avoidGoingBackwards,
   avoidWalls,
   avoidOthers,
   avoidSelf
