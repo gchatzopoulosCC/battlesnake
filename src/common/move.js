@@ -39,6 +39,7 @@ function avoidOthers(gameState, isMoveSafe) {
 
 function avoidSelf(gameState, isMoveSafe){
   const myBody = gameState.you.body;
+  const myHead = myBody[0];
   // Check each body segment for potential collisions
   for (let i = 1; i < myBody.length; i++) {
     const segment = myBody[i];
