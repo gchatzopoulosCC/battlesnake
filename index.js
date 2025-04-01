@@ -79,6 +79,10 @@ function move(gameState) {
   // Prevent self-collision
   const myBody = gameState.you.body;
   const bodyPositions = new Set();
+  // Store all body positions except the head
+  for (let i = 1; i < myBody.length; i++) {
+    bodyPositions.add(${ myBody[i].x }, ${ myBody[i].y });
+  }
 
 
   // TODO: Step 3 - Prevent your Battlesnake from colliding with other Battlesnakes
