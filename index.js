@@ -84,6 +84,19 @@ function move(gameState) {
   for (let i = 1; i < myBody.length; i++) {
     bodyPositions.add(myBody[i].x, myBody[i].y);
   }
+  // Check if moving in any direction will result in a collision with the body
+if (bodyPositions.has(`myHead.x - 1,myHead.y`)) {
+  isMoveSafe.left = false;
+}
+if (bodyPositions.has(`myHead.x + 1,myHead.y`)) {
+  isMoveSafe.right = false;
+}
+if (bodyPositions.has(`myHead.x},myHead.y - 1`)) {
+  isMoveSafe.down = false;
+}
+if (bodyPositions.has(`myHead.x,myHead.y + 1`)) {
+  isMoveSafe.up = false;
+}
 
 
   // TODO: Step 3 - Prevent your Battlesnake from colliding with other Battlesnakes
