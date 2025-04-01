@@ -1,5 +1,5 @@
 // This is the core logic of the snake
-import { avoidWalls, avoidOthers, avoidGoingBackwards } from '../common/move.js';
+import { avoidWalls, avoidOthers, avoidSelf, avoidGoingBackwards } from '../common/move.js';
 
 // move is called on every turn and returns your next move
 // Valid moves are "up", "down", "left", or "right"
@@ -19,7 +19,7 @@ function move(gameState) {
   avoidWalls(gameState, isMoveSafe)
 
   // TODO: Step 2 - Prevent your Battlesnake from colliding with itself
-  const myBody = gameState.you.body;
+  avoidSelf(gameState, isMoveSafe)
 
   // TODO: Step 3 - Prevent your Battlesnake from colliding with other Battlesnakes
   avoidOthers(gameState, isMoveSafe)

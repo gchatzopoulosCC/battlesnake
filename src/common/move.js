@@ -55,9 +55,37 @@ function avoidOthers(gameState, isMoveSafe) {
   }
 }
 
+function avoidSelf(gameState, isMoveSafe){
+  const myBody = gameState.you.body;
+  const myHead = myBody[0];
+  // Check each body segment for potential collisions
+  for (let i = 1; i < myBody.length; i++) {
+    const segment = myBody[i];
+
+    if (segment.x === myHead.x + 1 && segment.y === myHead.y) {
+      isMoveSafe.right = false;
+    }
+
+    if (segment.x === myHead.x - 1 && segment.y === myHead.y) {
+      isMoveSafe.left = false;
+    }
+
+    if (segment.x === myHead.x && segment.y === myHead.y + 1) {
+      isMoveSafe.up = false;
+    }
+
+    if (segment.x === myHead.x && segment.y === myHead.y - 1) {
+      isMoveSafe.down = false;
+    }
+  }
+
+  return isMoveSafe;
+}
+
 
 export {
   avoidGoingBackwards,
   avoidWalls,
-  avoidOthers
+  avoidOthers,
+  avoidSelf
 }
