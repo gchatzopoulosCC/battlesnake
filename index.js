@@ -81,7 +81,7 @@ function move(gameState) {
   const bodyPositions = new Set();
   // Store all body positions except the head
   for (let i = 1; i < myBody.length; i++) {
-    bodyPositions.add(${ myBody[i].x }, ${ myBody[i].y });
+    bodyPositions.add(myBody[i].x, myBody[i].y);
   }
 
 
