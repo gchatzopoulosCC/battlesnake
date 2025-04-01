@@ -18,6 +18,8 @@ function avoidWalls(gameState, isMoveSafe) {
   if (x === boardWidth - 1) isMoveSafe.right = false;
   if (y === 0) isMoveSafe.down = false;
   if (y === boardHeight - 1) isMoveSafe.up = false;
+
+  return isMoveSafe;
 }
 
 function avoidOthers(gameState, isMoveSafe) {
@@ -38,6 +40,8 @@ function avoidOthers(gameState, isMoveSafe) {
   if (collisionMap.has(`${headX+1},${headY}`)) isMoveSafe.right = false;
   if (collisionMap.has(`${headX},${headY-1}`)) isMoveSafe.down = false;
   if (collisionMap.has(`${headX},${headY+1}`)) isMoveSafe.up = false;
+
+  return isMoveSafe;
 }
 
 function avoidSelf(gameState, isMoveSafe) {
@@ -52,6 +56,8 @@ function avoidSelf(gameState, isMoveSafe) {
   if (bodyPositions.has(`${headX+1},${headY}`)) isMoveSafe.right = false;
   if (bodyPositions.has(`${headX},${headY-1}`)) isMoveSafe.down = false;
   if (bodyPositions.has(`${headX},${headY+1}`)) isMoveSafe.up = false;
+
+  return isMoveSafe;
 }
 
 export {
