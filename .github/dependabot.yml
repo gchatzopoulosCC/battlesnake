@@ -17,7 +17,6 @@ updates:
     open-pull-requests-limit: 5
     rebase-strategy: "disabled"
     target-branch: "dependabot/github-actions"
-    versioning-strategy: "increase-if-necessary"
 
   - package-ecosystem: "npm"
     directory: "/"
@@ -37,5 +36,4 @@ updates:
     open-pull-requests-limit: 5
     rebase-strategy: "disabled"
     target-branch: "dependabot/npm"
-    versioning-strategy: "increase-if-necessary"
     
