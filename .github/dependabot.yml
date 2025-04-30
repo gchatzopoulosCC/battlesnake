@@ -15,7 +15,7 @@ updates:
       - "dependencies"
       - "github-actions"
     open-pull-requests-limit: 5
-    rebase-strategy: "disabled"
+    rebase-strategy: "auto"
     target-branch: "dependabot/github-actions"
 
   - package-ecosystem: "npm"
@@ -23,7 +23,7 @@ updates:
     schedule:
       interval: "weekly"
       day: "monday"
-      time: "04:00"
+      time: "05:00"
       timezone: "Europe/Athens"
     commit-message:
       prefix: "chore"
@@ -34,6 +34,5 @@ updates:
       - "npm"
       - "javascript"
     open-pull-requests-limit: 5
-    rebase-strategy: "disabled"
+    rebase-strategy: "auto"
     target-branch: "dependabot/npm"
-    

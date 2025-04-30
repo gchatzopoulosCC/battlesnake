@@ -16,10 +16,11 @@ This project uses [Node.js](https://nodejs.org/en/) and [Express](https://expres
 6. Copy the server url (it will be useful later)
 7. Go on [play.battlesnake.com](https://play.battlesnake.com)
 8. Create a Battlesnake with the following requirements:
-    - Server Url should be `https://<server_url>`
-    - Platform should be **Railway**
+   - Server Url should be `https://<server_url>`
+   - Platform should be **Railway**
 9. **Remove** the deployment after you finish playing
 
 ## References
+
 - [Battlesnake Docs](https://docs.battlesnake.com/)
 - [Railway Docs (Quickstart)](http://docs.railway.com/quick-start)
