@@ -27,19 +27,19 @@ function avoidOthers(gameState, isMoveSafe) {
 
   // Create a collision map
   const collisionMap = new Set();
-  const otherSnakes = gameState.board.snakes.filter(snake => snake.id !== gameState.you.id);
+  const otherSnakes = gameState.board.snakes.filter((snake) => snake.id !== gameState.you.id);
 
-  otherSnakes.forEach(snake => {
-    snake.body.forEach(segment => {
+  otherSnakes.forEach((snake) => {
+    snake.body.forEach((segment) => {
       collisionMap.add(`${segment.x},${segment.y}`);
     });
   });
 
   // Check adjacent positions
-  if (collisionMap.has(`${headX-1},${headY}`)) isMoveSafe.left = false;
-  if (collisionMap.has(`${headX+1},${headY}`)) isMoveSafe.right = false;
-  if (collisionMap.has(`${headX},${headY-1}`)) isMoveSafe.down = false;
-  if (collisionMap.has(`${headX},${headY+1}`)) isMoveSafe.up = false;
+  if (collisionMap.has(`${headX - 1},${headY}`)) isMoveSafe.left = false;
+  if (collisionMap.has(`${headX + 1},${headY}`)) isMoveSafe.right = false;
+  if (collisionMap.has(`${headX},${headY - 1}`)) isMoveSafe.down = false;
+  if (collisionMap.has(`${headX},${headY + 1}`)) isMoveSafe.up = false;
 
   return isMoveSafe;
 }
@@ -49,20 +49,15 @@ function avoidSelf(gameState, isMoveSafe) {
 
   // Create a set of body positions (excluding head)
   const bodyPositions = new Set(
-    gameState.you.body.slice(1).map(segment => `${segment.x},${segment.y}`)
+    gameState.you.body.slice(1).map((segment) => `${segment.x},${segment.y}`),
   );
 
-  if (bodyPositions.has(`${headX-1},${headY}`)) isMoveSafe.left = false;
-  if (bodyPositions.has(`${headX+1},${headY}`)) isMoveSafe.right = false;
-  if (bodyPositions.has(`${headX},${headY-1}`)) isMoveSafe.down = false;
-  if (bodyPositions.has(`${headX},${headY+1}`)) isMoveSafe.up = false;
+  if (bodyPositions.has(`${headX - 1},${headY}`)) isMoveSafe.left = false;
+  if (bodyPositions.has(`${headX + 1},${headY}`)) isMoveSafe.right = false;
+  if (bodyPositions.has(`${headX},${headY - 1}`)) isMoveSafe.down = false;
+  if (bodyPositions.has(`${headX},${headY + 1}`)) isMoveSafe.up = false;
 
   return isMoveSafe;
 }
 
-export {
-  avoidGoingBackwards,
-  avoidWalls,
-  avoidOthers,
-  avoidSelf
-}
+export { avoidGoingBackwards, avoidWalls, avoidOthers, avoidSelf };
