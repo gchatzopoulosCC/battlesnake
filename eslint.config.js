@@ -1,5 +1,9 @@
 import js from "@eslint/js";
 import globals from "globals";
+import prettierConfig from "eslint-config-prettier";
+import sonarjs from "eslint-plugin-sonarjs";
+import eslintComments from "eslint-plugin-eslint-comments";
+import unicorn from "eslint-plugin-unicorn";
 
 export default [
   js.configs.recommended,
@@ -15,6 +19,12 @@ export default [
     linterOptions: {
       reportUnusedInlineConfigs: "error",
       reportUnusedDisableDirectives: "error",
+    },
+    plugins: {
+      prettier: prettierConfig,
+      sonarjs: sonarjs,
+      unicorn: unicorn,
+      "eslint-comments": eslintComments,
     },
     rules: {
       semi: ["error", "always"],

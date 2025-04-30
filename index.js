@@ -10,13 +10,13 @@
 // To get you started we've included code to prevent your Battlesnake from moving backwards.
 // For more info see docs.battlesnake.com
 
-import runServer from './server.js';
-import { start, end, info } from './src/core/game.js';
-import { move } from './src/core/snake.js';
+import runServer from "./server.js";
+import { start, end, info } from "./src/core/game.js";
+import { move } from "./src/core/snake.js";
 
 runServer({
   info: info,
   start: start,
   move: move,
-  end: end
+  end: end,
 });
