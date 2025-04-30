@@ -22,6 +22,7 @@ A summary of notable changes in the project.
 ### Refactored
 
 -   Formatted `eslint.config.js` (@jhoxha1).
+-   Make each move function a seperate file and change the name of the common folder to moves (@george-chatzopoulos)
 
 ### Docs
 
