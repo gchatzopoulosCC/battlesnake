@@ -13,6 +13,7 @@ A summary of notable changes in the project.
 
 ### Fixed
 
+-   Fixed ESLint errors in the codebase (#56 Merge, @george-chatzopoulos).
 -   Adjusted Dependabot npm schedule to weekly and changed rebase strategy to auto (#53 Merge, @george-chatzopoulos).
 -   Resolved issues with `package-lock.json` generation (#48, @george-chatzopoulos, @George Chatzopoulos).
 -   Removed unnecessary `newfile.js` (#42, @George Chatzopoulos, @george-chatzopoulos).
@@ -167,3 +168,5 @@ A summary of notable changes in the project.
 ### Added
 
 -   Initial commit (@George Chatzopoulos).
+
+
