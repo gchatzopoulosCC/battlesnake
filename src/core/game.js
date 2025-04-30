@@ -1,10 +1,10 @@
 // This file contains all the core functions of the game
 
-function start(gameState) {
+function start() {
   console.log("GAME START");
 }
 
-function end(gameState) {
+function end() {
   console.log("GAME OVER\n");
 }
 
