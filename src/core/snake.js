@@ -10,7 +10,7 @@ import {
 // Valid moves are "up", "down", "left", or "right"
 // See https://docs.battlesnake.com/api/example-move for available data
 function move(gameState) {
-  let isMoveSafe = {
+  const isMoveSafe = {
     up: true,
     down: true,
     left: true,
@@ -31,7 +31,7 @@ function move(gameState) {
 
   // Are there any safe moves left?
   const safeMoves = Object.keys(isMoveSafe).filter((key) => isMoveSafe[key]);
-  if (safeMoves.length == 0) {
+  if (safeMoves.length === 0) {
     console.log(`MOVE ${gameState.turn}: No safe moves detected! Moving down`);
     return { move: "down" };
   }
