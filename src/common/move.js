@@ -27,7 +27,9 @@ function avoidOthers(gameState, isMoveSafe) {
 
   // Create a collision map
   const collisionMap = new Set();
-  const otherSnakes = gameState.board.snakes.filter((snake) => snake.id !== gameState.you.id);
+  const otherSnakes = gameState.board.snakes.filter(
+    (snake) => snake.id !== gameState.you.id,
+  );
 
   otherSnakes.forEach((snake) => {
     snake.body.forEach((segment) => {

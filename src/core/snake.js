@@ -1,5 +1,10 @@
 // This is the core logic of the snake
-import { avoidWalls, avoidOthers, avoidSelf, avoidGoingBackwards } from "../common/move.js";
+import {
+  avoidWalls,
+  avoidOthers,
+  avoidSelf,
+  avoidGoingBackwards,
+} from "../common/move.js";
 
 // move is called on every turn and returns your next move
 // Valid moves are "up", "down", "left", or "right"
