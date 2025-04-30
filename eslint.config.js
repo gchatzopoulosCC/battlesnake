@@ -1,15 +1,34 @@
 import js from "@eslint/js";
 import globals from "globals";
-import { defineConfig } from "eslint/config";
 
-export default defineConfig([
+export default [
+  js.configs.recommended,
   {
     files: ["**/*.{js,mjs,cjs}"],
-    plugins: { js },
-    extends: ["js/recommended"]
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+        ...globals.jest,
+      },
+    },
+    linterOptions: {
+      reportUnusedInlineConfigs: "error",
+      reportUnusedDisableDirectives: "error",
+    },
+    rules: {
+      semi: ["error", "always"],
+      quotes: ["warn", "double"],
+      indent: ["error", 2],
+      "prefer-const": [
+        "error",
+        {
+          destructuring: "all",
+          ignoreReadBeforeAssign: false,
+        },
+      ],
+      "no-unused-vars": "error",
+      eqeqeq: "error",
+    },
   },
-  {
-    files: ["**/*.{js,mjs,cjs}"],
-    languageOptions: { globals: globals.browser }
-  }
-]);
+];
