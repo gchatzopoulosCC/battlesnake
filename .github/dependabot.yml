@@ -36,4 +36,3 @@ updates:
     open-pull-requests-limit: 5
     rebase-strategy: "auto"
     target-branch: "dependabot/npm"
-    

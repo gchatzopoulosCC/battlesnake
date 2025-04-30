@@ -1,5 +1,10 @@
 // This is the core logic of the snake
-import { avoidWalls, avoidOthers, avoidSelf, avoidGoingBackwards } from '../common/move.js';
+import {
+  avoidWalls,
+  avoidOthers,
+  avoidSelf,
+  avoidGoingBackwards,
+} from "../common/move.js";
 
 // move is called on every turn and returns your next move
 // Valid moves are "up", "down", "left", or "right"
@@ -9,23 +14,23 @@ function move(gameState) {
     up: true,
     down: true,
     left: true,
-    right: true
+    right: true,
   };
 
   // We've included code to prevent your Battlesnake from moving backwards
   avoidGoingBackwards(gameState, isMoveSafe);
 
   // Prevent out of bounds
-  avoidWalls(gameState, isMoveSafe)
+  avoidWalls(gameState, isMoveSafe);
 
   // TODO: Step 2 - Prevent your Battlesnake from colliding with itself
-  avoidSelf(gameState, isMoveSafe)
+  avoidSelf(gameState, isMoveSafe);
 
   // TODO: Step 3 - Prevent your Battlesnake from colliding with other Battlesnakes
-  avoidOthers(gameState, isMoveSafe)
+  avoidOthers(gameState, isMoveSafe);
 
   // Are there any safe moves left?
-  const safeMoves = Object.keys(isMoveSafe).filter(key => isMoveSafe[key]);
+  const safeMoves = Object.keys(isMoveSafe).filter((key) => isMoveSafe[key]);
   if (safeMoves.length == 0) {
     console.log(`MOVE ${gameState.turn}: No safe moves detected! Moving down`);
     return { move: "down" };
@@ -37,8 +42,8 @@ function move(gameState) {
   // TODO: Step 4 - Move towards food instead of random, to regain health and survive longer
   // food = gameState.board.food;
 
-  console.log(`MOVE ${gameState.turn}: ${nextMove}`)
+  console.log(`MOVE ${gameState.turn}: ${nextMove}`);
   return { move: nextMove };
 }
 
-export { move }
+export { move };

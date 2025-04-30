@@ -1,4 +1,4 @@
-import express from 'express';
+import express from "express";
 
 export default function runServer(handlers) {
   const app = express();
@@ -22,17 +22,17 @@ export default function runServer(handlers) {
     res.send("ok");
   });
 
-  app.use(function(req, res, next) {
+  app.use(function (req, res, next) {
     res.set("Server", "battlesnake/replit/starter-snake-javascript");
     next();
-  })
+  });
 
-  const host = '0.0.0.0';
+  const host = "0.0.0.0";
   const port = process.env.PORT || 8000;
 
   app.listen(port, host, () => {
     console.log(`Running Battlesnake at http://${host}:${port}...`);
-    console.log('Visit this URL to see info() response');
-    console.log('Create games at play.battlesnake.com to see game logs');
+    console.log("Visit this URL to see info() response");
+    console.log("Create games at play.battlesnake.com to see game logs");
   });
 }
