@@ -1,14 +1,11 @@
 // This is the core logic of the snake
-import {
-  avoidWalls,
-  avoidOthers,
-  avoidSelf,
-  avoidGoingBackwards,
-} from "../common/move.js";
+import { avoidGoingBackwards } from "../moves/avoidGoingBackwards.js";
+import { avoidWalls } from "../moves/avoidWalls.js";
+import { avoidSelf } from "../moves/avoidSelf.js";
+import { avoidOthers } from "../moves/avoidOthers.js";
 
 // move is called on every turn and returns your next move
 // Valid moves are "up", "down", "left", or "right"
-// See https://docs.battlesnake.com/api/example-move for available data
 function move(gameState) {
   let isMoveSafe = {
     up: true,
@@ -17,16 +14,10 @@ function move(gameState) {
     right: true,
   };
 
-  // We've included code to prevent your Battlesnake from moving backwards
+  // Moves to avoid
   avoidGoingBackwards(gameState, isMoveSafe);
-
-  // Prevent out of bounds
   avoidWalls(gameState, isMoveSafe);
-
-  // TODO: Step 2 - Prevent your Battlesnake from colliding with itself
   avoidSelf(gameState, isMoveSafe);
-
-  // TODO: Step 3 - Prevent your Battlesnake from colliding with other Battlesnakes
   avoidOthers(gameState, isMoveSafe);
 
   // Are there any safe moves left?
