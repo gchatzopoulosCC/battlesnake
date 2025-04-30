@@ -31,5 +31,4 @@ export default [
       eqeqeq: "error",
     },
   },
-  // Add other configurations if necessary (e.g., for specific frameworks, testing)
 ];
