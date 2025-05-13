@@ -3,8 +3,8 @@ import {
   getRightAdjacentPosition,
   getUpAdjacentPosition,
   getDownAdjacentPosition,
-} from "../common/getAdjacentPositions/collisionMap";
-import { getCollisionMap } from "../common/getCollisionMap";
+} from "../common/getAdjacentPositions/collisionMap.js";
+import { getCollisionMap } from "../common/getCollisionMap.js";
 
 export function avoidOthers(gameState, isMoveSafe) {
   const head = gameState.you.body[0];
