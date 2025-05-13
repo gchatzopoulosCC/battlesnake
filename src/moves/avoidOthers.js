@@ -5,14 +5,14 @@ export function avoidOthers(gameState, isMoveSafe) {
   const head = gameState.you.body[0];
   const collisionMap = getCollisionMap(gameState);
   const moves = [
-    { direction: "left", getAdjacent: pos.getLeftAdjacentPosition(head) },
-    { direction: "right", getAdjacent: pos.getRightAdjacentPosition(head) },
-    { direction: "up", getAdjacent: pos.getUpAdjacentPosition(head) },
-    { direction: "down", getAdjacent: pos.getDownAdjacentPosition(head) },
+    { direction: "left", getAdjacentPosition: pos.getLeftAdjacentPosition(head) },
+    { direction: "right", getAdjacentPosition: pos.getRightAdjacentPosition(head) },
+    { direction: "up", getAdjacentPosition: pos.getUpAdjacentPosition(head) },
+    { direction: "down", getAdjacentPosition: pos.getDownAdjacentPosition(head) },
   ];
 
   for (const move of moves) {
-    if (collisionMap.has(move.getAdjacent(head))) {
+    if (collisionMap.has(move.getAdjacentPosition)) {
       isMoveSafe[move.direction] = false;
     }
   }
