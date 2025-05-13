@@ -1,15 +1,17 @@
+import { getMoves } from "../lib/collisionMap/moves.js";
+import * as pos from "../lib/collisionMap/adjacentPositions.js";
+import { getBodySet } from "../lib/bodySet/bodySet.js";
+
 export function avoidSelf(gameState, isMoveSafe) {
   const { x: headX, y: headY } = gameState.you.body[0];
 
   // Create a set of body positions (excluding head)
-  const bodyPositions = new Set(
-    gameState.you.body.slice(1).map((segment) => `${segment.x},${segment.y}`),
-  );
+  const bodySet = getBodySet(gameState);
 
-  if (bodyPositions.has(`${headX - 1},${headY}`)) isMoveSafe.left = false;
-  if (bodyPositions.has(`${headX + 1},${headY}`)) isMoveSafe.right = false;
-  if (bodyPositions.has(`${headX},${headY - 1}`)) isMoveSafe.down = false;
-  if (bodyPositions.has(`${headX},${headY + 1}`)) isMoveSafe.up = false;
+  if (bodySet.has(`${headX - 1},${headY}`)) isMoveSafe.left = false;
+  if (bodySet.has(`${headX + 1},${headY}`)) isMoveSafe.right = false;
+  if (bodySet.has(`${headX},${headY - 1}`)) isMoveSafe.down = false;
+  if (bodySet.has(`${headX},${headY + 1}`)) isMoveSafe.up = false;
 
   return isMoveSafe;
 }
