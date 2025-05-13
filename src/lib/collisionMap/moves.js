@@ -1,6 +1,6 @@
 import * as pos from "../lib/collisionMap/adjacentPositions.js";
 
-export function getMoves() {
+export function getMoves(gameState) {
   const head = gameState.you.body[0];
   return (moves = [
     {
