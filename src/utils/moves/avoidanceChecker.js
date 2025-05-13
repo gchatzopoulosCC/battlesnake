@@ -6,7 +6,7 @@ export function createAvoidanceChecker(getMapFunction) {
     const moves = getMoves(gameState);
 
     for (const move of moves) {
-      if (map.has(move.getAdjacentPosition)) {
+      if (map.has(move.adjacentPosition)) {
         isMoveSafe[move.direction] = false;
       }
     }
