@@ -11,11 +11,11 @@ export function avoidOthers(gameState, isMoveSafe) {
     { direction: "down", getAdjacent: pos.getDownAdjacentPosition(head) },
   ];
 
-  moves.array.forEach((move) => {
+  for (const move of moves) {
     if (collisionMap.has(move.getAdjacent(head))) {
       isMoveSafe[move.direction] = false;
     }
-  });
+  }
 
   return isMoveSafe;
 }
