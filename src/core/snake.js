@@ -1,8 +1,8 @@
 // This is the core logic of the snake
-import { avoidGoingBackwards } from "../moves/avoidGoingBackwards.js";
-import { avoidWalls } from "../moves/avoidWalls.js";
-import { avoidSelf } from "../moves/avoidSelf.js";
-import { avoidOthers } from "../moves/avoidOthers.js";
+import { avoidGoingBackwards } from "../lib/moves/avoidGoingBackwards.js";
+import { avoidWalls } from "../lib/moves/avoidWalls.js";
+import { avoidSelf } from "../lib/moves/avoidSelf.js";
+import { avoidOthers } from "../lib/moves/avoidOthers.js";
 
 // move is called on every turn and returns your next move
 // Valid moves are "up", "down", "left", or "right"
