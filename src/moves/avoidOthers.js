@@ -2,11 +2,11 @@ import { getCollisionSet } from "../lib/collisionSet/collisionSet.js";
 import { getMoves } from "../common/sets/moves.js";
 
 export function avoidOthers(gameState, isMoveSafe) {
-  const collisionMap = getCollisionSet(gameState);
+  const collisionSet = getCollisionSet(gameState);
   const moves = getMoves(gameState);
 
   for (const move of moves) {
-    if (collisionMap.has(move.getAdjacentPosition)) {
+    if (collisionSet.has(move.getAdjacentPosition)) {
       isMoveSafe[move.direction] = false;
     }
   }
