@@ -1,17 +1,8 @@
+import { getCollisionMap } from "../common/getCollisionMap";
+
 export function avoidOthers(gameState, isMoveSafe) {
   const { x: headX, y: headY } = gameState.you.body[0];
-
-  // Create a collision map
-  const collisionMap = new Set();
-  const otherSnakes = gameState.board.snakes.filter(
-    (snake) => snake.id !== gameState.you.id,
-  );
-
-  otherSnakes.forEach((snake) => {
-    snake.body.forEach((segment) => {
-      collisionMap.add(`${segment.x},${segment.y}`);
-    });
-  });
+  const collisionMap = getCollisionMap(gameState);
 
   // Check adjacent positions
   if (collisionMap.has(`${headX - 1},${headY}`)) isMoveSafe.left = false;
