@@ -5,19 +5,19 @@ export function getMoves(gameState) {
   const moves = [
     {
       direction: "left",
-      getAdjacentPosition: pos.getLeftAdjacentPosition(head),
+      adjacentPosition: pos.getLeftAdjacentPosition(head),
     },
     {
       direction: "right",
-      getAdjacentPosition: pos.getRightAdjacentPosition(head),
+      adjacentPosition: pos.getRightAdjacentPosition(head),
     },
     {
       direction: "up",
-      getAdjacentPosition: pos.getUpAdjacentPosition(head),
+      adjacentPosition: pos.getUpAdjacentPosition(head),
     },
     {
       direction: "down",
-      getAdjacentPosition: pos.getDownAdjacentPosition(head),
+      adjacentPosition: pos.getDownAdjacentPosition(head),
     },
   ];
 
