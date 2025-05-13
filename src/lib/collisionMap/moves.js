@@ -1,0 +1,23 @@
+import * as pos from "../lib/collisionMap/adjacentPositions.js";
+
+export function getMoves() {
+  const head = gameState.you.body[0];
+  return (moves = [
+    {
+      direction: "left",
+      getAdjacentPosition: pos.getLeftAdjacentPosition(head),
+    },
+    {
+      direction: "right",
+      getAdjacentPosition: pos.getRightAdjacentPosition(head),
+    },
+    {
+      direction: "up",
+      getAdjacentPosition: pos.getUpAdjacentPosition(head),
+    },
+    {
+      direction: "down",
+      getAdjacentPosition: pos.getDownAdjacentPosition(head),
+    },
+  ]);
+}

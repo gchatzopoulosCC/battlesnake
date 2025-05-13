@@ -1,15 +1,9 @@
-import * as pos from "../lib/collisionMap/adjacentPositions.js";
 import { getCollisionMap } from "../lib/collisionMap/collisionMap.js";
+import { getMoves } from "../lib/collisionMap/moves.js";
 
 export function avoidOthers(gameState, isMoveSafe) {
-  const head = gameState.you.body[0];
   const collisionMap = getCollisionMap(gameState);
-  const moves = [
-    { direction: "left", getAdjacentPosition: pos.getLeftAdjacentPosition(head) },
-    { direction: "right", getAdjacentPosition: pos.getRightAdjacentPosition(head) },
-    { direction: "up", getAdjacentPosition: pos.getUpAdjacentPosition(head) },
-    { direction: "down", getAdjacentPosition: pos.getDownAdjacentPosition(head) },
-  ];
+  const moves = getMoves(gameState);
 
   for (const move of moves) {
     if (collisionMap.has(move.getAdjacentPosition)) {
