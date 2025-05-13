@@ -7,11 +7,11 @@ function getRightAdjacentPosition(position) {
 }
 
 function getUpAdjacentPosition(position) {
-  return `${position.x},${position.y - 1}`;
+  return `${position.x},${position.y + 1}`;
 }
 
 function getDownAdjacentPosition(position) {
-  return `${position.x},${position.y + 1}`;
+  return `${position.x},${position.y - 1}`;
 }
 
 export {
