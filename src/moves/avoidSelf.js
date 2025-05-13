@@ -1,5 +1,5 @@
-import { getMoves } from "../lib/collisionMap/moves.js";
-import * as pos from "../lib/collisionMap/adjacentPositions.js";
+import { getMoves } from "../lib/collisionSet/moves.js";
+import * as pos from "../lib/collisionSet/adjacentPositions.js";
 import { getBodySet } from "../lib/bodySet/bodySet.js";
 
 export function avoidSelf(gameState, isMoveSafe) {
