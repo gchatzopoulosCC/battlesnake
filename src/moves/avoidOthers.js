@@ -1,14 +1,21 @@
+import * as pos from "../common/getAdjacentPositions/collisionMap";
 import { getCollisionMap } from "../common/getCollisionMap";
 
 export function avoidOthers(gameState, isMoveSafe) {
-  const { x: headX, y: headY } = gameState.you.body[0];
+  const head = gameState.you.body[0];
   const collisionMap = getCollisionMap(gameState);
+  const moves = [
+    { direction: "left", getAdjacent: pos.getLeftAdjacentPosition(head) },
+    { direction: "right", getAdjacent: pos.getRightAdjacentPosition(head) },
+    { direction: "up", getAdjacent: pos.getUpAdjacentPosition(head) },
+    { direction: "down", getAdjacent: pos.getDownAdjacentPosition(head) },
+  ];
 
-  // Check adjacent positions
-  if (collisionMap.has(`${headX - 1},${headY}`)) isMoveSafe.left = false;
-  if (collisionMap.has(`${headX + 1},${headY}`)) isMoveSafe.right = false;
-  if (collisionMap.has(`${headX},${headY - 1}`)) isMoveSafe.down = false;
-  if (collisionMap.has(`${headX},${headY + 1}`)) isMoveSafe.up = false;
+  moves.array.forEach((move) => {
+    if (collisionMap.has(move.getAdjacent(head))) {
+      isMoveSafe[move.direction] = false;
+    }
+  });
 
   return isMoveSafe;
 }
