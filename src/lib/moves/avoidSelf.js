@@ -1,5 +1,5 @@
-import { getMoves } from "../common/sets/moves.js";
-import { getbodyMap } from "../lib/bodyMap/bodyMap.js";
+import { getMoves } from "../../common/sets/moves.js";
+import { getbodyMap } from "../bodyMap/bodyMap.js";
 
 export function avoidSelf(gameState, isMoveSafe) {
   const bodyMap = getbodyMap(gameState);
