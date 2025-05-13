@@ -1,5 +1,5 @@
-import * as pos from "../common/collisionMap/adjacentPositions.js";
-import { getCollisionMap } from "../common/collisionMap/collisionMap.js";
+import * as pos from "../lib/collisionMap/adjacentPositions.js";
+import { getCollisionMap } from "../lib/collisionMap/collisionMap.js";
 
 export function avoidOthers(gameState, isMoveSafe) {
   const head = gameState.you.body[0];
