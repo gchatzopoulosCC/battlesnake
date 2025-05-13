@@ -1,5 +1,5 @@
 import { getCollisionSet } from "../lib/collisionSet/collisionSet.js";
-import { getMoves } from "../lib/collisionSet/moves.js";
+import { getMoves } from "../common/sets/moves.js";
 
 export function avoidOthers(gameState, isMoveSafe) {
   const collisionMap = getCollisionSet(gameState);
