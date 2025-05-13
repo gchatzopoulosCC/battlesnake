@@ -1,15 +1,9 @@
-import { getMoves } from "../../common/sets/moves.js";
 import { getbodyMap } from "../bodyMap/bodyMap.js";
+import { createAvoidanceChecker } from "../../utils/moves/avoidanceChecker.js";
 
 export function avoidSelf(gameState, isMoveSafe) {
-  const bodyMap = getbodyMap(gameState);
-  const moves = getMoves(gameState);
-
-  for (const move of moves) {
-    if (bodyMap.has(move.getAdjacentPosition)) {
-      isMoveSafe[move.direction] = false;
-    }
-  }
+  const avoidanceChecker = createAvoidanceChecker(getbodyMap);
+  avoidanceChecker(gameState, isMoveSafe);
 
   return isMoveSafe;
 }
