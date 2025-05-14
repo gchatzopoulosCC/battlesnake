@@ -1,7 +1,7 @@
-import { getbodySet } from "../sets/bodySet.js";
+import { getBodySet } from "../sets/bodySet.js";
 import { createAvoidanceChecker } from "../../utils/moves/avoidanceChecker.js";
 
-const avoidanceChecker = createAvoidanceChecker(getbodySet);
+const avoidanceChecker = createAvoidanceChecker(getBodySet);
 
 export function avoidSelf(gameState, isMoveSafe) {
   avoidanceChecker(gameState, isMoveSafe);
