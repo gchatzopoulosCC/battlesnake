@@ -1,4 +1,4 @@
-import { parseCoordinates } from "./coordinates";
+import { parseCoordinates } from "./coordinates.js";
 
 function getLeftAdjacentPosition(position) {
   return parseCoordinates(position.x - 1, position.y);
