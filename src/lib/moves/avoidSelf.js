@@ -1,4 +1,4 @@
-import { getbodySet } from "../bodySet/bodySet.js";
+import { getbodySet } from "../sets/bodySet.js";
 import { createAvoidanceChecker } from "../../utils/moves/avoidanceChecker.js";
 
 const avoidanceChecker = createAvoidanceChecker(getbodySet);
