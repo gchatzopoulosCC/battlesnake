@@ -1,7 +1,5 @@
 export function getCollisionSet(gameState) {
-  const otherSnakes = gameState.board.snakes.filter(
-    (snake) => snake.id !== gameState.you.id,
-  );
+  const otherSnakes = gameState.board.snakes.filter((snake) => snake.id !== gameState.you.id);
 
   const collisionCoordinates = otherSnakes
     .flatMap((snake) => snake.body)
