@@ -1,14 +1,14 @@
-export function getCollisionMap(gameState) {
-  const collisionMap = new Set();
+export function getcollisionSet(gameState) {
+  const collisionSet = new Set();
   const otherSnakes = gameState.board.snakes.filter(
     (snake) => snake.id !== gameState.you.id,
   );
 
   otherSnakes.forEach((snake) => {
     snake.body.forEach((segment) => {
-      collisionMap.add(`${segment.x},${segment.y}`);
+      collisionSet.add(`${segment.x},${segment.y}`);
     });
   });
 
-  return collisionMap;
+  return collisionSet;
 }

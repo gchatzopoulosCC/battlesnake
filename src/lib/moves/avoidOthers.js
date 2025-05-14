@@ -1,10 +1,10 @@
-import { getCollisionMap } from "../collisionMap/collisionMap.js";
+import { getcollisionSet } from "../collisionSet/collisionSet.js";
 import { createAvoidanceChecker } from "../../utils/moves/avoidanceChecker.js";
 
-const avoidanceChecker = createAvoidanceChecker(getCollisionMap);
+const avoidanceChecker = createAvoidanceChecker(getcollisionSet);
 
 export function avoidOthers(gameState, isMoveSafe) {
   avoidanceChecker(gameState, isMoveSafe);
-  
+
   return isMoveSafe;
 }
