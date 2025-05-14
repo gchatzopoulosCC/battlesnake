@@ -1,4 +1,4 @@
-export function getcollisionSet(gameState) {
+export function getCollisionSet(gameState) {
   const collisionSet = new Set();
   const otherSnakes = gameState.board.snakes.filter(
     (snake) => snake.id !== gameState.you.id,
