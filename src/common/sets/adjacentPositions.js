@@ -1,17 +1,19 @@
+import { parseCoordinates } from "./coordinates";
+
 function getLeftAdjacentPosition(position) {
-  return `${position.x - 1},${position.y}`;
+  return parseCoordinates(position.x - 1, position.y);
 }
 
 function getRightAdjacentPosition(position) {
-  return `${position.x + 1},${position.y}`;
+  return parseCoordinates(position.x + 1, position.y);
 }
 
 function getUpAdjacentPosition(position) {
-  return `${position.x},${position.y + 1}`;
+  return parseCoordinates(position.x, position.y + 1);
 }
 
 function getDownAdjacentPosition(position) {
-  return `${position.x},${position.y - 1}`;
+  return parseCoordinates(position.x, position.y - 1);
 }
 
 export {
