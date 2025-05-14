@@ -1,4 +1,4 @@
-import { getCollisionSet } from "../sets/collisionSet.js";
+import { getCollisionSet } from "../../utils/sets/collisionSet.js";
 import { createAvoidanceChecker } from "../../utils/moves/avoidanceChecker.js";
 
 const avoidanceChecker = createAvoidanceChecker(getCollisionSet);
