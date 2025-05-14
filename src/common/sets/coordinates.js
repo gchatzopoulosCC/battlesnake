@@ -1,3 +1,3 @@
-export function parseCoordinates(coordinates) {
-  return `${coordinates.x},${coordinates.y}`;
+export function parseCoordinates(x, y) {
+  return `${x},${y}`;
 }
