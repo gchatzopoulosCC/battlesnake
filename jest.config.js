@@ -4,7 +4,6 @@ export default {
   
   // Use of ESM as support
   transform: {},
-  extensionsToTreatAsEsm: ['.js'],
   
   // Applying coverage for the project 
   collectCoverage: true,
