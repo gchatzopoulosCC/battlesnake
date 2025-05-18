@@ -64,7 +64,7 @@ function getUpAdjacentPosition(position) {
  * @returns {Object} - The down adjacent position, represented as an object with `x` and `y` coordinates.
  * @example
  * const position = { x: 5, y: 5 };
- * getUpAdjacentPosition(position); // Returns { x: 5, y: 4 }
+ * getDownAdjacentPosition(position); // Returns { x: 5, y: 4 }
  */
 function getDownAdjacentPosition(position) {
   return parseCoordinates(position.x, position.y - 1);
