@@ -1,11 +1,43 @@
-// This is the core logic of the snake
+/**
+ * @file snake.js
+ * @description This file contains the main logic for the Battlesnake's movement.
+ * @module src/core/snake
+ */
+
+
 import { avoidGoingBackwards } from "../lib/moves/avoidGoingBackwards.js";
 import { avoidWalls } from "../lib/moves/avoidWalls.js";
 import { avoidSelf } from "../lib/moves/avoidSelf.js";
 import { avoidOthers } from "../lib/moves/avoidOthers.js";
 
-// move is called on every turn and returns your next move
-// Valid moves are "up", "down", "left", or "right"
+/**
+ * @typedef {"up" | "down" | "left" | "right"} MoveDirection
+ * @description Represents the valid directions the snake can move.
+ * @param {Object} gameState
+ * @param {Object} gameState.board - The board object
+ * @param {Object} gameState.turn - The current turn number
+ * @param {Object} gameState.you - The snake object
+ * @returns {{ move: MoveDirection }} - The next move for the snake
+ * @example
+ * const gameState = {
+ *   board: {
+ *     width: 11,
+ *     height: 11,
+ *     food: [{ x: 5, y: 5 }],
+ *     snakes: [{ id: "1", body: [{ x: 1, y: 1 }, { x: 1, y: 2 }] }]
+ *   },
+ *   turn: 1,
+ *   you: {
+ *     id: "1",
+ *     body: [{ x: 1, y: 1 }, { x: 1, y: 2 }],
+ *     health: 100,
+ *     length: 2,
+ *     head: { x: 1, y: 1 },
+ *     tail: { x: 1, y: 2 }
+ *   }
+ * };
+ * move(gameState); // Returns the next move for the snake
+ */
 function move(gameState) {
   const isMoveSafe = {
     up: true,
