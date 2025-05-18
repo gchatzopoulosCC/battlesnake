@@ -11,13 +11,26 @@ import { avoidSelf } from "../lib/moves/avoidSelf.js";
 import { avoidOthers } from "../lib/moves/avoidOthers.js";
 
 /**
- * @typedef {"up" | "down" | "left" | "right"} MoveDirection
- * @description Represents the valid directions the snake can move.
- * @param {Object} gameState
- * @param {Object} gameState.board - The board object
- * @param {Object} gameState.turn - The current turn number
- * @param {Object} gameState.you - The snake object
- * @returns {{ move: MoveDirection }} - The next move for the snake
+ * @description Determines the next move for the Battlesnake based on the current game state.
+ * The function evaluates possible moves and avoids unsafe options such as walls, the snake's own body, and other snakes.
+ * If no safe moves are available, it defaults to moving "down".
+ *
+ * @param {Object} gameState - The current state of the game.
+ * @param {Object} gameState.board - The board object containing the game board's dimensions, food, and snakes.
+ * @param {number} gameState.board.width - The width of the game board.
+ * @param {number} gameState.board.height - The height of the game board.
+ * @param {Object[]} gameState.board.food - An array of food positions, each represented as an object with `x` and `y` coordinates.
+ * @param {Object[]} gameState.board.snakes - An array of snakes on the board, including their positions and properties.
+ * @param {number} gameState.turn - The current turn number of the game.
+ * @param {Object} gameState.you - The player's snake object.
+ * @param {string} gameState.you.id - The unique identifier for the player's snake.
+ * @param {Object[]} gameState.you.body - An array of objects representing the snake's body segments, starting with the head.
+ * @param {number} gameState.you.health - The current health of the player's snake.
+ * @param {Object} gameState.you.head - The position of the snake's head, represented as an object with `x` and `y` coordinates.
+ * @param {Object} gameState.you.tail - The position of the snake's tail, represented as an object with `x` and `y` coordinates.
+ *
+ * @returns {{ move: MoveDirection }} - The next move for the snake, represented as an object with a `move` property.
+ * The `move` property is one of the following values: `"up"`, `"down"`, `"left"`, `"right"`.
  * @example
  * const gameState = {
  *   board: {
