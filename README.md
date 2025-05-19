@@ -1,18 +1,21 @@
+# Battlesnake JavaScript Group 4 Project
+
 # Table of Contents
 
+- [Battlesnake JavaScript Group 4 Project](#battlesnake-javascript-group-4-project)
 - [Table of Contents](#table-of-contents)
-- [About the Project](#about-the-project)
-  - [Built With](#built-with)
+- [Description](#description)
+  - [Technologies Used](#technologies-used)
   - [Getting started](#getting-started)
     - [Prerequisites](#prerequisites)
     - [Instalation](#instalation)
-  - [Usage](#usage)
-    - [Deployment](#deployment)
+    - [Folder structure](#folder-structure)
+  - [How to Run](#how-to-run)
+    - [Deployment (Railway)](#deployment-railway)
     - [Game Playing](#game-playing)
-  - [Folder structure](#folder-structure)
   - [References](#references)
 
-# About the Project
+# Description
 
 ![Battlesnake Logo](https://media.battlesnake.com/social/StarterSnakeGitHubRepos_JavaScript.png)
 
@@ -27,7 +30,7 @@ Authors (GitHub usernames):
 - sdemba
 - mgramozi
 
-## Built With
+## Technologies Used
 
 This project is built using:
 
@@ -67,56 +70,22 @@ git remote set-url origin gchatzopoulosCC/battlesnake`
 git remote -v #confirm the changes
 ```
 
-## Usage
-
-The usage of this application is not designed to e deployed locally. For this the project needs to be deployed on the cloud.
-
-### Deployment
-
-If one wishes to deploy locally
-
-```bash
-node server.js
-```
-
-Cloud (Railway)
-
-- **Production Environment**
-  1.  Sign in/Register on [Railway](https://railway.com/) using **GitHub**
-  2.  Create a new Project
-  3.  Deploy from GitHub using this repository (gchatzopoulosCC/battlesnake/)
-  4.  Navigate to the newly created deployment's settings
-  5.  Generate a new domain using any valid port (8080 is recommended)
-  6.  Copy the server url (it will be useful later)
-- **Testing Environment**
-  1.  In Railway create a new `environment` and name it _testing_
-  2.  Go to the new environment settings:
-      2.1. Add the branch that is ought to be tested
-      2.2. Generate a new domain using any valid port (8080 is recommended)
-      2.3. Copy the server url (it will be useful later)
-- **Development Environment**
-  1.  In Railway create a new `environment` and name it _devepment_
-  2.  Go to the new environment settings:
-      2.1. Add the `develop` branch
-      2.2. Generate a new domain using any valid port (8080 is recommended)
-      2.3. Copy the server url (it will be useful later)
-
-### Game Playing
-
-1. Go on [play.battlesnake.com](https://play.battlesnake.com)
-2. Create a Battlesnake with the following requirements:
-   - Server Url should be `https://<server_url>`
-   - Platform should be **Railway**
-
-## Folder structure
+### Folder structure
 
 ```
 /
 ├── index.js                    # Main entry point that initializes the server
 ├── server.js                   # Express server configuration for the Battlesnake API
+├── package.json                # Project metadata and dependencies
+├── package-lock.json           # Lock file with exact dependency versions
 ├── .editorconfig               # Editor configuration for consistent code style
 ├── .prettierrc.json            # Prettier code formatter configuration
+├── .prettierignore             # Files that Prettier will ignore
+├── .gitignore                  # Files that Git will ignore
+├── .replit                     # Replit configuration for online IDE/hosting
+├── replit.nix                  # Nix environment specification for Replit
 ├── eslint.config.mjs           # ESLint code quality rules
+├── out/                        # JSDocs HTML page
 ├── src/
 │   ├── core/
 │   │   ├── game.js             # Game lifecycle handlers (start, end, info)
@@ -141,6 +110,45 @@ Cloud (Railway)
 │           ├── bodySet.js             # Creates set of body segments
 │           └── collisionSet.js        # Creates set of other snake positions
 ```
+
+## How to Run
+
+The usage of this application is not designed to be run locally. For this reason, the project has to be deployed on the cloud to be run.
+
+- If one wishes to run locally
+
+```bash
+node server.js
+```
+
+### Deployment (Railway)
+
+- Production Environment
+  1.  Sign in/Register on [Railway](https://railway.com/) using **GitHub**
+  2.  Create a new Project
+  3.  Deploy from GitHub using this repository (gchatzopoulosCC/battlesnake/)
+  4.  Navigate to the newly created deployment's settings
+  5.  Generate a new domain using any valid port (8080 is recommended)
+  6.  Copy the server url (it will be useful later)
+- Testing Environment
+  1.  In Railway create a new `environment` and name it _testing_
+  2.  Go to the new environment settings:
+      2.1. Add the branch that is ought to be tested
+      2.2. Generate a new domain using any valid port (8080 is recommended)
+      2.3. Copy the server url (it will be useful later)
+- Development Environment
+  1.  In Railway create a new `environment` and name it _devepment_
+  2.  Go to the new environment settings:
+      2.1. Add the `develop` branch
+      2.2. Generate a new domain using any valid port (8080 is recommended)
+      2.3. Copy the server url (it will be useful later)
+
+### Game Playing
+
+1. Go on [play.battlesnake.com](https://play.battlesnake.com)
+2. Create a Battlesnake with the following requirements:
+   - Server Url should be `https://<server_url>`
+   - Platform should be **Railway**
 
 ## References
 
