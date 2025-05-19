@@ -1,12 +1,13 @@
 /**
  * @file collisionSet.js
  * @description This file contains a function to create a Set of positions occupied by other snakes on the board.
+ * This Set is used for efficient collision detection when evaluating potential moves during gameplay.
  * @module src/utils/sets/collisionSet
  */
 
 /**
  * @description Creates a Set containing string representations of all segments of other snakes on the board.
- * This is used to check if a move would result in a collision with another snake.
+ * This is used to check if a move would result in a collision with another snake, which would end the game.
  * 
  * @param {Object} gameState - The current state of the game.
  * @param {Object} gameState.board - The board object containing game information.
