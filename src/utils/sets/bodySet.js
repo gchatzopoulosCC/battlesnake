@@ -2,7 +2,10 @@
  * @file bodySet.js
  * @description This file contains a function to create a Set of the snake's body segments (excluding the head).
  * @module src/utils/sets/bodySet
+ * @requires module:src/common/snake/body
  */
+
+import { getTail } from "../../common/snake/body";
 
 /**
  * @description Creates a Set containing string representations of the snake's body segments, 
@@ -33,5 +36,5 @@
  * bodySet.has("5,5"); // false (head is excluded)
  */
 export function getBodySet(gameState) {
-  return new Set(gameState.you.body.slice(1).map((segment) => `${segment.x},${segment.y}`));
+  return new Set(getTail(gameState).map((segment) => `${segment.x},${segment.y}`));
 }
