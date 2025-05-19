@@ -1,7 +1,8 @@
 /**
  * @file avoidSelf.js
  * @description This file contains a function to check for collisions with the snake's own body
- * and update the isMoveSafe object accordingly.
+ * and update the isMoveSafe object accordingly. Avoiding self-collisions is critical for survival
+ * as running into your own body ends the game immediately.
  * @module src/lib/moves/avoidSelf
  * @requires module:src/utils/sets/bodySet
  * @requires module:src/utils/moves/avoidanceChecker
@@ -14,7 +15,8 @@ const avoidanceChecker = createAvoidanceChecker(getBodySet);
 
 /**
  * @description This function checks for potential collisions with the snake's own body
- * and updates the isMoveSafe object accordingly to avoid self-collisions.
+ * and updates the isMoveSafe object accordingly to avoid self-collisions. It uses a specialized
+ * avoidance checker that works with a set of the snake's body segments (excluding the head).
  * 
  * @param {Object} gameState - The current state of the game.
  * @param {Object} gameState.you - The player's snake object.
@@ -47,7 +49,13 @@ const avoidanceChecker = createAvoidanceChecker(getBodySet);
  * };
  * 
  * avoidSelf(gameState, isMoveSafe);
- * // Updates isMoveSafe to avoid collisions with the snake's own body
+ * // After calling this function:
+ * // isMoveSafe = {
+ * //   left: true,
+ * //   right: true,
+ * //   up: true,
+ * //   down: false,  // Moving down would collide with body at "5,4"
+ * // }
  */
 export function avoidSelf(gameState, isMoveSafe) {
   avoidanceChecker(gameState, isMoveSafe);
