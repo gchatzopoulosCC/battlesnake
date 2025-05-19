@@ -117,7 +117,7 @@ The usage of this application is not designed to be run locally. For this reason
 - If one wishes to run locally
 
 ```bash
-node server.js
+node index.js
 ```
 
 ### Deployment (Railway)
@@ -168,7 +168,7 @@ The project includes several configuration files that control code style, lintin
 - Standard mode
 
 ```bash
-node server.js
+node index.js
 ```
 
 - Run linting
