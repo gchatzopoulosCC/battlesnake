@@ -1,414 +1,197 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
+  <head>
+    <meta charset="utf-8" />
     <title>JSDoc: Module: src/common/sets/moves</title>
 
-    <script src="scripts/prettify/prettify.js"> </script>
-    <script src="scripts/prettify/lang-css.js"> </script>
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
-    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
-</head>
-
-<body>
-
-<div id="main">
-
-    <h1 class="page-title">Module: src/common/sets/moves</h1>
-
-    
-
-
-
-
-<section>
-
-<header>
-    
-        
-            
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-            <div class="description">This file contains a utility function to retrieve all possible moves for the snake,
-including their directions and adjacent positions.</div>
-        
-
-        
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="common_sets_moves.js.html">common/sets/moves.js</a>, <a href="common_sets_moves.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-    
-    </div>
-
-    
-
-    
-        <h3 class="subsection-title">Requires</h3>
-
-        <ul>
-            <li><a href="module-src_common_sets_adjacentPositions.html">module:src/common/sets/adjacentPositions</a></li>
-        
-            <li><a href="module-src_common_snake_body.html">module:src/common/snake/body</a></li>
-        </ul>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id=".getMoves"><span class="type-signature">(static) </span>getMoves<span class="signature">(gameState)</span><span class="type-signature"> &rarr; {Array.&lt;Object>}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Retrieves all possible moves for the snake based on its current head position.
-Each move includes the direction and the adjacent position it leads to.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="styles/prettify-tomorrow.css"
+    />
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css" />
+  </head>
+
+  <body>
+    <div id="main">
+      <h1 class="page-title">Module: src/common/sets/moves</h1>
+
+      <section>
+        <header></header>
+
+        <article>
+          <div class="container-overview">
+            <div class="description">
+              This file contains a utility function to retrieve all possible
+              moves for the snake, including their directions and adjacent
+              positions.
+            </div>
+
+            <dl class="details">
+              <dt class="tag-source">Source:</dt>
+              <dd class="tag-source">
+                <ul class="dummy">
+                  <li>
+                    <a href="common_sets_moves.js.html">common/sets/moves.js</a
+                    >, <a href="common_sets_moves.js.html#line1">line 1</a>
+                  </li>
+                </ul>
+              </dd>
+            </dl>
+          </div>
+
+          <h3 class="subsection-title">Requires</h3>
+
+          <ul>
+            <li>
+              <a href="module-src_common_sets_adjacentPositions.html"
+                >module:src/common/sets/adjacentPositions</a
+              >
+            </li>
+
+            <li>
+              <a href="module-src_common_snake_body.html"
+                >module:src/common/snake/body</a
+              >
+            </li>
+          </ul>
+
+          <h3 class="subsection-title">Methods</h3>
+
+          <h4 class="name" id=".getMoves">
+            <span class="type-signature">(static) </span>getMoves<span
+              class="signature"
+              >(gameState)</span
+            ><span class="type-signature"> &rarr; {Array.&lt;Object>}</span>
+          </h4>
+
+          <div class="description">
+            Retrieves all possible moves for the snake based on its current head
+            position. Each move includes the direction and the adjacent position
+            it leads to.
+          </div>
+
+          <h5>Parameters:</h5>
+
+          <table class="params">
+            <thead>
+              <tr>
+                <th>Name</th>
+
+                <th>Type</th>
+
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
                 <td class="name"><code>gameState</code></td>
-            
 
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The current state of the game.
-                <h6>Properties</h6>
-                
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>you</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The player's snake object.
-                <h6>Properties</h6>
-                
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>body</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;Object></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">An array of objects representing the snake's body segments, starting with the head.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="common_sets_moves.js.html">common/sets/moves.js</a>, <a href="common_sets_moves.js.html#line42">line 42</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    - An array of possible moves, where each move is an object containing:
-  - `direction` {string}: The direction of the move (`"left"`, `"right"`, `"up"`, `"down"`).
-  - `adjacentPosition` {string}: The adjacent position in string format (`"x,y"`).
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Array.&lt;Object></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>const gameState = {
+                <td class="type">
+                  <span class="param-type">Object</span>
+                </td>
+
+                <td class="description last">
+                  The current state of the game.
+                  <h6>Properties</h6>
+
+                  <table class="params">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+
+                        <th>Type</th>
+
+                        <th class="last">Description</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <tr>
+                        <td class="name"><code>you</code></td>
+
+                        <td class="type">
+                          <span class="param-type">Object</span>
+                        </td>
+
+                        <td class="description last">
+                          The player's snake object.
+                          <h6>Properties</h6>
+
+                          <table class="params">
+                            <thead>
+                              <tr>
+                                <th>Name</th>
+
+                                <th>Type</th>
+
+                                <th class="last">Description</th>
+                              </tr>
+                            </thead>
+
+                            <tbody>
+                              <tr>
+                                <td class="name"><code>body</code></td>
+
+                                <td class="type">
+                                  <span class="param-type"
+                                    >Array.&lt;Object></span
+                                  >
+                                </td>
+
+                                <td class="description last">
+                                  An array of objects representing the snake's
+                                  body segments, starting with the head.
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <dl class="details">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source">
+              <ul class="dummy">
+                <li>
+                  <a href="common_sets_moves.js.html">common/sets/moves.js</a>,
+                  <a href="common_sets_moves.js.html#line42">line 42</a>
+                </li>
+              </ul>
+            </dd>
+          </dl>
+
+          <h5>Returns:</h5>
+
+          <div class="param-desc">
+            - An array of possible moves, where each move is an object
+            containing: - `direction` {string}: The direction of the move
+            (`"left"`, `"right"`, `"up"`, `"down"`). - `adjacentPosition`
+            {string}: The adjacent position in string format (`"x,y"`).
+          </div>
+
+          <dl>
+            <dt>Type</dt>
+            <dd>
+              <span class="param-type">Array.&lt;Object></span>
+            </dd>
+          </dl>
+
+          <h5>Example</h5>
+
+          <pre class="prettyprint"><code>const gameState = {
   you: {
     body: [
       { x: 5, y: 5 },
@@ -424,35 +207,81 @@ getMoves(gameState);
 //   { direction: "up", adjacentPosition: "5,6" },
 //   { direction: "down", adjacentPosition: "5,4" },
 // ]</code></pre>
+        </article>
+      </section>
+    </div>
 
+    <nav>
+      <h2><a href="index.html">Home</a></h2>
+      <h3>Modules</h3>
+      <ul>
+        <li>
+          <a href="module-src_common_sets_adjacentPositions.html"
+            >src/common/sets/adjacentPositions</a
+          >
+        </li>
+        <li>
+          <a href="module-src_common_sets_coordinates.html"
+            >src/common/sets/coordinates</a
+          >
+        </li>
+        <li>
+          <a href="module-src_common_sets_moves.html">src/common/sets/moves</a>
+        </li>
+        <li>
+          <a href="module-src_common_snake_body.html">src/common/snake/body</a>
+        </li>
+        <li><a href="module-src_core_game.html">src/core/game</a></li>
+        <li><a href="module-src_core_snake.html">src/core/snake</a></li>
+        <li>
+          <a href="module-src_lib_moves_avoidGoingBackwards.html"
+            >src/lib/moves/avoidGoingBackwards</a
+          >
+        </li>
+        <li>
+          <a href="module-src_lib_moves_avoidOthers.html"
+            >src/lib/moves/avoidOthers</a
+          >
+        </li>
+        <li>
+          <a href="module-src_lib_moves_avoidSelf.html"
+            >src/lib/moves/avoidSelf</a
+          >
+        </li>
+        <li>
+          <a href="module-src_lib_moves_avoidWalls.html"
+            >src/lib/moves/avoidWalls</a
+          >
+        </li>
+        <li>
+          <a href="module-src_utils_moves_avoidanceChecker.html"
+            >src/utils/moves/avoidanceChecker</a
+          >
+        </li>
+        <li>
+          <a href="module-src_utils_sets_bodySet.html"
+            >src/utils/sets/bodySet</a
+          >
+        </li>
+        <li>
+          <a href="module-src_utils_sets_collisionSet.html"
+            >src/utils/sets/collisionSet</a
+          >
+        </li>
+      </ul>
+    </nav>
 
+    <br class="clear" />
 
-        
-    
+    <footer>
+      Documentation generated by
+      <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Mon May 19
+      2025 23:10:06 GMT+0300 (Eastern European Summer Time)
+    </footer>
 
-    
-
-    
-</article>
-
-</section>
-
-
-
-
-</div>
-
-<nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-src_common_sets_adjacentPositions.html">src/common/sets/adjacentPositions</a></li><li><a href="module-src_common_sets_coordinates.html">src/common/sets/coordinates</a></li><li><a href="module-src_common_sets_moves.html">src/common/sets/moves</a></li><li><a href="module-src_common_snake_body.html">src/common/snake/body</a></li><li><a href="module-src_core_game.html">src/core/game</a></li><li><a href="module-src_core_snake.html">src/core/snake</a></li><li><a href="module-src_lib_moves_avoidGoingBackwards.html">src/lib/moves/avoidGoingBackwards</a></li><li><a href="module-src_lib_moves_avoidOthers.html">src/lib/moves/avoidOthers</a></li><li><a href="module-src_lib_moves_avoidSelf.html">src/lib/moves/avoidSelf</a></li><li><a href="module-src_lib_moves_avoidWalls.html">src/lib/moves/avoidWalls</a></li><li><a href="module-src_utils_moves_avoidanceChecker.html">src/utils/moves/avoidanceChecker</a></li><li><a href="module-src_utils_sets_bodySet.html">src/utils/sets/bodySet</a></li><li><a href="module-src_utils_sets_collisionSet.html">src/utils/sets/collisionSet</a></li></ul>
-</nav>
-
-<br class="clear">
-
-<footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Mon May 19 2025 23:10:06 GMT+0300 (Eastern European Summer Time)
-</footer>
-
-<script> prettyPrint(); </script>
-<script src="scripts/linenumber.js"> </script>
-</body>
+    <script>
+      prettyPrint();
+    </script>
+    <script src="scripts/linenumber.js"></script>
+  </body>
 </html>
