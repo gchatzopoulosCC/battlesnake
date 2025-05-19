@@ -4,9 +4,11 @@
  * including their directions and adjacent positions.
  * @module src/common/sets/moves
  * @requires module:src/common/sets/adjacentPositions
+ * @requires module:src/common/snake/body
  */
 
 import * as pos from "./adjacentPositions.js";
+import { getHead } from "../snake/body.js";
 
 /**
  * @description Retrieves all possible moves for the snake based on its current head position.
@@ -38,7 +40,7 @@ import * as pos from "./adjacentPositions.js";
  * // ]
  */
 export function getMoves(gameState) {
-  const head = gameState.you.body[0];
+  const head = getHead(gameState);
   const moves = [
     {
       direction: "left",
