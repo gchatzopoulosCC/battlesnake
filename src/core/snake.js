@@ -1,14 +1,23 @@
 /**
  * @file snake.js
- * @description This file contains the main logic for the Battlesnake's movement.
+ * @description This file contains the main logic for the Battlesnake's movement decisions.
+ * It analyzes the game state and determines the next move by avoiding dangerous positions.
  * @module src/core/snake
+ * @requires module:src/lib/moves/avoidGoingBackwards
+ * @requires module:src/lib/moves/avoidWalls
+ * @requires module:src/lib/moves/avoidSelf
+ * @requires module:src/lib/moves/avoidOthers
  */
-
 
 import { avoidGoingBackwards } from "../lib/moves/avoidGoingBackwards.js";
 import { avoidWalls } from "../lib/moves/avoidWalls.js";
 import { avoidSelf } from "../lib/moves/avoidSelf.js";
 import { avoidOthers } from "../lib/moves/avoidOthers.js";
+
+/**
+ * @typedef {"up" | "down" | "left" | "right"} MoveDirection
+ * @description Represents the valid directions the snake can move.
+ */
 
 /**
  * @description Determines the next move for the Battlesnake based on the current game state.
@@ -30,7 +39,7 @@ import { avoidOthers } from "../lib/moves/avoidOthers.js";
  * @param {Object} gameState.you.tail - The position of the snake's tail, represented as an object with `x` and `y` coordinates.
  *
  * @returns {{ move: MoveDirection }} - The next move for the snake, represented as an object with a `move` property.
- * The `move` property is one of the following values: `"up"`, `"down"`, `"left"`, `"right"`.
+ * 
  * @example
  * const gameState = {
  *   board: {
@@ -49,7 +58,12 @@ import { avoidOthers } from "../lib/moves/avoidOthers.js";
  *     tail: { x: 1, y: 2 }
  *   }
  * };
- * move(gameState); // Returns the next move for the snake
+ * 
+ * move(gameState); 
+ * // Returns { move: "right" } or another safe direction
+ * 
+ * // If no safe moves are available:
+ * // Returns { move: "down" }
  */
 function move(gameState) {
   const isMoveSafe = {
