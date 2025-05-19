@@ -8,12 +8,11 @@
 
 import { getHead, getTail } from "../../common/snake/body";
 
-
 /**
  * @description This function determines which direction would cause the snake to move backwards
  * into its own tail and marks that direction as unsafe. This prevents the most basic form of
  * self-collision by comparing the head's position to the tail's position.
- * 
+ *
  * @param {Object} gameState - The current state of the game.
  * @param {Object} gameState.you - The player's snake object.
  * @param {Object[]} gameState.you.body - An array of objects representing the snake's body segments, starting with the head.
@@ -22,9 +21,9 @@ import { getHead, getTail } from "../../common/snake/body";
  * @param {boolean} isMoveSafe.right - Indicates if moving right is safe.
  * @param {boolean} isMoveSafe.up - Indicates if moving up is safe.
  * @param {boolean} isMoveSafe.down - Indicates if moving down is safe.
- * 
+ *
  * @returns {Object} The updated isMoveSafe object.
- * 
+ *
  * @example
  * const gameState = {
  *   you: {
@@ -35,14 +34,14 @@ import { getHead, getTail } from "../../common/snake/body";
  *     ],
  *   },
  * };
- * 
+ *
  * const isMoveSafe = {
  *   left: true,
  *   right: true,
  *   up: true,
  *   down: true,
  * };
- * 
+ *
  * avoidGoingBackwards(gameState, isMoveSafe);
  * // After calling this function:
  * // isMoveSafe = {

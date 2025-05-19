@@ -8,12 +8,12 @@
 /**
  * @description Returns the head (first segment) of the snake from the game state.
  * The head is used for determining the snake's current position and calculating possible moves.
- * 
+ *
  * @param {Object} gameState - The current state of the game.
  * @param {Object} gameState.you - The player's snake object.
  * @param {Object[]} gameState.you.body - An array of objects representing the snake's body segments, starting with the head.
  * @returns {Object} - The head of the snake, represented as an object with `x` and `y` coordinates.
- * 
+ *
  * @example
  * const gameState = {
  *   you: {
@@ -32,12 +32,12 @@ function getHead(gameState) {
 /**
  * @description Returns all body segments of the snake excluding the head.
  * The tail segments are used for collision detection to prevent self-collisions.
- * 
+ *
  * @param {Object} gameState - The current state of the game.
  * @param {Object} gameState.you - The player's snake object.
  * @param {Object[]} gameState.you.body - An array of objects representing the snake's body segments, starting with the head.
  * @returns {Object[]} - An array of objects representing the snake's body segments, excluding the head.
- * 
+ *
  * @example
  * const gameState = {
  *   you: {

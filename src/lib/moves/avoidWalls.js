@@ -1,6 +1,6 @@
 /**
  * @file avoidWalls.js
- * @description This file contains a function to check if the snake is at the 
+ * @description This file contains a function to check if the snake is at the
  * edge of the board and update the isMoveSafe object accordingly to prevent wall collisions.
  * @module src/lib/moves/avoidWalls
  */
@@ -9,7 +9,7 @@
  * @description This function checks if the snake's head is at the edge of the game board
  * and updates the isMoveSafe object to prevent the snake from moving off the board.
  * Hitting the boundary of the game board results in an immediate game over.
- * 
+ *
  * @param {Object} gameState - The current state of the game.
  * @param {Object} gameState.board - The board object containing game board information.
  * @param {number} gameState.board.width - The width of the game board.
@@ -21,9 +21,9 @@
  * @param {boolean} isMoveSafe.right - Indicates if moving right is safe.
  * @param {boolean} isMoveSafe.up - Indicates if moving up is safe.
  * @param {boolean} isMoveSafe.down - Indicates if moving down is safe.
- * 
+ *
  * @returns {Object} The updated isMoveSafe object.
- * 
+ *
  * @example
  * const gameState = {
  *   board: {
@@ -38,14 +38,14 @@
  *     ],
  *   },
  * };
- * 
+ *
  * const isMoveSafe = {
  *   left: true,
  *   right: true,
  *   up: true,
  *   down: true,
  * };
- * 
+ *
  * avoidWalls(gameState, isMoveSafe);
  * // After calling this function:
  * // isMoveSafe = {

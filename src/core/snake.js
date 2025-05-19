@@ -39,7 +39,7 @@ import { avoidOthers } from "../lib/moves/avoidOthers.js";
  * @param {Object} gameState.you.tail - The position of the snake's tail, represented as an object with `x` and `y` coordinates.
  *
  * @returns {{ move: MoveDirection }} - The next move for the snake, represented as an object with a `move` property.
- * 
+ *
  * @example
  * const gameState = {
  *   board: {
@@ -58,10 +58,10 @@ import { avoidOthers } from "../lib/moves/avoidOthers.js";
  *     tail: { x: 1, y: 2 }
  *   }
  * };
- * 
- * move(gameState); 
+ *
+ * move(gameState);
  * // Returns { move: "right" } or another safe direction
- * 
+ *
  * // If no safe moves are available:
  * // Returns { move: "down" }
  */

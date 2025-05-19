@@ -27,13 +27,13 @@ import { move } from "./src/core/snake.js";
 /**
  * @description Initializes the Battlesnake server with the core game handlers.
  * This connects the game lifecycle functions to the server endpoints.
- * 
+ *
  * @param {Object} handlers - The object containing handler functions for different game events.
  * @param {Function} handlers.info - Function that returns metadata about the Battlesnake.
  * @param {Function} handlers.start - Function called when a new game starts.
  * @param {Function} handlers.move - Function called on each turn to determine the snake's next move.
  * @param {Function} handlers.end - Function called when the game ends.
- * 
+ *
  * @example
  * // The server is started with the following handlers:
  * // - info: Returns snake metadata like color, author, and appearance

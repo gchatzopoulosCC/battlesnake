@@ -17,7 +17,7 @@ const avoidanceChecker = createAvoidanceChecker(getBodySet);
  * @description This function checks for potential collisions with the snake's own body
  * and updates the isMoveSafe object accordingly to avoid self-collisions. It uses a specialized
  * avoidance checker that works with a set of the snake's body segments (excluding the head).
- * 
+ *
  * @param {Object} gameState - The current state of the game.
  * @param {Object} gameState.you - The player's snake object.
  * @param {Object[]} gameState.you.body - An array of objects representing the snake's body segments.
@@ -26,9 +26,9 @@ const avoidanceChecker = createAvoidanceChecker(getBodySet);
  * @param {boolean} isMoveSafe.right - Indicates if moving right is safe.
  * @param {boolean} isMoveSafe.up - Indicates if moving up is safe.
  * @param {boolean} isMoveSafe.down - Indicates if moving down is safe.
- * 
+ *
  * @returns {Object} The updated isMoveSafe object.
- * 
+ *
  * @example
  * const gameState = {
  *   you: {
@@ -40,14 +40,14 @@ const avoidanceChecker = createAvoidanceChecker(getBodySet);
  *     ]
  *   }
  * };
- * 
+ *
  * const isMoveSafe = {
  *   left: true,
  *   right: true,
  *   up: true,
  *   down: true,
  * };
- * 
+ *
  * avoidSelf(gameState, isMoveSafe);
  * // After calling this function:
  * // isMoveSafe = {
