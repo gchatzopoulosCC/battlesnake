@@ -3,7 +3,7 @@ function getHead(gameState) {
 }
 
 function getTail(gameState) {
-  return gameState.you.body.slice(1);
+  return gameState.you.body[1];
 }
 
 export { getHead, getTail };
