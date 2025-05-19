@@ -40,9 +40,28 @@ import { getMoves } from "../../common/sets/moves.js";
  * };
  * 
  * bodyAvoidanceChecker(gameState, isMoveSafe);
- * // Updates isMoveSafe to mark moves that would collide with body as unsafe
+ * // After calling this function:
+ * // isMoveSafe = {
+ * //   left: true,
+ * //   right: true,
+ * //   up: true,
+ * //   down: false,  // Moving down would collide with body at "5,4"
+ * // }
  */
 export function createAvoidanceChecker(getSetFunction) {
+  /**
+   * @description Checks if any possible moves would result in a collision with positions in the
+   * avoidance set, and updates the isMoveSafe object accordingly.
+   * 
+   * @param {Object} gameState - The current state of the game.
+   * @param {Object} isMoveSafe - An object representing the safety of each move.
+   * @param {boolean} isMoveSafe.left - Indicates if moving left is safe.
+   * @param {boolean} isMoveSafe.right - Indicates if moving right is safe.
+   * @param {boolean} isMoveSafe.up - Indicates if moving up is safe.
+   * @param {boolean} isMoveSafe.down - Indicates if moving down is safe.
+   * 
+   * @returns {void} - This function doesn't return a value but modifies the isMoveSafe object.
+   */
   return function checkAvoidance(gameState, isMoveSafe) {
     const map = getSetFunction(gameState);
     const moves = getMoves(gameState);
