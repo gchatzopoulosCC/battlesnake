@@ -1,4 +1,4 @@
-import { getHead, getTail } from "../../common/snake/body";
+import { getHead, getTail } from "../../common/snake/body.js";
 
 export function avoidGoingBackwards(gameState, isMoveSafe) {
   const myHead = getHead(gameState);
