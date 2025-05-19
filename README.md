@@ -1,25 +1,4 @@
 # Battlesnake JavaScript Group 4 Project
-
-# Table of Contents
-
-- [Battlesnake JavaScript Group 4 Project](#battlesnake-javascript-group-4-project)
-- [Table of Contents](#table-of-contents)
-- [Description](#description)
-  - [Technologies Used](#technologies-used)
-  - [Getting started](#getting-started)
-    - [Prerequisites](#prerequisites)
-    - [Instalation](#instalation)
-    - [Folder structure](#folder-structure)
-  - [How to Run](#how-to-run)
-    - [Deployment (Railway)](#deployment-railway)
-    - [Game Playing](#game-playing)
-  - [Additional Information](#additional-information)
-    - [Configuaration Files](#configuaration-files)
-    - [Launch Parameters](#launch-parameters)
-    - [Extended Documentation](#extended-documentation)
-
-# Description
-
 ![Battlesnake Logo](https://media.battlesnake.com/social/StarterSnakeGitHubRepos_JavaScript.png)
 
 This is the official repository of Group 4 for assessment (Battlesnake project) of module CCS2430 (Software Development in Practice) at CITY College, University of York Europe Campus. Here it is included all the code needed for the complition of the assignment.
@@ -32,6 +11,23 @@ Authors (GitHub usernames):
 - jhoxha1
 - sdemba
 - mgramozi
+
+# Table of Contents
+
+- [Battlesnake JavaScript Group 4 Project](#battlesnake-javascript-group-4-project)
+- [Table of Contents](#table-of-contents)
+  - [Technologies Used](#technologies-used)
+  - [Getting started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Instalation](#instalation)
+    - [Folder structure](#folder-structure)
+  - [How to Run](#how-to-run)
+    - [Deployment (Railway)](#deployment-railway)
+    - [Game Playing](#game-playing)
+  - [Additional Information](#additional-information)
+    - [Configuaration Files](#configuaration-files)
+    - [Launch Parameters](#launch-parameters)
+    - [Extended Documentation](#extended-documentation)
 
 ## Technologies Used
 
