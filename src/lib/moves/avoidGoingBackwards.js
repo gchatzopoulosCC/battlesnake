@@ -1,15 +1,18 @@
 /**
  * @file avoidGoingBackwards.js
- * @description This file contains a function that prevents the snake from moving backwards into its neck,
+ * @description This file contains a function that prevents the snake from moving backwards into its tail,
  * which would result in an immediate collision and game over.
  * @module src/lib/moves/avoidGoingBackwards
+ * @requires module:src/common/snake/body
  */
+
+import { getHead, getTail } from "../../common/snake/body";
 
 
 /**
  * @description This function determines which direction would cause the snake to move backwards
- * into its own neck and marks that direction as unsafe. This prevents the most basic form of
- * self-collision by comparing the head's position to the neck's position.
+ * into its own tail and marks that direction as unsafe. This prevents the most basic form of
+ * self-collision by comparing the head's position to the tail's position.
  * 
  * @param {Object} gameState - The current state of the game.
  * @param {Object} gameState.you - The player's snake object.
@@ -27,7 +30,7 @@
  *   you: {
  *     body: [
  *       { x: 5, y: 5 },  // Head
- *       { x: 5, y: 4 },  // Neck
+ *       { x: 5, y: 4 },  // Tail
  *       { x: 5, y: 3 },  // Tail
  *     ],
  *   },
@@ -46,17 +49,17 @@
  * //   left: true,
  * //   right: true,
  * //   up: true,
- * //   down: false,  // Moving down would go backwards into neck
+ * //   down: false,  // Moving down would go backwards into tail
  * // }
  */
 export function avoidGoingBackwards(gameState, isMoveSafe) {
-  const myHead = gameState.you.body[0];
-  const myNeck = gameState.you.body[1];
+  const myHead = getHead(gameState);
+  const myTail = getTail(gameState);
 
-  if (myNeck.x < myHead.x) isMoveSafe.left = false;
-  else if (myNeck.x > myHead.x) isMoveSafe.right = false;
-  else if (myNeck.y < myHead.y) isMoveSafe.down = false;
-  else if (myNeck.y > myHead.y) isMoveSafe.up = false;
+  if (myTail.x < myHead.x) isMoveSafe.left = false;
+  else if (myTail.x > myHead.x) isMoveSafe.right = false;
+  else if (myTail.y < myHead.y) isMoveSafe.down = false;
+  else if (myTail.y > myHead.y) isMoveSafe.up = false;
 
   return isMoveSafe;
 }
