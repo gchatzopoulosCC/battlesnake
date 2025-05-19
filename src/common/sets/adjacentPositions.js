@@ -2,7 +2,7 @@
  * @file adjacentPositions.js
  * @description This file contains functions to get the adjacent positions of a given position on the game board.
  * @module src/common/sets/adjacentPositions
- * @requires parseCoordinates
+ * @requires module:src/common/sets/coordinates
  */
 
 import { parseCoordinates } from "./coordinates.js";
