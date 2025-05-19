@@ -6,7 +6,7 @@
  * @requires module:src/common/snake/body
  */
 
-import { getTail } from "../../common/snake/body";
+import { getTail } from "../../common/snake/body.js";
 
 /**
  * @description Creates a Set containing string representations of the snake's body segments,
