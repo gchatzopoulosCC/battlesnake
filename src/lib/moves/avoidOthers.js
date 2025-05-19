@@ -14,12 +14,14 @@ const avoidanceChecker = createAvoidanceChecker(getCollisionSet);
 
 /**
  * @description This function checks for potential collisions with other snakes on the board
- * and updates the isMoveSafe object accordingly to avoid those collisions.
+ * and updates the isMoveSafe object accordingly to avoid those collisions. It uses the collision
+ * set to determine if any adjacent positions contain other snakes' body segments.
  * 
  * @param {Object} gameState - The current state of the game.
  * @param {Object} gameState.board - The board object containing game board information.
  * @param {Object[]} gameState.board.snakes - An array of all snakes on the board.
  * @param {Object} gameState.you - The player's snake object.
+ * @param {string} gameState.you.id - The unique identifier for the player's snake.
  * @param {Object} isMoveSafe - An object representing the safety of each move.
  * @param {boolean} isMoveSafe.left - Indicates if moving left is safe.
  * @param {boolean} isMoveSafe.right - Indicates if moving right is safe.
@@ -67,7 +69,8 @@ const avoidanceChecker = createAvoidanceChecker(getCollisionSet);
  * };
  * 
  * avoidOthers(gameState, isMoveSafe);
- * // Updates isMoveSafe to avoid collisions with other snakes' bodies
+ * // After calling this function, isMoveSafe will be updated
+ * // to mark any moves that would collide with other snakes as unsafe
  */
 export function avoidOthers(gameState, isMoveSafe) {
   avoidanceChecker(gameState, isMoveSafe);
