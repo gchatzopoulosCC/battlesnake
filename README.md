@@ -13,7 +13,10 @@
   - [How to Run](#how-to-run)
     - [Deployment (Railway)](#deployment-railway)
     - [Game Playing](#game-playing)
-  - [References](#references)
+  - [Additional Information](#additional-information)
+    - [Configuaration Files](#configuaration-files)
+    - [Launch Parameters](#launch-parameters)
+    - [Extended Documentation](#extended-documentation)
 
 # Description
 
@@ -150,7 +153,42 @@ node server.js
    - Server Url should be `https://<server_url>`
    - Platform should be **Railway**
 
-## References
+## Additional Information
 
+### Configuaration Files
+
+The project includes several configuration files that control code style, linting, and deployment:
+
+```
+├── .editorconfig               # Controls editor behavior (indentation, charset)
+├── .prettierrc.json            # Code formatting rules
+├── eslint.config.mjs           # Code quality and style enforcement
+├── .replit                     # Replit IDE configuration
+└── replit.nix                  # Nix environment for Replit
+```
+
+### Launch Parameters
+
+- Standard mode
+
+```bash
+node index.js
+```
+
+- Run linting
+
+```bash
+npm run lint
+```
+
+- Generate documentation
+
+```bash
+npm run jsdoc
+```
+
+### Extended Documentation
+
+- [JSDocs](https://jsdoc.app/)
 - [Battlesnake Docs](https://docs.battlesnake.com/)
 - [Railway Docs (Quickstart)](http://docs.railway.com/quick-start)
