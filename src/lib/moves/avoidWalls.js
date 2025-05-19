@@ -1,4 +1,4 @@
-import { getHead } from "../../common/snake/body";
+import { getHead } from "../../common/snake/body.js";
 
 export function avoidWalls(gameState, isMoveSafe) {
   const { width: boardWidth, height: boardHeight } = gameState.board;
