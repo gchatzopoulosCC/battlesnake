@@ -13,8 +13,7 @@
  * @param {boolean} isMoveSafe.right - Indicates if moving right is safe.
  * @param {boolean} isMoveSafe.up - Indicates if moving up is safe.
  * @param {boolean} isMoveSafe.down - Indicates if moving down is safe.
- * @returns {void} - This function modifies the isMoveSafe object in place.
- * It does not return anything.
+ * @returns {Object} The updated isMoveSafe object.
  * @example
  * const gameState = {
  *  you: {
@@ -44,4 +43,6 @@ export function avoidGoingBackwards(gameState, isMoveSafe) {
   else if (myNeck.x > myHead.x) isMoveSafe.right = false;
   else if (myNeck.y < myHead.y) isMoveSafe.down = false;
   else if (myNeck.y > myHead.y) isMoveSafe.up = false;
+
+  return isMoveSafe;
 }
