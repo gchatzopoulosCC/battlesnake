@@ -6,7 +6,7 @@
  * @requires module:src/common/snake/body
  */
 
-import { getHead, getTail } from "../../common/snake/body";
+import { getHead, getTail } from "../../common/snake/body.js";
 
 /**
  * @description This function determines which direction would cause the snake to move backwards
