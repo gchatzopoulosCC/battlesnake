@@ -1,6 +1,13 @@
 # Changelog
 
 A summary of notable changes in the project.
+## 2025-05-18
+
+## Refactored
+
+-   Updated `moves` module to use `getHead(gameState)` instead of manually retrieving the snake's head position (@gchatzopoulosCC).
+-   Renamed the `map` variable to `set` in the `avoidanceChecker` module for semantic clarity (@gchatzopoulosCC).
+-   Renamed function parameter `getMapFunction` to `getSetFunction` in `avoidanceChecker` to reflect new internal logic (@gchatzopoulosCC).
 ## 2025-05-14
 
 ## Refactored
