@@ -63,11 +63,11 @@ export function createAvoidanceChecker(getSetFunction) {
    * @returns {void} - This function doesn't return a value but modifies the isMoveSafe object.
    */
   return function checkAvoidance(gameState, isMoveSafe) {
-    const map = getSetFunction(gameState);
+    const set = getSetFunction(gameState);
     const moves = getMoves(gameState);
 
     for (const move of moves) {
-      if (map.has(move.adjacentPosition)) {
+      if (set.has(move.adjacentPosition)) {
         isMoveSafe[move.direction] = false;
       }
     }

@@ -51,7 +51,7 @@ function getHead(gameState) {
  * getTail(gameState); // Returns [{ x: 1, y: 2 }, { x: 2, y: 2 }]
  */
 function getTail(gameState) {
-  return gameState.you.body.slice(1);
+  return gameState.you.body[1];
 }
 
 export { getHead, getTail };

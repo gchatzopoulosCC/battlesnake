@@ -57,7 +57,7 @@
  */
 export function avoidWalls(gameState, isMoveSafe) {
   const { width: boardWidth, height: boardHeight } = gameState.board;
-  const { x, y } = gameState.you.body[0];
+  const { x, y } = getHead(gameState);
 
   if (x === 0) isMoveSafe.left = false;
   if (x === boardWidth - 1) isMoveSafe.right = false;
