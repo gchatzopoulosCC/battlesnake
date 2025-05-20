@@ -170,4 +170,18 @@ A summary of notable changes in the project.
 
 -   Initial commit (@George Chatzopoulos).
 
+## 2025-05-21
+
+### Added
+
+-   Setup Jest: Introduced unit testing setup using Jest framework (#63, @pcharalampidis).
+-   ESLint Jest Plugin: Added plugin for Jest-specific linting rules (#63, @pcharalampidis).
+
+### Refactored
+
+-   Codebase Structure: Restructured core logic and moved functionalities into separate files for better modularity (#64, @george-chatzopoulos).
+
+### Fixed
+
+-   Color Hotfix: Fixed bug related to color settings (#66, @sdemba).
 
