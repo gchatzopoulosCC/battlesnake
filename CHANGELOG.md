@@ -1,6 +1,14 @@
 # Changelog
 
 A summary of notable changes in the project.
+## 2025-05-20
+
+
+
+## Refactored
+
+-   Merged pull request #64 to refactor the entire codebase structure, improving organization, modularity, and clarity across all core logic files (@gchatzopoulosCC).
+
 ## 2025-05-19
 
 ## Fixed
