@@ -1,6 +1,20 @@
 # Changelog
 
 A summary of notable changes in the project.
+## 2025-05-19
+
+## Fixed
+
+-   Added the missing file extension in the module import for `avoidWalls` to ensure proper loading (@gchatzopoulosCC).
+-   Added the missing file extension in the module import for `avoidGoingBackwards` (@gchatzopoulosCC).
+-   Fixed incorrect `getTail` logic to return `gameState.you.body[1]` instead of slicing the full array (@gchatzopoulosCC).
+
+## Refactored
+
+-   Updated `avoidWalls` to use `getHead(gameState)` instead of manually accessing the snake's head (@gchatzopoulosCC).
+-   Updated `avoidGoingBackwards` to use `getHead` and `getTail` helper functions instead of manual calculations (@gchatzopoulosCC).
+
+
 ## 2025-05-18
 
 ## Refactored
