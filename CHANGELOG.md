@@ -5,19 +5,19 @@ A summary of notable changes in the project.
 
 
 
-## Refactored
+### Refactored
 
 -   Merged pull request #64 to refactor the entire codebase structure, improving organization, modularity, and clarity across all core logic files (@gchatzopoulosCC).
 
 ## 2025-05-19
 
-## Fixed
+### Fixed
 
 -   Added the missing file extension in the module import for `avoidWalls` to ensure proper loading (@gchatzopoulosCC).
 -   Added the missing file extension in the module import for `avoidGoingBackwards` (@gchatzopoulosCC).
 -   Fixed incorrect `getTail` logic to return `gameState.you.body[1]` instead of slicing the full array (@gchatzopoulosCC).
 
-## Refactored
+### Refactored
 
 -   Updated `avoidWalls` to use `getHead(gameState)` instead of manually accessing the snake's head (@gchatzopoulosCC).
 -   Updated `avoidGoingBackwards` to use `getHead` and `getTail` helper functions instead of manual calculations (@gchatzopoulosCC).
@@ -25,14 +25,14 @@ A summary of notable changes in the project.
 
 ## 2025-05-18
 
-## Refactored
+### Refactored
 
 -   Updated `moves` module to use `getHead(gameState)` instead of manually retrieving the snake's head position (@gchatzopoulosCC).
 -   Renamed the `map` variable to `set` in the `avoidanceChecker` module for semantic clarity (@gchatzopoulosCC).
 -   Renamed function parameter `getMapFunction` to `getSetFunction` in `avoidanceChecker` to reflect new internal logic (@gchatzopoulosCC).
 ## 2025-05-14
 
-## Refactored
+### Refactored
 
 -   Changed `eslint.config.js` to `eslint.config.mjs` and used `defineConfig` alias (@gchatzopoulosCC).
 -   Moved `lib/sets` files into a unified `utils/sets` folder to improve structure (@gchatzopoulosCC).
@@ -48,17 +48,17 @@ A summary of notable changes in the project.
     - Changing `parseCoordinates` to take `(x, y)` instead of position
     - Using `parseCoordinates` in `adjacentPositions` instead of manual formatting (@gchatzopoulosCC).
 
-## Fixed
+### Fixed
 
 -   Fixed import paths by adding missing extensions in `adjacentPositions`, `avoidOthers`, and `avoidSelf` modules (@gchatzopoulosCC).
 
-## Chore
+### Chore
 
 -   Applied automated Prettier formatting across files post-refactor (@gchatzopoulosCC).
 
 ## 2025-05-13
 
-## Refactored
+### Refactored
 
 -   Transferred `avoidanceChecker` declaration outside of `avoidSelf` and `avoidOthers` for better reuse and structure (@gchatzopoulosCC).
 -   Created `createAvoidanceChecker` function to encapsulate avoidance logic and used it in `avoidSelf` and `avoidOthers` (@gchatzopoulosCC).
@@ -72,7 +72,7 @@ A summary of notable changes in the project.
 -   Created `snake/body.js` to hold common logic for retrieving head and tail positions (@gchatzopoulosCC).
 -   Rewrote logic for adjacent/collision checks with consolidated methods and proper deconstructed imports (@gchatzopoulosCC).
 
-## Fixed
+### Fixed
 
 -   Fixed issues in `moves.js` with variable references, import paths, and missing `gameState` parameter (@gchatzopoulosCC).
 -   Added missing file extensions to various imports to ensure module compatibility (@gchatzopoulosCC).
@@ -80,7 +80,7 @@ A summary of notable changes in the project.
 -   Fixed vertical positioning logic in `getUpAdjacentPosition` and `getDownAdjacentPosition` (@gchatzopoulosCC).
 -   Reflected structural updates across `avoidOthers`, `snake`, `getCollisionMap`, and `collisionSet` modules (@gchatzopoulosCC).
 
-## Chore
+### Chore
 
 -   Ran Prettier on the entire codebase to apply consistent formatting after structural refactoring (@gchatzopoulosCC).
 -   Removed unused/generated icon asset from project files (@gchatzopoulosCC).
