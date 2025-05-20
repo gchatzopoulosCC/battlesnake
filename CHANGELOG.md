@@ -1,6 +1,32 @@
 # Changelog
 
 A summary of notable changes in the project.
+## 2025-05-14
+
+## Refactored
+
+-   Changed `eslint.config.js` to `eslint.config.mjs` and used `defineConfig` alias (@gchatzopoulosCC).
+-   Moved `lib/sets` files into a unified `utils/sets` folder to improve structure (@gchatzopoulosCC).
+-   Ran Prettier and formatted the entire codebase for consistency (@gchatzopoulosCC).
+-   Removed unnecessary content from `.prettierrc` as all values matched defaults (@gchatzopoulosCC).
+-   Simplified `collisionSet` content retrieval logic (@gchatzopoulosCC).
+-   Renamed `collisionMap` to `collisionSet` throughout the codebase (@gchatzopoulosCC).
+-   Renamed `bodyMap` to `bodySet` throughout the codebase (@gchatzopoulosCC).
+-   Capitalized "body" and "collision" in function signatures where applicable (@gchatzopoulosCC).
+-   Moved `bodySet` and `collisionSet` to a shared `sets` folder from individual modules (@gchatzopoulosCC).
+-   Refactored coordinate handling logic by:
+    - Creating a dedicated file for coordinate functions
+    - Changing `parseCoordinates` to take `(x, y)` instead of position
+    - Using `parseCoordinates` in `adjacentPositions` instead of manual formatting (@gchatzopoulosCC).
+
+## Fixed
+
+-   Fixed import paths by adding missing extensions in `adjacentPositions`, `avoidOthers`, and `avoidSelf` modules (@gchatzopoulosCC).
+
+## Chore
+
+-   Applied automated Prettier formatting across files post-refactor (@gchatzopoulosCC).
+
 ## 2025-05-13
 
 ## Refactored
