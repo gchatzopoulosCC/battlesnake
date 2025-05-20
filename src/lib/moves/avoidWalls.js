@@ -5,6 +5,8 @@
  * @module src/lib/moves/avoidWalls
  */
 
+import { getHead } from "../../common/snake/body";
+
 /**
  * @description This function checks if the snake's head is at the edge of the game board
  * and updates the isMoveSafe object to prevent the snake from moving off the board.
