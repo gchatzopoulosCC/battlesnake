@@ -1,26 +1,38 @@
 # Changelog
 
 A summary of notable changes in the project.
-## 2025-05-20
+2025-05-19
+
+Added
+
+-   Introduced JSDoc support: added script to `package.json` and installed JSDoc dependencies (@gchatzopoulosCC).
+-   Generated HTML documentation using JSDoc and added it to the `out/` directory (@gchatzopoulosCC).
+
+Docs
+
+-   Expanded and restructured `README.md`: added project overview, prerequisites, installation instructions, table of contents, and renamed sections based on slides (@gchatzopoulosCC).
+-   Added detailed inline documentation to all core files: `avoidSelf`, `avoidOthers`, `avoidWalls`, `avoidGoingBackwards`, `avoidanceChecker`, `bodySet`, `collisionSet`, `snake.js`, `game.js`, `body.js`, `index.js`, and `server.js` (@gchatzopoulosCC).
+-   Added `@requires` tags where needed for internal dependencies (@gchatzopoulosCC).
+
+Fixed
+
+-   Corrected `getTail` logic in `body.js` to use `gameState.you.body[1]` (@gchatzopoulosCC).
+-   Fixed incorrect return type in `adjacentPositions` (changed from Object to String) (@gchatzopoulosCC).
+-   Corrected missing `return` statement in `avoidGoingBackwards` (@gchatzopoulosCC).
+-   Updated `.prettierignore` to ignore `/out/` and modified `.gitignore` to allow HTML docs upload (@gchatzopoulosCC).
+-   Fixed documentation errors in various modules (@gchatzopoulosCC).
+
+Refactored
+
+-   Updated `avoidWalls` and `avoidGoingBackwards` to use helper functions like `getHead(gameState)` and `getTail(gameState)` (@gchatzopoulosCC).
+-   Reformatted entire codebase using Prettier to ensure consistency after major documentation additions (@gchatzopoulosCC).
+-   Moved the description block to the top of `README.md` for clarity (@gchatzopoulosCC).
+
+Chore
+
+-   Ran Prettier formatting across the project after structural and doc updates (@gchatzopoulosCC).
 
 
-
-### Refactored
-
--   Merged pull request #64 to refactor the entire codebase structure, improving organization, modularity, and clarity across all core logic files (@gchatzopoulosCC).
-
-## 2025-05-19
-
-### Fixed
-
--   Added the missing file extension in the module import for `avoidWalls` to ensure proper loading (@gchatzopoulosCC).
--   Added the missing file extension in the module import for `avoidGoingBackwards` (@gchatzopoulosCC).
--   Fixed incorrect `getTail` logic to return `gameState.you.body[1]` instead of slicing the full array (@gchatzopoulosCC).
-
-### Refactored
-
--   Updated `avoidWalls` to use `getHead(gameState)` instead of manually accessing the snake's head (@gchatzopoulosCC).
--   Updated `avoidGoingBackwards` to use `getHead` and `getTail` helper functions instead of manual calculations (@gchatzopoulosCC).
 
 
 ## 2025-05-18
