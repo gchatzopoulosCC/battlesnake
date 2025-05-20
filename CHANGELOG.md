@@ -1,6 +1,34 @@
 # Changelog
 
 A summary of notable changes in the project.
+## 2025-05-13
+
+## Refactored
+
+-   Transferred `avoidanceChecker` declaration outside of `avoidSelf` and `avoidOthers` for better reuse and structure (@gchatzopoulosCC).
+-   Created `createAvoidanceChecker` function to encapsulate avoidance logic and used it in `avoidSelf` and `avoidOthers` (@gchatzopoulosCC).
+-   Renamed variables for clarity (e.g., `checkAvoidance` → `avoidanceChecker`, `getMapFunction` → `getSetFunction`) (@gchatzopoulosCC).
+-   Renamed `collisionMap` to `collisionSet` and `bodyMap` to `bodySet` consistently across modules (@gchatzopoulosCC).
+-   Moved files (`adjacentPositions`, `moves`, `collisionMap`) to `common/sets` and renamed/structured directories (`common` → `lib`) (@gchatzopoulosCC).
+-   Simplified `avoidOthers.js` and `avoidSelf.js` by importing shared utilities from new files (@gchatzopoulosCC).
+-   Refactored `coordinates` logic: created dedicated file, updated `parseCoordinates` signature, and used in `adjacentPositions` (@gchatzopoulosCC).
+-   Updated `game.js` to remove Battlesnake-generated boilerplate comments (@gchatzopoulosCC).
+-   Moved the `moves` folder inside `lib/` for better separation of concerns (@gchatzopoulosCC).
+-   Created `snake/body.js` to hold common logic for retrieving head and tail positions (@gchatzopoulosCC).
+-   Rewrote logic for adjacent/collision checks with consolidated methods and proper deconstructed imports (@gchatzopoulosCC).
+
+## Fixed
+
+-   Fixed issues in `moves.js` with variable references, import paths, and missing `gameState` parameter (@gchatzopoulosCC).
+-   Added missing file extensions to various imports to ensure module compatibility (@gchatzopoulosCC).
+-   Corrected import logic and loop structure in `avoidOthers` (replaced `forEach` with standard loop) (@gchatzopoulosCC).
+-   Fixed vertical positioning logic in `getUpAdjacentPosition` and `getDownAdjacentPosition` (@gchatzopoulosCC).
+-   Reflected structural updates across `avoidOthers`, `snake`, `getCollisionMap`, and `collisionSet` modules (@gchatzopoulosCC).
+
+## Chore
+
+-   Ran Prettier on the entire codebase to apply consistent formatting after structural refactoring (@gchatzopoulosCC).
+-   Removed unused/generated icon asset from project files (@gchatzopoulosCC).
 
 ## 2025-04-30
 
