@@ -83,10 +83,10 @@ function info() {
 
   return {
     apiversion: "1",
-    author: "gchatzopoulosCC", // TODO: Your Battlesnake Username
-    color: "#000000", // TODO: Choose color
-    head: "silly", // TODO: Choose head
-    tail: "bolt", // TODO: Choose tail
+    author: "gchatzopoulosCC",
+    color: "#000000",
+    head: "silly",
+    tail: "bolt",
   };
 }
 
