@@ -1,6 +1,20 @@
 # Changelog
 
 A summary of notable changes in the project.
+
+## 2025-05-20
+
+### Fixed
+
+-   Changed snake color from pink to black in `game.js` as part of a visual hotfix (@sdemba).
+-   Updated README to change the run command from `node server.js` to `node index.js` consistently across all locations (@gchatzopoulosCC).
+-   Resolved merge conflicts in `body.js`, `game.js`, `avoidWalls.js`, and `avoidanceChecker.js` during `develop` rebase (@gchatzopoulosCC).
+
+### Refactored
+
+-   Merged major codebase restructuring changes into `develop` from `main` and `refactor/codebase` branches (#64, @gchatzopoulosCC).
+
+
 ## 2025-05-19
 
 ### Added
