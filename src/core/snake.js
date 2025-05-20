@@ -3,7 +3,7 @@ import { avoidGoingBackwards } from "../moves/avoidGoingBackwards.js";
 import { avoidWalls } from "../moves/avoidWalls.js";
 import { avoidSelf } from "../moves/avoidSelf.js";
 import { avoidOthers } from "../moves/avoidOthers.js";
-
+import { allowTailMoves } from "../moves/allowTailMoves.js";
 // move is called on every turn and returns your next move
 // Valid moves are "up", "down", "left", or "right"
 function move(gameState) {
@@ -19,6 +19,7 @@ function move(gameState) {
   avoidWalls(gameState, isMoveSafe);
   avoidSelf(gameState, isMoveSafe);
   avoidOthers(gameState, isMoveSafe);
+  allowTailMoves(gameState, isMoveSafe)
 
   // Are there any safe moves left?
   const safeMoves = Object.keys(isMoveSafe).filter((key) => isMoveSafe[key]);
