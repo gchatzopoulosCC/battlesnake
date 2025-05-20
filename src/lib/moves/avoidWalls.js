@@ -5,7 +5,7 @@
  * @module src/lib/moves/avoidWalls
  */
 
-import { getHead } from "../../common/snake/body";
+import { getHead } from "../../common/snake/body.js";
 
 /**
  * @description This function checks if the snake's head is at the edge of the game board
