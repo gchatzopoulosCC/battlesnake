@@ -1,6 +1,24 @@
 # Changelog
 
 A summary of notable changes in the project.
+## 2025-05-21
+
+### Docs
+
+-   Added changelog entries for dates ranging from 2025-05-13 to 2025-05-20 (`CHANGELOG.md`) (@sdemba).
+-   Documented the entire codebase using JSDoc and merged it into `develop` via `docs/codebase` branch (#67, @gchatzopoulosCC).
+-   Fixed minor typos in `README.md` (@gchatzopoulosCC, co-authored with Copilot).
+
+### Fixed
+
+-   Fixed import path in `avoidWalls` and added missing import statements (@gchatzopoulosCC).
+-   Updated `body.js` and `bodySet.js` to return the full tail instead of just the first segment (@gchatzopoulosCC).
+-   Reverted `bodySet` to use `gameState.you.body.slice(1)` for tail retrieval (@gchatzopoulosCC).
+-   Resolved merge conflicts between `patch/CHANGELOG` and `develop` to keep branches in sync (@sdemba).
+
+### Chore
+
+-   Corrected markdown formatting in `CHANGELOG.md` (replaced `###` with correct `##`) (@sdemba).
 
 ## 2025-05-20
 
