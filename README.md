@@ -42,7 +42,7 @@ This project is built using:
 
 This project requires nodeJS to be installed. For this follow the official [NodeJS installation documentation](https://nodejs.org/en/download)
 
-### Instalation
+### Installation
 
 1. Clone the repository
 
