@@ -1,6 +1,8 @@
+import { getHead, getTail } from "../../common/snake/body.js";
+
 export function avoidGoingBackwards(gameState, isMoveSafe) {
-  const myHead = gameState.you.body[0];
-  const myNeck = gameState.you.body[1];
+  const myHead = getHead(gameState);
+  const myNeck = getTail(gameState);
 
   if (myNeck.x < myHead.x) isMoveSafe.left = false;
   else if (myNeck.x > myHead.x) isMoveSafe.right = false;
