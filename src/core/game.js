@@ -17,10 +17,10 @@ function info() {
 
   return {
     apiversion: "1",
-    author: "gchatzopoulosCC",
-    color: "#F64A91",
-    head: "silly",
-    tail: "bolt",
+    author: "gchatzopoulosCC", // TODO: Your Battlesnake Username
+    color: "#000000", // TODO: Choose color
+    head: "silly", // TODO: Choose head
+    tail: "bolt", // TODO: Choose tail
   };
 }
 
