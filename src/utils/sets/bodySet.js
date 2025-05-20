@@ -38,5 +38,5 @@ import { getTail } from "../../common/snake/body.js";
  * bodySet.has("5,5"); // false (head is excluded)
  */
 export function getBodySet(gameState) {
-  return new Set(getTail(gameState).map((segment) => `${segment.x},${segment.y}`));
+  return new Set(gameState.you.body.slice(1).map((segment) => `${segment.x},${segment.y}`));
 }
