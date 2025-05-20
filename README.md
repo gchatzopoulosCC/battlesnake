@@ -151,7 +151,7 @@ node index.js
 
 ## Additional Information
 
-### Configuaration Files
+### Configuration Files
 
 The project includes several configuration files that control code style, linting, and deployment:
 
