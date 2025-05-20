@@ -2,7 +2,7 @@ export function allowTailMoves(gameState, isMoveSafe) {
   const { x: headX, y: headY } = gameState.you.body[0];
 
   const otherSnakes = gameState.board.snakes.filter(
-    (snake) => snake.id !== gameState.you.id
+    (snake) => snake.id !== gameState.you.id,
   );
 
   const tailPositions = new Set();
@@ -10,7 +10,7 @@ export function allowTailMoves(gameState, isMoveSafe) {
   otherSnakes.forEach((snake) => {
     const tail = snake.body[snake.body.length - 1];
     const willGrow = gameState.board.food.some(
-      (food) => food.x === snake.head.x && food.y === snake.head.y
+      (food) => food.x === snake.head.x && food.y === snake.head.y,
     );
     if (!willGrow) {
       tailPositions.add(`${tail.x},${tail.y}`);
