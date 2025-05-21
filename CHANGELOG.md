@@ -129,7 +129,7 @@ A summary of notable changes in the project.
 -   Ran Prettier on the entire codebase to apply consistent formatting after structural refactoring (@gchatzopoulosCC).
 -   Removed unused/generated icon asset from project files (@gchatzopoulosCC).
 
-## 2025-04-30
+## [1.0.0] - 2025-04-30
 
 ### Added
 
