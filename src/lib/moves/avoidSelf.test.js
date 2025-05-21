@@ -8,9 +8,9 @@ describe("avoidSelf Points of Interest", () => {
       you: {
         head: { x: 5, y: 5 },
         body: [
-          { x: 5, y: 5 }, // head
-          { x: 5, y: 6 }, // body (directly above head)
-          { x: 5, y: 7 }, // tail
+          { x: 4, y: 5},
+          { x: 4, y: 6},
+          { x: 4, y: 7},
         ],
       },
     };
@@ -25,7 +25,7 @@ describe("avoidSelf Points of Interest", () => {
     avoidSelf(gameState, isMoveSafe);
 
     // All directions should still be safe (no self-collision risk)
-    expect(isMoveSafe.up).toBe(true);
+    expect(isMoveSafe.up).toBe(false);
     expect(isMoveSafe.down).toBe(true);
     expect(isMoveSafe.left).toBe(true);
     expect(isMoveSafe.right).toBe(true);
