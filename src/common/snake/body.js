@@ -79,4 +79,4 @@ function getTail(gameState) {
   return gameState.you.body.slice(1);
 }
 
-export { getHead, getTail };
+export { getHead, getNeck, getTail };
