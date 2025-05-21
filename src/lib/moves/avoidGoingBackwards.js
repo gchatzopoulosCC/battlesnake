@@ -6,7 +6,7 @@
  * @requires module:src/common/snake/body
  */
 
-import { getHead, getTail } from "../../common/snake/body.js";
+import { getHead, getNeck } from "../../common/snake/body.js";
 
 /**
  * @description This function determines which direction would cause the snake to move backwards
@@ -53,7 +53,7 @@ import { getHead, getTail } from "../../common/snake/body.js";
  */
 export function avoidGoingBackwards(gameState, isMoveSafe) {
   const myHead = getHead(gameState);
-  const myTail = getTail(gameState);
+  const myTail = getNeck(gameState);
 
   if (myTail.x < myHead.x) isMoveSafe.left = false;
   else if (myTail.x > myHead.x) isMoveSafe.right = false;

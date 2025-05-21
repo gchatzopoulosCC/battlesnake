@@ -7,6 +7,7 @@ A summary of notable changes in the project.
 ### Feature
 
 - Write a SECURITY.md (@gchatzopoulosCC)
+- Create a getNeck function to get just the neck of the snake (one segment after the head) (@gchatzopoulosCC)
 
 ### Docs
 
@@ -22,6 +23,7 @@ A summary of notable changes in the project.
 - Resolved merge conflicts between `patch/CHANGELOG` and `develop` to keep branches in sync (@sdemba).
 - Add the release version in CHANGELOG on 2025-04-30 (@gchatzopoulosCC)
 - Make esling ignore unecessary files: node_modules/, out/ (@gchatzopoulosCC)
+- Get the neck of the snake instead of the whole tail in avoidGoingBackwards (@gchatzopoulosCC)
 
 ### Refactor
 
