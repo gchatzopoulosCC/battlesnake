@@ -2,7 +2,11 @@
 
 A summary of notable changes in the project.
 
-## 2025-05-21
+## [2.0.0] - 2025-05-21
+
+### Feature
+
+- Write a SECURITY.md (@gchatzopoulosCC)
 
 ### Docs
 
@@ -16,6 +20,11 @@ A summary of notable changes in the project.
 - Updated `body.js` and `bodySet.js` to return the full tail instead of just the first segment (@gchatzopoulosCC).
 - Reverted `bodySet` to use `gameState.you.body.slice(1)` for tail retrieval (@gchatzopoulosCC).
 - Resolved merge conflicts between `patch/CHANGELOG` and `develop` to keep branches in sync (@sdemba).
+- Add the release version in CHANGELOG on 2025-04-30 (@gchatzopoulosCC)
+
+### Refactor
+
+- Format CHANGELOG with Prettier
 
 ### Chore
 
