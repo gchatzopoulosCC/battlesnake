@@ -4,10 +4,14 @@ import prettierConfig from "eslint-config-prettier";
 import sonarjs from "eslint-plugin-sonarjs";
 import eslintComments from "eslint-plugin-eslint-comments";
 import unicorn from "eslint-plugin-unicorn";
-import { defineConfig } from "eslint-define-config";
+import { defineConfig, globalIgnores } from "eslint/config";
 
 export default defineConfig([
   js.configs.recommended,
+  globalIgnores([
+    "node_modules/",
+    "out/",
+  ]),
   {
     files: ["**/*.{js,mjs,cjs}"],
     plugins: { js },
