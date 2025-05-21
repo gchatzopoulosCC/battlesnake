@@ -21,6 +21,7 @@ A summary of notable changes in the project.
 - Reverted `bodySet` to use `gameState.you.body.slice(1)` for tail retrieval (@gchatzopoulosCC).
 - Resolved merge conflicts between `patch/CHANGELOG` and `develop` to keep branches in sync (@sdemba).
 - Add the release version in CHANGELOG on 2025-04-30 (@gchatzopoulosCC)
+- Make esling ignore unecessary files: node_modules/, out/ (@gchatzopoulosCC)
 
 ### Refactor
 
