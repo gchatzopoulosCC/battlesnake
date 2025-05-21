@@ -5,9 +5,10 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint . --ext .js",
-    "jsdoc": "jsdoc src -r"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test:watch": "node --experimental-vm-modules node_modules/jest/bin/jest.js --watch",
+    "test:coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage",
+    "lint": "eslint . --ext .js"
   },
   "dependencies": {
     "@types/node": "^18.0.6",
@@ -20,6 +21,7 @@
     "eslint-config-prettier": "^10.1.2",
     "eslint-define-config": "^2.1.0",
     "eslint-plugin-eslint-comments": "^3.2.0",
+    "eslint-plugin-jest": "^28.11.0",
     "eslint-plugin-sonarjs": "^3.0.2",
     "eslint-plugin-unicorn": "^59.0.0",
     "globals": "^16.0.0",
