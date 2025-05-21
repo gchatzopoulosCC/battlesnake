@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>JSDoc: Source: core/snake.js</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="styles/prettify-tomorrow.css"
+    />
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css" />
+  </head>
+
+  <body>
+    <div id="main">
+      <h1 class="page-title">Source: core/snake.js</h1>
+
+      <section>
+        <article>
+          <pre class="prettyprint source linenums"><code>/**
+ * @file snake.js
+ * @description This file contains the main logic for the Battlesnake's movement decisions.
+ * It analyzes the game state and determines the next move by avoiding dangerous positions.
+ * @module src/core/snake
+ * @requires module:src/lib/moves/avoidGoingBackwards
+ * @requires module:src/lib/moves/avoidWalls
+ * @requires module:src/lib/moves/avoidSelf
+ * @requires module:src/lib/moves/avoidOthers
+ */
+
+import { avoidGoingBackwards } from "../lib/moves/avoidGoingBackwards.js";
+import { avoidWalls } from "../lib/moves/avoidWalls.js";
+import { avoidSelf } from "../lib/moves/avoidSelf.js";
+import { avoidOthers } from "../lib/moves/avoidOthers.js";
+
+/**
+ * @typedef {"up" | "down" | "left" | "right"} MoveDirection
+ * @description Represents the valid directions the snake can move.
+ */
+
+/**
+ * @description Determines the next move for the Battlesnake based on the current game state.
+ * The function evaluates possible moves and avoids unsafe options such as walls, the snake's own body, and other snakes.
+ * If no safe moves are available, it defaults to moving "down".
+ *
+ * @param {Object} gameState - The current state of the game.
+ * @param {Object} gameState.board - The board object containing the game board's dimensions, food, and snakes.
+ * @param {number} gameState.board.width - The width of the game board.
+ * @param {number} gameState.board.height - The height of the game board.
+ * @param {Object[]} gameState.board.food - An array of food positions, each represented as an object with `x` and `y` coordinates.
+ * @param {Object[]} gameState.board.snakes - An array of snakes on the board, including their positions and properties.
+ * @param {number} gameState.turn - The current turn number of the game.
+ * @param {Object} gameState.you - The player's snake object.
+ * @param {string} gameState.you.id - The unique identifier for the player's snake.
+ * @param {Object[]} gameState.you.body - An array of objects representing the snake's body segments, starting with the head.
+ * @param {number} gameState.you.health - The current health of the player's snake.
+ * @param {Object} gameState.you.head - The position of the snake's head, represented as an object with `x` and `y` coordinates.
+ * @param {Object} gameState.you.tail - The position of the snake's tail, represented as an object with `x` and `y` coordinates.
+ *
+ * @returns {{ move: MoveDirection }} - The next move for the snake, represented as an object with a `move` property.
+ *
+ * @example
+ * const gameState = {
+ *   board: {
+ *     width: 11,
+ *     height: 11,
+ *     food: [{ x: 5, y: 5 }],
+ *     snakes: [{ id: "1", body: [{ x: 1, y: 1 }, { x: 1, y: 2 }] }]
+ *   },
+ *   turn: 1,
+ *   you: {
+ *     id: "1",
+ *     body: [{ x: 1, y: 1 }, { x: 1, y: 2 }],
+ *     health: 100,
+ *     length: 2,
+ *     head: { x: 1, y: 1 },
+ *     tail: { x: 1, y: 2 }
+ *   }
+ * };
+ *
+ * move(gameState);
+ * // Returns { move: "right" } or another safe direction
+ *
+ * // If no safe moves are available:
+ * // Returns { move: "down" }
+ */
+function move(gameState) {
+  const isMoveSafe = {
+    up: true,
+    down: true,
+    left: true,
+    right: true,
+  };
+
+  // Moves to avoid
+  avoidGoingBackwards(gameState, isMoveSafe);
+  avoidWalls(gameState, isMoveSafe);
+  avoidSelf(gameState, isMoveSafe);
+  avoidOthers(gameState, isMoveSafe);
+
+  // Are there any safe moves left?
+  const safeMoves = Object.keys(isMoveSafe).filter((key) => isMoveSafe[key]);
+  if (safeMoves.length === 0) {
+    console.log(`MOVE ${gameState.turn}: No safe moves detected! Moving down`);
+    return { move: "down" };
+  }
+
+  // Choose a random move from the safe moves
+  const nextMove = safeMoves[Math.floor(Math.random() * safeMoves.length)];
+
+  // TODO: Step 4 - Move towards food instead of random, to regain health and survive longer
+  // food = gameState.board.food;
+
+  console.log(`MOVE ${gameState.turn}: ${nextMove}`);
+  return { move: nextMove };
+}
+
+export { move };
+</code></pre>
+        </article>
+      </section>
+    </div>
+
+    <nav>
+      <h2><a href="index.html">Home</a></h2>
+      <h3>Modules</h3>
+      <ul>
+        <li>
+          <a href="module-src_common_sets_adjacentPositions.html"
+            >src/common/sets/adjacentPositions</a
+          >
+        </li>
+        <li>
+          <a href="module-src_common_sets_coordinates.html"
+            >src/common/sets/coordinates</a
+          >
+        </li>
+        <li>
+          <a href="module-src_common_sets_moves.html">src/common/sets/moves</a>
+        </li>
+        <li>
+          <a href="module-src_common_snake_body.html">src/common/snake/body</a>
+        </li>
+        <li><a href="module-src_core_game.html">src/core/game</a></li>
+        <li><a href="module-src_core_snake.html">src/core/snake</a></li>
+        <li>
+          <a href="module-src_lib_moves_avoidGoingBackwards.html"
+            >src/lib/moves/avoidGoingBackwards</a
+          >
+        </li>
+        <li>
+          <a href="module-src_lib_moves_avoidOthers.html"
+            >src/lib/moves/avoidOthers</a
+          >
+        </li>
+        <li>
+          <a href="module-src_lib_moves_avoidSelf.html"
+            >src/lib/moves/avoidSelf</a
+          >
+        </li>
+        <li>
+          <a href="module-src_lib_moves_avoidWalls.html"
+            >src/lib/moves/avoidWalls</a
+          >
+        </li>
+        <li>
+          <a href="module-src_utils_moves_avoidanceChecker.html"
+            >src/utils/moves/avoidanceChecker</a
+          >
+        </li>
+        <li>
+          <a href="module-src_utils_sets_bodySet.html"
+            >src/utils/sets/bodySet</a
+          >
+        </li>
+        <li>
+          <a href="module-src_utils_sets_collisionSet.html"
+            >src/utils/sets/collisionSet</a
+          >
+        </li>
+      </ul>
+    </nav>
+
+    <br class="clear" />
+
+    <footer>
+      Documentation generated by
+      <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Mon May 19
+      2025 23:10:06 GMT+0300 (Eastern European Summer Time)
+    </footer>
+
+    <script>
+      prettyPrint();
+    </script>
+    <script src="scripts/linenumber.js"></script>
+  </body>
+</html>

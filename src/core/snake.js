@@ -1,3 +1,4 @@
+
 // This is the core logic of the snake
 import { avoidGoingBackwards } from "../moves/avoidGoingBackwards.js";
 import { avoidWalls } from "../moves/avoidWalls.js";
