@@ -25,7 +25,7 @@ A summary of notable changes in the project.
 
 ### Refactor
 
-- Format CHANGELOG with Prettier
+- Format CHANGELOG with Prettier (@gchatzopoulosCC)
 
 ### Chore
 
