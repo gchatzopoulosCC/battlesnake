@@ -8,9 +8,9 @@ describe("avoidSelf Points of Interest", () => {
       you: {
         head: { x: 5, y: 5 },
         body: [
-          { x: 4, y: 5},
-          { x: 4, y: 6},
-          { x: 4, y: 7},
+          { x: 4, y: 5 },
+          { x: 4, y: 6 },
+          { x: 4, y: 7 },
         ],
       },
     };

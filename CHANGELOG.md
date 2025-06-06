@@ -6,7 +6,7 @@ A summary of notable changes in the project.
 
 ### Fix
 
-- Change the coverage collection from src/**/*.js to tests/**/*.js (@gchatzopoulosCC)
+- Change the coverage collection from src/**/\*.js to tests/**/\*.js (@gchatzopoulosCC)
 - Add the missing jsdoc script (@gchatzopoulosCC)
 
 ### Feature
