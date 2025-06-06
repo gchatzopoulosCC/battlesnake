@@ -251,6 +251,28 @@ npm run lint
 npm run jsdoc
 ```
 
+- Run tests
+
+```bash
+npm run test
+npm run test:watch
+npm run test:coverage
+```
+
+- Run jsdoc
+
+```bash
+npm run jsdoc
+```
+
+- Display file structure
+
+```bash
+npm run file-structure
+```
+
+Notice: For Windows users, you may need to install chocolatey to run the `file-structure` command. Follow the instructions on [Chocolatey](https://chocolatey.org/install) to install it.
+
 ### Extended Documentation
 
 - [JSDocs](https://jsdoc.app/)
