@@ -7,8 +7,8 @@
  * @requires module:src/utils/moves/avoidanceChecker
  */
 
-import { getCollisionSet } from "../../utils/sets/collisionSet.js";
-import { createAvoidanceChecker } from "../../utils/moves/avoidanceChecker.js";
+import { getCollisionSet } from "../../helper/sets/collisionSet.js";
+import { createAvoidanceChecker } from "../../helper/moves/avoidanceChecker.js";
 
 const avoidanceChecker = createAvoidanceChecker(getCollisionSet);
 

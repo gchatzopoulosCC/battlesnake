@@ -8,8 +8,8 @@
  * @requires module:src/utils/moves/avoidanceChecker
  */
 
-import { getBodySet } from "../../utils/sets/bodySet.js";
-import { createAvoidanceChecker } from "../../utils/moves/avoidanceChecker.js";
+import { getBodySet } from "../../helper/sets/bodySet.js";
+import { createAvoidanceChecker } from "../../helper/moves/avoidanceChecker.js";
 
 const avoidanceChecker = createAvoidanceChecker(getBodySet);
 

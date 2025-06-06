@@ -5,7 +5,7 @@
  * @requires module:src/common/sets/moves
  */
 
-import { getMoves } from "../../common/sets/moves.js";
+import { getMoves } from "../sets/moves.js";
 
 /**
  * @description Creates an avoidance checker function that uses a provided set function
@@ -16,7 +16,7 @@ import { getMoves } from "../../common/sets/moves.js";
  * @returns {Function} A function that checks moves against the set of positions to avoid.
  *
  * @example
- * import { getBodySet } from "../../utils/sets/bodySet.js";
+ * import { getBodySet } from "../../helper/sets/bodySet.js";
  *
  * // Create an avoidance checker that avoids the snake's own body
  * const bodyAvoidanceChecker = createAvoidanceChecker(getBodySet);

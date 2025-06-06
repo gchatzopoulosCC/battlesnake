@@ -9,10 +9,10 @@
  * @requires module:src/lib/moves/avoidOthers
  */
 
-import { avoidGoingBackwards } from "../lib/moves/avoidGoingBackwards.js";
-import { avoidWalls } from "../lib/moves/avoidWalls.js";
-import { avoidSelf } from "../lib/moves/avoidSelf.js";
-import { avoidOthers } from "../lib/moves/avoidOthers.js";
+import { avoidGoingBackwards } from "../utils/moves/avoidGoingBackwards.js";
+import { avoidWalls } from "../utils/moves/avoidWalls.js";
+import { avoidSelf } from "../utils/moves/avoidSelf.js";
+import { avoidOthers } from "../utils/moves/avoidOthers.js";
 
 /**
  * @typedef {"up" | "down" | "left" | "right"} MoveDirection
