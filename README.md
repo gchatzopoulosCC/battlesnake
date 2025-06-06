@@ -240,6 +240,12 @@ The project includes several configuration files that control code style, lintin
 node index.js
 ```
 
+- Run prettier
+
+```bash
+npx prettier . --write
+```
+
 - Run linting
 
 ```bash
