@@ -2,7 +2,7 @@
  * @file body.js
  * @description This file contains utility functions to retrieve the head and tail segments of a snake.
  * These functions simplify access to the snake's body parts and are commonly used in movement logic.
- * @module src/common/snake/body
+ * @module src/helper/snake/body
  */
 
 /**

@@ -2,7 +2,8 @@
  * @file avoidWalls.js
  * @description This file contains a function to check if the snake is at the
  * edge of the board and update the isMoveSafe object accordingly to prevent wall collisions.
- * @module src/lib/moves/avoidWalls
+ * @module src/utils/moves/avoidWalls
+ * @requires module:src/helper/snake/body
  */
 
 import { getHead } from "../../helper/snake/body.js";

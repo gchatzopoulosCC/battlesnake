@@ -3,9 +3,9 @@
  * @description This file contains a function to check for collisions with the snake's own body
  * and update the isMoveSafe object accordingly. Avoiding self-collisions is critical for survival
  * as running into your own body ends the game immediately.
- * @module src/lib/moves/avoidSelf
- * @requires module:src/utils/sets/bodySet
- * @requires module:src/utils/moves/avoidanceChecker
+ * @module src/utils/moves/avoidSelf
+ * @requires module:src/helper/sets/bodySet
+ * @requires module:src/helper/moves/avoidanceChecker
  */
 
 import { getBodySet } from "../../helper/sets/bodySet.js";

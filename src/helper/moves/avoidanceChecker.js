@@ -1,8 +1,8 @@
 /**
  * @file avoidanceChecker.js
  * @description This file contains a factory function to create avoidance checkers that evaluate move safety.
- * @module src/utils/moves/avoidanceChecker
- * @requires module:src/common/sets/moves
+ * @module src/helper/moves/avoidanceChecker
+ * @requires module:src/helper/sets/moves
  */
 
 import { getMoves } from "../sets/moves.js";
