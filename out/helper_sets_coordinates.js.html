@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: helper/sets/coordinates.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,38 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: helper/sets/coordinates.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @file coordinates.js
+ * @description This file contains functions to parse coordinates into a string format.
+ * @module src/common/sets/coordinates
+ */
 
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+/**
+ * @description This function parses coordinates into a string format.
+ * It takes two numbers (x and y) and returns a string in the format "x,y".
+ * @param {number} x - The x-coordinate.
+ * @param {number} y - The y-coordinate.
+ * @returns {string} - The coordinates in string format.
+ * @example
+ * const x = 5;
+ * const y = 10;
+ * parseCoordinates(x, y); // Returns "5,10"
+ */
+export function parseCoordinates(x, y) {
+  return `${x},${y}`;
+}
+</code></pre>
+        </article>
+    </section>
 
 
 
