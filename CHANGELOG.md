@@ -25,7 +25,7 @@ A summary of notable changes in the project.
 
 ### Docs
 -  Write the updated file structure in the README (@gchatzopoulosCC)
-- Add the missing launch parameters (prettier, jsdoc, test*, tree) (@gchatzopoulosCC)
+- Add the missing launch parameters (prettier, test*, tree) (@gchatzopoulosCC)
 - 
 
 ## [2.0.0] - 2025-05-21
