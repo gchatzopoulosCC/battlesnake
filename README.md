@@ -266,12 +266,6 @@ npm run test:watch
 npm run test:coverage
 ```
 
-- Run jsdoc
-
-```bash
-npm run jsdoc
-```
-
 - Display file structure tree
 
 ```bash
