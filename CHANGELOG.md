@@ -21,6 +21,7 @@ A summary of notable changes in the project.
 - Change the location of the PR template to PULL_REQUEST_TEMPLATE/pull_request_template.md (@gchatzopoulosCC)
 - Reflect changes to the jsdoc @module and @requires tags (@gchatzopoulosCC)
 - Format with prettier (@gchatzopoulosCC)
+- Update the jsdoc files to reflect the new file structure (@gchatzopoulosCC)
 
 ### Docs
 -  Write the updated file structure in the README (@gchatzopoulosCC)
