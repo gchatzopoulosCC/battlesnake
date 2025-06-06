@@ -72,42 +72,110 @@ git remote -v #confirm the changes
 ### Folder structure
 
 ```
-/
-├── index.js                    # Main entry point that initializes the server
-├── server.js                   # Express server configuration for the Battlesnake API
-├── package.json                # Project metadata and dependencies
-├── package-lock.json           # Lock file with exact dependency versions
-├── .editorconfig               # Editor configuration for consistent code style
-├── .prettierrc.json            # Prettier code formatter configuration
-├── .prettierignore             # Files that Prettier will ignore
-├── .gitignore                  # Files that Git will ignore
-├── .replit                     # Replit configuration for online IDE/hosting
-├── replit.nix                  # Nix environment specification for Replit
-├── eslint.config.mjs           # ESLint code quality rules
-├── out/                        # JSDocs HTML page
-├── src/
-│   ├── core/
-│   │   ├── game.js             # Game lifecycle handlers (start, end, info)
-│   │   └── snake.js            # Main snake movement logic
-│   ├── common/
-│   │   ├── sets/
-│   │   │   ├── adjacentPositions.js  # Functions to get adjacent positions
-│   │   │   ├── coordinates.js        # Coordinate parsing utilities
-│   │   │   └── moves.js              # Move generation functions
-│   │   └── snake/
-│   │       └── body.js               # Snake body segment access functions
-│   ├── lib/
-│   │   └── moves/
-│   │       ├── avoidGoingBackwards.js # Prevents moving into neck
-│   │       ├── avoidOthers.js         # Avoids other snakes
-│   │       ├── avoidSelf.js           # Prevents self-collisions
-│   │       └── avoidWalls.js          # Prevents hitting boundaries
-│   └── utils/
-│       ├── moves/
-│       │   └── avoidanceChecker.js    # Generic collision checker
-│       └── sets/
-│           ├── bodySet.js             # Creates set of body segments
-│           └── collisionSet.js        # Creates set of other snake positions
+.
+├── out
+│   ├── fonts
+│   │   ├── OpenSans-BoldItalic-webfont.eot
+│   │   ├── OpenSans-BoldItalic-webfont.svg
+│   │   ├── OpenSans-BoldItalic-webfont.woff
+│   │   ├── OpenSans-Bold-webfont.eot
+│   │   ├── OpenSans-Bold-webfont.svg
+│   │   ├── OpenSans-Bold-webfont.woff
+│   │   ├── OpenSans-Italic-webfont.eot
+│   │   ├── OpenSans-Italic-webfont.svg
+│   │   ├── OpenSans-Italic-webfont.woff
+│   │   ├── OpenSans-LightItalic-webfont.eot
+│   │   ├── OpenSans-LightItalic-webfont.svg
+│   │   ├── OpenSans-LightItalic-webfont.woff
+│   │   ├── OpenSans-Light-webfont.eot
+│   │   ├── OpenSans-Light-webfont.svg
+│   │   ├── OpenSans-Light-webfont.woff
+│   │   ├── OpenSans-Regular-webfont.eot
+│   │   ├── OpenSans-Regular-webfont.svg
+│   │   └── OpenSans-Regular-webfont.woff
+│   ├── scripts
+│   │   ├── prettify
+│   │   └── linenumber.js
+│   ├── styles
+│   │   ├── jsdoc-default.css
+│   │   ├── prettify-jsdoc.css
+│   │   └── prettify-tomorrow.css
+│   ├── common_sets_adjacentPositions.js.html
+│   ├── common_sets_coordinates.js.html
+│   ├── common_sets_moves.js.html
+│   ├── common_snake_body.js.html
+│   ├── core_game.js.html
+│   ├── core_snake.js.html
+│   ├── helper_moves_avoidanceChecker.js.html
+│   ├── helper_sets_adjacentPositions.js.html
+│   ├── helper_sets_bodySet.js.html
+│   ├── helper_sets_collisionSet.js.html
+│   ├── helper_sets_coordinates.js.html
+│   ├── helper_sets_moves.js.html
+│   ├── helper_snake_body.js.html
+│   ├── index.html
+│   ├── lib_moves_avoidGoingBackwards.js.html
+│   ├── lib_moves_avoidOthers.js.html
+│   ├── lib_moves_avoidSelf.js.html
+│   ├── lib_moves_avoidWalls.js.html
+│   ├── module-src_common_sets_adjacentPositions.html
+│   ├── module-src_common_sets_coordinates.html
+│   ├── module-src_common_sets_moves.html
+│   ├── module-src_common_snake_body.html
+│   ├── module-src_core_game.html
+│   ├── module-src_core_snake.html
+│   ├── module-src_helper_moves_avoidanceChecker.html
+│   ├── module-src_helper_sets_adjacentPositions.html
+│   ├── module-src_helper_sets_bodySet.html
+│   ├── module-src_helper_sets_collisionSet.html
+│   ├── module-src_helper_sets_coordinates.html
+│   ├── module-src_helper_sets_moves.html
+│   ├── module-src_helper_snake_body.html
+│   ├── module-src_lib_moves_avoidGoingBackwards.html
+│   ├── module-src_lib_moves_avoidOthers.html
+│   ├── module-src_lib_moves_avoidSelf.html
+│   ├── module-src_lib_moves_avoidWalls.html
+│   ├── module-src_utils_moves_avoidanceChecker.html
+│   ├── module-src_utils_moves_avoidGoingBackwards.html
+│   ├── module-src_utils_moves_avoidOthers.html
+│   ├── module-src_utils_moves_avoidSelf.html
+│   ├── module-src_utils_moves_avoidWalls.html
+│   ├── module-src_utils_sets_bodySet.html
+│   ├── module-src_utils_sets_collisionSet.html
+│   ├── utils_moves_avoidanceChecker.js.html
+│   ├── utils_moves_avoidGoingBackwards.js.html
+│   ├── utils_moves_avoidOthers.js.html
+│   ├── utils_moves_avoidSelf.js.html
+│   ├── utils_moves_avoidWalls.js.html
+│   ├── utils_sets_bodySet.js.html
+│   └── utils_sets_collisionSet.js.html
+├── src
+│   ├── core
+│   │   ├── game.js
+│   │   └── snake.js
+│   ├── helper
+│   │   ├── moves
+│   │   ├── sets
+│   │   └── snake
+│   └── utils
+│       └── moves
+├── tests
+│   └── moves
+│       ├── avoidGoingBackwards.test.js
+│       ├── avoidOthers.test.js
+│       ├── avoidSelf.test.js
+│       └── avoidWalls.test.js
+├── CHANGELOG.md
+├── eslint.config.mjs
+├── index.js
+├── jest.config.js
+├── package.json
+├── package-lock.json
+├── README.md
+├── replit.nix
+├── SECURITY.md
+└── server.js
+
 ```
 
 ## How to Run
