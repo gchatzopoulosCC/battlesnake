@@ -2,6 +2,23 @@
 
 A summary of notable changes in the project.
 
+## [2.1.0] - 2025-05-22
+
+### Fix
+
+- Change the coverage collection from src/**/*.js to tests/**/*.js (@gchatzopoulosCC)
+- Add the missing jsdoc script (@gchatzopoulosCC)
+
+### Feature
+
+- Git ignore JetBrains IDEs settings
+
+### Refactor
+
+- Rename the previous utils folder to helper, and the previous core folder to utils. Also transfer the contents of common in the now helper folder (@gchatzopoulosCC)
+- Transfer the test files to their own tests directory (@gchatzopoulosCC)
+- Change the location of the PR template to PULL_REQUEST_TEMPLATE/pull_request_template.md (@gchatzopoulosCC)
+
 ## [2.0.0] - 2025-05-21
 
 ### Feature
