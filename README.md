@@ -265,13 +265,13 @@ npm run test:coverage
 npm run jsdoc
 ```
 
-- Display file structure
+- Display file structure tree
 
 ```bash
-npm run file-structure
+npm run tree
 ```
 
-Notice: For Windows users, you may need to install chocolatey to run the `file-structure` command. Follow the instructions on [Chocolatey](https://chocolatey.org/install) to install it.
+Notice: For Windows users, you may need to install chocolatey to run the `tree` command. Follow the instructions on [Chocolatey](https://chocolatey.org/install) to install it.
 
 ### Extended Documentation
 

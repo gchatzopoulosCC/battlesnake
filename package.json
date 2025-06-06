@@ -10,7 +10,7 @@
     "test:coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage",
     "lint": "eslint . --ext .js",
     "jsdoc": "jsdoc src -r",
-    "file-structure": "tree -L 3 --dirsfirst -I \"node_modules|venv|__pycache__|.idea|.vscode|coverag\""
+    "tree": "tree -L 3 --dirsfirst -I \"node_modules|venv|__pycache__|.idea|.vscode|coverag\""
   },
   "dependencies": {
     "@types/node": "^18.0.6",
