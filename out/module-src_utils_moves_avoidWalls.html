@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: src/core/snake</title>
+    <title>JSDoc: Module: src/utils/moves/avoidWalls</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Module: src/core/snake</h1>
+    <h1 class="page-title">Module: src/utils/moves/avoidWalls</h1>
 
     
 
@@ -38,8 +38,8 @@
     <div class="container-overview">
     
         
-            <div class="description">This file contains the main logic for the Battlesnake's movement decisions.
-It analyzes the game state and determines the next move by avoiding dangerous positions.</div>
+            <div class="description">This file contains a function to check if the snake is at the
+edge of the board and update the isMoveSafe object accordingly to prevent wall collisions.</div>
         
 
         
@@ -88,7 +88,7 @@ It analyzes the game state and determines the next move by avoiding dangerous po
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="core_snake.js.html">core/snake.js</a>, <a href="core_snake.js.html#line1">line 1</a>
+        <a href="utils_moves_avoidWalls.js.html">utils/moves/avoidWalls.js</a>, <a href="utils_moves_avoidWalls.js.html#line1">line 1</a>
     </li></ul></dd>
     
 
@@ -128,13 +128,7 @@ It analyzes the game state and determines the next move by avoiding dangerous po
         <h3 class="subsection-title">Requires</h3>
 
         <ul>
-            <li>module:src/lib/moves/avoidGoingBackwards</li>
-        
-            <li>module:src/lib/moves/avoidWalls</li>
-        
-            <li>module:src/lib/moves/avoidSelf</li>
-        
-            <li>module:src/lib/moves/avoidOthers</li>
+            <li><a href="module-src_helper_snake_body.html">module:src/helper/snake/body</a></li>
         </ul>
     
 
@@ -157,7 +151,7 @@ It analyzes the game state and determines the next move by avoiding dangerous po
     
 
     
-    <h4 class="name" id="~move"><span class="type-signature">(inner) </span>move<span class="signature">(gameState)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    <h4 class="name" id=".avoidWalls"><span class="type-signature">(static) </span>avoidWalls<span class="signature">(gameState, isMoveSafe)</span><span class="type-signature"> &rarr; {Object}</span></h4>
     
 
     
@@ -165,9 +159,9 @@ It analyzes the game state and determines the next move by avoiding dangerous po
 
 
 <div class="description">
-    Determines the next move for the Battlesnake based on the current game state.
-The function evaluates possible moves and avoids unsafe options such as walls, the snake's own body, and other snakes.
-If no safe moves are available, it defaults to moving "down".
+    This function checks if the snake's head is at the edge of the game board
+and updates the isMoveSafe object to prevent the snake from moving off the board.
+Hitting the boundary of the game board results in an immediate game over.
 </div>
 
 
@@ -261,7 +255,7 @@ If no safe moves are available, it defaults to moving "down".
 
             
 
-            <td class="description last">The board object containing the game board's dimensions, food, and snakes.
+            <td class="description last">The board object containing game board information.
                 <h6>Properties</h6>
                 
 
@@ -330,79 +324,10 @@ If no safe moves are available, it defaults to moving "down".
         </tr>
 
     
-
-        <tr>
-            
-                <td class="name"><code>food</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;Object></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">An array of food positions, each represented as an object with `x` and `y` coordinates.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>snakes</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;Object></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">An array of snakes on the board, including their positions and properties.</td>
-        </tr>
-
-    
     </tbody>
 </table>
 
             </td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>turn</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The current turn number of the game.</td>
         </tr>
 
     
@@ -451,29 +376,6 @@ If no safe moves are available, it defaults to moving "down".
 
         <tr>
             
-                <td class="name"><code>id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The unique identifier for the player's snake.</td>
-        </tr>
-
-    
-
-        <tr>
-            
                 <td class="name"><code>body</code></td>
             
 
@@ -490,76 +392,7 @@ If no safe moves are available, it defaults to moving "down".
 
             
 
-            <td class="description last">An array of objects representing the snake's body segments, starting with the head.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>health</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The current health of the player's snake.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>head</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The position of the snake's head, represented as an object with `x` and `y` coordinates.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>tail</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The position of the snake's tail, represented as an object with `x` and `y` coordinates.</td>
+            <td class="description last">An array of objects representing the snake's body segments.</td>
         </tr>
 
     
@@ -567,6 +400,147 @@ If no safe moves are available, it defaults to moving "down".
 </table>
 
             </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>isMoveSafe</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">An object representing the safety of each move.
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>left</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Indicates if moving left is safe.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>right</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Indicates if moving right is safe.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>up</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Indicates if moving up is safe.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>down</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Indicates if moving down is safe.</td>
         </tr>
 
     
@@ -614,7 +588,7 @@ If no safe moves are available, it defaults to moving "down".
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="core_snake.js.html">core/snake.js</a>, <a href="core_snake.js.html#line68">line 68</a>
+        <a href="utils_moves_avoidWalls.js.html">utils/moves/avoidWalls.js</a>, <a href="utils_moves_avoidWalls.js.html#line61">line 61</a>
     </li></ul></dd>
     
 
@@ -643,7 +617,7 @@ If no safe moves are available, it defaults to moving "down".
 
         
 <div class="param-desc">
-    - The next move for the snake, represented as an object with a `move` property.
+    The updated isMoveSafe object.
 </div>
 
 
@@ -671,116 +645,37 @@ If no safe moves are available, it defaults to moving "down".
   board: {
     width: 11,
     height: 11,
-    food: [{ x: 5, y: 5 }],
-    snakes: [{ id: "1", body: [{ x: 1, y: 1 }, { x: 1, y: 2 }] }]
   },
-  turn: 1,
   you: {
-    id: "1",
-    body: [{ x: 1, y: 1 }, { x: 1, y: 2 }],
-    health: 100,
-    length: 2,
-    head: { x: 1, y: 1 },
-    tail: { x: 1, y: 2 }
-  }
+    body: [
+      { x: 0, y: 5 },  // Head at left edge of board
+      { x: 1, y: 5 },
+      { x: 2, y: 5 },
+    ],
+  },
 };
 
-move(gameState);
-// Returns { move: "right" } or another safe direction
+const isMoveSafe = {
+  left: true,
+  right: true,
+  up: true,
+  down: true,
+};
 
-// If no safe moves are available:
-// Returns { move: "down" }</code></pre>
+avoidWalls(gameState, isMoveSafe);
+// After calling this function:
+// isMoveSafe = {
+//   left: false,  // Moving left would hit the wall
+//   right: true,
+//   up: true,
+//   down: true,
+// }</code></pre>
 
 
 
         
     
 
-    
-        <h3 class="subsection-title">Type Definitions</h3>
-
-        
-                
-<h4 class="name" id="~MoveDirection">MoveDirection</h4>
-
-
-
-
-<div class="description">
-    Represents the valid directions the snake can move.
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">"up"</span>
-|
-
-<span class="param-type">"down"</span>
-|
-
-<span class="param-type">"left"</span>
-|
-
-<span class="param-type">"right"</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="core_snake.js.html">core/snake.js</a>, <a href="core_snake.js.html#line17">line 17</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-            
     
 
     
