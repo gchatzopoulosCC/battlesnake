@@ -1,4 +1,4 @@
-import { avoidWalls } from "./avoidWalls.js";
+import { avoidWalls } from "../../src/utils/moves/avoidWalls.js";
 import { expect } from "@jest/globals";
 
 describe("avoidWalls Points of Interest", () => {

@@ -1,4 +1,4 @@
-import { avoidOthers } from "./avoidOthers.js";
+import { avoidOthers } from "../../src/utils/moves/avoidOthers.js";
 import { expect } from "@jest/globals";
 
 describe("avoidOthers Points of Interest", () => {

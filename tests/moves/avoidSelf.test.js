@@ -1,4 +1,4 @@
-import { avoidSelf } from "./avoidSelf.js";
+import { avoidSelf } from "../../src/utils/moves/avoidSelf.js";
 import { expect } from "@jest/globals";
 
 describe("avoidSelf Points of Interest", () => {
