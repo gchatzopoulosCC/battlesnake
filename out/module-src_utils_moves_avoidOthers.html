@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: src/lib/moves/avoidWalls</title>
+    <title>JSDoc: Module: src/utils/moves/avoidOthers</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Module: src/lib/moves/avoidWalls</h1>
+    <h1 class="page-title">Module: src/utils/moves/avoidOthers</h1>
 
     
 
@@ -38,8 +38,8 @@
     <div class="container-overview">
     
         
-            <div class="description">This file contains a function to check if the snake is at the
-edge of the board and update the isMoveSafe object accordingly to prevent wall collisions.</div>
+            <div class="description">This file contains a function to check for collisions with other snakes and update
+the isMoveSafe object accordingly.</div>
         
 
         
@@ -88,7 +88,7 @@ edge of the board and update the isMoveSafe object accordingly to prevent wall c
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_moves_avoidWalls.js.html">utils/moves/avoidWalls.js</a>, <a href="utils_moves_avoidWalls.js.html#line1">line 1</a>
+        <a href="utils_moves_avoidOthers.js.html">utils/moves/avoidOthers.js</a>, <a href="utils_moves_avoidOthers.js.html#line1">line 1</a>
     </li></ul></dd>
     
 
@@ -125,6 +125,14 @@ edge of the board and update the isMoveSafe object accordingly to prevent wall c
     
 
     
+        <h3 class="subsection-title">Requires</h3>
+
+        <ul>
+            <li><a href="module-src_helper_sets_collisionSet.html">module:src/helper/sets/collisionSet</a></li>
+        
+            <li><a href="module-src_helper_moves_avoidanceChecker.html">module:src/helper/moves/avoidanceChecker</a></li>
+        </ul>
+    
 
     
 
@@ -145,7 +153,7 @@ edge of the board and update the isMoveSafe object accordingly to prevent wall c
     
 
     
-    <h4 class="name" id=".avoidWalls"><span class="type-signature">(static) </span>avoidWalls<span class="signature">(gameState, isMoveSafe)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    <h4 class="name" id=".avoidOthers"><span class="type-signature">(static) </span>avoidOthers<span class="signature">(gameState, isMoveSafe)</span><span class="type-signature"> &rarr; {Object}</span></h4>
     
 
     
@@ -153,9 +161,9 @@ edge of the board and update the isMoveSafe object accordingly to prevent wall c
 
 
 <div class="description">
-    This function checks if the snake's head is at the edge of the game board
-and updates the isMoveSafe object to prevent the snake from moving off the board.
-Hitting the boundary of the game board results in an immediate game over.
+    This function checks for potential collisions with other snakes on the board
+and updates the isMoveSafe object accordingly to avoid those collisions. It uses the collision
+set to determine if any adjacent positions contain other snakes' body segments.
 </div>
 
 
@@ -275,13 +283,13 @@ Hitting the boundary of the game board results in an immediate game over.
 
         <tr>
             
-                <td class="name"><code>width</code></td>
+                <td class="name"><code>snakes</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">number</span>
+<span class="param-type">Array.&lt;Object></span>
 
 
             
@@ -291,30 +299,7 @@ Hitting the boundary of the game board results in an immediate game over.
 
             
 
-            <td class="description last">The width of the game board.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>height</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The height of the game board.</td>
+            <td class="description last">An array of all snakes on the board.</td>
         </tr>
 
     
@@ -370,13 +355,13 @@ Hitting the boundary of the game board results in an immediate game over.
 
         <tr>
             
-                <td class="name"><code>body</code></td>
+                <td class="name"><code>id</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Array.&lt;Object></span>
+<span class="param-type">string</span>
 
 
             
@@ -386,7 +371,7 @@ Hitting the boundary of the game board results in an immediate game over.
 
             
 
-            <td class="description last">An array of objects representing the snake's body segments.</td>
+            <td class="description last">The unique identifier for the player's snake.</td>
         </tr>
 
     
@@ -582,7 +567,7 @@ Hitting the boundary of the game board results in an immediate game over.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_moves_avoidWalls.js.html">utils/moves/avoidWalls.js</a>, <a href="utils_moves_avoidWalls.js.html#line60">line 60</a>
+        <a href="utils_moves_avoidOthers.js.html">utils/moves/avoidOthers.js</a>, <a href="utils_moves_avoidOthers.js.html#line75">line 75</a>
     </li></ul></dd>
     
 
@@ -639,14 +624,30 @@ Hitting the boundary of the game board results in an immediate game over.
   board: {
     width: 11,
     height: 11,
+    snakes: [
+      {
+        id: "snake-1",
+        body: [
+          { x: 5, y: 5 },
+          { x: 5, y: 6 },
+        ]
+      },
+      {
+        id: "snake-2",
+        body: [
+          { x: 7, y: 8 },
+          { x: 7, y: 7 },
+        ]
+      }
+    ]
   },
   you: {
+    id: "snake-1",
     body: [
-      { x: 0, y: 5 },  // Head at left edge of board
-      { x: 1, y: 5 },
-      { x: 2, y: 5 },
-    ],
-  },
+      { x: 5, y: 5 },
+      { x: 5, y: 6 },
+    ]
+  }
 };
 
 const isMoveSafe = {
@@ -656,14 +657,9 @@ const isMoveSafe = {
   down: true,
 };
 
-avoidWalls(gameState, isMoveSafe);
-// After calling this function:
-// isMoveSafe = {
-//   left: false,  // Moving left would hit the wall
-//   right: true,
-//   up: true,
-//   down: true,
-// }</code></pre>
+avoidOthers(gameState, isMoveSafe);
+// After calling this function, isMoveSafe will be updated
+// to mark any moves that would collide with other snakes as unsafe</code></pre>
 
 
 
@@ -683,13 +679,13 @@ avoidWalls(gameState, isMoveSafe);
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-src_common_sets_adjacentPositions.html">src/common/sets/adjacentPositions</a></li><li><a href="module-src_common_sets_coordinates.html">src/common/sets/coordinates</a></li><li><a href="module-src_common_sets_moves.html">src/common/sets/moves</a></li><li><a href="module-src_common_snake_body.html">src/common/snake/body</a></li><li><a href="module-src_core_game.html">src/core/game</a></li><li><a href="module-src_core_snake.html">src/core/snake</a></li><li><a href="module-src_lib_moves_avoidGoingBackwards.html">src/lib/moves/avoidGoingBackwards</a></li><li><a href="module-src_lib_moves_avoidOthers.html">src/lib/moves/avoidOthers</a></li><li><a href="module-src_lib_moves_avoidSelf.html">src/lib/moves/avoidSelf</a></li><li><a href="module-src_lib_moves_avoidWalls.html">src/lib/moves/avoidWalls</a></li><li><a href="module-src_utils_moves_avoidanceChecker.html">src/utils/moves/avoidanceChecker</a></li><li><a href="module-src_utils_sets_bodySet.html">src/utils/sets/bodySet</a></li><li><a href="module-src_utils_sets_collisionSet.html">src/utils/sets/collisionSet</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-src_core_game.html">src/core/game</a></li><li><a href="module-src_core_snake.html">src/core/snake</a></li><li><a href="module-src_helper_moves_avoidanceChecker.html">src/helper/moves/avoidanceChecker</a></li><li><a href="module-src_helper_sets_adjacentPositions.html">src/helper/sets/adjacentPositions</a></li><li><a href="module-src_helper_sets_bodySet.html">src/helper/sets/bodySet</a></li><li><a href="module-src_helper_sets_collisionSet.html">src/helper/sets/collisionSet</a></li><li><a href="module-src_helper_sets_coordinates.html">src/helper/sets/coordinates</a></li><li><a href="module-src_helper_sets_moves.html">src/helper/sets/moves</a></li><li><a href="module-src_helper_snake_body.html">src/helper/snake/body</a></li><li><a href="module-src_utils_moves_avoidGoingBackwards.html">src/utils/moves/avoidGoingBackwards</a></li><li><a href="module-src_utils_moves_avoidOthers.html">src/utils/moves/avoidOthers</a></li><li><a href="module-src_utils_moves_avoidSelf.html">src/utils/moves/avoidSelf</a></li><li><a href="module-src_utils_moves_avoidWalls.html">src/utils/moves/avoidWalls</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Fri Jun 06 2025 13:43:50 GMT+0300 (Eastern European Summer Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Fri Jun 06 2025 13:51:11 GMT+0300 (Eastern European Summer Time)
 </footer>
 
 <script> prettyPrint(); </script>

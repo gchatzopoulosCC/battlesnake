@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: src/utils/sets/bodySet</title>
+    <title>JSDoc: Module: src/helper/sets/moves</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Module: src/utils/sets/bodySet</h1>
+    <h1 class="page-title">Module: src/helper/sets/moves</h1>
 
     
 
@@ -38,8 +38,8 @@
     <div class="container-overview">
     
         
-            <div class="description">This file contains a function to create a Set of the snake's body segments (excluding the head).
-This Set is used for efficient collision detection when evaluating potential moves.</div>
+            <div class="description">This file contains a utility function to retrieve all possible moves for the snake,
+including their directions and adjacent positions.</div>
         
 
         
@@ -88,7 +88,7 @@ This Set is used for efficient collision detection when evaluating potential mov
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="helper_sets_bodySet.js.html">helper/sets/bodySet.js</a>, <a href="helper_sets_bodySet.js.html#line1">line 1</a>
+        <a href="helper_sets_moves.js.html">helper/sets/moves.js</a>, <a href="helper_sets_moves.js.html#line1">line 1</a>
     </li></ul></dd>
     
 
@@ -128,7 +128,9 @@ This Set is used for efficient collision detection when evaluating potential mov
         <h3 class="subsection-title">Requires</h3>
 
         <ul>
-            <li><a href="module-src_common_snake_body.html">module:src/common/snake/body</a></li>
+            <li><a href="module-src_helper_sets_adjacentPositions.html">module:src/helper/sets/adjacentPositions</a></li>
+        
+            <li><a href="module-src_helper_snake_body.html">module:src/helper/snake/body</a></li>
         </ul>
     
 
@@ -151,7 +153,7 @@ This Set is used for efficient collision detection when evaluating potential mov
     
 
     
-    <h4 class="name" id=".getBodySet"><span class="type-signature">(static) </span>getBodySet<span class="signature">(gameState)</span><span class="type-signature"> &rarr; {Set.&lt;string>}</span></h4>
+    <h4 class="name" id=".getMoves"><span class="type-signature">(static) </span>getMoves<span class="signature">(gameState)</span><span class="type-signature"> &rarr; {Array.&lt;Object>}</span></h4>
     
 
     
@@ -159,9 +161,8 @@ This Set is used for efficient collision detection when evaluating potential mov
 
 
 <div class="description">
-    Creates a Set containing string representations of the snake's body segments,
-excluding the head. The segments are represented as coordinate strings in the format "x,y".
-This function is crucial for self-collision detection in the avoidSelf strategy.
+    Retrieves all possible moves for the snake based on its current head position.
+Each move includes the direction and the adjacent position it leads to.
 </div>
 
 
@@ -297,7 +298,7 @@ This function is crucial for self-collision detection in the avoidSelf strategy.
 
             
 
-            <td class="description last">An array of objects representing the snake's body segments.</td>
+            <td class="description last">An array of objects representing the snake's body segments, starting with the head.</td>
         </tr>
 
     
@@ -352,7 +353,7 @@ This function is crucial for self-collision detection in the avoidSelf strategy.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="helper_sets_bodySet.js.html">helper/sets/bodySet.js</a>, <a href="helper_sets_bodySet.js.html#line40">line 40</a>
+        <a href="helper_sets_moves.js.html">helper/sets/moves.js</a>, <a href="helper_sets_moves.js.html#line42">line 42</a>
     </li></ul></dd>
     
 
@@ -381,7 +382,9 @@ This function is crucial for self-collision detection in the avoidSelf strategy.
 
         
 <div class="param-desc">
-    A Set containing string representations of the snake's body segments (excluding the head).
+    - An array of possible moves, where each move is an object containing:
+  - `direction` {string}: The direction of the move (`"left"`, `"right"`, `"up"`, `"down"`).
+  - `adjacentPosition` {string}: The adjacent position in string format (`"x,y"`).
 </div>
 
 
@@ -392,7 +395,7 @@ This function is crucial for self-collision detection in the avoidSelf strategy.
     </dt>
     <dd>
         
-<span class="param-type">Set.&lt;string></span>
+<span class="param-type">Array.&lt;Object></span>
 
 
     </dd>
@@ -408,20 +411,19 @@ This function is crucial for self-collision detection in the avoidSelf strategy.
     <pre class="prettyprint"><code>const gameState = {
   you: {
     body: [
-      { x: 5, y: 5 },  // Head
+      { x: 5, y: 5 },
       { x: 5, y: 4 },
-      { x: 6, y: 4 }
-    ]
-  }
+    ],
+  },
 };
-
-const bodySet = getBodySet(gameState);
-// Returns a Set containing: "5,4", "6,4"
-
-// The Set can be used to check if a position would collide with the snake's body:
-bodySet.has("5,4"); // true
-bodySet.has("6,4"); // true
-bodySet.has("5,5"); // false (head is excluded)</code></pre>
+getMoves(gameState);
+// Returns:
+// [
+//   { direction: "left", adjacentPosition: "4,5" },
+//   { direction: "right", adjacentPosition: "6,5" },
+//   { direction: "up", adjacentPosition: "5,6" },
+//   { direction: "down", adjacentPosition: "5,4" },
+// ]</code></pre>
 
 
 
@@ -441,13 +443,13 @@ bodySet.has("5,5"); // false (head is excluded)</code></pre>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-src_common_sets_adjacentPositions.html">src/common/sets/adjacentPositions</a></li><li><a href="module-src_common_sets_coordinates.html">src/common/sets/coordinates</a></li><li><a href="module-src_common_sets_moves.html">src/common/sets/moves</a></li><li><a href="module-src_common_snake_body.html">src/common/snake/body</a></li><li><a href="module-src_core_game.html">src/core/game</a></li><li><a href="module-src_core_snake.html">src/core/snake</a></li><li><a href="module-src_lib_moves_avoidGoingBackwards.html">src/lib/moves/avoidGoingBackwards</a></li><li><a href="module-src_lib_moves_avoidOthers.html">src/lib/moves/avoidOthers</a></li><li><a href="module-src_lib_moves_avoidSelf.html">src/lib/moves/avoidSelf</a></li><li><a href="module-src_lib_moves_avoidWalls.html">src/lib/moves/avoidWalls</a></li><li><a href="module-src_utils_moves_avoidanceChecker.html">src/utils/moves/avoidanceChecker</a></li><li><a href="module-src_utils_sets_bodySet.html">src/utils/sets/bodySet</a></li><li><a href="module-src_utils_sets_collisionSet.html">src/utils/sets/collisionSet</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-src_core_game.html">src/core/game</a></li><li><a href="module-src_core_snake.html">src/core/snake</a></li><li><a href="module-src_helper_moves_avoidanceChecker.html">src/helper/moves/avoidanceChecker</a></li><li><a href="module-src_helper_sets_adjacentPositions.html">src/helper/sets/adjacentPositions</a></li><li><a href="module-src_helper_sets_bodySet.html">src/helper/sets/bodySet</a></li><li><a href="module-src_helper_sets_collisionSet.html">src/helper/sets/collisionSet</a></li><li><a href="module-src_helper_sets_coordinates.html">src/helper/sets/coordinates</a></li><li><a href="module-src_helper_sets_moves.html">src/helper/sets/moves</a></li><li><a href="module-src_helper_snake_body.html">src/helper/snake/body</a></li><li><a href="module-src_utils_moves_avoidGoingBackwards.html">src/utils/moves/avoidGoingBackwards</a></li><li><a href="module-src_utils_moves_avoidOthers.html">src/utils/moves/avoidOthers</a></li><li><a href="module-src_utils_moves_avoidSelf.html">src/utils/moves/avoidSelf</a></li><li><a href="module-src_utils_moves_avoidWalls.html">src/utils/moves/avoidWalls</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Fri Jun 06 2025 13:43:50 GMT+0300 (Eastern European Summer Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Fri Jun 06 2025 13:51:11 GMT+0300 (Eastern European Summer Time)
 </footer>
 
 <script> prettyPrint(); </script>

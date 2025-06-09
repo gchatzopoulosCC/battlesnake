@@ -1,4 +1,4 @@
-import { avoidGoingBackwards } from "./avoidGoingBackwards.js";
+import { avoidGoingBackwards } from "../../src/utils/moves/avoidGoingBackwards.js";
 import { expect } from "@jest/globals";
 
 describe("avoidGoingBackwards Points of Interest", () => {

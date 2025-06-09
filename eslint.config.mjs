@@ -8,10 +8,7 @@ import { defineConfig, globalIgnores } from "eslint/config";
 
 export default defineConfig([
   js.configs.recommended,
-  globalIgnores([
-    "node_modules/",
-    "out/",
-  ]),
+  globalIgnores(["node_modules/", "out/"]),
   {
     files: ["**/*.{js,mjs,cjs}"],
     plugins: { js },

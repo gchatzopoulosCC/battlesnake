@@ -1,4 +1,4 @@
-import { avoidSelf } from "./avoidSelf.js";
+import { avoidSelf } from "../../src/utils/moves/avoidSelf.js";
 import { expect } from "@jest/globals";
 
 describe("avoidSelf Points of Interest", () => {
@@ -8,9 +8,9 @@ describe("avoidSelf Points of Interest", () => {
       you: {
         head: { x: 5, y: 5 },
         body: [
-          { x: 4, y: 5},
-          { x: 4, y: 6},
-          { x: 4, y: 7},
+          { x: 4, y: 5 },
+          { x: 4, y: 6 },
+          { x: 4, y: 7 },
         ],
       },
     };
