@@ -11,7 +11,7 @@
     "lint": "eslint . --ext .js",
     "jsdoc": "jsdoc src -r",
     "tree": "treee -I \"node_modules|out|.idea|.vscode|coverage\"",
-    "changelog": "auto-changelog --output CHANGELOG.md",
+    "changelog": "auto-changelog",
     "prepare": "husky init"
   },
   "dependencies": {
