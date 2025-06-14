@@ -10,7 +10,8 @@
     "test:coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage",
     "lint": "eslint . --ext .js",
     "jsdoc": "jsdoc src -r",
-    "tree": "tree -L 3 --dirsfirst -I \"node_modules|venv|__pycache__|.idea|.vscode|coverag\"",
+    "tree": "tree -L 3 --dirsfirst -I \"node_modules|out|.idea|.vscode|coverag\"",
+    "tree:windows": "treer -i \"\\\\node_modules|out|.idea|.vscode|coverage\\\\\"",
     "changelog": "npx auto-changelog output CHANGELOG.md",
     "prepare": "husky"
   },
@@ -33,6 +34,7 @@
     "globals": "^16.0.0",
     "husky": "^9.1.7",
     "jsdoc": "^4.0.4",
-    "prettier": "3.5.3"
+    "prettier": "3.5.3",
+    "treer": "^1.0.4"
   }
 }
