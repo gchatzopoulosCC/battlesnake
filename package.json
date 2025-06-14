@@ -11,7 +11,8 @@
     "lint": "eslint . --ext .js",
     "jsdoc": "jsdoc src -r",
     "tree": "tree -L 3 --dirsfirst -I \"node_modules|venv|__pycache__|.idea|.vscode|coverag\"",
-    "changelog": "npx auto-changelog output CHANGELOG.md"
+    "changelog": "npx auto-changelog output CHANGELOG.md",
+    "prepare": "husky"
   },
   "dependencies": {
     "@types/node": "^18.0.6",
@@ -30,6 +31,7 @@
     "eslint-plugin-sonarjs": "^3.0.2",
     "eslint-plugin-unicorn": "^59.0.0",
     "globals": "^16.0.0",
+    "husky": "^9.1.7",
     "jsdoc": "^4.0.4",
     "prettier": "3.5.3"
   }
