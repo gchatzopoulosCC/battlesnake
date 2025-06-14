@@ -74,109 +74,45 @@ git remote -v #confirm the changes
 
 ```
 .
-├── out
-│   ├── fonts
-│   │   ├── OpenSans-BoldItalic-webfont.eot
-│   │   ├── OpenSans-BoldItalic-webfont.svg
-│   │   ├── OpenSans-BoldItalic-webfont.woff
-│   │   ├── OpenSans-Bold-webfont.eot
-│   │   ├── OpenSans-Bold-webfont.svg
-│   │   ├── OpenSans-Bold-webfont.woff
-│   │   ├── OpenSans-Italic-webfont.eot
-│   │   ├── OpenSans-Italic-webfont.svg
-│   │   ├── OpenSans-Italic-webfont.woff
-│   │   ├── OpenSans-LightItalic-webfont.eot
-│   │   ├── OpenSans-LightItalic-webfont.svg
-│   │   ├── OpenSans-LightItalic-webfont.woff
-│   │   ├── OpenSans-Light-webfont.eot
-│   │   ├── OpenSans-Light-webfont.svg
-│   │   ├── OpenSans-Light-webfont.woff
-│   │   ├── OpenSans-Regular-webfont.eot
-│   │   ├── OpenSans-Regular-webfont.svg
-│   │   └── OpenSans-Regular-webfont.woff
-│   ├── scripts
-│   │   ├── prettify
-│   │   └── linenumber.js
-│   ├── styles
-│   │   ├── jsdoc-default.css
-│   │   ├── prettify-jsdoc.css
-│   │   └── prettify-tomorrow.css
-│   ├── common_sets_adjacentPositions.js.html
-│   ├── common_sets_coordinates.js.html
-│   ├── common_sets_moves.js.html
-│   ├── common_snake_body.js.html
-│   ├── core_game.js.html
-│   ├── core_snake.js.html
-│   ├── helper_moves_avoidanceChecker.js.html
-│   ├── helper_sets_adjacentPositions.js.html
-│   ├── helper_sets_bodySet.js.html
-│   ├── helper_sets_collisionSet.js.html
-│   ├── helper_sets_coordinates.js.html
-│   ├── helper_sets_moves.js.html
-│   ├── helper_snake_body.js.html
-│   ├── index.html
-│   ├── lib_moves_avoidGoingBackwards.js.html
-│   ├── lib_moves_avoidOthers.js.html
-│   ├── lib_moves_avoidSelf.js.html
-│   ├── lib_moves_avoidWalls.js.html
-│   ├── module-src_common_sets_adjacentPositions.html
-│   ├── module-src_common_sets_coordinates.html
-│   ├── module-src_common_sets_moves.html
-│   ├── module-src_common_snake_body.html
-│   ├── module-src_core_game.html
-│   ├── module-src_core_snake.html
-│   ├── module-src_helper_moves_avoidanceChecker.html
-│   ├── module-src_helper_sets_adjacentPositions.html
-│   ├── module-src_helper_sets_bodySet.html
-│   ├── module-src_helper_sets_collisionSet.html
-│   ├── module-src_helper_sets_coordinates.html
-│   ├── module-src_helper_sets_moves.html
-│   ├── module-src_helper_snake_body.html
-│   ├── module-src_lib_moves_avoidGoingBackwards.html
-│   ├── module-src_lib_moves_avoidOthers.html
-│   ├── module-src_lib_moves_avoidSelf.html
-│   ├── module-src_lib_moves_avoidWalls.html
-│   ├── module-src_utils_moves_avoidanceChecker.html
-│   ├── module-src_utils_moves_avoidGoingBackwards.html
-│   ├── module-src_utils_moves_avoidOthers.html
-│   ├── module-src_utils_moves_avoidSelf.html
-│   ├── module-src_utils_moves_avoidWalls.html
-│   ├── module-src_utils_sets_bodySet.html
-│   ├── module-src_utils_sets_collisionSet.html
-│   ├── utils_moves_avoidanceChecker.js.html
-│   ├── utils_moves_avoidGoingBackwards.js.html
-│   ├── utils_moves_avoidOthers.js.html
-│   ├── utils_moves_avoidSelf.js.html
-│   ├── utils_moves_avoidWalls.js.html
-│   ├── utils_sets_bodySet.js.html
-│   └── utils_sets_collisionSet.js.html
-├── src
-│   ├── core
-│   │   ├── game.js
-│   │   └── snake.js
-│   ├── helper
-│   │   ├── moves
-│   │   ├── sets
-│   │   └── snake
-│   └── utils
-│       └── moves
-├── tests
-│   └── moves
-│       ├── avoidGoingBackwards.test.js
-│       ├── avoidOthers.test.js
-│       ├── avoidSelf.test.js
-│       └── avoidWalls.test.js
+battlesnake
 ├── CHANGELOG.md
+├── README.md
+├── SECURITY.md
+├── commitlint.config.cjs
 ├── eslint.config.mjs
 ├── index.js
 ├── jest.config.js
-├── package.json
 ├── package-lock.json
-├── README.md
+├── package.json
 ├── replit.nix
-├── SECURITY.md
-└── server.js
-
+├── server.js
+├── src
+│   ├── core
+│   │   ├── game.js
+│   │   └── snake.js
+│   ├── helper
+│   │   ├── moves
+│   │   │   └── avoidanceChecker.js
+│   │   ├── sets
+│   │   │   ├── adjacentPositions.js
+│   │   │   ├── bodySet.js
+│   │   │   ├── collisionSet.js
+│   │   │   ├── coordinates.js
+│   │   │   └── moves.js
+│   │   └── snake
+│   │       └── body.js
+│   └── utils
+│       └── moves
+│           ├── avoidGoingBackwards.js
+│           ├── avoidOthers.js
+│           ├── avoidSelf.js
+│           └── avoidWalls.js
+└── tests
+    └── moves
+        ├── avoidGoingBackwards.test.js
+        ├── avoidOthers.test.js
+        ├── avoidSelf.test.js
+        └── avoidWalls.test.js
 ```
 
 ## How to Run
@@ -225,11 +161,12 @@ node index.js
 The project includes several configuration files that control code style, linting, and deployment:
 
 ```
+├── commitlint.config.cjs       # Commit message linter
 ├── .editorconfig               # Controls editor behavior (indentation, charset)
 ├── .prettierrc.json            # Code formatting rules
 ├── eslint.config.mjs           # Code quality and style enforcement
 ├── .replit                     # Replit IDE configuration
-└── replit.nix                  # Nix environment for Replit
+├── replit.nix                  # Nix environment for Replit
 ```
 
 ### Launch Parameters
