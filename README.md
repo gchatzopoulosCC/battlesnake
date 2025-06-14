@@ -221,7 +221,7 @@ npm run changelog
 - Prepare project
 
 ```bash
-npm prepare
+npm run prepare
 ```
 
 Notice:
