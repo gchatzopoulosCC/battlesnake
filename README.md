@@ -268,18 +268,9 @@ npm run test:coverage
 
 - Display file structure tree
 
-For Linux/MAC
 ```bash
 npm run tree
 ```
-
-For Windows
-```bash
-npm run tree:windows
-```
-
-Notice:
-In certain IDEs non-project files might be added (such as _External Libraries_, _Scratches and Consoles_, etc.). Ignore these files and do NOT add them in the _README.md_.
 
 - Automatically write the changelog
 
@@ -294,7 +285,7 @@ npm prepare
 ```
 
 Notice:
-Currently, `npm prepare` prepares _husky_ to manage pre-commit hooks. Also, `npm prepare` runs *automotically* with `npm install`
+Currently, `npm prepare` prepares _husky_ to manage pre-commit hooks. Also, `npm prepare` runs _automotically_ with `npm install`
 
 ### Extended Documentation
 
