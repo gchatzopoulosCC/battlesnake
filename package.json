@@ -12,6 +12,7 @@
     "jsdoc": "jsdoc src -r",
     "tree": "tree -L 3 --dirsfirst -I \"node_modules|venv|__pycache__|.idea|.vscode|coverag\"",
     "changelog": "npx auto-changelog output CHANGELOG.md",
+    "commitlint": "npx --no -- commitlint --edit $1",
     "prepare": "husky"
   },
   "dependencies": {
