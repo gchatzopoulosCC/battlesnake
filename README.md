@@ -268,12 +268,18 @@ npm run test:coverage
 
 - Display file structure tree
 
+For Linux/MAC
 ```bash
 npm run tree
 ```
 
-Notice: 
-For Windows users, you may need to install chocolatey to run the `tree` command. Follow the instructions on [Chocolatey](https://chocolatey.org/install) to install it.
+For Windows
+```bash
+npm run tree:windows
+```
+
+Notice:
+In certain IDEs non-project files might be added (such as _External Libraries_, _Scratches and Consoles_, etc.). Ignore these files and do NOT add them in the _README.md_.
 
 - Automatically write the changelog
 
