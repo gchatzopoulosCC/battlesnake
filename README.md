@@ -274,6 +274,12 @@ npm run tree
 
 Notice: For Windows users, you may need to install chocolatey to run the `tree` command. Follow the instructions on [Chocolatey](https://chocolatey.org/install) to install it.
 
+- Automatically write the changelog
+
+```bash
+npm run changelog
+```
+
 ### Extended Documentation
 
 - [JSDocs](https://jsdoc.app/)
