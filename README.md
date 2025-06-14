@@ -163,6 +163,7 @@ The project includes several configuration files that control code style, lintin
 ```
 ├── commitlint.config.cjs       # Commit message linter
 ├── .editorconfig               # Controls editor behavior (indentation, charset)
+├── .auto-changelog             # Auto-changelog rules
 ├── .prettierrc.json            # Code formatting rules
 ├── eslint.config.mjs           # Code quality and style enforcement
 ├── .replit                     # Replit IDE configuration
