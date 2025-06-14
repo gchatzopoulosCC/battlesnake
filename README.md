@@ -2,7 +2,7 @@
 
 ![Battlesnake Logo](https://media.battlesnake.com/social/StarterSnakeGitHubRepos_JavaScript.png)
 
-This is the official repository of Group 4 for assessment (Battlesnake project) of module CCS2430 (Software Development in Practice) at CITY College, University of York Europe Campus. Here it is included all the code needed for the complition of the assignment.
+This is the official repository of Group 4 for assessment (Battlesnake project) of module CCS2430 (Software Development in Practice) at CITY College, University of York Europe Campus. Here it is included all the code needed for the completion of the assignment.
 
 Authors (GitHub usernames):
 
@@ -20,13 +20,13 @@ Authors (GitHub usernames):
   - [Technologies Used](#technologies-used)
   - [Getting started](#getting-started)
     - [Prerequisites](#prerequisites)
-    - [Instalation](#instalation)
+    - [Installation](#installation)
     - [Folder structure](#folder-structure)
   - [How to Run](#how-to-run)
     - [Deployment (Railway)](#deployment-railway)
     - [Game Playing](#game-playing)
   - [Additional Information](#additional-information)
-    - [Configuaration Files](#configuaration-files)
+    - [Configuration Files](#configuration-files)
     - [Launch Parameters](#launch-parameters)
     - [Extended Documentation](#extended-documentation)
 
@@ -41,7 +41,7 @@ This project is built using:
 
 ### Prerequisites
 
-This project requires nodeJS to be installed. For this follow the official [NodeJS installation documentation](https://nodejs.org/en/download)
+This project requires Node.js to be installed. For this to follow the official [Node.js installation documentation](https://nodejs.org/en/download)
 
 ### Installation
 
@@ -57,13 +57,15 @@ or using SSH:
 git clone git@github.com:gchatzopoulosCC/battlesnake.git
 ```
 
-_Notice: if you have configured mutliple SSH keys that have distinct host names you have to change the `@github.com` to `@<your-hostname>`_ 2. Install the packages
+_Notice: if you have configured multiple SSH keys that have distinct host names, you have to change the `@github.com` to `@<your-hostname>`_
+
+2. Install the packages
 
 ```bash
 npm install
 ```
 
-3. Change git remote url to avoid accidental pushes to base project
+3. Change git remote url to avoid accidental pushes to the base project
 
 ```bash
 git remote set-url origin gchatzopoulosCC/battlesnake`
@@ -141,7 +143,7 @@ node index.js
       2.2. Generate a new domain using any valid port (8080 is recommended)
       2.3. Copy the server url (it will be useful later)
 - Development Environment
-  1.  In Railway create a new `environment` and name it _devepment_
+  1.  In Railway create a new `environment` and name it _development_
   2.  Go to the new environment settings:
       2.1. Add the `develop` branch
       2.2. Generate a new domain using any valid port (8080 is recommended)
@@ -204,7 +206,7 @@ npm run test:watch
 npm run test:coverage
 ```
 
-- Display file structure tree
+- Display the file structure tree
 
 ```bash
 npm run tree
@@ -223,7 +225,7 @@ npm prepare
 ```
 
 Notice:
-Currently, `npm prepare` prepares _husky_ to manage pre-commit hooks. Also, `npm prepare` runs _automotically_ with `npm install`
+Currently, `npm prepare` prepares _husky_ to manage pre-commit hooks. Also, `npm prepare` runs _automatically_ with `npm install`
 
 ### Extended Documentation
 
