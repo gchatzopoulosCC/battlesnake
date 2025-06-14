@@ -12,7 +12,7 @@
     "jsdoc": "jsdoc src -r",
     "tree": "treee -I \"node_modules|out|.idea|.vscode|coverage\"",
     "changelog": "npx auto-changelog output CHANGELOG.md",
-    "prepare": "husky"
+    "prepare": "husky init"
   },
   "dependencies": {
     "@types/node": "^18.0.6",
