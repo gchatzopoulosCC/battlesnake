@@ -1,179 +1,404 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
+<head>
+    <meta charset="utf-8">
     <title>JSDoc: Module: src/common/snake/body</title>
 
-    <script src="scripts/prettify/prettify.js"></script>
-    <script src="scripts/prettify/lang-css.js"></script>
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <link
-      type="text/css"
-      rel="stylesheet"
-      href="styles/prettify-tomorrow.css"
-    />
-    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css" />
-  </head>
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
 
-  <body>
-    <div id="main">
-      <h1 class="page-title">Module: src/common/snake/body</h1>
+<body>
 
-      <section>
-        <header></header>
+<div id="main">
 
-        <article>
-          <div class="container-overview">
-            <div class="description">
-              This file contains utility functions to retrieve the head and tail
-              segments of a snake. These functions simplify access to the
-              snake's body parts and are commonly used in movement logic.
-            </div>
+    <h1 class="page-title">Module: src/common/snake/body</h1>
 
-            <dl class="details">
-              <dt class="tag-source">Source:</dt>
-              <dd class="tag-source">
-                <ul class="dummy">
-                  <li>
-                    <a href="common_snake_body.js.html">common/snake/body.js</a
-                    >, <a href="common_snake_body.js.html#line1">line 1</a>
-                  </li>
-                </ul>
-              </dd>
-            </dl>
-          </div>
+    
 
-          <h3 class="subsection-title">Methods</h3>
 
-          <h4 class="name" id="~getHead">
-            <span class="type-signature">(inner) </span>getHead<span
-              class="signature"
-              >(gameState)</span
-            ><span class="type-signature"> &rarr; {Object}</span>
-          </h4>
 
-          <div class="description">
-            Returns the head (first segment) of the snake from the game state.
-            The head is used for determining the snake's current position and
-            calculating possible moves.
-          </div>
 
-          <h5>Parameters:</h5>
+<section>
 
-          <table class="params">
-            <thead>
-              <tr>
-                <th>Name</th>
+<header>
+    
+        
+            
+        
+    
+</header>
 
-                <th>Type</th>
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description">This file contains utility functions to retrieve the head and tail segments of a snake.
+These functions simplify access to the snake's body parts and are commonly used in movement logic.</div>
+        
 
-                <th class="last">Description</th>
-              </tr>
-            </thead>
+        
+            
 
-            <tbody>
-              <tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="helper_snake_body.js.html">helper/snake/body.js</a>, <a href="helper_snake_body.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~getHead"><span class="type-signature">(inner) </span>getHead<span class="signature">(gameState)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Returns the head (first segment) of the snake from the game state.
+The head is used for determining the snake's current position and calculating possible moves.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
                 <td class="name"><code>gameState</code></td>
+            
 
-                <td class="type">
-                  <span class="param-type">Object</span>
-                </td>
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
 
-                <td class="description last">
-                  The current state of the game.
-                  <h6>Properties</h6>
 
-                  <table class="params">
-                    <thead>
-                      <tr>
-                        <th>Name</th>
+            
+            </td>
 
-                        <th>Type</th>
+            
 
-                        <th class="last">Description</th>
-                      </tr>
-                    </thead>
+            
 
-                    <tbody>
-                      <tr>
-                        <td class="name"><code>you</code></td>
+            <td class="description last">The current state of the game.
+                <h6>Properties</h6>
+                
 
-                        <td class="type">
-                          <span class="param-type">Object</span>
-                        </td>
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
 
-                        <td class="description last">
-                          The player's snake object.
-                          <h6>Properties</h6>
+        <th>Type</th>
 
-                          <table class="params">
-                            <thead>
-                              <tr>
-                                <th>Name</th>
+        
 
-                                <th>Type</th>
+        
 
-                                <th class="last">Description</th>
-                              </tr>
-                            </thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-                            <tbody>
-                              <tr>
-                                <td class="name"><code>body</code></td>
+    <tbody>
+    
 
-                                <td class="type">
-                                  <span class="param-type"
-                                    >Array.&lt;Object></span
-                                  >
-                                </td>
+        <tr>
+            
+                <td class="name"><code>you</code></td>
+            
 
-                                <td class="description last">
-                                  An array of objects representing the snake's
-                                  body segments, starting with the head.
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
 
-          <dl class="details">
-            <dt class="tag-source">Source:</dt>
-            <dd class="tag-source">
-              <ul class="dummy">
-                <li>
-                  <a href="common_snake_body.js.html">common/snake/body.js</a>,
-                  <a href="common_snake_body.js.html#line28">line 28</a>
-                </li>
-              </ul>
-            </dd>
-          </dl>
 
-          <h5>Returns:</h5>
+            
+            </td>
 
-          <div class="param-desc">
-            - The head of the snake, represented as an object with `x` and `y`
-            coordinates.
-          </div>
+            
 
-          <dl>
-            <dt>Type</dt>
-            <dd>
-              <span class="param-type">Object</span>
-            </dd>
-          </dl>
+            
 
-          <h5>Example</h5>
+            <td class="description last">The player's snake object.
+                <h6>Properties</h6>
+                
 
-          <pre class="prettyprint"><code>const gameState = {
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>body</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;Object></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">An array of objects representing the snake's body segments, starting with the head.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="helper_snake_body.js.html">helper/snake/body.js</a>, <a href="helper_snake_body.js.html#line28">line 28</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - The head of the snake, represented as an object with `x` and `y` coordinates.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>const gameState = {
   you: {
     body: [
       { x: 1, y: 1 },  // Head
@@ -183,133 +408,540 @@
 };
 getHead(gameState); // Returns { x: 1, y: 1 }</code></pre>
 
-          <h4 class="name" id="~getTail">
-            <span class="type-signature">(inner) </span>getTail<span
-              class="signature"
-              >(gameState)</span
-            ><span class="type-signature"> &rarr; {Array.&lt;Object>}</span>
-          </h4>
 
-          <div class="description">
-            Returns all body segments of the snake excluding the head. The tail
-            segments are used for collision detection to prevent
-            self-collisions.
-          </div>
 
-          <h5>Parameters:</h5>
+        
+            
 
-          <table class="params">
-            <thead>
-              <tr>
-                <th>Name</th>
+    
 
-                <th>Type</th>
+    
+    <h4 class="name" id="~getNeck"><span class="type-signature">(inner) </span>getNeck<span class="signature">(gameState)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    
 
-                <th class="last">Description</th>
-              </tr>
-            </thead>
+    
 
-            <tbody>
-              <tr>
+
+
+<div class="description">
+    Returns the head (first segment) of the snake from the game state.
+The head is used for determining the snake's current position and calculating possible moves.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
                 <td class="name"><code>gameState</code></td>
+            
 
-                <td class="type">
-                  <span class="param-type">Object</span>
-                </td>
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
 
-                <td class="description last">
-                  The current state of the game.
-                  <h6>Properties</h6>
 
-                  <table class="params">
-                    <thead>
-                      <tr>
-                        <th>Name</th>
+            
+            </td>
 
-                        <th>Type</th>
+            
 
-                        <th class="last">Description</th>
-                      </tr>
-                    </thead>
+            
 
-                    <tbody>
-                      <tr>
-                        <td class="name"><code>you</code></td>
+            <td class="description last">The current state of the game.
+                <h6>Properties</h6>
+                
 
-                        <td class="type">
-                          <span class="param-type">Object</span>
-                        </td>
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
 
-                        <td class="description last">
-                          The player's snake object.
-                          <h6>Properties</h6>
+        <th>Type</th>
 
-                          <table class="params">
-                            <thead>
-                              <tr>
-                                <th>Name</th>
+        
 
-                                <th>Type</th>
+        
 
-                                <th class="last">Description</th>
-                              </tr>
-                            </thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-                            <tbody>
-                              <tr>
-                                <td class="name"><code>body</code></td>
+    <tbody>
+    
 
-                                <td class="type">
-                                  <span class="param-type"
-                                    >Array.&lt;Object></span
-                                  >
-                                </td>
+        <tr>
+            
+                <td class="name"><code>you</code></td>
+            
 
-                                <td class="description last">
-                                  An array of objects representing the snake's
-                                  body segments, starting with the head.
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
 
-          <dl class="details">
-            <dt class="tag-source">Source:</dt>
-            <dd class="tag-source">
-              <ul class="dummy">
-                <li>
-                  <a href="common_snake_body.js.html">common/snake/body.js</a>,
-                  <a href="common_snake_body.js.html#line53">line 53</a>
-                </li>
-              </ul>
-            </dd>
-          </dl>
 
-          <h5>Returns:</h5>
+            
+            </td>
 
-          <div class="param-desc">
-            - An array of objects representing the snake's body segments,
-            excluding the head.
-          </div>
+            
 
-          <dl>
-            <dt>Type</dt>
-            <dd>
-              <span class="param-type">Array.&lt;Object></span>
-            </dd>
-          </dl>
+            
 
-          <h5>Example</h5>
+            <td class="description last">The player's snake object.
+                <h6>Properties</h6>
+                
 
-          <pre class="prettyprint"><code>const gameState = {
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>body</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;Object></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">An array of objects representing the snake's body segments, starting with the head.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="helper_snake_body.js.html">helper/snake/body.js</a>, <a href="helper_snake_body.js.html#line53">line 53</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - The head of the snake, represented as an object with `x` and `y` coordinates.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>const gameState = {
+  you: {
+    body: [
+      { x: 1, y: 1 },  // Head
+      { x: 1, y: 2 },  // Neck
+      { x: 1, y: 3 },  // Rest of the tail
+    ],
+  },
+};
+getHead(gameState); // Returns { x: 1, y: 2 }</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~getTail"><span class="type-signature">(inner) </span>getTail<span class="signature">(gameState)</span><span class="type-signature"> &rarr; {Array.&lt;Object>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Returns all body segments of the snake excluding the head.
+The tail segments are used for collision detection to prevent self-collisions.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>gameState</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The current state of the game.
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>you</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The player's snake object.
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>body</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;Object></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">An array of objects representing the snake's body segments, starting with the head.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="helper_snake_body.js.html">helper/snake/body.js</a>, <a href="helper_snake_body.js.html#line78">line 78</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - An array of objects representing the snake's body segments, excluding the head.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array.&lt;Object></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>const gameState = {
   you: {
     body: [
       { x: 1, y: 1 },  // Head
@@ -319,81 +951,35 @@ getHead(gameState); // Returns { x: 1, y: 1 }</code></pre>
   },
 };
 getTail(gameState); // Returns [{ x: 1, y: 2 }, { x: 2, y: 2 }]</code></pre>
-        </article>
-      </section>
-    </div>
 
-    <nav>
-      <h2><a href="index.html">Home</a></h2>
-      <h3>Modules</h3>
-      <ul>
-        <li>
-          <a href="module-src_common_sets_adjacentPositions.html"
-            >src/common/sets/adjacentPositions</a
-          >
-        </li>
-        <li>
-          <a href="module-src_common_sets_coordinates.html"
-            >src/common/sets/coordinates</a
-          >
-        </li>
-        <li>
-          <a href="module-src_common_sets_moves.html">src/common/sets/moves</a>
-        </li>
-        <li>
-          <a href="module-src_common_snake_body.html">src/common/snake/body</a>
-        </li>
-        <li><a href="module-src_core_game.html">src/core/game</a></li>
-        <li><a href="module-src_core_snake.html">src/core/snake</a></li>
-        <li>
-          <a href="module-src_lib_moves_avoidGoingBackwards.html"
-            >src/lib/moves/avoidGoingBackwards</a
-          >
-        </li>
-        <li>
-          <a href="module-src_lib_moves_avoidOthers.html"
-            >src/lib/moves/avoidOthers</a
-          >
-        </li>
-        <li>
-          <a href="module-src_lib_moves_avoidSelf.html"
-            >src/lib/moves/avoidSelf</a
-          >
-        </li>
-        <li>
-          <a href="module-src_lib_moves_avoidWalls.html"
-            >src/lib/moves/avoidWalls</a
-          >
-        </li>
-        <li>
-          <a href="module-src_utils_moves_avoidanceChecker.html"
-            >src/utils/moves/avoidanceChecker</a
-          >
-        </li>
-        <li>
-          <a href="module-src_utils_sets_bodySet.html"
-            >src/utils/sets/bodySet</a
-          >
-        </li>
-        <li>
-          <a href="module-src_utils_sets_collisionSet.html"
-            >src/utils/sets/collisionSet</a
-          >
-        </li>
-      </ul>
-    </nav>
 
-    <br class="clear" />
 
-    <footer>
-      Documentation generated by
-      <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Mon May 19
-      2025 23:10:06 GMT+0300 (Eastern European Summer Time)
-    </footer>
+        
+    
 
-    <script>
-      prettyPrint();
-    </script>
-    <script src="scripts/linenumber.js"></script>
-  </body>
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-src_common_sets_adjacentPositions.html">src/common/sets/adjacentPositions</a></li><li><a href="module-src_common_sets_coordinates.html">src/common/sets/coordinates</a></li><li><a href="module-src_common_sets_moves.html">src/common/sets/moves</a></li><li><a href="module-src_common_snake_body.html">src/common/snake/body</a></li><li><a href="module-src_core_game.html">src/core/game</a></li><li><a href="module-src_core_snake.html">src/core/snake</a></li><li><a href="module-src_lib_moves_avoidGoingBackwards.html">src/lib/moves/avoidGoingBackwards</a></li><li><a href="module-src_lib_moves_avoidOthers.html">src/lib/moves/avoidOthers</a></li><li><a href="module-src_lib_moves_avoidSelf.html">src/lib/moves/avoidSelf</a></li><li><a href="module-src_lib_moves_avoidWalls.html">src/lib/moves/avoidWalls</a></li><li><a href="module-src_utils_moves_avoidanceChecker.html">src/utils/moves/avoidanceChecker</a></li><li><a href="module-src_utils_sets_bodySet.html">src/utils/sets/bodySet</a></li><li><a href="module-src_utils_sets_collisionSet.html">src/utils/sets/collisionSet</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Fri Jun 06 2025 13:43:50 GMT+0300 (Eastern European Summer Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
 </html>

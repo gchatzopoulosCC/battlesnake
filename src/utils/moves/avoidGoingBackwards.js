@@ -2,11 +2,11 @@
  * @file avoidGoingBackwards.js
  * @description This file contains a function that prevents the snake from moving backwards into its tail,
  * which would result in an immediate collision and game over.
- * @module src/lib/moves/avoidGoingBackwards
- * @requires module:src/common/snake/body
+ * @module src/utils/moves/avoidGoingBackwards
+ * @requires module:src/helper/snake/body
  */
 
-import { getHead, getTail } from "../../common/snake/body.js";
+import { getHead, getNeck } from "../../helper/snake/body.js";
 
 /**
  * @description This function determines which direction would cause the snake to move backwards

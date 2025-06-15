@@ -1,306 +1,391 @@
 # Changelog
 
-A summary of notable changes in the project.
-
-## [2.0.0] - 2025-05-21
-
-### Feature
-
-- Write a SECURITY.md (@gchatzopoulosCC)
-
-### Docs
-
-- Added changelog entries for dates ranging from 2025-05-13 to 2025-05-20 (`CHANGELOG.md`) (@sdemba).
-- Documented the entire codebase using JSDoc and merged it into `develop` via `docs/codebase` branch (#67, @gchatzopoulosCC).
-- Fixed minor typos in `README.md` (@gchatzopoulosCC, co-authored with Copilot).
-
-### Fixed
-
-- Fixed import path in `avoidWalls` and added missing import statements (@gchatzopoulosCC).
-- Updated `body.js` and `bodySet.js` to return the full tail instead of just the first segment (@gchatzopoulosCC).
-- Reverted `bodySet` to use `gameState.you.body.slice(1)` for tail retrieval (@gchatzopoulosCC).
-- Resolved merge conflicts between `patch/CHANGELOG` and `develop` to keep branches in sync (@sdemba).
-- Add the release version in CHANGELOG on 2025-04-30 (@gchatzopoulosCC)
-- Make esling ignore unecessary files: node_modules/, out/ (@gchatzopoulosCC)
-
-### Refactor
-
-- Format CHANGELOG with Prettier (@gchatzopoulosCC)
-
-### Chore
-
-- Corrected markdown formatting in `CHANGELOG.md` (replaced `###` with correct `##`) (@sdemba).
-
-## 2025-05-20
-
-### Fixed
-
-- Changed snake color from pink to black in `game.js` as part of a visual hotfix (@sdemba).
-- Updated README to change the run command from `node server.js` to `node index.js` consistently across all locations (@gchatzopoulosCC).
-- Resolved merge conflicts in `body.js`, `game.js`, `avoidWalls.js`, and `avoidanceChecker.js` during `develop` rebase (@gchatzopoulosCC).
-
-### Refactored
-
-- Merged major codebase restructuring changes into `develop` from `main` and `refactor/codebase` branches (#64, @gchatzopoulosCC).
-
-## 2025-05-19
-
-### Added
-
-- Introduced JSDoc support: added script to `package.json` and installed JSDoc dependencies (@gchatzopoulosCC).
-- Generated HTML documentation using JSDoc and added it to the `out/` directory (@gchatzopoulosCC).
-
-### Docs
-
-- Expanded and restructured `README.md`: added project overview, prerequisites, installation instructions, table of contents, and renamed sections based on slides (@gchatzopoulosCC).
-- Added detailed inline documentation to all core files: `avoidSelf`, `avoidOthers`, `avoidWalls`, `avoidGoingBackwards`, `avoidanceChecker`, `bodySet`, `collisionSet`, `snake.js`, `game.js`, `body.js`, `index.js`, and `server.js` (@gchatzopoulosCC).
-- Added `@requires` tags where needed for internal dependencies (@gchatzopoulosCC).
-
-### Fixed
-
-- Corrected `getTail` logic in `body.js` to use `gameState.you.body[1]` (@gchatzopoulosCC).
-- Fixed incorrect return type in `adjacentPositions` (changed from Object to String) (@gchatzopoulosCC).
-- Corrected missing `return` statement in `avoidGoingBackwards` (@gchatzopoulosCC).
-- Updated `.prettierignore` to ignore `/out/` and modified `.gitignore` to allow HTML docs upload (@gchatzopoulosCC).
-- Fixed documentation errors in various modules (@gchatzopoulosCC).
-
-### Refactored
-
-- Updated `avoidWalls` and `avoidGoingBackwards` to use helper functions like `getHead(gameState)` and `getTail(gameState)` (@gchatzopoulosCC).
-- Reformatted entire codebase using Prettier to ensure consistency after major documentation additions (@gchatzopoulosCC).
-- Moved the description block to the top of `README.md` for clarity (@gchatzopoulosCC).
-
-### Chore
-
-- Ran Prettier formatting across the project after structural and doc updates (@gchatzopoulosCC).
-
-## 2025-05-18
-
-### Refactored
-
-- Updated `moves` module to use `getHead(gameState)` instead of manually retrieving the snake's head position (@gchatzopoulosCC).
-- Renamed the `map` variable to `set` in the `avoidanceChecker` module for semantic clarity (@gchatzopoulosCC).
-- Renamed function parameter `getMapFunction` to `getSetFunction` in `avoidanceChecker` to reflect new internal logic (@gchatzopoulosCC).
-
-## 2025-05-14
-
-### Refactored
-
-- Changed `eslint.config.js` to `eslint.config.mjs` and used `defineConfig` alias (@gchatzopoulosCC).
-- Moved `lib/sets` files into a unified `utils/sets` folder to improve structure (@gchatzopoulosCC).
-- Ran Prettier and formatted the entire codebase for consistency (@gchatzopoulosCC).
-- Removed unnecessary content from `.prettierrc` as all values matched defaults (@gchatzopoulosCC).
-- Simplified `collisionSet` content retrieval logic (@gchatzopoulosCC).
-- Renamed `collisionMap` to `collisionSet` throughout the codebase (@gchatzopoulosCC).
-- Renamed `bodyMap` to `bodySet` throughout the codebase (@gchatzopoulosCC).
-- Capitalized "body" and "collision" in function signatures where applicable (@gchatzopoulosCC).
-- Moved `bodySet` and `collisionSet` to a shared `sets` folder from individual modules (@gchatzopoulosCC).
-- Refactored coordinate handling logic by:
-  - Creating a dedicated file for coordinate functions
-  - Changing `parseCoordinates` to take `(x, y)` instead of position
-  - Using `parseCoordinates` in `adjacentPositions` instead of manual formatting (@gchatzopoulosCC).
-
-### Fixed
-
-- Fixed import paths by adding missing extensions in `adjacentPositions`, `avoidOthers`, and `avoidSelf` modules (@gchatzopoulosCC).
-
-### Chore
-
-- Applied automated Prettier formatting across files post-refactor (@gchatzopoulosCC).
-
-## 2025-05-13
-
-### Refactored
-
-- Transferred `avoidanceChecker` declaration outside of `avoidSelf` and `avoidOthers` for better reuse and structure (@gchatzopoulosCC).
-- Created `createAvoidanceChecker` function to encapsulate avoidance logic and used it in `avoidSelf` and `avoidOthers` (@gchatzopoulosCC).
-- Renamed variables for clarity (e.g., `checkAvoidance` → `avoidanceChecker`, `getMapFunction` → `getSetFunction`) (@gchatzopoulosCC).
-- Renamed `collisionMap` to `collisionSet` and `bodyMap` to `bodySet` consistently across modules (@gchatzopoulosCC).
-- Moved files (`adjacentPositions`, `moves`, `collisionMap`) to `common/sets` and renamed/structured directories (`common` → `lib`) (@gchatzopoulosCC).
-- Simplified `avoidOthers.js` and `avoidSelf.js` by importing shared utilities from new files (@gchatzopoulosCC).
-- Refactored `coordinates` logic: created dedicated file, updated `parseCoordinates` signature, and used in `adjacentPositions` (@gchatzopoulosCC).
-- Updated `game.js` to remove Battlesnake-generated boilerplate comments (@gchatzopoulosCC).
-- Moved the `moves` folder inside `lib/` for better separation of concerns (@gchatzopoulosCC).
-- Created `snake/body.js` to hold common logic for retrieving head and tail positions (@gchatzopoulosCC).
-- Rewrote logic for adjacent/collision checks with consolidated methods and proper deconstructed imports (@gchatzopoulosCC).
-
-### Fixed
-
-- Fixed issues in `moves.js` with variable references, import paths, and missing `gameState` parameter (@gchatzopoulosCC).
-- Added missing file extensions to various imports to ensure module compatibility (@gchatzopoulosCC).
-- Corrected import logic and loop structure in `avoidOthers` (replaced `forEach` with standard loop) (@gchatzopoulosCC).
-- Fixed vertical positioning logic in `getUpAdjacentPosition` and `getDownAdjacentPosition` (@gchatzopoulosCC).
-- Reflected structural updates across `avoidOthers`, `snake`, `getCollisionMap`, and `collisionSet` modules (@gchatzopoulosCC).
-
-### Chore
-
-- Ran Prettier on the entire codebase to apply consistent formatting after structural refactoring (@gchatzopoulosCC).
-- Removed unused/generated icon asset from project files (@gchatzopoulosCC).
-
-## [1.0.0] - 2025-04-30
-
-### Added
-
-- Prettier Configuration: Added default configuration and setup for Prettier code formatting, including ignoring specific files (@george-chatzopoulos).
-- ESLint Configuration: Added default configuration and required plugins for ESLint code linting and analysis (#41, #45, @jhoxha1, @George Chatzopoulos).
-- EditorConfig: Created and configured `.editorconfig` (#44, @George Chatzopoulos).
-- Dependabot: Configured Dependabot for automated dependency updates (#29, @George Chatzopoulos).
-
-### Fixed
-
-- Fixed ESLint errors in the codebase (#56 Merge, @george-chatzopoulos).
-- Adjusted Dependabot npm schedule to weekly and changed rebase strategy to auto (#53 Merge, @george-chatzopoulos).
-- Resolved issues with `package-lock.json` generation (#48, @george-chatzopoulos, @George Chatzopoulos).
-- Removed unnecessary `newfile.js` (#42, @George Chatzopoulos, @george-chatzopoulos).
-- Patched the user story template (#31, @George Chatzopoulos).
-
-### Refactored
-
-- Formatted `eslint.config.js` (@jhoxha1).
-- Make each move function a seperate file and change the name of the common folder to moves (@george-chatzopoulos)
-
-### Docs
-
-- Updated README with deployment instructions (#29 Merge, @George Chatzopoulos).
-
-### Chore
-
-- Added CHANGELOG.md file (@pcharalampidis).
-- Performed initial Prettier setup run (@george-chatzopoulos).
-- Bumped versions of dependencies (@george-chatzopoulos).
-- Updated `develop` branch to keep up to date with `main` (#49, #46-47, #46, @George Chatzopoulos).
-
-## 2025-04-29
-
-### Added
-
-- Prettier Setup: Initial creation and configuration of Prettier (@sdemba).
-
-### Chore
-
-- Updated `develop` branch from `main` (#28, @George Chatzopoulos).
-
-## 2025-04-09
-
-### Docs
-
-- Added a deployment quickstart guide to the README.md (@George Chatzopoulos).
-
-## 2025-04-08
-
-### Chore
-
-- Generic commit (@jhoxha1).
-
-## 2025-04-07
-
-### Added
-
-- Added the user story template (@George Chatzopoulos).
-- Created a `dependabot.yml` file for dependency updates (@George Chatzopoulos).
-
-### Changed
-
-- Removed the versioning strategy from the schema (@George Chatzopoulos).
-
-### Chore
-
-- Bumped node-fetch from 3.2.6 to 3.2.10 (#22, @dependabot[bot]).
-- Bumped body-parser and express (#26, @dependabot[bot]).
-
-## 2025-04-01
-
-### Added
-
-- Self Collision Avoidance: Added logic to avoid collision with the snake's own body (@falmanidou, @Fotini Almanidou, @jhoxha1).
-- Added logic to check if moving in any direction will result in a collision with the body (@jhoxha1).
-
-### Fixed
-
-- Resolved structural conflicts related to the `avoidSelf` function (@George Chatzopoulos).
-- Fixed undefined variable in `avoidSelf` function (@Fotini Almanidou).
-- Fixed snake self-collision detection logic (@Fotini Almanidou).
-- Corrected syntax/style by removing unnecessary curly brackets and dollar signs (@Fotini Almanidou).
-
-### Changed
-
-- Updated logic for storing body positions (excluding head) (@Fotini Almanidou).
-- Generic checkpoint before assistant change (@falmanidou).
-
-### Refactored
-
-- Optimized `src/common/move.js` functions by reducing nesting and using lookups (@George Chatzopoulos).
-
-### Chore
-
-- Test commit for git push (@jhoxha1).
-
-## 2025-03-30
-
-### Added
-
-- Created issue templates (@George Chatzopoulos).
-
-### Changed
-
-- Updated game logic/structure (Generic update to `game.js`) (@sdemba).
-
-## 2025-03-29
-
-### Added
-
-- Project Templates: Added a pull request template in `.github/` (@George Chatzopoulos).
-- Movement Logic:
-  - Added function to avoid going backwards in `src/common/move.js` (@George Chatzopoulos).
-  - Added function to avoid collisions with other snakes in `src/common/move.js` (@George Chatzopoulos).
-  - Added an `avoidWalls` function to prevent snakes going out of bounds (@George Chatzopoulos).
-- Initial Boundary and Collision Prep: Made the snake not go out of bounds and prepared code for not colliding with other snakes (@George Chatzopoulos).
-
-### Refactored
-
-- Code Structure: Moved core game functions to `src/core/game.js` and snake move logic to `src/core/snakes.js` (@George Chatzopoulos).
-- Code Cleanup: Removed unused variables (`boardWidth`, `boardHeight`) from `index.js` (@George Chatzopoulos).
-- Logic Rewrites: Rewrote `avoidOthers` and `avoidWalls` functions for improved clarity (@George Chatzopoulos).
-
-## 2025-03-28
-
-### Added
-
-- Initial Setup:
-  - Added startup console messages (@George Chatzopoulos).
-  - Added a generic nodejs gitignore file (@George Chatzopoulos).
-  - Added CI workflow configuration (`blank.yml`) (@George Chatzopoulos).
-- Core Logic (Initial):
-  - Initial implementation of snake game logic (@George Chatzopoulos).
-  - Basic snake movement implementation (@George Chatzopoulos).
-  - Wall detection functionality (@George Chatzopoulos).
-  - Server setup with Express (@George Chatzopoulos).
-  - Basic server configuration (@George Chatzopoulos).
-
-### Changed
-
-- Updated boundary checking logic (@George Chatzopoulos).
-
-### Refactored
-
-- Updated export syntax in `move.js` to ES modules (@George Chatzopoulos).
-
-### Chore
-
-- Generic save and setup commits (@George Chatzopoulos).
-
-## 2025-03-24
-
-### Docs
-
-- Updated README.md (@George Chatzopoulos).
-
-### Added
-
-- Initial commit (@George Chatzopoulos).
-
-## 2025-03-19
-
-### Added
-
-- Initial commit (@George Chatzopoulos).
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+Generated by [`auto-changelog`](https://github.com/CookPete/auto-changelog).
+
+## [Unreleased](https://github.com/gchatzopoulosCC/battlesnake/compare/v2.1.0...HEAD)
+
+### Merged
+
+- refactor: File Structure [`#83`](https://github.com/gchatzopoulosCC/battlesnake/pull/83)
+
+### Commits
+
+- feat: Git ignore JetBrains IDEs settings [`c5e4969`](https://github.com/gchatzopoulosCC/battlesnake/commit/c5e496925b9cfddeb2d4d70a72a79287b3fcd5c0)
+- refactor: Rename the previous utils folder to helper, and the previous core folder to utils. Also transfer the contents of common in the now helper folder [`188fdfd`](https://github.com/gchatzopoulosCC/battlesnake/commit/188fdfdec5692b3fe1ce47686d6bb3f888faf935)
+- refactor: Transfer the test files to their own tests directory [`8d29f05`](https://github.com/gchatzopoulosCC/battlesnake/commit/8d29f050e0423088dfcc47bddefe48260216f226)
+- fix: Change the coverage collection from src/**/*.js to tests/**/*.js [`8f1c7cd`](https://github.com/gchatzopoulosCC/battlesnake/commit/8f1c7cd88724a675e6977b000f5682ceb6ffea1c)
+- refactor: Change the location of the PR template to PULL_REQUEST_TEMPLATE/pull_request_template.md [`491b675`](https://github.com/gchatzopoulosCC/battlesnake/commit/491b675eb8066219c045e842b4ce6cdefdcb2421)
+- refactor: Run jsdoc src -r to reflect the changes [`26a40f6`](https://github.com/gchatzopoulosCC/battlesnake/commit/26a40f6ef5fe9fad8de6f06fc08d2701af5d289d)
+- fix: Add the missing jsdoc script [`e7ffc1e`](https://github.com/gchatzopoulosCC/battlesnake/commit/e7ffc1ea98e729b48fc8b9974c2e1546211cd485)
+- refactor: Reflect changes to the jsdoc @module and @requires [`6a154b9`](https://github.com/gchatzopoulosCC/battlesnake/commit/6a154b9b2a179e7ae6ee798e1472394a9b894d58)
+- refactor: Run npm run jsdoc to reflect changes [`46314f5`](https://github.com/gchatzopoulosCC/battlesnake/commit/46314f5ac53bd1ad2d35054900da3e41a940ddac)
+- docs(CHANGELOG): Write the changes up to this point [`7e79ed9`](https://github.com/gchatzopoulosCC/battlesnake/commit/7e79ed9eb2d805a3bf580e6f3e75a13e74567262)
+- refactor(README): Write the updated file structure in the README [`7a51abd`](https://github.com/gchatzopoulosCC/battlesnake/commit/7a51abd282eff8b5519136e4446806e6142ed830)
+- feat(package): Add a file-structure command to display the file structure [`6a37270`](https://github.com/gchatzopoulosCC/battlesnake/commit/6a37270f6be5a7f1bff19f27b0d3e957644c644e)
+- fix(README): Add the missing launch parameters (jsdoc, test*, file-structure) [`bae4523`](https://github.com/gchatzopoulosCC/battlesnake/commit/bae45232e4c63f90c20a949fa17a04c7a7679307)
+- refactor(package, README): Rename the file-structure command to tree [`4047706`](https://github.com/gchatzopoulosCC/battlesnake/commit/4047706a1a23d9a5a4530c557199c9fed48f5024)
+- refactor(*): Run prettier [`a220715`](https://github.com/gchatzopoulosCC/battlesnake/commit/a2207157f40014df2672398e392a453eae00edac)
+- docs(README): Add the prettier launch parameter [`dd7698b`](https://github.com/gchatzopoulosCC/battlesnake/commit/dd7698bf7a6bee83b0ea4ae8a73d40d605f43f4b)
+- docs(CHANGELOG): Update changelog with the changes up to this point [`66fd1d0`](https://github.com/gchatzopoulosCC/battlesnake/commit/66fd1d0b3e3f0ba65182424b4c192de3b0f81123)
+- docs(CHANGELOG): Update changelog with the changes up to this point [`16190b3`](https://github.com/gchatzopoulosCC/battlesnake/commit/16190b3510d538ac85b58cec55853ad5eea897ac)
+- fix(README): Remove unnecessary duplicate jsdoc launch param [`9e4fbf4`](https://github.com/gchatzopoulosCC/battlesnake/commit/9e4fbf4dd2d785cfa2e1e5a57b909de1ab1e7e6e)
+- fix(CHANGELOG): Remove jsdoc reference [`2942ca6`](https://github.com/gchatzopoulosCC/battlesnake/commit/2942ca61fc32436c534408e28df4a25989f2a8d7)
+- docs: Rewrite the changelog using the auto-changelog command [`f53300b`](https://github.com/gchatzopoulosCC/battlesnake/commit/f53300b9f07d3413106662ba18e0be3fc12a469b)
+- feat(package): Add a script that runs the auto-changelog command [`036bf07`](https://github.com/gchatzopoulosCC/battlesnake/commit/036bf07cc77398f95f6db2e62300957b8bd40e9a)
+- docs(README): Add the npm run changelog launch parameter [`352317c`](https://github.com/gchatzopoulosCC/battlesnake/commit/352317ceafd91e88fda2fb2712853bfc82b05e51)
+- feat(commitlint.config): Install and configure commitlint [`1d973c3`](https://github.com/gchatzopoulosCC/battlesnake/commit/1d973c36e51c879fb9aa48cf068d8d6029b4d730)
+- feat(husky): Install and prepare husky to manage pre-commit hooks [`cf6a522`](https://github.com/gchatzopoulosCC/battlesnake/commit/cf6a5228a503efb65d3f20774d8271b660ffe2c2)
+- fix(commitlint): Change the extention from js to cjs [`3b4868a`](https://github.com/gchatzopoulosCC/battlesnake/commit/3b4868af6c6640dd6720a51a48d17e313e1f842a)
+- feat(package): Add a commitlint script [`311fc43`](https://github.com/gchatzopoulosCC/battlesnake/commit/311fc4337c3f3f55f038cddccb73c1d5405a09d3)
+- fix: Enforce commitlint rules [`06ba77d`](https://github.com/gchatzopoulosCC/battlesnake/commit/06ba77dc6f52582bd018c8639272fe1e62e47f6e)
+- feat(commitlint): Enforce scope [`3d7c657`](https://github.com/gchatzopoulosCC/battlesnake/commit/3d7c657c5a183815b5715eaf07be2caf4433627d)
+- fix(commit-msg, pre-commit): Remove deprecated script introductions [`ac9a08b`](https://github.com/gchatzopoulosCC/battlesnake/commit/ac9a08b92dd7f422e53b8b6e6a0e0d7a4578f8a4)
+- fix(package): Remove unnecessary commitlint script [`f979bf7`](https://github.com/gchatzopoulosCC/battlesnake/commit/f979bf7d8cb7537c143fc37848ac1498886d6545)
+- docs(readme): Add the prepare launch parameter [`a76774b`](https://github.com/gchatzopoulosCC/battlesnake/commit/a76774b7bc17115b84d00aa1023d5cc5b05255b7)
+- feat(package): Add a tree command for windows [`7eeb64c`](https://github.com/gchatzopoulosCC/battlesnake/commit/7eeb64cc772d184d5cdce10fd319dc74610fa56d)
+- docs(readme): Add the tree:windows launch parameter [`b25b7d8`](https://github.com/gchatzopoulosCC/battlesnake/commit/b25b7d84d289004b075d719670d4e1f416c63097)
+- fix(package): Replace treer with treee [`5747661`](https://github.com/gchatzopoulosCC/battlesnake/commit/574766109d05fae3b64691ba34ddccbb9bcaaf37)
+- fix(package): Remove the old native-linux tree option and replace it with treee [`77ed188`](https://github.com/gchatzopoulosCC/battlesnake/commit/77ed1883e28c670baa867365f253aa6707bd53e9)
+- docs(readme): Remove the previous tree:windows launch parameter and generalise with tree [`de73014`](https://github.com/gchatzopoulosCC/battlesnake/commit/de730149a8116899ee9a54d0cb991e0fe00fddda)
+- docs(readme): Replace the old file structure with the new one [`4135649`](https://github.com/gchatzopoulosCC/battlesnake/commit/41356497296ad3a647b129ec2dda2bcdbe0c5b11)
+- fix(package): Change the prepare command from husky to husky init [`90f63e7`](https://github.com/gchatzopoulosCC/battlesnake/commit/90f63e7ae10b6c09bfcf757b5a5951e515219502)
+- fix(package): Add auto-changelog in the devDependencies [`cb7679e`](https://github.com/gchatzopoulosCC/battlesnake/commit/cb7679ec09e168c7d745d3ef1ad11d70a0be3556)
+- fix(package): Add tree-cli (treee) in the devDependencies [`b6eb0a0`](https://github.com/gchatzopoulosCC/battlesnake/commit/b6eb0a0863956b83c7927d4a5575e87d1a1fff13)
+- fix(package): Remove the unnecessary npx start from auto-changelog [`77e7068`](https://github.com/gchatzopoulosCC/battlesnake/commit/77e7068b2402e1f89b20415b436ba10af162834b)
+- feat(.auto-changelog): Create an auto-changelog conf file to simplify and increase maintainability [`7a99750`](https://github.com/gchatzopoulosCC/battlesnake/commit/7a99750365a2ffc6e5fc18966e115f8914dca69a)
+- docs(changelog): Run the npm changelog command [`55fb3c1`](https://github.com/gchatzopoulosCC/battlesnake/commit/55fb3c11606c9f099a8d3e370e6363d6f787e064)
+- docs(readme): Include the new conf file in the readme [`c12a1c6`](https://github.com/gchatzopoulosCC/battlesnake/commit/c12a1c66ff2196a69d348feafb2e6d409d5685f8)
+- fix(commitlint): Increase the body max length to 100 and limit header to 100 [`7fe943a`](https://github.com/gchatzopoulosCC/battlesnake/commit/7fe943afd72ed2fcdadea540ee71763c84081ba1)
+- fix(commit-msg): Add the script header [`cddef83`](https://github.com/gchatzopoulosCC/battlesnake/commit/cddef839842b04ded65b3c9c93d62df6f2626b3d)
+- fix(readme): Correct typos [`23a783e`](https://github.com/gchatzopoulosCC/battlesnake/commit/23a783ed49d2c3afcf471342a498fbf07b045c6d)
+- fix(readme): Change the launch param from npm prepare to npm run prepare [`6480b3d`](https://github.com/gchatzopoulosCC/battlesnake/commit/6480b3d8308048ecf66ff008616c4cdf00b40471)
+
+## [v2.1.0](https://github.com/gchatzopoulosCC/battlesnake/compare/v2.0.0...v2.1.0) - 2025-05-21
+
+### Merged
+
+- Feature/setup jest [`#63`](https://github.com/gchatzopoulosCC/battlesnake/pull/63)
+
+### Commits
+
+- feat: setup of jest [`b32f350`](https://github.com/gchatzopoulosCC/battlesnake/commit/b32f3508a8dde6b1efaa6fe469c55e95e64f729e)
+- feat: Add initial Jest configuration [`e7a4e2b`](https://github.com/gchatzopoulosCC/battlesnake/commit/e7a4e2b9c2a34e2c8d0fd4fd97c62f73aacb0dda)
+- feat: Added npm scripts for testing and linting [`d0380b3`](https://github.com/gchatzopoulosCC/battlesnake/commit/d0380b3edda33636eabbf4929cee03d1f1f3251d)
+- chore: Remove redundant extensionsToTreatAsEsm line from Jest config [`7a8df58`](https://github.com/gchatzopoulosCC/battlesnake/commit/7a8df58201d2be4e022fc0dfe1a89d39c1e3f1ee)
+- test(AvoidWalls): Implement tests for avoidWalls [`15fd40d`](https://github.com/gchatzopoulosCC/battlesnake/commit/15fd40dea0f321dbd8f4101a42316e7aa3f63b1c)
+- Test for avoidBackwards function [`3d33b39`](https://github.com/gchatzopoulosCC/battlesnake/commit/3d33b3984aefbafd7b337a18776b3093611d52e4)
+- Refactor parts of the test and added some specific cases for its movement [`f5bf19e`](https://github.com/gchatzopoulosCC/battlesnake/commit/f5bf19e788b9fb55fb14492dc714fa5174f55f16)
+- Refactor parts of the test and added some specific cases the behavior of avoidwalls [`5dc6e78`](https://github.com/gchatzopoulosCC/battlesnake/commit/5dc6e78e068f8a0cea7fe6bc9b448bca952d44fe)
+- Test for AvoidSelf function, checking many aspects and cases [`c0cd6ec`](https://github.com/gchatzopoulosCC/battlesnake/commit/c0cd6ecc6fd9031be0128f19a5a79ea5263f7ae2)
+- Test for AvoidOthers function, checking many aspects and cases [`3212aa6`](https://github.com/gchatzopoulosCC/battlesnake/commit/3212aa6976bd735e59f3eb9c9cd9dfc0f4bccabf)
+- Apply Prettier formatting to test files [`c9bef07`](https://github.com/gchatzopoulosCC/battlesnake/commit/c9bef07cf09d1cb8a895155662cf4f1220db5925)
+- feat: updated scripts for jest [`60546e5`](https://github.com/gchatzopoulosCC/battlesnake/commit/60546e5e6cc71abc8dbbd847a45561933dac0973)
+- fix(avoidGoingBackwards.test, avoidWalls.test, avoidSelf.test, avoidOthers.test): Transfer to src/lib/moves [`be153c2`](https://github.com/gchatzopoulosCC/battlesnake/commit/be153c2e47d7b78cfa39304aa84c0589d897a42f)
+- feat(body): Make a function to jest get the neck of the snake [`55a3050`](https://github.com/gchatzopoulosCC/battlesnake/commit/55a3050982f49ff34a4bde4723fb7388a5c6cb82)
+- fix(avoidGoingBackwards): Get just the neck not the whole tail [`608c7bc`](https://github.com/gchatzopoulosCC/battlesnake/commit/608c7bcb2ec29ac92601ab21656a372a5c79e515)
+- fix(avoidsSelf.test): fix poi 1 test logic to make move up safety as false [`66fc204`](https://github.com/gchatzopoulosCC/battlesnake/commit/66fc20489950e4836c26e255906964b67f568cb2)
+- Updated changelog with newer entries [`c10f999`](https://github.com/gchatzopoulosCC/battlesnake/commit/c10f999feae0c6da8aafb3fd11e48c10165f2830)
+
+## [v2.0.0](https://github.com/gchatzopoulosCC/battlesnake/compare/v1.1.1...v2.0.0) - 2025-05-21
+
+### Merged
+
+- fix(AvoidGoingBackwards): Replace gameState.you.body.slice(1) with gameState.you.body[1] [`#80`](https://github.com/gchatzopoulosCC/battlesnake/pull/80)
+- fix: Pass the snake neck fix to main [`#79`](https://github.com/gchatzopoulosCC/battlesnake/pull/79)
+- Keep the main up to date to release [`#77`](https://github.com/gchatzopoulosCC/battlesnake/pull/77)
+- Keep main up to date for a major release [`#71`](https://github.com/gchatzopoulosCC/battlesnake/pull/71)
+
+## [v1.1.1](https://github.com/gchatzopoulosCC/battlesnake/compare/v1.1.0...v1.1.1) - 2025-06-14
+
+### Commits
+
+- chore(release): 1.1.1 [`077992a`](https://github.com/gchatzopoulosCC/battlesnake/commit/077992ad0356560dd678597f47a16f6e2305c330)
+
+## [v1.1.0](https://github.com/gchatzopoulosCC/battlesnake/compare/v1.0.0...v1.1.0) - 2025-06-14
+
+### Merged
+
+- refactor: File Structure [`#83`](https://github.com/gchatzopoulosCC/battlesnake/pull/83)
+- Feature/setup jest [`#63`](https://github.com/gchatzopoulosCC/battlesnake/pull/63)
+- Hotfix/neck [`#78`](https://github.com/gchatzopoulosCC/battlesnake/pull/78)
+- Make ESLint ignore node_modules and out [`#76`](https://github.com/gchatzopoulosCC/battlesnake/pull/76)
+- feat(SECURITY): Write a SECURITY.md [`#72`](https://github.com/gchatzopoulosCC/battlesnake/pull/72)
+- Update CHANGELOG [`#69`](https://github.com/gchatzopoulosCC/battlesnake/pull/69)
+- Document the code using JSDocs [`#67`](https://github.com/gchatzopoulosCC/battlesnake/pull/67)
+- Hotfix [`#66`](https://github.com/gchatzopoulosCC/battlesnake/pull/66)
+- Refactor the whole codebase [`#64`](https://github.com/gchatzopoulosCC/battlesnake/pull/64)
+
+### Commits
+
+- refactor(game.js): remove original comments (todo and other battlesnake-generated comments) [`c83da17`](https://github.com/gchatzopoulosCC/battlesnake/commit/c83da1742a9d44103e6fac16c6d1b3ce347bf694)
+- refactor(getCollisionMap.js): Transfer the collisionMap creation functionality from the src/moves/avoidOthers.js to a new dedicated src/common/getCollisionMap.js file [`e6c4070`](https://github.com/gchatzopoulosCC/battlesnake/commit/e6c4070c608858df063b9bbfb4753298220b538e)
+- refactor(avoidOthers.js): Replace the collisionMap creation functionality with its dedicated method [`b2270e0`](https://github.com/gchatzopoulosCC/battlesnake/commit/b2270e099e0b166b670151505781093d62901a11)
+- refactor(getAdjacentPositions/collisionMap.js): transfer the functionality of getting the adjacent positions in the collisionMap format to a dedicated file [`a058697`](https://github.com/gchatzopoulosCC/battlesnake/commit/a058697c0daa270b69b9aea6c2e0e8d8de9cf3c4)
+- refactor(avoidOthers.js): Get the adjacentPositions from the dedicated file and remove the multiple if statements [`a53ece8`](https://github.com/gchatzopoulosCC/battlesnake/commit/a53ece88b13f21d3fb9e61ce48b762078e3b458f)
+- refactor(avoidOthers): Import the functions from the collisionMap deconstructed [`9269cdb`](https://github.com/gchatzopoulosCC/battlesnake/commit/9269cdb506d180a7f1d14b997a8eef632df4463c)
+- fix(avoidOthers): Add extensions to imports [`be90273`](https://github.com/gchatzopoulosCC/battlesnake/commit/be90273e5ebec00ed9478539bbc0f6a197df0093)
+- refactor(avoidOthers): Change the adjacentPosition imports to a more concise version [`61b5887`](https://github.com/gchatzopoulosCC/battlesnake/commit/61b5887cf54801f691f6f8a80720396f7d21f7ea)
+- fix(avoidOthers): Replace the forEach with a normal for loop [`ed61ee8`](https://github.com/gchatzopoulosCC/battlesnake/commit/ed61ee8835342b9ffafd4176cda2ef20090851bc)
+- fix(avoidOthers): Change the name of the getAdjacent key to getAdjacentPosition and remove the argument (head) inside the if statement [`e0677a5`](https://github.com/gchatzopoulosCC/battlesnake/commit/e0677a5ea634e93c5354905fdf7e73e11a74acfb)
+- fix(getAdjacentPositions/collisionMap): invert the y position of getUpAdjacentPosition and getDownAdjacentPosition [`bdcb5f4`](https://github.com/gchatzopoulosCC/battlesnake/commit/bdcb5f4457adac87240586984e8302ff41ac20fe)
+- refactor(adjacentPositions, collisionMap): transfer the collisionMap logic to a dedicated collisionMap directory [`8020c80`](https://github.com/gchatzopoulosCC/battlesnake/commit/8020c80fba076aebb091f895837e20dbf2f7909f)
+- refactor(lib(dir)): rename common directory to lib [`ac2440c`](https://github.com/gchatzopoulosCC/battlesnake/commit/ac2440caba52cdd5a3295c9e4459765d7dc266e9)
+- refactor(avoidOthers, moves): transfer the moves array in a dedicated getter method [`d787647`](https://github.com/gchatzopoulosCC/battlesnake/commit/d7876476df782085483c9f8cc694e49aaebbeb75)
+- fix(moves): Add the gameState parameter [`279a707`](https://github.com/gchatzopoulosCC/battlesnake/commit/279a707eefa4cda61da9f2333a15c2d970e213a0)
+- fix(moves): fix the import [`2cd45bb`](https://github.com/gchatzopoulosCC/battlesnake/commit/2cd45bb376eda3b803e0b31c215083c9c48a78b9)
+- fix(moves): fix the reference with the variable moves [`bf23369`](https://github.com/gchatzopoulosCC/battlesnake/commit/bf23369c2a0992968e27effb51d2900ed76a34fc)
+- refactor(avoidSelf, bodySet): Create a dedicated getBodySet function (previously named bodyPositions) [`c56328e`](https://github.com/gchatzopoulosCC/battlesnake/commit/c56328e39067652076745c56e4dbf6933fddc808)
+- refactor(adjacentPositions, moves): Tranfer them in a new common/sets folder [`b3d687b`](https://github.com/gchatzopoulosCC/battlesnake/commit/b3d687bf600e763886b41cd1c5085ea15b005dd4)
+- refactor(collisionSet): Rename everything related to collisionMap to collisionSet [`24cc92b`](https://github.com/gchatzopoulosCC/battlesnake/commit/24cc92bbbeeaf9937c22054792a6a945275a7dcd)
+- refactor(avoidOthers): Reflect the changes to the imports [`60a9328`](https://github.com/gchatzopoulosCC/battlesnake/commit/60a93285249b05d23c9b7d91abe6cad66456e7fc)
+- refactor(avoidSelf): Use the common functions instead of locally defined operations [`d40e767`](https://github.com/gchatzopoulosCC/battlesnake/commit/d40e767b43f40060525823589f4ddad6ccfb9fd2)
+- refactor(avoidOthers): Rename the collisionMap variable to collisionSet [`b128ec2`](https://github.com/gchatzopoulosCC/battlesnake/commit/b128ec2e60fca2324aea4f14ffbf69167cfef9a4)
+- refactor(*): Run prettier for all files [`2784b42`](https://github.com/gchatzopoulosCC/battlesnake/commit/2784b42d6a4cc0a23b42c740b6c5018f5a04a417)
+- refactor(body): Create a dedicated snake/body.js file to get the head and the tail of the snake [`2857040`](https://github.com/gchatzopoulosCC/battlesnake/commit/28570406eaef83d7534474ed25e52a78b3e546f6)
+- refactor(collisionMap, avoidOthers): Rename everything from collisionSet to collisionMap [`74ce2e4`](https://github.com/gchatzopoulosCC/battlesnake/commit/74ce2e4f7b4452626bb52bd55c596b699ed5a3e9)
+- refactor(bodyMap, avoidSelf): Rename everything from bodySet to bodyMap [`8731989`](https://github.com/gchatzopoulosCC/battlesnake/commit/8731989d16b363343be3f1166343c73f87aa2aa6)
+- refactor(avoid*): transfer the moves folder inside lib [`0ba2e04`](https://github.com/gchatzopoulosCC/battlesnake/commit/0ba2e040bfd2fb113b0fa95f96873f63581bb14d)
+- fix(snake): reflect changes to imports [`362c913`](https://github.com/gchatzopoulosCC/battlesnake/commit/362c913da8a1e8994c65718ba3d337901d901fc0)
+- refactor(generated-icon): Remove the generated icon [`cd53595`](https://github.com/gchatzopoulosCC/battlesnake/commit/cd535958cec90ca28f7b59be49315b923f237583)
+- refactor(avoidanceChecker): Create a createAvoidanceChecker to check for available moves to replace the manual check inside avoidSelf and avoidOthers [`27ee865`](https://github.com/gchatzopoulosCC/battlesnake/commit/27ee86571760c90d8693f16a115ac47f1acbaba3)
+- refactor(avoidOthers): use createAvoidanceChecker instead of manually checking [`bdeefbd`](https://github.com/gchatzopoulosCC/battlesnake/commit/bdeefbd570d5619f925aedd51f38a3668808e37d)
+- refactor(avoidSelf): use createAvoidanceChecker instead of manually checking [`6b3a59d`](https://github.com/gchatzopoulosCC/battlesnake/commit/6b3a59dfd725e9163efaac35d8730c58e3fe13e5)
+- refactor(avoidOthers): rename the variable checkAvoidance to avoidanceChecker [`7daf7e6`](https://github.com/gchatzopoulosCC/battlesnake/commit/7daf7e616bfa70671eeb62e52b914c8ccfc76784)
+- refactor(moves): rename getAdjacentPosition to adjacentPosition [`3e0eebb`](https://github.com/gchatzopoulosCC/battlesnake/commit/3e0eebb3bd197243edfb6ea63b8fb2af55bc20da)
+- refactor(avoidanceChecker): reflect changes from the move.js [`2f79faf`](https://github.com/gchatzopoulosCC/battlesnake/commit/2f79fafe80c58b2c621bb33b66d3941f4b6ace8f)
+- refactor(bodyMap): capitalise the word body in the signature [`f10e0e3`](https://github.com/gchatzopoulosCC/battlesnake/commit/f10e0e31adbe24e3ab3b1afa85fc19b34894bd89)
+- refactor(collisionMap): capitalise the word collision in the signature [`61af443`](https://github.com/gchatzopoulosCC/battlesnake/commit/61af443f258019dc67a81fa945209f85594323fa)
+- refactor(avoidOthers, avoidSelf): reflect changes from bodyMap and collisionMap [`4416758`](https://github.com/gchatzopoulosCC/battlesnake/commit/44167587229ab780cb73dc5a53a79ef16fb785ec)
+- refactor(avoidOthers): Transfer the avoidanceChecker variable declaration outside of the function [`7585cca`](https://github.com/gchatzopoulosCC/battlesnake/commit/7585cca35957971cd423a5e62c6c113aa7450f27)
+- refactor(avoidSelf): Transfer the avoidanceChecker variable declaration outside of the function [`92d9414`](https://github.com/gchatzopoulosCC/battlesnake/commit/92d9414a13ce6dda459e70836c06775c9f60aa10)
+- refactor(bodySet, avoidSelf): Rename everything related to bodyMap to bodySet [`1d313a2`](https://github.com/gchatzopoulosCC/battlesnake/commit/1d313a20f509a3e302639b47d85081f9ebd83844)
+- refactor(collisionSet, avoidOthers): Rename everything related to collisionMap to collisionSet [`f04e5cd`](https://github.com/gchatzopoulosCC/battlesnake/commit/f04e5cd52bd5180edc15d0b536a450c897985f74)
+- refactor(bodySet, collisionSet): Transfer the files to a dedicated sets folder from their individual folders [`42631da`](https://github.com/gchatzopoulosCC/battlesnake/commit/42631da8183259e55768814b4e384d3ba9e8c923)
+- refactor(bodySet, avoidSelf): Capitalise the word body in the signature [`e4eedfd`](https://github.com/gchatzopoulosCC/battlesnake/commit/e4eedfdb6a4c0c3665de5e8d0272fb98bd2fd428)
+- refactor(collisionSet, avoidOthers): capitalise the word collision in the signature [`ed84746`](https://github.com/gchatzopoulosCC/battlesnake/commit/ed847461073c0649e3e3d020c83fe72d0259dbfa)
+- refactor(collisionSet): Simplify the content acquisition of the collisionSet [`50882c5`](https://github.com/gchatzopoulosCC/battlesnake/commit/50882c5dedf3478dbf0b7960418fb69731d21b64)
+- refactor(coordinates): Create a dedicated file for coordinates' related functions [`fc3e466`](https://github.com/gchatzopoulosCC/battlesnake/commit/fc3e466e74a8222b5bba23ab1b4050b6d0ebd4ee)
+- refactor(coordinates): Change the arguments of the parseCoordinates function from position to (x,y) [`530471b`](https://github.com/gchatzopoulosCC/battlesnake/commit/530471b13fb21e556206d911541082085b8bee9f)
+- refactor(adjacentPositions): Use parseCoordinates inside instead of manually formatting [`9b0df87`](https://github.com/gchatzopoulosCC/battlesnake/commit/9b0df87847ae45f52536f362ed7a4d42a0bfaf49)
+- fix(adjacentPositions): Add the extension of the file in the import [`f9a859b`](https://github.com/gchatzopoulosCC/battlesnake/commit/f9a859b3f14b938f68a7719790e670f90814a5b1)
+- refactor(bodySet, collisionSet): Move the files of the lib/sets to utils/sets [`d8b9978`](https://github.com/gchatzopoulosCC/battlesnake/commit/d8b99786ad5d9e5d6992360487c33d2968525651)
+- fix(avoidOthers, avoidSelf): Reflect changes on the imports [`015bda7`](https://github.com/gchatzopoulosCC/battlesnake/commit/015bda7ac9ddd2ff19cc922f8ffc4f5d44a55619)
+- refactor(.prettierrc): Remove the contents of the prettier configuration file since all the values were the default ones [`d950b86`](https://github.com/gchatzopoulosCC/battlesnake/commit/d950b86867d3f7d06152ca6ca1553d9534a7850f)
+- refactor(*): Run prettier and format everything [`01ac617`](https://github.com/gchatzopoulosCC/battlesnake/commit/01ac617e1422d8881a748a69a9c610b27532e78d)
+- refactor(eslint.config): Change the extension from js to mjs and use the defineConfig alias [`cea4aed`](https://github.com/gchatzopoulosCC/battlesnake/commit/cea4aed5e70e1ce8f70f5db74a82de90d19ab595)
+- feat: setup of jest [`b32f350`](https://github.com/gchatzopoulosCC/battlesnake/commit/b32f3508a8dde6b1efaa6fe469c55e95e64f729e)
+- feat: Add initial Jest configuration [`e7a4e2b`](https://github.com/gchatzopoulosCC/battlesnake/commit/e7a4e2b9c2a34e2c8d0fd4fd97c62f73aacb0dda)
+- feat: Added npm scripts for testing and linting [`d0380b3`](https://github.com/gchatzopoulosCC/battlesnake/commit/d0380b3edda33636eabbf4929cee03d1f1f3251d)
+- chore: Remove redundant extensionsToTreatAsEsm line from Jest config [`7a8df58`](https://github.com/gchatzopoulosCC/battlesnake/commit/7a8df58201d2be4e022fc0dfe1a89d39c1e3f1ee)
+- test(AvoidWalls): Implement tests for avoidWalls [`15fd40d`](https://github.com/gchatzopoulosCC/battlesnake/commit/15fd40dea0f321dbd8f4101a42316e7aa3f63b1c)
+- refactor(avoidanceChecker): Change the parameter name getMapFunction to getSetFunction [`c9e888c`](https://github.com/gchatzopoulosCC/battlesnake/commit/c9e888c836020665f3560f665bbabc75fbc009a5)
+- docs(game): Add approprate documentation for the file and all of its functions [`f07a015`](https://github.com/gchatzopoulosCC/battlesnake/commit/f07a015dacf4999263c8b48c2284a399eab3abe0)
+- refactor(avoidanceChecker): Rename the variable map to set [`5e23c7c`](https://github.com/gchatzopoulosCC/battlesnake/commit/5e23c7cd3f74de0383c214ea1c2dee0282b31423)
+- docs(snake): Add appropriate documentation for the snake.js file [`1e6a163`](https://github.com/gchatzopoulosCC/battlesnake/commit/1e6a163923b6c35a3ff9dc3f81fb924b066f2658)
+- docs(body): Add appropriate documentation for the snake.js file [`fc51e32`](https://github.com/gchatzopoulosCC/battlesnake/commit/fc51e32fb976be6d292b833367f91d1dab659530)
+- fix(snake): Remove the moveDirection definition above the move function description and expand the move function description, as well as the gameState object [`79a2a8d`](https://github.com/gchatzopoulosCC/battlesnake/commit/79a2a8df4e1fa49cd7b55edb88a201a094f5f452)
+- Test for avoidBackwards function [`3d33b39`](https://github.com/gchatzopoulosCC/battlesnake/commit/3d33b3984aefbafd7b337a18776b3093611d52e4)
+- docs(adjacentPositions): Add appropriate documentation for the adjacentPositions.js file [`b6cd4f7`](https://github.com/gchatzopoulosCC/battlesnake/commit/b6cd4f7dfbfce14e4c7a6dee123b292a586e5e65)
+- fix(adjacentPositions): Replace getUpAdjacentPosition(position) with getDownAdjacentPosition(position) in the getDownAdjacentPosition documentation [`4caac4d`](https://github.com/gchatzopoulosCC/battlesnake/commit/4caac4dcfa5c89d5be0b50ee57c339f32f526c00)
+- docs(coordinates): Add appropriate documentation for the coordinates.js file [`4972862`](https://github.com/gchatzopoulosCC/battlesnake/commit/49728621b34345494f4de297c2daa80dabf4aaf9)
+- docs(moves): Add appropriate documentation for the moves.js file [`111ec58`](https://github.com/gchatzopoulosCC/battlesnake/commit/111ec582d722b5836e8476d3d33edf6e3ec36c65)
+- fix(coordinates): Add the /coordinates in the @module [`2383932`](https://github.com/gchatzopoulosCC/battlesnake/commit/23839324d1f0250bca71f7e5e392fd128e11b4df)
+- fix(adjacentPositions): Add the /adjacentPositions in the @module [`06cb649`](https://github.com/gchatzopoulosCC/battlesnake/commit/06cb649a1b9311975397226d2f23d6a4ad44f7a0)
+- refactor(moves): Use getHead(gameState) instead of retrieving the head of the snake manually [`8bb4b46`](https://github.com/gchatzopoulosCC/battlesnake/commit/8bb4b46ce07c2076e21bdbb04244c1cfa6bca838)
+- fix(body): Make the getTail return gameState.you.body[1] instead of gameState.you.slice(1); [`a1a52d8`](https://github.com/gchatzopoulosCC/battlesnake/commit/a1a52d86de37175da3468551747e330da4cea7bf)
+- refactor(avoidGoingBackwards): Use getHead, getTail instead of taking this parts manually [`6e11ee1`](https://github.com/gchatzopoulosCC/battlesnake/commit/6e11ee13d1ac11a544835b48af24b37a4e741e10)
+- refactor(avoidWalls): Use getHead(gameState) instead of getting the head of the snake manually [`495de6d`](https://github.com/gchatzopoulosCC/battlesnake/commit/495de6d02051c91b000493e8b8db659f49ed8b43)
+- docs(avoidGoingBackwards): Write appropriate documentation for the whole file [`34e2643`](https://github.com/gchatzopoulosCC/battlesnake/commit/34e26433669812e8d8a85aa5546291a49e037e82)
+- fix(avoidGoingBackwards): Add the extention of the module imported [`a9de9e7`](https://github.com/gchatzopoulosCC/battlesnake/commit/a9de9e794f6e0f3f55b4529fc7575cdc779c6adf)
+- fix(avoidWalls): Add the extention of the module imported [`e52b91c`](https://github.com/gchatzopoulosCC/battlesnake/commit/e52b91cc163e110d565307e0771fa07e84d609cd)
+- Refactor parts of the test and added some specific cases for its movement [`f5bf19e`](https://github.com/gchatzopoulosCC/battlesnake/commit/f5bf19e788b9fb55fb14492dc714fa5174f55f16)
+- Refactor parts of the test and added some specific cases the behavior of avoidwalls [`5dc6e78`](https://github.com/gchatzopoulosCC/battlesnake/commit/5dc6e78e068f8a0cea7fe6bc9b448bca952d44fe)
+- docs(avoidWalls): Write appropriate documentation for all the contents of the file [`8fef29b`](https://github.com/gchatzopoulosCC/battlesnake/commit/8fef29b6958f575b08cab80e77a04a7b7db18288)
+- fix(avoidGoingBackwards): Add the missing return statement and update the documentation [`121617a`](https://github.com/gchatzopoulosCC/battlesnake/commit/121617a76405be407d8a668db507db87b1fd9273)
+- docs(adjacentPositions): Add the @requires at the top of the file [`ee02095`](https://github.com/gchatzopoulosCC/battlesnake/commit/ee0209591362c914b7f4945b877e38d00372b8f6)
+- docs(moves): Add the @requires at the top of the file [`64337d8`](https://github.com/gchatzopoulosCC/battlesnake/commit/64337d82af8b8b1df59f19f5b8884370296c3655)
+- fix(adjacentPositions): Update the @requires to use the correct format [`19a42a0`](https://github.com/gchatzopoulosCC/battlesnake/commit/19a42a0c2e7c03b09c669d5a124ae851a3d65b58)
+- docs(avoidOthers): Write appropriate documentation for all the contents of the file [`52b87ec`](https://github.com/gchatzopoulosCC/battlesnake/commit/52b87ec470aa3b38d2948f4c0f23a1c308cb0c1b)
+- docs(avoidSelf): Write appropriate documentation for all the contents of the file [`3fffaba`](https://github.com/gchatzopoulosCC/battlesnake/commit/3fffaba04939ec13e2a03931d2891d8e1bdde8d8)
+- docs(avoidanceChecker): Write appropriate documentation for all the contents of the file [`2598b09`](https://github.com/gchatzopoulosCC/battlesnake/commit/2598b094a9484836932e9d4c662b600dcbc80270)
+- docs(bodySet): Write appropriate documentation for all the contents of the file [`0893599`](https://github.com/gchatzopoulosCC/battlesnake/commit/0893599b208b744537215b5d9cd2a570c59239eb)
+- fix(bodySet): Get the body segments by using the getTail(gameState) functions and update the documentation accordingly [`d65f2e5`](https://github.com/gchatzopoulosCC/battlesnake/commit/d65f2e5ab63a57b62b987e8474eedcab5290a2e1)
+- docs(collisionSet): Write appropriate documentation for all the contents of the file [`7eb8af8`](https://github.com/gchatzopoulosCC/battlesnake/commit/7eb8af889cc91a26587357e58123e52cff8c5aff)
+- fix(adjacentPositions): Replace the return type of each function from Object to String [`c42b6c8`](https://github.com/gchatzopoulosCC/battlesnake/commit/c42b6c802b50fd46bbff774ae61cbaaf413af9bb)
+- fix(moves): Use the getHead(gameState) function and update the documentation accordingly [`bd46291`](https://github.com/gchatzopoulosCC/battlesnake/commit/bd46291705a9b8fa269ed1f53d28282dce9cf805)
+- docs(body): Expand the documentation by adding more parameter explanations and better descriptions [`f5761a8`](https://github.com/gchatzopoulosCC/battlesnake/commit/f5761a81462bbed8a8f8dfa12d4310049e1166ab)
+- docs(game): Expand the documentation by adding more parameter explanations and better descriptions [`5f266b6`](https://github.com/gchatzopoulosCC/battlesnake/commit/5f266b6ace97be68b90855ef18380ba0b5041a11)
+- docs(snake): Expand the documentation by adding more parameter explanations, better descriptions, typedef to indicate the valid moves and the required modules [`61b5dce`](https://github.com/gchatzopoulosCC/battlesnake/commit/61b5dceb49f7564af1cee1ab975f4b3414c43e3c)
+- docs(avoidGoingBackwards): Expand the documentation by adding more parameter explanations and better descriptions [`35733c1`](https://github.com/gchatzopoulosCC/battlesnake/commit/35733c1694ad9e4d6e488e2ac7106e8c0ef53ac7)
+- fix(avoidGoingBackwards): Use getHead(gameState) and getTail(gameState) and update the documentation (add the @requires) [`e59194c`](https://github.com/gchatzopoulosCC/battlesnake/commit/e59194c5973ff934cc9c543c28f12c438cfb8ac9)
+- docs(avoidOthers): Expand the documentation by adding more parameter explanations and better descriptions [`ea75302`](https://github.com/gchatzopoulosCC/battlesnake/commit/ea75302fe4ebf3e84cdc783c8bd652f625f9d24d)
+- docs(avoidSelf): Enhance descriptions [`5372037`](https://github.com/gchatzopoulosCC/battlesnake/commit/5372037a4d2122c24e77a08e333b2f216f0126df)
+- docs(avoidWalls): Expand the documentation by adding more parameter explanations and better descriptions [`d899412`](https://github.com/gchatzopoulosCC/battlesnake/commit/d899412b88d1afec3c25286ede97dfbff8d1f18e)
+- docs(avoidanceChecker): Expand the documentation by adding more parameter explanations, better descriptions and document the inner function [`0e4858c`](https://github.com/gchatzopoulosCC/battlesnake/commit/0e4858c9148cd08e1612d9adde5749c67969a73a)
+- Test for AvoidSelf function, checking many aspects and cases [`c0cd6ec`](https://github.com/gchatzopoulosCC/battlesnake/commit/c0cd6ecc6fd9031be0128f19a5a79ea5263f7ae2)
+- docs(bodySet): Enhance descriptions [`4805c12`](https://github.com/gchatzopoulosCC/battlesnake/commit/4805c120ce5a35adfd13d3c97f1b93b2a9fc3dfe)
+- docs(collisionSet): Enhance descriptions [`c35ed11`](https://github.com/gchatzopoulosCC/battlesnake/commit/c35ed11bcce56ae21d50270afe346379d1b3d2ca)
+- docs(index.js): Add appropriate documentation for the contents of this file [`ed2be7a`](https://github.com/gchatzopoulosCC/battlesnake/commit/ed2be7af601499b235121844c2d2293b43bc53f8)
+- docs(server.js): Add appropriate documentation for the contents of this file [`c6cc541`](https://github.com/gchatzopoulosCC/battlesnake/commit/c6cc5412c751a801f4e7fc221c9321c187e53dd7)
+- refactor(*): Run prettier for the whole codebase [`3d886eb`](https://github.com/gchatzopoulosCC/battlesnake/commit/3d886eb6251345892e40a59d441f1bcd0e0ce9f6)
+- Test for AvoidOthers function, checking many aspects and cases [`3212aa6`](https://github.com/gchatzopoulosCC/battlesnake/commit/3212aa6976bd735e59f3eb9c9cd9dfc0f4bccabf)
+- docs(README): Expand the file by adding more information about the project, prerequisites, installation and deployment instructions and folder structure [`83cb4f1`](https://github.com/gchatzopoulosCC/battlesnake/commit/83cb4f149c793e19afbc2330f34e66055df5ce89)
+- docs(README): Add table of contents and format the file [`35b83e9`](https://github.com/gchatzopoulosCC/battlesnake/commit/35b83e9d1cfe40b5d42a1e0217330f68189e865f)
+- docs(package.json, package-lock.json): Install JSDoc [`f1fc1c7`](https://github.com/gchatzopoulosCC/battlesnake/commit/f1fc1c7c8d40ad4ca0e36c92fba227f6d79d1c5e)
+- feat(package.json): Add a jsdoc script [`4690e80`](https://github.com/gchatzopoulosCC/battlesnake/commit/4690e803585906397cd0b63ac5349f4d56662d08)
+- fix(.gitignore): Comment out 'out' to push the html page created by jsdoc [`0a26389`](https://github.com/gchatzopoulosCC/battlesnake/commit/0a26389b9413674e46cf482213110b85c461dffd)
+- docs(out/): Generate the jsdoc html page [`cf9c5d2`](https://github.com/gchatzopoulosCC/battlesnake/commit/cf9c5d2c6b094b4000c418477caeabe9894f17c7)
+- refactor(*): Run prettier for all files [`e6399bf`](https://github.com/gchatzopoulosCC/battlesnake/commit/e6399bf06b66aacf138d2463b06e41fae6619458)
+- fix(.prettierignore): Add /out/ [`e2ec4ec`](https://github.com/gchatzopoulosCC/battlesnake/commit/e2ec4ec0dda0de08a4b934f2e0ef535203edf35a)
+- fix(avoidGoingBackwards): Add the file extension in the import [`ecdbbd6`](https://github.com/gchatzopoulosCC/battlesnake/commit/ecdbbd61d375794a76eabd1f3da0f64cb019a5a8)
+- fix(bodySet): Add the file extension in the import [`a4db474`](https://github.com/gchatzopoulosCC/battlesnake/commit/a4db47432f6bca06bcf24f373296ebb410c65e0c)
+- docs(README): Change the names of the sections to the ones named in the slides and rewrite the How to Run [`f7d8634`](https://github.com/gchatzopoulosCC/battlesnake/commit/f7d8634a4b69932a57e635c68ebd9885bc2500be)
+- docs(README): Add Configuration Files, Launch Parameters and rename References to Extended Documentation [`a620149`](https://github.com/gchatzopoulosCC/battlesnake/commit/a6201498c7bc780a5bfe3d6c1396a0933594e695)
+- refactor(README): Change the position of the description to the top [`09fed72`](https://github.com/gchatzopoulosCC/battlesnake/commit/09fed7240e6385269d10f0887a7fda3fbde0b437)
+- fix(README): Change the command from 'node index.js' to 'node server.js' [`e1d7b7d`](https://github.com/gchatzopoulosCC/battlesnake/commit/e1d7b7d18b8101bb92a5b57ba3211028f02ee3b6)
+- fix(README): Change the command 'node server.js' to 'node index.js' to all places in the README [`5db5695`](https://github.com/gchatzopoulosCC/battlesnake/commit/5db569559a6aa4064ee4768a091091abb2789329)
+- fix(game): Change the colour from pink to black [`3f4219f`](https://github.com/gchatzopoulosCC/battlesnake/commit/3f4219f2e26194f92f61d7bd22ab53b1c75a54e9)
+- fix(body, game, avoidWalls, avoidanceChecker): Resolve conflicts with develop [`a6abe37`](https://github.com/gchatzopoulosCC/battlesnake/commit/a6abe37cf23efeaf122a004111fb22e5632ade1c)
+- refactor(game): Remove the TODO comments [`5d603fc`](https://github.com/gchatzopoulosCC/battlesnake/commit/5d603fc2f404a200285768e67b0b743ac9fdccee)
+- Apply Prettier formatting to test files [`c9bef07`](https://github.com/gchatzopoulosCC/battlesnake/commit/c9bef07cf09d1cb8a895155662cf4f1220db5925)
+- fix(bodySet): Replace getTail with gameState.you.body.slice(1) [`fa7dc2a`](https://github.com/gchatzopoulosCC/battlesnake/commit/fa7dc2a4271ea0b69f30d58ae5daea924f60f70f)
+- fix(README): Fix typo [`e0d934e`](https://github.com/gchatzopoulosCC/battlesnake/commit/e0d934e9c883e70d330ad94c9bcf32a72e965c21)
+- fix(README): Fix typo [`7f7ee7b`](https://github.com/gchatzopoulosCC/battlesnake/commit/7f7ee7bedcde5f8a652114fabf41a18e73556a4c)
+- fix(avoidWalls): Add the missing import [`3f440ad`](https://github.com/gchatzopoulosCC/battlesnake/commit/3f440ad5b8540f554102b3609668d754d426db0a)
+- fix(body, bodySet): Return the whole tail not just the first segments [`9e80af7`](https://github.com/gchatzopoulosCC/battlesnake/commit/9e80af7e2ba7ab78e1f1a6e26e3b4a9ff1160b23)
+- fix(avoidWalls): Add the extension in the import [`59c1083`](https://github.com/gchatzopoulosCC/battlesnake/commit/59c10830ccfe24d9aa767520b96bd4975c4b56b7)
+- docs(CHANGELOG): add  2025-05-13 [`fd23a7a`](https://github.com/gchatzopoulosCC/battlesnake/commit/fd23a7a3db2d7ecc4fedc05ca8185c2b4f64c143)
+- docs(CHANGELOG): add  2025-05-14 [`23b0d60`](https://github.com/gchatzopoulosCC/battlesnake/commit/23b0d60809244deb53096747a3296dd8968c582d)
+- docs(CHANGELOG): add  2025-05-18 [`ce89a0b`](https://github.com/gchatzopoulosCC/battlesnake/commit/ce89a0b8fa6384a328459d5bd1761a112e29d620)
+- docs(CHANGELOG): add  2025-05-19 [`81cbcb7`](https://github.com/gchatzopoulosCC/battlesnake/commit/81cbcb7c7cbfbefc365e3ad46682515e84299e9e)
+- docs(CHANGELOG): add  2025-05-20 [`ed382ac`](https://github.com/gchatzopoulosCC/battlesnake/commit/ed382ac410b51724d236b87e9cbc9b3e40d5541f)
+- fix(CHANGELOG):I put three hashes instead of two [`a70ee87`](https://github.com/gchatzopoulosCC/battlesnake/commit/a70ee87e1c8743e173a96c1b27aad74cb6343a91)
+- docs(CHANGELOG): update  2025-05-19 [`9e56387`](https://github.com/gchatzopoulosCC/battlesnake/commit/9e56387a96ba5cce5563e6af3afa91b557a07712)
+- docs(CHANGELOG): update(added apropriatehashes)  2025-05-19 [`51690f5`](https://github.com/gchatzopoulosCC/battlesnake/commit/51690f5637fa9e4135a167588162bdf1f926c920)
+- docs(CHANGELOG): update  2025-05-20 [`61feff7`](https://github.com/gchatzopoulosCC/battlesnake/commit/61feff7331e9c2011db0de3755679076826c9077)
+- docs(CHANGELOG): add  2025-05-21 [`50abcd6`](https://github.com/gchatzopoulosCC/battlesnake/commit/50abcd645dc902353a19afcd811dbe13b8736c43)
+- fix(CHANGELOG): Add the release version of the app on 2025-04-30 [`6810db2`](https://github.com/gchatzopoulosCC/battlesnake/commit/6810db2502abab13efd80d7c30664c3735d51668)
+- refactor(CHANGELOG): Format changelog with prettier [`d406de6`](https://github.com/gchatzopoulosCC/battlesnake/commit/d406de675ad82e836509490d8b038d846f32d742)
+- feat(CHANGELOG): Add the new changes on 2025-05-21 to changelog [`0c5fb7d`](https://github.com/gchatzopoulosCC/battlesnake/commit/0c5fb7d2620ccdc729f61b4b0208257f6726c321)
+- fix(eslint.config): Ignore unecessary files: node_modules/, out/ [`5119b5e`](https://github.com/gchatzopoulosCC/battlesnake/commit/5119b5ee51ac428e106b9b061d180c21fdd31886)
+- feat(CHANGELOG): Update the new eslint ignore functionality of CHANGELOG [`35d379e`](https://github.com/gchatzopoulosCC/battlesnake/commit/35d379e86f857948a8e669c3d01d24d4b2ced146)
+- fix(CHANGELOG): Add the auther of the 'Format CHANGELOG with Prettier' commit [`06b56c8`](https://github.com/gchatzopoulosCC/battlesnake/commit/06b56c80b8ad90f786d92a75cb9b9ba8a30581a2)
+- feat: updated scripts for jest [`60546e5`](https://github.com/gchatzopoulosCC/battlesnake/commit/60546e5e6cc71abc8dbbd847a45561933dac0973)
+- fix(avoidGoingBackwards.test, avoidWalls.test, avoidSelf.test, avoidOthers.test): Transfer to src/lib/moves [`be153c2`](https://github.com/gchatzopoulosCC/battlesnake/commit/be153c2e47d7b78cfa39304aa84c0589d897a42f)
+- feat(body): Make a function to jest get the neck of the snake [`55a3050`](https://github.com/gchatzopoulosCC/battlesnake/commit/55a3050982f49ff34a4bde4723fb7388a5c6cb82)
+- fix(avoidGoingBackwards): Get just the neck not the whole tail [`608c7bc`](https://github.com/gchatzopoulosCC/battlesnake/commit/608c7bcb2ec29ac92601ab21656a372a5c79e515)
+- fix(avoidsSelf.test): fix poi 1 test logic to make move up safety as false [`66fc204`](https://github.com/gchatzopoulosCC/battlesnake/commit/66fc20489950e4836c26e255906964b67f568cb2)
+- Updated changelog with newer entries [`c10f999`](https://github.com/gchatzopoulosCC/battlesnake/commit/c10f999feae0c6da8aafb3fd11e48c10165f2830)
+- feat(body): Create a function to just get the neck of the snake [`424bcbe`](https://github.com/gchatzopoulosCC/battlesnake/commit/424bcbe802ba2e587ae3099909bbac8cc8b807ba)
+- fix(avoidGoingBackwards): Use getNeck instead of getHead [`fb462ec`](https://github.com/gchatzopoulosCC/battlesnake/commit/fb462ec54361647fcdaeb5967b278704c689945f)
+- docs(CHANGELOG): Add the getNeck feature and fix in the changelog [`3449040`](https://github.com/gchatzopoulosCC/battlesnake/commit/3449040793072b9bf446a8086d4c6d98fa7d8bea)
+- feat: Git ignore JetBrains IDEs settings [`c5e4969`](https://github.com/gchatzopoulosCC/battlesnake/commit/c5e496925b9cfddeb2d4d70a72a79287b3fcd5c0)
+- refactor: Rename the previous utils folder to helper, and the previous core folder to utils. Also transfer the contents of common in the now helper folder [`188fdfd`](https://github.com/gchatzopoulosCC/battlesnake/commit/188fdfdec5692b3fe1ce47686d6bb3f888faf935)
+- refactor: Transfer the test files to their own tests directory [`8d29f05`](https://github.com/gchatzopoulosCC/battlesnake/commit/8d29f050e0423088dfcc47bddefe48260216f226)
+- fix: Change the coverage collection from src/**/*.js to tests/**/*.js [`8f1c7cd`](https://github.com/gchatzopoulosCC/battlesnake/commit/8f1c7cd88724a675e6977b000f5682ceb6ffea1c)
+- refactor: Change the location of the PR template to PULL_REQUEST_TEMPLATE/pull_request_template.md [`491b675`](https://github.com/gchatzopoulosCC/battlesnake/commit/491b675eb8066219c045e842b4ce6cdefdcb2421)
+- refactor: Run jsdoc src -r to reflect the changes [`26a40f6`](https://github.com/gchatzopoulosCC/battlesnake/commit/26a40f6ef5fe9fad8de6f06fc08d2701af5d289d)
+- fix: Add the missing jsdoc script [`e7ffc1e`](https://github.com/gchatzopoulosCC/battlesnake/commit/e7ffc1ea98e729b48fc8b9974c2e1546211cd485)
+- refactor: Reflect changes to the jsdoc @module and @requires [`6a154b9`](https://github.com/gchatzopoulosCC/battlesnake/commit/6a154b9b2a179e7ae6ee798e1472394a9b894d58)
+- refactor: Run npm run jsdoc to reflect changes [`46314f5`](https://github.com/gchatzopoulosCC/battlesnake/commit/46314f5ac53bd1ad2d35054900da3e41a940ddac)
+- docs(CHANGELOG): Write the changes up to this point [`7e79ed9`](https://github.com/gchatzopoulosCC/battlesnake/commit/7e79ed9eb2d805a3bf580e6f3e75a13e74567262)
+- refactor(README): Write the updated file structure in the README [`7a51abd`](https://github.com/gchatzopoulosCC/battlesnake/commit/7a51abd282eff8b5519136e4446806e6142ed830)
+- feat(package): Add a file-structure command to display the file structure [`6a37270`](https://github.com/gchatzopoulosCC/battlesnake/commit/6a37270f6be5a7f1bff19f27b0d3e957644c644e)
+- fix(README): Add the missing launch parameters (jsdoc, test*, file-structure) [`bae4523`](https://github.com/gchatzopoulosCC/battlesnake/commit/bae45232e4c63f90c20a949fa17a04c7a7679307)
+- refactor(package, README): Rename the file-structure command to tree [`4047706`](https://github.com/gchatzopoulosCC/battlesnake/commit/4047706a1a23d9a5a4530c557199c9fed48f5024)
+- refactor(*): Run prettier [`a220715`](https://github.com/gchatzopoulosCC/battlesnake/commit/a2207157f40014df2672398e392a453eae00edac)
+- docs(README): Add the prettier launch parameter [`dd7698b`](https://github.com/gchatzopoulosCC/battlesnake/commit/dd7698bf7a6bee83b0ea4ae8a73d40d605f43f4b)
+- docs(CHANGELOG): Update changelog with the changes up to this point [`66fd1d0`](https://github.com/gchatzopoulosCC/battlesnake/commit/66fd1d0b3e3f0ba65182424b4c192de3b0f81123)
+- docs(CHANGELOG): Update changelog with the changes up to this point [`16190b3`](https://github.com/gchatzopoulosCC/battlesnake/commit/16190b3510d538ac85b58cec55853ad5eea897ac)
+- fix(README): Remove unnecessary duplicate jsdoc launch param [`9e4fbf4`](https://github.com/gchatzopoulosCC/battlesnake/commit/9e4fbf4dd2d785cfa2e1e5a57b909de1ab1e7e6e)
+- fix(CHANGELOG): Remove jsdoc reference [`2942ca6`](https://github.com/gchatzopoulosCC/battlesnake/commit/2942ca61fc32436c534408e28df4a25989f2a8d7)
+- chore(release): 1.1.0 [`04dd2a6`](https://github.com/gchatzopoulosCC/battlesnake/commit/04dd2a6f10f1ff6fb73051868a3b16a9c2762a9c)
+
+## v1.0.0 - 2025-04-30
+
+### Merged
+
+- Develop [`#59`](https://github.com/gchatzopoulosCC/battlesnake/pull/59)
+- Add CHANGELOG.md [`#54`](https://github.com/gchatzopoulosCC/battlesnake/pull/54)
+- Patch/refactor moves [`#58`](https://github.com/gchatzopoulosCC/battlesnake/pull/58)
+- Make a file for each move function [`#57`](https://github.com/gchatzopoulosCC/battlesnake/pull/57)
+- fix: fix the eslint errors [`#56`](https://github.com/gchatzopoulosCC/battlesnake/pull/56)
+- Feature/prettier [`#55`](https://github.com/gchatzopoulosCC/battlesnake/pull/55)
+- fix: change the dependabot npm schedule to weekly, monday 5:00 and ch… [`#53`](https://github.com/gchatzopoulosCC/battlesnake/pull/53)
+- feat: Add the required eslint plugins [`#52`](https://github.com/gchatzopoulosCC/battlesnake/pull/52)
+- Transfer the empty commits of develop to main [`#51`](https://github.com/gchatzopoulosCC/battlesnake/pull/51)
+- Keep develop up to date with main [`#50`](https://github.com/gchatzopoulosCC/battlesnake/pull/50)
+- Keep develop up to date with main [`#49`](https://github.com/gchatzopoulosCC/battlesnake/pull/49)
+- fix: generate a new package-lock.json [`#48`](https://github.com/gchatzopoulosCC/battlesnake/pull/48)
+- Keep develop up to date with main (#46) [`#47`](https://github.com/gchatzopoulosCC/battlesnake/pull/47)
+- Keep develop up to date with main [`#46`](https://github.com/gchatzopoulosCC/battlesnake/pull/46)
+- feat: Create and configure .editorconfig [`#44`](https://github.com/gchatzopoulosCC/battlesnake/pull/44)
+- fix: remove newfile.js [`#42`](https://github.com/gchatzopoulosCC/battlesnake/pull/42)
+- Feature/eslint [`#45`](https://github.com/gchatzopoulosCC/battlesnake/pull/45)
+- feat: Feature/eslint [`#41`](https://github.com/gchatzopoulosCC/battlesnake/pull/41)
+- feat: Configure dependabot [`#29`](https://github.com/gchatzopoulosCC/battlesnake/pull/29)
+- Patch/user story template [`#31`](https://github.com/gchatzopoulosCC/battlesnake/pull/31)
+- Patch/update develop from main [`#28`](https://github.com/gchatzopoulosCC/battlesnake/pull/28)
+- Bump node-fetch from 3.2.6 to 3.2.10 [`#22`](https://github.com/gchatzopoulosCC/battlesnake/pull/22)
+- Bump body-parser and express [`#26`](https://github.com/gchatzopoulosCC/battlesnake/pull/26)
+- Transfer the working code to main [`#19`](https://github.com/gchatzopoulosCC/battlesnake/pull/19)
+- Move functions' optimization [`#18`](https://github.com/gchatzopoulosCC/battlesnake/pull/18)
+- Feature/avoid collision with itself [`#15`](https://github.com/gchatzopoulosCC/battlesnake/pull/15)
+- Add a pull request template in .github/ [`#16`](https://github.com/gchatzopoulosCC/battlesnake/pull/16)
+- Refactor Base Structure [`#9`](https://github.com/gchatzopoulosCC/battlesnake/pull/9)
+- Create issue templates [`#11`](https://github.com/gchatzopoulosCC/battlesnake/pull/11)
+- Feature/avoid collision with other snakes [`#7`](https://github.com/gchatzopoulosCC/battlesnake/pull/7)
+
+### Commits
+
+- Initial commit [`4914716`](https://github.com/gchatzopoulosCC/battlesnake/commit/4914716bddde66c1f7b613f231b6b8d0ef336632)
+- Initial commit [`072498f`](https://github.com/gchatzopoulosCC/battlesnake/commit/072498f1597b8f653c87c48572cccf6187eb5bd3)
+- Update README.md [`5e73177`](https://github.com/gchatzopoulosCC/battlesnake/commit/5e73177aafcd6f5b3a1c022bc11605fa7d6936f1)
+- Create and configure blank.yml [`37034f1`](https://github.com/gchatzopoulosCC/battlesnake/commit/37034f15740a2e0be56fec350968ef6233319aa9)
+- setup [`91c8567`](https://github.com/gchatzopoulosCC/battlesnake/commit/91c8567df0512bb2b32b976eb5d5c17a18ef38fa)
+- save [`b53c1e1`](https://github.com/gchatzopoulosCC/battlesnake/commit/b53c1e12eee1c93fbd5d45ae7fe0ae13a576297a)
+- merge the initial code [`7fe4ad5`](https://github.com/gchatzopoulosCC/battlesnake/commit/7fe4ad53721735cc4ba09d4385bacb06fd6ffd4b)
+- Merging of Initial Code [`9ef8f32`](https://github.com/gchatzopoulosCC/battlesnake/commit/9ef8f32604636b03f0dd3fa15ac03f9f6c4bea9c)
+- Merge of Ci initial code [`8a8c246`](https://github.com/gchatzopoulosCC/battlesnake/commit/8a8c246597ecd1820410a49dace4a65d59746c7d)
+- Add a generic nodejs gitignore [`221bcf6`](https://github.com/gchatzopoulosCC/battlesnake/commit/221bcf6e4ba9dcf4c6b0f8578264d2356edff873)
+- Merge .gitignore [`06adda7`](https://github.com/gchatzopoulosCC/battlesnake/commit/06adda7674c7621510d6b3c1710a57f098809cb6)
+- Assistant checkpoint: Add startup console messages [`3fb3bcf`](https://github.com/gchatzopoulosCC/battlesnake/commit/3fb3bcf164e90f6487d07565396b7321ecd1679a)
+- Assistant checkpoint: Updated boundary checking logic [`a38abb7`](https://github.com/gchatzopoulosCC/battlesnake/commit/a38abb7c0d9944edab858a270005ee3276ca361f)
+- Assistant checkpoint: Update export syntax in move.js to ES modules [`69536cf`](https://github.com/gchatzopoulosCC/battlesnake/commit/69536cf5b4773961e270c887441d0343ea686b92)
+- Make the snake not go out of bounds and prepare the code for not colliding with other snakes [`abffdfe`](https://github.com/gchatzopoulosCC/battlesnake/commit/abffdfe73b384951aeb3207b045858eb9118a7cc)
+- Delete the is&lt;Direction&gt;Safe functions add an avoidWalls function to prevent the snakes going out of bounds [`990d668`](https://github.com/gchatzopoulosCC/battlesnake/commit/990d668908d2b20354b31459890aaa90eb994b0b)
+- Replace the code for avoidance of other snakes in index.js with an avoidOthers function in src/common/move.js [`01d7be6`](https://github.com/gchatzopoulosCC/battlesnake/commit/01d7be65b262e3ce74a266aa4896823ce4043db8)
+- Rewrite avoidWalls functions for better clarity [`6758a9a`](https://github.com/gchatzopoulosCC/battlesnake/commit/6758a9a5f5def6b72a0adfd9ebc72eb2e9290a83)
+- Rewrite avoidOthers for clarity and add an early exit of the function in case there is no safe move [`06c9993`](https://github.com/gchatzopoulosCC/battlesnake/commit/06c99937f26303eaa8ab399fbae47758a50cb12e)
+- Remove unused variables boardWidth and boardHeight from index.js [`e9e1e79`](https://github.com/gchatzopoulosCC/battlesnake/commit/e9e1e7967bb090ffd60c278f64a34469bb8df0e1)
+- move the functions start, end, printBoard and info to src/core/game.js and the function move to src/core/snakes.js [`97c4659`](https://github.com/gchatzopoulosCC/battlesnake/commit/97c46596cfda8c262b699891114e69e1e8ab2e78)
+- Added the function avoidGoingBackwards in src/common/move.js and move the relevant code from the move function in snake.js to there [`688d850`](https://github.com/gchatzopoulosCC/battlesnake/commit/688d850645253133283a4350c33d89f39e0db77d)
+- Update game.js [`0d88965`](https://github.com/gchatzopoulosCC/battlesnake/commit/0d8896596bdfc7f54e52b9b144f528f444f3ac33)
+- Update, Prevent self-collision [`bb276e4`](https://github.com/gchatzopoulosCC/battlesnake/commit/bb276e4b3b3c92c611c68f1acdca2333a0f801ff)
+- Update,Store all body positions except the head [`4dd856d`](https://github.com/gchatzopoulosCC/battlesnake/commit/4dd856da3ca30cc05c4ec3543ff755bade986495)
+- Update,deleted the curly brackets and the dollar signs [`3ca02cf`](https://github.com/gchatzopoulosCC/battlesnake/commit/3ca02cf0feb17587c01a32af1381aed8c35fa289)
+- Write a test comment for git push [`911a6c0`](https://github.com/gchatzopoulosCC/battlesnake/commit/911a6c0a43b5d81687be5ad323574457c29be3e6)
+- Check if moving in any direction will result in a collision with the body [`89e3781`](https://github.com/gchatzopoulosCC/battlesnake/commit/89e37812227b48a1f3642011234bbdf6be047712)
+- Checkpoint before assistant change: [`6fdc637`](https://github.com/gchatzopoulosCC/battlesnake/commit/6fdc6374dd4a846bc4d8a77696db16c93d4703f4)
+- Assistant checkpoint: Fix snake self-collision detection [`4ef1d88`](https://github.com/gchatzopoulosCC/battlesnake/commit/4ef1d88b16c03c2824408826d5d17c65d25cb423)
+- Checkpoint before assistant change: Add self-collision avoidance to Battlesnake AI [`4a034ff`](https://github.com/gchatzopoulosCC/battlesnake/commit/4a034ff347010b7cf89361131716ca85782fc99f)
+- Assistant checkpoint: Fix undefined myHead variable in avoidSelf function [`41ebc07`](https://github.com/gchatzopoulosCC/battlesnake/commit/41ebc0724b51b7d3c8fe3e6979f85fc8ecfacb96)
+- resolve structural conflicts with the avoidSelf function being in the index.js [`4ff77b8`](https://github.com/gchatzopoulosCC/battlesnake/commit/4ff77b8e8fdf7d4592445c3fb6a091a797d72c7c)
+- Reduce nesting loops and use instant lookups instead of iteration in the src/common/move.js functions for better performance [`2fffdc2`](https://github.com/gchatzopoulosCC/battlesnake/commit/2fffdc2cb7b41c9a1baf3a82ffe62de1f0dd299c)
+- docs: Update README with deployement instructions - merge Feature/deploy to railway [`05f6e6a`](https://github.com/gchatzopoulosCC/battlesnake/commit/05f6e6a56d8a5d080a8d9e86454569762b8e32bc)
+- fix: Generate package-lock.json [`5f7fa0f`](https://github.com/gchatzopoulosCC/battlesnake/commit/5f7fa0fd046b0265c2768f72a45a528550f7e728)
+- fix: change the dependabot npm schedule to weekly, monday 5:00 and change the rebase-stategy of all package ecosystems to auto [`05ef176`](https://github.com/gchatzopoulosCC/battlesnake/commit/05ef176e72bd29487793a647477b6cc98367a8c9)
+- Install and run prettier from the empty config file [`407e7cc`](https://github.com/gchatzopoulosCC/battlesnake/commit/407e7cc36be5badfbf8635d1192c32235276a43d)
+- feat: Add the default values for the .prettierrc [`13153b9`](https://github.com/gchatzopoulosCC/battlesnake/commit/13153b96c7db4351af792ecfc6b51c3734a1751b)
+- feat: aprettier ignore: node_modules, package.json, package-lock.json and future test files [`9ab566a`](https://github.com/gchatzopoulosCC/battlesnake/commit/9ab566ab45937418f334b0d5b833919b12aacb9b)
+- Update CHANGELOG.md with recent commits and changes [`5e82f41`](https://github.com/gchatzopoulosCC/battlesnake/commit/5e82f41c50f6518a5201ea33e53f833d8f2f131b)
+- Update CHANGELOG.md removed merge and pull requests [`cb433d7`](https://github.com/gchatzopoulosCC/battlesnake/commit/cb433d771f78d37ff637f6359f99b2fc588623c4)
+- Update CHANGELOG.md with a new format [`060b3e2`](https://github.com/gchatzopoulosCC/battlesnake/commit/060b3e2915a98926a20277a0f9838ac18ed0c137)
+- Update CHANGELOG.md with eslint fix [`9e511d6`](https://github.com/gchatzopoulosCC/battlesnake/commit/9e511d6c526f8241da7ec61b36d27b4c1f4ca4f6)
+- refactor: Make each move function a seperate file and change the name of the common folder to moves [`3524fa1`](https://github.com/gchatzopoulosCC/battlesnake/commit/3524fa18f59ad9ecc70b8c1a88e0ca6275656fb6)
+- docs: Update changelog [`1ddaa88`](https://github.com/gchatzopoulosCC/battlesnake/commit/1ddaa889867cc1c5729129c6dae5751021979596)

@@ -2,7 +2,7 @@
  * @file collisionSet.js
  * @description This file contains a function to create a Set of positions occupied by other snakes on the board.
  * This Set is used for efficient collision detection when evaluating potential moves during gameplay.
- * @module src/utils/sets/collisionSet
+ * @module src/helper/sets/collisionSet
  */
 
 /**
