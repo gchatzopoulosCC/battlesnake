@@ -1,0 +1,19 @@
+# Auto detect text files and change EOL to LF
+* text=auto
+* text eol=lf
+
+# JS and TS files
+*.js text
+*.ts text
+*.json text
+
+# Documentation
+*.md text
+*.txt text
+
+# Binary files
+*.png binary
+*.jpg binary
+*.gif binary
+*.ico binary
+*.pdf binary
