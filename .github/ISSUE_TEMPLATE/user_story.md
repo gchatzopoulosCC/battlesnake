@@ -1,10 +1,10 @@
-___
+---
 name: User Story
 about: Create a user story to describe a new feature from the user's perspective
 title: ""
 labels: ""
 assignees: ""
-___
+---
 
 **As a [role],**
 **I want [an action or feature],**
