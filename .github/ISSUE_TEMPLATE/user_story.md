@@ -1,3 +1,11 @@
+___
+name: User Story
+about: Create a user story to describe a new feature from the user's perspective
+title: ""
+labels: ""
+assignees: ""
+___
+
 **As a [role],**
 **I want [an action or feature],**
 **So that [a reason or benefit].**
@@ -12,6 +20,6 @@
 
 - [ ] All acceptance criteria are met.
 - [ ] Code is reviewed and approved.
-- [ ] Necessary tests are written and pass.
+- [ ] The necessary tests are written and pass.
 - [ ] Documentation is updated, if applicable.
 - [ ] Feature is deployed to the [environment name].
