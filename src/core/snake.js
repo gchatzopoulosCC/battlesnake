@@ -7,12 +7,14 @@
  * @requires module:src/lib/moves/avoidWalls
  * @requires module:src/lib/moves/avoidSelf
  * @requires module:src/lib/moves/avoidOthers
+ * @requires module:src/utils/moves/huntSmallerSnakes
  */
 
 import { avoidGoingBackwards } from "../utils/moves/avoidGoingBackwards.js";
 import { avoidWalls } from "../utils/moves/avoidWalls.js";
 import { avoidSelf } from "../utils/moves/avoidSelf.js";
 import { avoidOthers } from "../utils/moves/avoidOthers.js";
+import { huntSmallerSnakes, shouldPrioritizeHunting } from "../utils/moves/huntSmallerSnakes.js";
 
 /**
  * @typedef {"up" | "down" | "left" | "right"} MoveDirection
@@ -84,6 +86,15 @@ function move(gameState) {
   if (safeMoves.length === 0) {
     console.log(`MOVE ${gameState.turn}: No safe moves detected! Moving down`);
     return { move: "down" };
+  }
+
+  // Check if we should prioritize hunting
+  if (shouldPrioritizeHunting(gameState)) {
+    const huntMove = huntSmallerSnakes(gameState, isMoveSafe);
+    if (huntMove) {
+      console.log(`MOVE ${gameState.turn}: Hunting! Moving ${huntMove}`);
+      return { move: huntMove };
+    }
   }
 
   // Choose a random move from the safe moves
