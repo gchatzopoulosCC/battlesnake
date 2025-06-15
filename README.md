@@ -2,7 +2,7 @@
 
 ![Battlesnake Logo](https://media.battlesnake.com/social/StarterSnakeGitHubRepos_JavaScript.png)
 
-This is the official repository of Group 4 for assessment (Battlesnake project) of module CCS2430 (Software Development in Practice) at CITY College, University of York Europe Campus. Here it is included all the code needed for the complition of the assignment.
+This is the official repository of Group 4 for assessment (Battlesnake project) of module CCS2430 (Software Development in Practice) at CITY College, University of York Europe Campus. Here it is included all the code needed for the completion of the assignment.
 
 Authors (GitHub usernames):
 
@@ -20,13 +20,13 @@ Authors (GitHub usernames):
   - [Technologies Used](#technologies-used)
   - [Getting started](#getting-started)
     - [Prerequisites](#prerequisites)
-    - [Instalation](#instalation)
+    - [Installation](#installation)
     - [Folder structure](#folder-structure)
   - [How to Run](#how-to-run)
     - [Deployment (Railway)](#deployment-railway)
     - [Game Playing](#game-playing)
   - [Additional Information](#additional-information)
-    - [Configuaration Files](#configuaration-files)
+    - [Configuration Files](#configuration-files)
     - [Launch Parameters](#launch-parameters)
     - [Extended Documentation](#extended-documentation)
 
@@ -41,7 +41,7 @@ This project is built using:
 
 ### Prerequisites
 
-This project requires nodeJS to be installed. For this follow the official [NodeJS installation documentation](https://nodejs.org/en/download)
+This project requires Node.js to be installed. For this to follow the official [Node.js installation documentation](https://nodejs.org/en/download)
 
 ### Installation
 
@@ -57,13 +57,15 @@ or using SSH:
 git clone git@github.com:gchatzopoulosCC/battlesnake.git
 ```
 
-_Notice: if you have configured mutliple SSH keys that have distinct host names you have to change the `@github.com` to `@<your-hostname>`_ 2. Install the packages
+_Notice: if you have configured multiple SSH keys that have distinct host names, you have to change the `@github.com` to `@<your-hostname>`_
+
+2. Install the packages
 
 ```bash
 npm install
 ```
 
-3. Change git remote url to avoid accidental pushes to base project
+3. Change git remote url to avoid accidental pushes to the base project
 
 ```bash
 git remote set-url origin gchatzopoulosCC/battlesnake`
@@ -74,109 +76,45 @@ git remote -v #confirm the changes
 
 ```
 .
-├── out
-│   ├── fonts
-│   │   ├── OpenSans-BoldItalic-webfont.eot
-│   │   ├── OpenSans-BoldItalic-webfont.svg
-│   │   ├── OpenSans-BoldItalic-webfont.woff
-│   │   ├── OpenSans-Bold-webfont.eot
-│   │   ├── OpenSans-Bold-webfont.svg
-│   │   ├── OpenSans-Bold-webfont.woff
-│   │   ├── OpenSans-Italic-webfont.eot
-│   │   ├── OpenSans-Italic-webfont.svg
-│   │   ├── OpenSans-Italic-webfont.woff
-│   │   ├── OpenSans-LightItalic-webfont.eot
-│   │   ├── OpenSans-LightItalic-webfont.svg
-│   │   ├── OpenSans-LightItalic-webfont.woff
-│   │   ├── OpenSans-Light-webfont.eot
-│   │   ├── OpenSans-Light-webfont.svg
-│   │   ├── OpenSans-Light-webfont.woff
-│   │   ├── OpenSans-Regular-webfont.eot
-│   │   ├── OpenSans-Regular-webfont.svg
-│   │   └── OpenSans-Regular-webfont.woff
-│   ├── scripts
-│   │   ├── prettify
-│   │   └── linenumber.js
-│   ├── styles
-│   │   ├── jsdoc-default.css
-│   │   ├── prettify-jsdoc.css
-│   │   └── prettify-tomorrow.css
-│   ├── common_sets_adjacentPositions.js.html
-│   ├── common_sets_coordinates.js.html
-│   ├── common_sets_moves.js.html
-│   ├── common_snake_body.js.html
-│   ├── core_game.js.html
-│   ├── core_snake.js.html
-│   ├── helper_moves_avoidanceChecker.js.html
-│   ├── helper_sets_adjacentPositions.js.html
-│   ├── helper_sets_bodySet.js.html
-│   ├── helper_sets_collisionSet.js.html
-│   ├── helper_sets_coordinates.js.html
-│   ├── helper_sets_moves.js.html
-│   ├── helper_snake_body.js.html
-│   ├── index.html
-│   ├── lib_moves_avoidGoingBackwards.js.html
-│   ├── lib_moves_avoidOthers.js.html
-│   ├── lib_moves_avoidSelf.js.html
-│   ├── lib_moves_avoidWalls.js.html
-│   ├── module-src_common_sets_adjacentPositions.html
-│   ├── module-src_common_sets_coordinates.html
-│   ├── module-src_common_sets_moves.html
-│   ├── module-src_common_snake_body.html
-│   ├── module-src_core_game.html
-│   ├── module-src_core_snake.html
-│   ├── module-src_helper_moves_avoidanceChecker.html
-│   ├── module-src_helper_sets_adjacentPositions.html
-│   ├── module-src_helper_sets_bodySet.html
-│   ├── module-src_helper_sets_collisionSet.html
-│   ├── module-src_helper_sets_coordinates.html
-│   ├── module-src_helper_sets_moves.html
-│   ├── module-src_helper_snake_body.html
-│   ├── module-src_lib_moves_avoidGoingBackwards.html
-│   ├── module-src_lib_moves_avoidOthers.html
-│   ├── module-src_lib_moves_avoidSelf.html
-│   ├── module-src_lib_moves_avoidWalls.html
-│   ├── module-src_utils_moves_avoidanceChecker.html
-│   ├── module-src_utils_moves_avoidGoingBackwards.html
-│   ├── module-src_utils_moves_avoidOthers.html
-│   ├── module-src_utils_moves_avoidSelf.html
-│   ├── module-src_utils_moves_avoidWalls.html
-│   ├── module-src_utils_sets_bodySet.html
-│   ├── module-src_utils_sets_collisionSet.html
-│   ├── utils_moves_avoidanceChecker.js.html
-│   ├── utils_moves_avoidGoingBackwards.js.html
-│   ├── utils_moves_avoidOthers.js.html
-│   ├── utils_moves_avoidSelf.js.html
-│   ├── utils_moves_avoidWalls.js.html
-│   ├── utils_sets_bodySet.js.html
-│   └── utils_sets_collisionSet.js.html
-├── src
-│   ├── core
-│   │   ├── game.js
-│   │   └── snake.js
-│   ├── helper
-│   │   ├── moves
-│   │   ├── sets
-│   │   └── snake
-│   └── utils
-│       └── moves
-├── tests
-│   └── moves
-│       ├── avoidGoingBackwards.test.js
-│       ├── avoidOthers.test.js
-│       ├── avoidSelf.test.js
-│       └── avoidWalls.test.js
+battlesnake
 ├── CHANGELOG.md
+├── README.md
+├── SECURITY.md
+├── commitlint.config.cjs
 ├── eslint.config.mjs
 ├── index.js
 ├── jest.config.js
-├── package.json
 ├── package-lock.json
-├── README.md
+├── package.json
 ├── replit.nix
-├── SECURITY.md
-└── server.js
-
+├── server.js
+├── src
+│   ├── core
+│   │   ├── game.js
+│   │   └── snake.js
+│   ├── helper
+│   │   ├── moves
+│   │   │   └── avoidanceChecker.js
+│   │   ├── sets
+│   │   │   ├── adjacentPositions.js
+│   │   │   ├── bodySet.js
+│   │   │   ├── collisionSet.js
+│   │   │   ├── coordinates.js
+│   │   │   └── moves.js
+│   │   └── snake
+│   │       └── body.js
+│   └── utils
+│       └── moves
+│           ├── avoidGoingBackwards.js
+│           ├── avoidOthers.js
+│           ├── avoidSelf.js
+│           └── avoidWalls.js
+└── tests
+    └── moves
+        ├── avoidGoingBackwards.test.js
+        ├── avoidOthers.test.js
+        ├── avoidSelf.test.js
+        └── avoidWalls.test.js
 ```
 
 ## How to Run
@@ -205,7 +143,7 @@ node index.js
       2.2. Generate a new domain using any valid port (8080 is recommended)
       2.3. Copy the server url (it will be useful later)
 - Development Environment
-  1.  In Railway create a new `environment` and name it _devepment_
+  1.  In Railway create a new `environment` and name it _development_
   2.  Go to the new environment settings:
       2.1. Add the `develop` branch
       2.2. Generate a new domain using any valid port (8080 is recommended)
@@ -225,11 +163,13 @@ node index.js
 The project includes several configuration files that control code style, linting, and deployment:
 
 ```
+├── commitlint.config.cjs       # Commit message linter
 ├── .editorconfig               # Controls editor behavior (indentation, charset)
+├── .auto-changelog             # Auto-changelog rules
 ├── .prettierrc.json            # Code formatting rules
 ├── eslint.config.mjs           # Code quality and style enforcement
 ├── .replit                     # Replit IDE configuration
-└── replit.nix                  # Nix environment for Replit
+├── replit.nix                  # Nix environment for Replit
 ```
 
 ### Launch Parameters
@@ -266,19 +206,26 @@ npm run test:watch
 npm run test:coverage
 ```
 
-- Display file structure tree
+- Display the file structure tree
 
 ```bash
 npm run tree
 ```
-
-Notice: For Windows users, you may need to install chocolatey to run the `tree` command. Follow the instructions on [Chocolatey](https://chocolatey.org/install) to install it.
 
 - Automatically write the changelog
 
 ```bash
 npm run changelog
 ```
+
+- Prepare project
+
+```bash
+npm run prepare
+```
+
+Notice:
+Currently, `npm prepare` prepares _husky_ to manage pre-commit hooks. Also, `npm prepare` runs _automatically_ with `npm install`
 
 ### Extended Documentation
 

@@ -10,16 +10,21 @@
     "test:coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage",
     "lint": "eslint . --ext .js",
     "jsdoc": "jsdoc src -r",
-    "tree": "tree -L 3 --dirsfirst -I \"node_modules|venv|__pycache__|.idea|.vscode|coverag\"",
-    "changelog": "npx auto-changelog output CHANGELOG.md"
+    "tree": "treee -I \"node_modules|out|.idea|.vscode|coverage\"",
+    "changelog": "auto-changelog",
+    "prepare": "husky init"
   },
   "dependencies": {
     "@types/node": "^18.0.6",
     "express": "^4.21.2",
-    "node-fetch": "^3.2.10"
+    "node-fetch": "^3.2.10",
+    "tree-cli": "^0.6.7"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
     "@eslint/js": "^9.25.1",
+    "auto-changelog": "^2.5.0",
     "eslint": "^9.25.1",
     "eslint-config-prettier": "^10.1.2",
     "eslint-define-config": "^2.1.0",
@@ -28,6 +33,7 @@
     "eslint-plugin-sonarjs": "^3.0.2",
     "eslint-plugin-unicorn": "^59.0.0",
     "globals": "^16.0.0",
+    "husky": "^9.1.7",
     "jsdoc": "^4.0.4",
     "prettier": "3.5.3"
   }
