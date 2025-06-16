@@ -12,4 +12,7 @@ module.exports = {
     "body-max-line-length": [2, "always", 100],
     "header-max-length": [2, "always", 100]
   },
+  ignores: [
+    (commit) => commit.includes('chore(release)') && commit.includes('[skip ci]')
+  ]
 };
