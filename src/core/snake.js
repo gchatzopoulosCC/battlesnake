@@ -13,6 +13,7 @@ import { avoidGoingBackwards } from "../utils/moves/avoidGoingBackwards.js";
 import { avoidWalls } from "../utils/moves/avoidWalls.js";
 import { avoidSelf } from "../utils/moves/avoidSelf.js";
 import { avoidOthers } from "../utils/moves/avoidOthers.js";
+import { huntSmallerSnakes } from "../utils/moves/huntSmallerSnakes.js";
 
 /**
  * @typedef {"up" | "down" | "left" | "right"} MoveDirection
@@ -78,6 +79,7 @@ function move(gameState) {
   avoidWalls(gameState, isMoveSafe);
   avoidSelf(gameState, isMoveSafe);
   avoidOthers(gameState, isMoveSafe);
+  huntSmallerSnakes(gameState, isMoveSafe);
 
   // Are there any safe moves left?
   const safeMoves = Object.keys(isMoveSafe).filter((key) => isMoveSafe[key]);
