@@ -5,7 +5,21 @@
   ],
   "repositoryUrl": "https://github.com/gchatzopoulosCC/battlesnake.git",
   "plugins": [
-      "@semantic-release/commit-analyzer",
+      [
+        "@semantic-release/commit-analyzer",
+        {
+          "preset": "conventionalcommits",
+          "releaseRules": [
+            {"type": "feat", "release": "minor"},
+            {"type": "fix", "release": "patch"},
+            {"type": "docs", "release": false},
+            {"type": "chore", "release": false},
+            {"type": "refactor", "release": false},
+            {"type": "test", "release": false},
+            {"message": ".*", "release": "patch"}
+          ]
+        }
+      ],
       "@semantic-release/release-notes-generator",
       [
         "@semantic-release/changelog",
