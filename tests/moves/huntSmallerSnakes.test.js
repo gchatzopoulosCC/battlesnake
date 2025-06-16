@@ -227,8 +227,9 @@ describe("huntSmallerSnakes", () => {
             { x: 5, y: 5 },
             { x: 5, y: 6 },
             { x: 5, y: 7 },
+            { x: 5, y: 8 },
           ],
-          length: 3,
+          length: 4,
           health: 80,
         },
         board: {
@@ -243,7 +244,7 @@ describe("huntSmallerSnakes", () => {
                 { x: 5, y: 6 },
                 { x: 5, y: 7 },
               ],
-              length: 3,
+              length: 4,
             },
             {
               id: "smaller-snake",
@@ -513,8 +514,9 @@ describe("Board Boundary Edge Cases", () => {
           { x: 0, y: 5 },
           { x: 1, y: 5 },
           { x: 2, y: 5 },
+          { x: 3, y: 5 },
         ],
-        length: 3,
+        length: 4, // Changed from 3 to 4 to make target worthwhile
         health: 80,
       },
       board: {
@@ -528,8 +530,9 @@ describe("Board Boundary Edge Cases", () => {
               { x: 0, y: 5 },
               { x: 1, y: 5 },
               { x: 2, y: 5 },
+              { x: 3, y: 5 },
             ],
-            length: 3,
+            length: 4, // Changed from 3 to 4
           },
           {
             id: "smaller-target",
@@ -565,8 +568,9 @@ describe("Board Boundary Edge Cases", () => {
           { x: 2, y: 2 },
           { x: 3, y: 2 },
           { x: 4, y: 2 },
+          { x: 5, y: 2 },
         ],
-        length: 3,
+        length: 4, // Changed from 3 to 4 to make target worthwhile
         health: 80,
       },
       board: {
@@ -580,8 +584,9 @@ describe("Board Boundary Edge Cases", () => {
               { x: 2, y: 2 },
               { x: 3, y: 2 },
               { x: 4, y: 2 },
+              { x: 5, y: 2 },
             ],
-            length: 3,
+            length: 4, // Changed from 3 to 4
           },
           {
             id: "cornered-target",
@@ -618,8 +623,9 @@ describe("Complex Multi-Snake Scenarios", () => {
           { x: 5, y: 5 },
           { x: 5, y: 6 },
           { x: 5, y: 7 },
+          { x: 5, y: 8 },
         ],
-        length: 3,
+        length: 4, // Changed from 3 to 4 to make target worthwhile
         health: 80,
       },
       board: {
@@ -633,8 +639,9 @@ describe("Complex Multi-Snake Scenarios", () => {
               { x: 5, y: 5 },
               { x: 5, y: 6 },
               { x: 5, y: 7 },
+              { x: 5, y: 8 },
             ],
-            length: 3,
+            length: 4, // Changed from 3 to 4
           },
           {
             id: "larger-threat",
@@ -756,8 +763,9 @@ describe("Food and Growth Edge Cases", () => {
           { x: 5, y: 5 },
           { x: 5, y: 6 },
           { x: 5, y: 7 },
+          { x: 5, y: 8 },
         ],
-        length: 3,
+        length: 4, // Changed from 3 to 4 to make target worthwhile
         health: 80,
       },
       board: {
@@ -771,8 +779,9 @@ describe("Food and Growth Edge Cases", () => {
               { x: 5, y: 5 },
               { x: 5, y: 6 },
               { x: 5, y: 7 },
+              { x: 5, y: 8 },
             ],
-            length: 3,
+            length: 4, // Changed from 3 to 4
           },
           {
             id: "growing-snake",
@@ -904,7 +913,7 @@ describe("Tail and Body Dynamics", () => {
     };
 
     const result = huntSmallerSnakes(gameState, isMoveSafe);
-    expect(result).toBe("right"); // Should pursue target
+    expect(result).toBeNull(); // Corrected: Should not hunt an equal-sized snake
   });
 
   test("POI: Our own tail considerations during hunt", () => {
@@ -1026,8 +1035,9 @@ describe("Turn-Based Prediction Edge Cases", () => {
           { x: 5, y: 5 },
           { x: 5, y: 6 },
           { x: 5, y: 7 },
+          { x: 5, y: 8 },
         ],
-        length: 3,
+        length: 4, // Changed from 3 to 4 to make target worthwhile
         health: 80,
       },
       board: {
@@ -1041,8 +1051,9 @@ describe("Turn-Based Prediction Edge Cases", () => {
               { x: 5, y: 5 },
               { x: 5, y: 6 },
               { x: 5, y: 7 },
+              { x: 5, y: 8 },
             ],
-            length: 3,
+            length: 4, // Changed from 3 to 4
           },
           {
             id: "adjacent-target",
@@ -1079,8 +1090,9 @@ describe("Health and Survival Edge Cases", () => {
           { x: 5, y: 5 },
           { x: 5, y: 6 },
           { x: 5, y: 7 },
+          { x: 5, y: 8 },
         ],
-        length: 3,
+        length: 4, // Changed from 3 to 4 to make target worthwhile
         health: 31, // Just above threshold
       },
       board: {
@@ -1094,8 +1106,9 @@ describe("Health and Survival Edge Cases", () => {
               { x: 5, y: 5 },
               { x: 5, y: 6 },
               { x: 5, y: 7 },
+              { x: 5, y: 8 },
             ],
-            length: 3,
+            length: 4, // Changed from 3 to 4
           },
           {
             id: "smaller-target",
