@@ -168,6 +168,7 @@ The project includes several configuration files that control code style, lintin
 ├── .auto-changelog             # Auto-changelog rules
 ├── .prettierrc.json            # Code formatting rules
 ├── eslint.config.mjs           # Code quality and style enforcement
+├── .releaserc                  # Semantic release configuration
 ├── .replit                     # Replit IDE configuration
 ├── replit.nix                  # Nix environment for Replit
 ```

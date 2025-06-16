@@ -1,0 +1,23 @@
+{
+  "branches": [
+    "main",
+    {
+      "name": "release/**",
+      "prerelease": true
+    }
+  ],
+  "repositoryUrl": "https://github.com/gchatzopoulosCC/battlesnake.git",
+  "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      [
+        "@semantic-release/changelog",
+        {
+          "changelogFile": "CHANGELOG.md",
+          "changelogTitle": "# Changelog"
+        }
+      ],
+      "@semantic-release/git",
+      "@semantic-release/github"
+    ]
+}
