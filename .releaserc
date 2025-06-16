@@ -3,7 +3,9 @@
     "main",
     {
       "name": "release/*",
-      "prerelease": "${name.replace(/^release\\//g, '')}"
+      {"name": "next", "prerelease": true},
+      {"name": "alpha/*", "prerelease": "alpha"},
+      {"name": "beta/*", "prerelease": "beta"}
     }
   ],
   "repositoryUrl": "https://github.com/gchatzopoulosCC/battlesnake.git",
