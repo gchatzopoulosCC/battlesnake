@@ -1,7 +1,8 @@
 # Battlesnake JavaScript Group 4 Project
+
 ![Battlesnake Logo](https://media.battlesnake.com/social/StarterSnakeGitHubRepos_JavaScript.png)
 
-This is the official repository of Group 4 for assessment (Battlesnake project) of module CCS2430 (Software Development in Practice) at CITY College, University of York Europe Campus. Here it is included all the code needed for the complition of the assignment.
+This is the official repository of Group 4 for assessment (Battlesnake project) of module CCS2430 (Software Development in Practice) at CITY College, University of York Europe Campus. Here it is included all the code needed for the completion of the assignment.
 
 Authors (GitHub usernames):
 
@@ -19,13 +20,13 @@ Authors (GitHub usernames):
   - [Technologies Used](#technologies-used)
   - [Getting started](#getting-started)
     - [Prerequisites](#prerequisites)
-    - [Instalation](#instalation)
+    - [Installation](#installation)
     - [Folder structure](#folder-structure)
   - [How to Run](#how-to-run)
     - [Deployment (Railway)](#deployment-railway)
     - [Game Playing](#game-playing)
   - [Additional Information](#additional-information)
-    - [Configuaration Files](#configuaration-files)
+    - [Configuration Files](#configuration-files)
     - [Launch Parameters](#launch-parameters)
     - [Extended Documentation](#extended-documentation)
 
@@ -40,7 +41,7 @@ This project is built using:
 
 ### Prerequisites
 
-This project requires nodeJS to be installed. For this follow the official [NodeJS installation documentation](https://nodejs.org/en/download)
+This project requires Node.js to be installed. For this to follow the official [Node.js installation documentation](https://nodejs.org/en/download)
 
 ### Installation
 
@@ -56,13 +57,15 @@ or using SSH:
 git clone git@github.com:gchatzopoulosCC/battlesnake.git
 ```
 
-_Notice: if you have configured mutliple SSH keys that have distinct host names you have to change the `@github.com` to `@<your-hostname>`_ 2. Install the packages
+_Notice: if you have configured multiple SSH keys that have distinct host names, you have to change the `@github.com` to `@<your-hostname>`_
+
+2. Install the packages
 
 ```bash
 npm install
 ```
 
-3. Change git remote url to avoid accidental pushes to base project
+3. Change git remote url to avoid accidental pushes to the base project
 
 ```bash
 git remote set-url origin gchatzopoulosCC/battlesnake`
@@ -72,42 +75,46 @@ git remote -v #confirm the changes
 ### Folder structure
 
 ```
-/
-├── index.js                    # Main entry point that initializes the server
-├── server.js                   # Express server configuration for the Battlesnake API
-├── package.json                # Project metadata and dependencies
-├── package-lock.json           # Lock file with exact dependency versions
-├── .editorconfig               # Editor configuration for consistent code style
-├── .prettierrc.json            # Prettier code formatter configuration
-├── .prettierignore             # Files that Prettier will ignore
-├── .gitignore                  # Files that Git will ignore
-├── .replit                     # Replit configuration for online IDE/hosting
-├── replit.nix                  # Nix environment specification for Replit
-├── eslint.config.mjs           # ESLint code quality rules
-├── out/                        # JSDocs HTML page
-├── src/
-│   ├── core/
-│   │   ├── game.js             # Game lifecycle handlers (start, end, info)
-│   │   └── snake.js            # Main snake movement logic
-│   ├── common/
-│   │   ├── sets/
-│   │   │   ├── adjacentPositions.js  # Functions to get adjacent positions
-│   │   │   ├── coordinates.js        # Coordinate parsing utilities
-│   │   │   └── moves.js              # Move generation functions
-│   │   └── snake/
-│   │       └── body.js               # Snake body segment access functions
-│   ├── lib/
-│   │   └── moves/
-│   │       ├── avoidGoingBackwards.js # Prevents moving into neck
-│   │       ├── avoidOthers.js         # Avoids other snakes
-│   │       ├── avoidSelf.js           # Prevents self-collisions
-│   │       └── avoidWalls.js          # Prevents hitting boundaries
-│   └── utils/
-│       ├── moves/
-│       │   └── avoidanceChecker.js    # Generic collision checker
-│       └── sets/
-│           ├── bodySet.js             # Creates set of body segments
-│           └── collisionSet.js        # Creates set of other snake positions
+.
+battlesnake
+├── CHANGELOG.md
+├── README.md
+├── SECURITY.md
+├── commitlint.config.cjs
+├── eslint.config.mjs
+├── index.js
+├── jest.config.js
+├── package-lock.json
+├── package.json
+├── replit.nix
+├── server.js
+├── src
+│   ├── core
+│   │   ├── game.js
+│   │   └── snake.js
+│   ├── helper
+│   │   ├── moves
+│   │   │   └── avoidanceChecker.js
+│   │   ├── sets
+│   │   │   ├── adjacentPositions.js
+│   │   │   ├── bodySet.js
+│   │   │   ├── collisionSet.js
+│   │   │   ├── coordinates.js
+│   │   │   └── moves.js
+│   │   └── snake
+│   │       └── body.js
+│   └── utils
+│       └── moves
+│           ├── avoidGoingBackwards.js
+│           ├── avoidOthers.js
+│           ├── avoidSelf.js
+│           └── avoidWalls.js
+└── tests
+    └── moves
+        ├── avoidGoingBackwards.test.js
+        ├── avoidOthers.test.js
+        ├── avoidSelf.test.js
+        └── avoidWalls.test.js
 ```
 
 ## How to Run
@@ -136,7 +143,7 @@ node index.js
       2.2. Generate a new domain using any valid port (8080 is recommended)
       2.3. Copy the server url (it will be useful later)
 - Development Environment
-  1.  In Railway create a new `environment` and name it _devepment_
+  1.  In Railway create a new `environment` and name it _development_
   2.  Go to the new environment settings:
       2.1. Add the `develop` branch
       2.2. Generate a new domain using any valid port (8080 is recommended)
@@ -156,11 +163,14 @@ node index.js
 The project includes several configuration files that control code style, linting, and deployment:
 
 ```
+├── commitlint.config.cjs       # Commit message linter
 ├── .editorconfig               # Controls editor behavior (indentation, charset)
+├── .auto-changelog             # Auto-changelog rules
 ├── .prettierrc.json            # Code formatting rules
 ├── eslint.config.mjs           # Code quality and style enforcement
+├── .releaserc                  # Semantic release configuration
 ├── .replit                     # Replit IDE configuration
-└── replit.nix                  # Nix environment for Replit
+├── replit.nix                  # Nix environment for Replit
 ```
 
 ### Launch Parameters
@@ -169,6 +179,12 @@ The project includes several configuration files that control code style, lintin
 
 ```bash
 node index.js
+```
+
+- Run prettier
+
+```bash
+npx prettier . --write
 ```
 
 - Run linting
@@ -182,6 +198,35 @@ npm run lint
 ```bash
 npm run jsdoc
 ```
+
+- Run tests
+
+```bash
+npm run test
+npm run test:watch
+npm run test:coverage
+```
+
+- Display the file structure tree
+
+```bash
+npm run tree
+```
+
+- Automatically write the changelog
+
+```bash
+npm run changelog
+```
+
+- Prepare project
+
+```bash
+npm run prepare
+```
+
+Notice:
+Currently, `npm prepare` prepares _husky_ to manage pre-commit hooks. Also, `npm prepare` runs _automatically_ with `npm install`
 
 ### Extended Documentation
 

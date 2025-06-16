@@ -2,11 +2,11 @@
  * @file bodySet.js
  * @description This file contains a function to create a Set of the snake's body segments (excluding the head).
  * This Set is used for efficient collision detection when evaluating potential moves.
- * @module src/utils/sets/bodySet
- * @requires module:src/common/snake/body
+ * @module src/helper/sets/bodySet
+ * @requires module:src/helper/snake/body
  */
 
-import { getTail } from "../../common/snake/body.js";
+import { getTail } from "../snake/body.js";
 
 /**
  * @description Creates a Set containing string representations of the snake's body segments,
