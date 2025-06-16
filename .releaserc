@@ -2,10 +2,9 @@
   "branches": [
     "main",
     {
-      "name": "release/*",
-      {"name": "next", "prerelease": true},
       {"name": "alpha/*", "prerelease": "alpha"},
       {"name": "beta/*", "prerelease": "beta"}
+      {"name": "next", "prerelease": true},
     }
   ],
   "repositoryUrl": "https://github.com/gchatzopoulosCC/battlesnake.git",
