@@ -12,7 +12,7 @@
     "jsdoc": "jsdoc src -r",
     "tree": "treee -I \"node_modules|out|.idea|.vscode|coverage\"",
     "changelog": "auto-changelog",
-    "prepare": "husky init"
+    "prepare": "husky"
   },
   "dependencies": {
     "@semantic-release/changelog": "^6.0.3",
