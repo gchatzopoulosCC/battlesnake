@@ -3,15 +3,13 @@ import globals from "globals";
 import prettierConfig from "eslint-config-prettier";
 import sonarjs from "eslint-plugin-sonarjs";
 import eslintComments from "eslint-plugin-eslint-comments";
+import noCommentedCode from "eslint-plugin-no-commented-code";
 import unicorn from "eslint-plugin-unicorn";
 import { defineConfig, globalIgnores } from "eslint/config";
 
 export default defineConfig([
   js.configs.recommended,
-  globalIgnores([
-    "node_modules/",
-    "out/",
-  ]),
+  globalIgnores(["node_modules/", "out/"]),
   {
     files: ["**/*.{js,mjs,cjs}"],
     plugins: { js },
@@ -34,9 +32,10 @@ export default defineConfig([
     files: ["**/*.test.{js,mjs,cjs}"],
     plugins: {
       "eslint-comments": eslintComments,
+      "no-commented-code": noCommentedCode,
     },
     rules: {
-      "eslint-comments/no-commented-out-code": "error",
+      "no-commented-code/no-commented-code": "error",
       semi: ["error", "always"],
       quotes: ["warn", "double"],
       indent: ["error", 2],

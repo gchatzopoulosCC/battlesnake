@@ -1,7 +1,7 @@
 /**
  * @file coordinates.js
  * @description This file contains functions to parse coordinates into a string format.
- * @module src/common/sets/coordinates
+ * @module src/helper/sets/coordinates
  */
 
 /**

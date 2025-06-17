@@ -2,13 +2,13 @@
  * @file avoidOthers.js
  * @description This file contains a function to check for collisions with other snakes and update
  * the isMoveSafe object accordingly.
- * @module src/lib/moves/avoidOthers
- * @requires module:src/utils/sets/collisionSet
- * @requires module:src/utils/moves/avoidanceChecker
+ * @module src/utils/moves/avoidOthers
+ * @requires module:src/helper/sets/collisionSet
+ * @requires module:src/helper/moves/avoidanceChecker
  */
 
-import { getCollisionSet } from "../../utils/sets/collisionSet.js";
-import { createAvoidanceChecker } from "../../utils/moves/avoidanceChecker.js";
+import { getCollisionSet } from "../../helper/sets/collisionSet.js";
+import { createAvoidanceChecker } from "../../helper/moves/avoidanceChecker.js";
 
 const avoidanceChecker = createAvoidanceChecker(getCollisionSet);
 

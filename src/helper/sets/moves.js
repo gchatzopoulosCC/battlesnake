@@ -2,9 +2,9 @@
  * @file moves.js
  * @description This file contains a utility function to retrieve all possible moves for the snake,
  * including their directions and adjacent positions.
- * @module src/common/sets/moves
- * @requires module:src/common/sets/adjacentPositions
- * @requires module:src/common/snake/body
+ * @module src/helper/sets/moves
+ * @requires module:src/helper/sets/adjacentPositions
+ * @requires module:src/helper/snake/body
  */
 
 import * as pos from "./adjacentPositions.js";

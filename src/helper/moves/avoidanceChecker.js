@@ -1,11 +1,11 @@
 /**
  * @file avoidanceChecker.js
  * @description This file contains a factory function to create avoidance checkers that evaluate move safety.
- * @module src/utils/moves/avoidanceChecker
- * @requires module:src/common/sets/moves
+ * @module src/helper/moves/avoidanceChecker
+ * @requires module:src/helper/sets/moves
  */
 
-import { getMoves } from "../../common/sets/moves.js";
+import { getMoves } from "../sets/moves.js";
 
 /**
  * @description Creates an avoidance checker function that uses a provided set function
@@ -16,7 +16,7 @@ import { getMoves } from "../../common/sets/moves.js";
  * @returns {Function} A function that checks moves against the set of positions to avoid.
  *
  * @example
- * import { getBodySet } from "../../utils/sets/bodySet.js";
+ * import { getBodySet } from "../../helper/sets/bodySet.js";
  *
  * // Create an avoidance checker that avoids the snake's own body
  * const bodyAvoidanceChecker = createAvoidanceChecker(getBodySet);

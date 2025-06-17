@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: helper/sets/adjacentPositions.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: helper/sets/adjacentPositions.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @file adjacentPositions.js
+ * @description This file contains functions to get the adjacent positions of a given position on the game board.
+ * @module src/helper/sets/adjacentPositions
+ * @requires module:src/helper/sets/coordinates
+ */
+
+import { parseCoordinates } from "./coordinates.js";
+
+/**
+ * @description This function returns the left adjacent position of a given position.
+ * It subtracts 1 from the x-coordinate of the position.
+ * @param {Object} position - The current position on the board.
+ * @param {number} position.x - The x-coordinate of the position.
+ * @param {number} position.y - The y-coordinate of the position.
+ * @returns {string} - The left adjacent position in string format ("x,y").
+ * @example
+ * const position = { x: 5, y: 5 };
+ * getLeftAdjacentPosition(position); // Returns "4,5"
+ */
+function getLeftAdjacentPosition(position) {
+  return parseCoordinates(position.x - 1, position.y);
+}
+
+/**
+ * @description This function returns the right adjacent position of a given position.
+ * It adds 1 to the x-coordinate of the position.
+ * @param {Object} position - The current position on the board.
+ * @param {number} position.x - The x-coordinate of the position.
+ * @param {number} position.y - The y-coordinate of the position.
+ * @returns {string} - The right adjacent position in string format ("x,y").
+ * @example
+ * const position = { x: 5, y: 5 };
+ * getRightAdjacentPosition(position); // Returns "6,5"
+ */
+function getRightAdjacentPosition(position) {
+  return parseCoordinates(position.x + 1, position.y);
+}
+
+/**
+ * @description This function returns the up adjacent position of a given position.
+ * It adds 1 to the y-coordinate of the position.
+ * @param {Object} position - The current position on the board.
+ * @param {number} position.x - The x-coordinate of the position.
+ * @param {number} position.y - The y-coordinate of the position.
+ * @returns {string} - The up adjacent position in string format ("x,y").
+ * @example
+ * const position = { x: 5, y: 5 };
+ * getUpAdjacentPosition(position); // Returns "5,6"
+ */
+function getUpAdjacentPosition(position) {
+  return parseCoordinates(position.x, position.y + 1);
+}
+
+/**
+ * @description This function returns the down adjacent position of a given position.
+ * It subtracts 1 from the y-coordinate of the position.
+ * @param {Object} position - The current position on the board.
+ * @param {number} position.x - The x-coordinate of the position.
+ * @param {number} position.y - The y-coordinate of the position.
+ * @returns {string} - The down adjacent position in string format ("x,y").
+ * @example
+ * const position = { x: 5, y: 5 };
+ * getDownAdjacentPosition(position); // Returns "5,4"
+ */
+function getDownAdjacentPosition(position) {
+  return parseCoordinates(position.x, position.y - 1);
+}
+
+export {
+  getLeftAdjacentPosition,
+  getRightAdjacentPosition,
+  getUpAdjacentPosition,
+  getDownAdjacentPosition,
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-src_core_game.html">src/core/game</a></li><li><a href="module-src_core_snake.html">src/core/snake</a></li><li><a href="module-src_helper_moves_avoidanceChecker.html">src/helper/moves/avoidanceChecker</a></li><li><a href="module-src_helper_sets_adjacentPositions.html">src/helper/sets/adjacentPositions</a></li><li><a href="module-src_helper_sets_bodySet.html">src/helper/sets/bodySet</a></li><li><a href="module-src_helper_sets_collisionSet.html">src/helper/sets/collisionSet</a></li><li><a href="module-src_helper_sets_coordinates.html">src/helper/sets/coordinates</a></li><li><a href="module-src_helper_sets_moves.html">src/helper/sets/moves</a></li><li><a href="module-src_helper_snake_body.html">src/helper/snake/body</a></li><li><a href="module-src_utils_moves_avoidGoingBackwards.html">src/utils/moves/avoidGoingBackwards</a></li><li><a href="module-src_utils_moves_avoidOthers.html">src/utils/moves/avoidOthers</a></li><li><a href="module-src_utils_moves_avoidSelf.html">src/utils/moves/avoidSelf</a></li><li><a href="module-src_utils_moves_avoidWalls.html">src/utils/moves/avoidWalls</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Fri Jun 06 2025 13:51:11 GMT+0300 (Eastern European Summer Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
