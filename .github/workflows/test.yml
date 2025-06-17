@@ -1,4 +1,4 @@
-name: test.yml
+name: Run Tests
 on:
   pull_request:
     - main
