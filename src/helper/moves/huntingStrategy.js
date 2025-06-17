@@ -13,7 +13,7 @@ import { getHuntableSnakes, findClosestTarget } from "../snake/hunting.js";
  * @description Calculates distances for each safe move to the target
  * @param {Object} gameState - The current state of the game
  * @param {Object} targetSnake - The snake we're hunting
- * @param {string[]} safeMoves - Array of safe move directions
+ * @param {Object|string[]} safeMoves - Object with direction:boolean pairs or array of safe move directions
  * @returns {Object} Object with move directions and their distances to target
  */
 export function calculateSafeMoveDistances(gameState, targetSnake, safeMoves) {
@@ -21,7 +21,12 @@ export function calculateSafeMoveDistances(gameState, targetSnake, safeMoves) {
   const moveDistances = {};
 
   moves.forEach((move) => {
-    if (safeMoves.includes(move.direction)) {
+    // Handle both object format {up: true, down: false} and array format ["up", "down"]
+    const isSafe = Array.isArray(safeMoves) 
+      ? safeMoves.includes(move.direction)
+      : safeMoves[move.direction] === true;
+      
+    if (isSafe) {
       const [x, y] = move.adjacentPosition.split(",").map(Number);
       moveDistances[move.direction] = getManhattanDistance({ x, y }, targetSnake.head);
     }
