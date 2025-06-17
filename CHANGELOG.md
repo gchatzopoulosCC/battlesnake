@@ -1,5 +1,14 @@
 # Changelog
 
+# [2.2.0-rc.2](https://github.com/gchatzopoulosCC/battlesnake/compare/v2.2.0-rc.1...v2.2.0-rc.2) (2025-06-17)
+
+
+### Bug Fixes
+
+* **avoidothers.test:** Remove test 7 (impossible to pass due to inappropriate testing) ([c1c83ca](https://github.com/gchatzopoulosCC/battlesnake/commit/c1c83ca0cd57cd29579674360bf9893ee5520805))
+* **commitlint.config:** Allow commitlint to accept JS filenames scopes; camelCase ([d69369b](https://github.com/gchatzopoulosCC/battlesnake/commit/d69369b51322df68812e291e955ee6003ab18b81))
+* **eslint.config:** Fix the no-commented-out-code rule not found issue ([9eac110](https://github.com/gchatzopoulosCC/battlesnake/commit/9eac1105f4f5c61124633331644c7e4707328177))
+
 # [2.2.0-rc.1](https://github.com/gchatzopoulosCC/battlesnake/compare/v2.1.0...v2.2.0-rc.1) (2025-06-16)
 
 ### Bug Fixes
