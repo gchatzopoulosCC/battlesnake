@@ -7,7 +7,7 @@
 import { getMoves } from "../sets/moves.js";
 import { getManhattanDistance } from "../sets/coordinates.js";
 import { getValidMovesFromPosition } from "../sets/validation.js";
-import { findSmallestSnake, isWorthwhileTarget } from "../snake/hunting.js";
+import { getHuntableSnakes, findClosestTarget, isWorthwhileTarget } from "../snake/hunting.js";
 
 /**
  * @description Calculates the best interception move when close to target
@@ -105,22 +105,28 @@ export function shouldAttemptInterception(myHead, targetHead) {
 export function huntingStrategy(gameState) {
   const { you, board } = gameState;
 
-  // 1. Find the best target
-  const targetSnake = findSmallestSnake(gameState);
-  if (!targetSnake || !isWorthwhileTarget(you, targetSnake)) {
+  // 1. Find huntable snakes
+  const huntableSnakes = getHuntableSnakes(gameState);
+  if (huntableSnakes.length === 0) {
+    return null; // No huntable targets
+  }
+
+  // 2. Find the closest target
+  const targetSnake = findClosestTarget(gameState, huntableSnakes);
+  if (!targetSnake) {
     return null; // No suitable target
   }
 
-  // 2. Determine safe moves
+  // 3. Determine safe moves
   const isMoveSafe = getValidMovesFromPosition(gameState, you.head, true);
 
-  // 3. Calculate distances for safe moves
+  // 4. Calculate distances for safe moves
   const safeMoveDistances = calculateSafeMoveDistances(gameState, targetSnake, isMoveSafe);
   if (Object.keys(safeMoveDistances).length === 0) {
     return null; // No safe moves towards target
   }
 
-  // 4. Decide on interception or simple chase
+  // 5. Decide on interception or simple chase
   if (shouldAttemptInterception(you.head, targetSnake.head)) {
     return calculateInterceptionMove(gameState, targetSnake, safeMoveDistances);
   } else {
