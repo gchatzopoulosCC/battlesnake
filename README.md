@@ -178,7 +178,7 @@ The project includes several configuration files that control code style, lintin
 - Standard mode
 
 ```bash
-node index.js
+npm start
 ```
 
 - Run prettier
