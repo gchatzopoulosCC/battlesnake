@@ -1,8 +1,9 @@
 name: Code Quality
 on:
   pull_request:
-    - main
-    - develop
+    branches:
+      - main
+      - develop
 jobs:
   code_quality:
     runs-on: ubuntu-latest
