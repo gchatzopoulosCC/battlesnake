@@ -12,12 +12,13 @@
     "jsdoc": "jsdoc src -r",
     "tree": "treee -I \"node_modules|out|.idea|.vscode|coverage\"",
     "changelog": "auto-changelog",
-    "prepare": "husky init"
+    "prepare": "husky"
   },
   "dependencies": {
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@types/node": "^18.0.6",
+    "eslint-plugin-eslint-comments": "^3.2.0",
     "express": "^4.21.2",
     "node-fetch": "^3.2.10",
     "tree-cli": "^0.6.7"
@@ -26,12 +27,11 @@
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
     "@eslint/js": "^9.25.1",
-    "auto-changelog": "^2.5.0",
     "eslint": "^9.25.1",
     "eslint-config-prettier": "^10.1.2",
     "eslint-define-config": "^2.1.0",
-    "eslint-plugin-eslint-comments": "^3.2.0",
     "eslint-plugin-jest": "^28.11.0",
+    "eslint-plugin-no-commented-code": "^1.0.10",
     "eslint-plugin-sonarjs": "^3.0.2",
     "eslint-plugin-unicorn": "^59.0.0",
     "globals": "^16.0.0",
