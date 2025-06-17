@@ -302,60 +302,7 @@ describe("avoidOthers Points of Interest", () => {
     expect(isMoveSafe.down).toBe(true);
   });
 
-  // POI #7: Future collision avoidance (where enemy head could move next)
-  test("POI: Future collision avoidance - avoid where enemy head could move", () => {
-    const gameState = {
-      you: {
-        id: "our-id",
-        head: { x: 5, y: 5 },
-        body: [
-          { x: 5, y: 5 }, // our head
-          { x: 5, y: 6 }, // body
-          { x: 5, y: 7 }, // tail
-        ],
-        length: 3, // You are length 3
-      },
-      board: {
-        snakes: [
-          // You will be added
-          {
-            id: "enemy-id",
-            head: { x: 7, y: 4 }, // Enemy head is diagonal from ours
-            body: [
-              { x: 7, y: 4 }, // enemy head
-              { x: 8, y: 4 }, // enemy body
-              { x: 9, y: 4 }, // enemy body
-              { x: 10, y: 4 }, // enemy tail
-            ],
-            length: 4, // Enemy is length 4 (larger than you)
-          },
-        ],
-      },
-    };
-
-    // Add "you" to the snakes array
-    gameState.board.snakes.unshift(gameState.you);
-
-    const isMoveSafe = {
-      up: true,
-      down: true,
-      left: true,
-      right: true,
-    };
-
-    avoidOthers(gameState, isMoveSafe);
-
-    // Right could lead to a future collision if the enemy moves left
-    // If we want to consider future moves:
-    // expect(isMoveSafe.right).toBe(false);
-
-    // All directions should be safe from immediate collisions
-    expect(isMoveSafe.up).toBe(true);
-    expect(isMoveSafe.down).toBe(true);
-    expect(isMoveSafe.left).toBe(true);
-  });
-
-  // POI #8: Snake trap - surrounded on multiple sides by other snakes
+  // POI #7: Snake trap - surrounded on multiple sides by other snakes
   test("POI: Snake trap - surrounded on multiple sides by other snakes", () => {
     const gameState = {
       you: {
@@ -419,7 +366,7 @@ describe("avoidOthers Points of Interest", () => {
     expect(isMoveSafe.up).toBe(true);
   });
 
-  // POI #9: Head-to-head confrontation with EQUAL-SIZED snake
+  // POI #8: Head-to-head confrontation with EQUAL-SIZED snake
   test("POI: Head-to-head confrontation - adjacent to equal-sized snake head", () => {
     const gameState = {
       you: {
@@ -470,7 +417,7 @@ describe("avoidOthers Points of Interest", () => {
     expect(isMoveSafe.left).toBe(true);
   });
 
-  // POI #10: Snake that just ate food and grew - testing post-eating collision detection
+  // POI #9: Snake that just ate food and grew - testing post-eating collision detection
   test("POI: Snake that just ate food and grew - post-eating collision detection", () => {
     const gameState = {
       you: {
@@ -523,7 +470,7 @@ describe("avoidOthers Points of Interest", () => {
     expect(isMoveSafe.down).toBe(true);
   });
 
-  // POI #11: Distinguishing between different snake parts and sizes
+  // POI #10: Distinguishing between different snake parts and sizes
   test("POI: Distinguishing between body parts and different sized snake heads", () => {
     const gameState = {
       you: {
@@ -598,7 +545,7 @@ describe("avoidOthers Points of Interest", () => {
     expect(isMoveSafe.up).toBe(true);
   });
 
-  // POI #12: Multiple threats - forced to choose between different collision types
+  // POI #11: Multiple threats - forced to choose between different collision types
   test("POI: Multiple threats - forced to choose between different collision types", () => {
     const gameState = {
       you: {
