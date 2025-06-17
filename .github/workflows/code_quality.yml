@@ -1,0 +1,27 @@
+name: Code Quality
+on:
+  pull_request:
+    - main
+    - develop
+jobs:
+  code_quality:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: "20.x"
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Run Prettier
+      run: npx prettier . --write
+
+    - name: Run ESLint
+      run: npm run lint
