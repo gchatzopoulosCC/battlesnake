@@ -9,6 +9,13 @@ import { defineConfig } from "eslint-define-config";
 export default defineConfig([
   js.configs.recommended,
   {
+    ignores: ["node_modules/", "out/"]
+  },
+  {
+    files: ["**/*.{js,mjs,cjs}"],
+    plugins: { js },
+  },
+  {
     files: ["**/*.{js,mjs,cjs}"],
     plugins: { js },
   },
