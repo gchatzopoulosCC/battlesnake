@@ -14,6 +14,7 @@ import { avoidWalls } from "../utils/moves/avoidWalls.js";
 import { avoidSelf } from "../utils/moves/avoidSelf.js";
 import { avoidOthers } from "../utils/moves/avoidOthers.js";
 import { huntingStrategy } from "../helper/moves/huntingStrategy.js";
+import { floodFill } from "../utils/moves/floodFill.js";
 
 /**
  * @typedef {"up" | "down" | "left" | "right"} MoveDirection
@@ -94,14 +95,33 @@ function move(gameState) {
     return { move: "down" };
   }
 
-  // Choose a random move from the safe moves
-  const nextMove = safeMoves[Math.floor(Math.random() * safeMoves.length)];
+  // Use flood fill to determine which safe move gives us the most space
+  const floodFillResults = floodFill(gameState, isMoveSafe);
+  
+  // Find the safe move with the most available space
+  let bestMove = safeMoves[0];
+  let maxSpace = floodFillResults[bestMove];
+  
+  for (const move of safeMoves) {
+    const space = floodFillResults[move];
+    console.log(`MOVE ${gameState.turn}: ${move} has ${space} accessible cells`);
+    
+    if (space > maxSpace) {
+      maxSpace = space;
+      bestMove = move;
+    }
+  }
+
+  // If all moves have very limited space, warn about potential trap
+  if (maxSpace < 10) {
+    console.log(`MOVE ${gameState.turn}: WARNING - Limited space available (${maxSpace} cells)`);
+  }
 
   // TODO: Step 4 - Move towards food instead of random, to regain health and survive longer
   // food = gameState.board.food;
 
-  console.log(`MOVE ${gameState.turn}: ${nextMove}`);
-  return { move: nextMove };
+  console.log(`MOVE ${gameState.turn}: Choosing ${bestMove} with ${maxSpace} accessible cells`);
+  return { move: bestMove };
 }
 
 export { move };
