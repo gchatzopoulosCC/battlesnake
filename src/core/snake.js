@@ -112,22 +112,26 @@ function move(gameState) {
     }
   }
 
-  // Check if we should hunt, but only if the hunting move is safe and has enough space
-  const huntingMove = huntingStrategy(gameState);
-  if (huntingMove && isMoveSafe[huntingMove] && floodFillResults[huntingMove] >= 30) {
-    console.log(`MOVE ${gameState.turn}: Hunting! Moving ${huntingMove} with ${floodFillResults[huntingMove]} accessible cells`);
-    return { move: huntingMove };
-  }
-
   // If all moves have very limited space, warn about potential trap
   if (maxSpace < 10) {
     console.log(`MOVE ${gameState.turn}: WARNING - Limited space available (${maxSpace} cells)`);
   }
 
   // When multiple moves have equal space, add some intelligence
-  let bestMove = bestMoves[0];
+  let finalMove = bestMoves[0];
   
-  if (bestMoves.length > 1) {
+  // First, check if hunting suggests a move that's both safe and has good space
+  const huntingMove = huntingStrategy(gameState);
+  const huntingIsSafe = huntingMove && isMoveSafe[huntingMove];
+  const huntingHasSpace = huntingIsSafe && floodFillResults[huntingMove] >= 30;
+  
+  // If hunting move is among the best moves (has max space), prefer it
+  if (huntingIsSafe && bestMoves.includes(huntingMove) && huntingHasSpace) {
+    finalMove = huntingMove;
+    console.log(`MOVE ${gameState.turn}: Hunting! Moving ${finalMove} with ${floodFillResults[finalMove]} accessible cells`);
+  }
+  // Otherwise, choose intelligently from best moves
+  else if (bestMoves.length > 1) {
     // Prefer moves towards food if health is low
     if (gameState.you.health < 50 && gameState.board.food.length > 0) {
       const head = gameState.you.head;
@@ -150,19 +154,42 @@ function move(gameState) {
         const newDist = Math.abs(nearestFood.x - newPos.x) + Math.abs(nearestFood.y - newPos.y);
         
         if (newDist < currentDist) {
-          bestMove = move;
+          finalMove = move;
           console.log(`MOVE ${gameState.turn}: Moving towards food`);
           break;
         }
       }
     } else {
       // Otherwise, add some randomness to avoid predictable patterns
-      bestMove = bestMoves[Math.floor(Math.random() * bestMoves.length)];
+      finalMove = bestMoves[Math.floor(Math.random() * bestMoves.length)];
     }
+    console.log(`MOVE ${gameState.turn}: Choosing ${finalMove} with ${maxSpace} accessible cells`);
+  } else {
+    console.log(`MOVE ${gameState.turn}: Moving ${finalMove} with ${maxSpace} accessible cells`);
   }
 
-  console.log(`MOVE ${gameState.turn}: Choosing ${bestMove} with ${maxSpace} accessible cells`);
-  return { move: bestMove };
+  // Final safety check - log position to help debug wall collisions
+  const head = gameState.you.head;
+  const newPos = {
+    up: { x: head.x, y: head.y + 1 },
+    down: { x: head.x, y: head.y - 1 },
+    left: { x: head.x - 1, y: head.y },
+    right: { x: head.x + 1, y: head.y }
+  }[finalMove];
+  
+  // Verify the move won't go out of bounds
+  if (newPos.x < 0 || newPos.x >= gameState.board.width || 
+      newPos.y < 0 || newPos.y >= gameState.board.height) {
+    console.error(`MOVE ${gameState.turn}: ERROR! Move ${finalMove} would go out of bounds!`);
+    console.error(`Head at (${head.x}, ${head.y}), would move to (${newPos.x}, ${newPos.y})`);
+    console.error(`Board size: ${gameState.board.width}x${gameState.board.height}`);
+    // Return a different safe move
+    const fallbackMove = safeMoves.find(m => m !== finalMove) || "down";
+    console.error(`MOVE ${gameState.turn}: Using fallback move: ${fallbackMove}`);
+    return { move: fallbackMove };
+  }
+
+  return { move: finalMove };
 }
 
 export { move };
