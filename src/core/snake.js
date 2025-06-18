@@ -91,17 +91,24 @@ function move(gameState) {
   // Use flood fill to determine which safe move gives us the most space
   const floodFillResults = floodFill(gameState, isMoveSafe);
   
-  // Find the safe move with the most available space
-  let bestMove = safeMoves[0];
-  let maxSpace = floodFillResults[bestMove];
-  
+  // Log all safe moves and their space
   for (const move of safeMoves) {
     const space = floodFillResults[move];
     console.log(`MOVE ${gameState.turn}: ${move} has ${space} accessible cells`);
-    
+  }
+  
+  // Find moves with the most available space
+  let maxSpace = 0;
+  const bestMoves = [];
+  
+  for (const move of safeMoves) {
+    const space = floodFillResults[move];
     if (space > maxSpace) {
       maxSpace = space;
-      bestMove = move;
+      bestMoves.length = 0; // Clear array
+      bestMoves.push(move);
+    } else if (space === maxSpace) {
+      bestMoves.push(move);
     }
   }
 
@@ -117,8 +124,42 @@ function move(gameState) {
     console.log(`MOVE ${gameState.turn}: WARNING - Limited space available (${maxSpace} cells)`);
   }
 
-  // TODO: Step 4 - Move towards food instead of random, to regain health and survive longer
-  // food = gameState.board.food;
+  // When multiple moves have equal space, add some intelligence
+  let bestMove = bestMoves[0];
+  
+  if (bestMoves.length > 1) {
+    // Prefer moves towards food if health is low
+    if (gameState.you.health < 50 && gameState.board.food.length > 0) {
+      const head = gameState.you.head;
+      const nearestFood = gameState.board.food.reduce((closest, food) => {
+        const dist = Math.abs(food.x - head.x) + Math.abs(food.y - head.y);
+        const closestDist = Math.abs(closest.x - head.x) + Math.abs(closest.y - head.y);
+        return dist < closestDist ? food : closest;
+      });
+      
+      // Choose move that gets us closer to food
+      for (const move of bestMoves) {
+        const newPos = {
+          up: { x: head.x, y: head.y + 1 },
+          down: { x: head.x, y: head.y - 1 },
+          left: { x: head.x - 1, y: head.y },
+          right: { x: head.x + 1, y: head.y }
+        }[move];
+        
+        const currentDist = Math.abs(nearestFood.x - head.x) + Math.abs(nearestFood.y - head.y);
+        const newDist = Math.abs(nearestFood.x - newPos.x) + Math.abs(nearestFood.y - newPos.y);
+        
+        if (newDist < currentDist) {
+          bestMove = move;
+          console.log(`MOVE ${gameState.turn}: Moving towards food`);
+          break;
+        }
+      }
+    } else {
+      // Otherwise, add some randomness to avoid predictable patterns
+      bestMove = bestMoves[Math.floor(Math.random() * bestMoves.length)];
+    }
+  }
 
   console.log(`MOVE ${gameState.turn}: Choosing ${bestMove} with ${maxSpace} accessible cells`);
   return { move: bestMove };
