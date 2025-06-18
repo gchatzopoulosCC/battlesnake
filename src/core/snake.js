@@ -68,13 +68,6 @@ import { floodFill } from "../utils/moves/floodFill.js";
  * // Returns { move: "down" }
  */
 function move(gameState) {
-  // Try to hunt smaller snakes first
-  const huntingMove = huntingStrategy(gameState);
-  if (huntingMove) {
-    console.log(`MOVE ${gameState.turn}: Hunting! Moving ${huntingMove}`);
-    return { move: huntingMove };
-  }
-
   const isMoveSafe = {
     up: true,
     down: true,
@@ -110,6 +103,13 @@ function move(gameState) {
       maxSpace = space;
       bestMove = move;
     }
+  }
+
+  // Check if we should hunt, but only if the hunting move is safe and has enough space
+  const huntingMove = huntingStrategy(gameState);
+  if (huntingMove && isMoveSafe[huntingMove] && floodFillResults[huntingMove] >= 30) {
+    console.log(`MOVE ${gameState.turn}: Hunting! Moving ${huntingMove} with ${floodFillResults[huntingMove]} accessible cells`);
+    return { move: huntingMove };
   }
 
   // If all moves have very limited space, warn about potential trap
