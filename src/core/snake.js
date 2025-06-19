@@ -13,6 +13,7 @@ import { avoidGoingBackwards } from "../utils/moves/avoidGoingBackwards.js";
 import { avoidWalls } from "../utils/moves/avoidWalls.js";
 import { avoidSelf } from "../utils/moves/avoidSelf.js";
 import { avoidOthers } from "../utils/moves/avoidOthers.js";
+import { huntingStrategy } from "../helper/moves/huntingStrategy.js";
 
 /**
  * @typedef {"up" | "down" | "left" | "right"} MoveDirection
@@ -66,6 +67,13 @@ import { avoidOthers } from "../utils/moves/avoidOthers.js";
  * // Returns { move: "down" }
  */
 function move(gameState) {
+  // Try to hunt smaller snakes first
+  const huntingMove = huntingStrategy(gameState);
+  if (huntingMove) {
+    console.log(`MOVE ${gameState.turn}: Hunting! Moving ${huntingMove}`);
+    return { move: huntingMove };
+  }
+
   const isMoveSafe = {
     up: true,
     down: true,
