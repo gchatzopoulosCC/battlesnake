@@ -2,8 +2,8 @@
   "branches": [
     "main",
     {
-      "name": "release/*",
-      "channel": "${name.replace(/^release\\//g, '')}",
+      "name": "next",
+      "channel": "next",
       "prerelease": "rc"
       }
   ],
