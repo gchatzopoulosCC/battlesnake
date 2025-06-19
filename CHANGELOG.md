@@ -2,6 +2,37 @@
 
 # [2.3.0-rc.1](https://github.com/gchatzopoulosCC/battlesnake/compare/v2.2.0...v2.3.0-rc.1) (2025-06-19)
 
+
+### Bug Fixes
+
+* **.releaserc:** Add the -rc at the end ([5ce40cb](https://github.com/gchatzopoulosCC/battlesnake/commit/5ce40cb2c00ba92184ea4d724ee110da9af74836))
+* **.releaserc:** Change the prerelease branch from release/* to next ([8ebed11](https://github.com/gchatzopoulosCC/battlesnake/commit/8ebed11fe8db044e4f8a8e1bb4223279421a918f))
+* **changelog:** Remove duplicate 2.3.0 pre-release and fix the naming ([31cc618](https://github.com/gchatzopoulosCC/battlesnake/commit/31cc6181426d36d83fa89a94dbb7cf58d14ac370))
+* **changelog:** Remove duplicate 2.3.0 pre-release and fix the naming ([e476569](https://github.com/gchatzopoulosCC/battlesnake/commit/e47656958a7599b5236dd19a7cb4d2ea1a3610b6))
+* **code_quality:** Group main and develop under branches ([7e5441c](https://github.com/gchatzopoulosCC/battlesnake/commit/7e5441c9573e53b05b45c5be600466910978609d))
+* **deploy:** Remove the deploy.yml workflow and connect the repo on Railway instead ([2c49bca](https://github.com/gchatzopoulosCC/battlesnake/commit/2c49bcae3e6eedeece3fa6c2dc167e588dbc0769))
+* **release:** Change the prerelease branch from release/* to next ([e4ac3c5](https://github.com/gchatzopoulosCC/battlesnake/commit/e4ac3c529037d1d820c6aafd85a9d437132bd642))
+* **release:** Replace GH_TOKEN with GITHUB_TOKEN ([83a43d1](https://github.com/gchatzopoulosCC/battlesnake/commit/83a43d1c807c0d7ada2d5a7f8f927a00836ec26c))
+* **release:** Replace the secret GITHUB_TOKEN with GH_TOKEN ([901db7d](https://github.com/gchatzopoulosCC/battlesnake/commit/901db7dfb15c01c417bbb687b0fe38ae61e12bf9))
+* **release:** Replace the whole file with the 2.2.0 one ([8c8e595](https://github.com/gchatzopoulosCC/battlesnake/commit/8c8e595404c5c10c245d7aacca01a79497eecbd2))
+* **release:** Use a regex to solve the unique identifier ([4a71999](https://github.com/gchatzopoulosCC/battlesnake/commit/4a71999e261a67f45488b0f1c8c58d1175f89f55))
+* **test:** Group main and develop under branches ([3df1f79](https://github.com/gchatzopoulosCC/battlesnake/commit/3df1f79dfce054136ef1ac4df157be04aec60905))
+* **test:** Remove the script and replace it with 'npm run test:coverage' ([7c3d073](https://github.com/gchatzopoulosCC/battlesnake/commit/7c3d073155816ffa6996964989ba90ac1ce7c13a))
+
+
+### Features
+
+* **.gitignore:** Include .secrets ([21a53e0](https://github.com/gchatzopoulosCC/battlesnake/commit/21a53e02a3bbd095fe0763b2268358e900885e4b))
+* **code_quality:** Write a test workflow to run prettier and run eslint ([05c5af5](https://github.com/gchatzopoulosCC/battlesnake/commit/05c5af54f8541632251f539fbcb4fa5f5339b8b2))
+* **deploy:** Make a workflow to automatically deploy on production when pushed to main ([8f16098](https://github.com/gchatzopoulosCC/battlesnake/commit/8f16098dd32df4be2ae22480c9f8c79e88d5ed21))
+* **package:** Add a start script for railway ([f3194d2](https://github.com/gchatzopoulosCC/battlesnake/commit/f3194d22b9293c224b5ca6f2025f306a91b8e78c))
+* **release, code_quality, test:** Cache npm ([cbfba0f](https://github.com/gchatzopoulosCC/battlesnake/commit/cbfba0fc22c16e87a3f2f6380d89720aede214ac))
+* **release.yml:** Add caching for npm ([fb063e9](https://github.com/gchatzopoulosCC/battlesnake/commit/fb063e9223c4530abef4a4122d15fa2c9956bf65))
+* **test:** Check for test coverage ([c1c0e2a](https://github.com/gchatzopoulosCC/battlesnake/commit/c1c0e2a2329dddbfce63b7a4926e977ad5660b2a))
+* **test:** Write a test workflow to automate tests ([9ba803e](https://github.com/gchatzopoulosCC/battlesnake/commit/9ba803e83fc36c77c8d3f3d7454ff195a9d9a95e))
+
+# [2.3.0-rc.1](https://github.com/gchatzopoulosCC/battlesnake/compare/v2.2.0...v2.3.0-rc.1) (2025-06-19)
+
 ### Bug Fixes
 
 * **.releaserc:** Add the -rc at the end ([5ce40cb](https://github.com/gchatzopoulosCC/battlesnake/commit/5ce40cb2c00ba92184ea4d724ee110da9af74836))
