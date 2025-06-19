@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: src/helper/moves/avoidanceChecker</title>
+    <title>JSDoc: Module: src/utils/moves/huntSmallerSnakes</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Module: src/helper/moves/avoidanceChecker</h1>
+    <h1 class="page-title">Module: src/utils/moves/huntSmallerSnakes</h1>
 
     
 
@@ -38,7 +38,8 @@
     <div class="container-overview">
     
         
-            <div class="description">This file contains a factory function to create avoidance checkers that evaluate move safety.</div>
+            <div class="description">This file contains logic to hunt and eliminate smaller snakes.
+The snake will actively pursue snakes that are smaller than itself.</div>
         
 
         
@@ -87,7 +88,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="helper_moves_avoidanceChecker.js.html">helper/moves/avoidanceChecker.js</a>, <a href="helper_moves_avoidanceChecker.js.html#line1">line 1</a>
+        <a href="utils_moves_huntSmallerSnakes.js.html">utils/moves/huntSmallerSnakes.js</a>, <a href="utils_moves_huntSmallerSnakes.js.html#line1">line 1</a>
     </li></ul></dd>
     
 
@@ -127,7 +128,11 @@
         <h3 class="subsection-title">Requires</h3>
 
         <ul>
-            <li><a href="module-src_helper_sets_moves.html">module:src/helper/sets/moves</a></li>
+            <li><a href="module-src_helper_snake_hunting.html">module:src/helper/snake/hunting</a></li>
+        
+            <li><a href="module-src_helper_moves_huntingStrategy.html">module:src/helper/moves/huntingStrategy</a></li>
+        
+            <li><a href="module-src_helper_snake_body.html">module:src/helper/snake/body</a></li>
         </ul>
     
 
@@ -150,7 +155,7 @@
     
 
     
-    <h4 class="name" id=".createAvoidanceChecker"><span class="type-signature">(static) </span>createAvoidanceChecker<span class="signature">(getSetFunction)</span><span class="type-signature"> &rarr; {function}</span></h4>
+    <h4 class="name" id=".huntSmallerSnakes"><span class="type-signature">(static) </span>huntSmallerSnakes<span class="signature">(gameState, isMoveSafe)</span><span class="type-signature"> &rarr; {string|null}</span></h4>
     
 
     
@@ -158,9 +163,7 @@
 
 
 <div class="description">
-    Creates an avoidance checker function that uses a provided set function
-to determine if moves are safe or not. The returned function checks each possible move
-against a set of positions to avoid.
+    Main function that implements hunting behavior for smaller snakes
 </div>
 
 
@@ -196,13 +199,13 @@ against a set of positions to avoid.
 
         <tr>
             
-                <td class="name"><code>getSetFunction</code></td>
+                <td class="name"><code>gameState</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">function</span>
+<span class="param-type">Object</span>
 
 
             
@@ -212,7 +215,30 @@ against a set of positions to avoid.
 
             
 
-            <td class="description last">A function that takes a gameState and returns a Set of positions to avoid.</td>
+            <td class="description last">The current state of the game</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>isMoveSafe</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Object indicating which moves are safe</td>
         </tr>
 
     
@@ -253,7 +279,7 @@ against a set of positions to avoid.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="helper_moves_avoidanceChecker.js.html">helper/moves/avoidanceChecker.js</a>, <a href="helper_moves_avoidanceChecker.js.html#line51">line 51</a>
+        <a href="utils_moves_huntSmallerSnakes.js.html">utils/moves/huntSmallerSnakes.js</a>, <a href="utils_moves_huntSmallerSnakes.js.html#line26">line 26</a>
     </li></ul></dd>
     
 
@@ -282,7 +308,7 @@ against a set of positions to avoid.
 
         
 <div class="param-desc">
-    A function that checks moves against the set of positions to avoid.
+    The recommended move direction or null if no hunting opportunity
 </div>
 
 
@@ -293,7 +319,10 @@ against a set of positions to avoid.
     </dt>
     <dd>
         
-<span class="param-type">function</span>
+<span class="param-type">string</span>
+|
+
+<span class="param-type">null</span>
 
 
     </dd>
@@ -304,39 +333,163 @@ against a set of positions to avoid.
 
 
 
-    <h5>Example</h5>
+
+        
+            
+
     
-    <pre class="prettyprint"><code>import { getBodySet } from "../../helper/sets/bodySet.js";
 
-// Create an avoidance checker that avoids the snake's own body
-const bodyAvoidanceChecker = createAvoidanceChecker(getBodySet);
+    
+    <h4 class="name" id=".shouldPrioritizeHunting"><span class="type-signature">(static) </span>shouldPrioritizeHunting<span class="signature">(gameState)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    
 
-// Use the checker to update isMoveSafe
-const gameState = {
-  you: {
-    body: [
-      { x: 5, y: 5 },  // Head
-      { x: 5, y: 4 },
-      { x: 6, y: 4 }
-    ]
-  }
-};
+    
 
-const isMoveSafe = {
-  left: true,
-  right: true,
-  up: true,
-  down: true,
-};
 
-bodyAvoidanceChecker(gameState, isMoveSafe);
-// After calling this function:
-// isMoveSafe = {
-//   left: true,
-//   right: true,
-//   up: true,
-//   down: false,  // Moving down would collide with body at "5,4"
-// }</code></pre>
+
+<div class="description">
+    Checks if hunting is a good strategy given current game state
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>gameState</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The current state of the game</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="utils_moves_huntSmallerSnakes.js.html">utils/moves/huntSmallerSnakes.js</a>, <a href="utils_moves_huntSmallerSnakes.js.html#line65">line 65</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    Whether hunting should be prioritized
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
 
 
 

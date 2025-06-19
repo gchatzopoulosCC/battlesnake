@@ -8,7 +8,7 @@ export default {
   // Applying coverage for the project
   collectCoverage: true,
   collectCoverageFrom: [
-    "tests/**/*.js",
+    "src/**/*.js",
     "!**/*.test.js",
     "!**/node_modules/**",
     "!jest.config.js",

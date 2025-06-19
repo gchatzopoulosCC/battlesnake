@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: src/helper/snake/body</title>
+    <title>JSDoc: Module: src/helper/moves/huntingStrategy</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Module: src/helper/snake/body</h1>
+    <h1 class="page-title">Module: src/helper/moves/huntingStrategy</h1>
 
     
 
@@ -38,8 +38,7 @@
     <div class="container-overview">
     
         
-            <div class="description">This file contains utility functions to retrieve the head and tail segments of a snake.
-These functions simplify access to the snake's body parts and are commonly used in movement logic.</div>
+            <div class="description">This file contains helper functions for hunting strategy calculations and move selection.</div>
         
 
         
@@ -88,7 +87,7 @@ These functions simplify access to the snake's body parts and are commonly used 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="helper_snake_body.js.html">helper/snake/body.js</a>, <a href="helper_snake_body.js.html#line1">line 1</a>
+        <a href="helper_moves_huntingStrategy.js.html">helper/moves/huntingStrategy.js</a>, <a href="helper_moves_huntingStrategy.js.html#line1">line 1</a>
     </li></ul></dd>
     
 
@@ -145,7 +144,7 @@ These functions simplify access to the snake's body parts and are commonly used 
     
 
     
-    <h4 class="name" id="~getHead"><span class="type-signature">(inner) </span>getHead<span class="signature">(gameState)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    <h4 class="name" id=".calculateInterceptionMove"><span class="type-signature">(static) </span>calculateInterceptionMove<span class="signature">(gameState, targetSnake, safeMoveDistances)</span><span class="type-signature"> &rarr; {string|null}</span></h4>
     
 
     
@@ -153,8 +152,7 @@ These functions simplify access to the snake's body parts and are commonly used 
 
 
 <div class="description">
-    Returns the head (first segment) of the snake from the game state.
-The head is used for determining the snake's current position and calculating possible moves.
+    Calculates the best interception move when close to target
 </div>
 
 
@@ -206,33 +204,14 @@ The head is used for determining the snake's current position and calculating po
 
             
 
-            <td class="description last">The current state of the game.
-                <h6>Properties</h6>
-                
+            <td class="description last">The current state of the game</td>
+        </tr>
 
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
     
 
         <tr>
             
-                <td class="name"><code>you</code></td>
+                <td class="name"><code>targetSnake</code></td>
             
 
             <td class="type">
@@ -248,39 +227,20 @@ The head is used for determining the snake's current position and calculating po
 
             
 
-            <td class="description last">The player's snake object.
-                <h6>Properties</h6>
-                
+            <td class="description last">The snake we're hunting</td>
+        </tr>
 
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
     
 
         <tr>
             
-                <td class="name"><code>body</code></td>
+                <td class="name"><code>safeMoveDistances</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Array.&lt;Object></span>
+<span class="param-type">Object</span>
 
 
             
@@ -290,21 +250,7 @@ The head is used for determining the snake's current position and calculating po
 
             
 
-            <td class="description last">An array of objects representing the snake's body segments, starting with the head.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-            </td>
+            <td class="description last">Object with safe move directions and distances</td>
         </tr>
 
     
@@ -345,7 +291,7 @@ The head is used for determining the snake's current position and calculating po
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="helper_snake_body.js.html">helper/snake/body.js</a>, <a href="helper_snake_body.js.html#line28">line 28</a>
+        <a href="helper_moves_huntingStrategy.js.html">helper/moves/huntingStrategy.js</a>, <a href="helper_moves_huntingStrategy.js.html#line73">line 73</a>
     </li></ul></dd>
     
 
@@ -374,7 +320,7 @@ The head is used for determining the snake's current position and calculating po
 
         
 <div class="param-desc">
-    - The head of the snake, represented as an object with `x` and `y` coordinates.
+    The best interception move or null
 </div>
 
 
@@ -385,7 +331,10 @@ The head is used for determining the snake's current position and calculating po
     </dt>
     <dd>
         
-<span class="param-type">Object</span>
+<span class="param-type">string</span>
+|
+
+<span class="param-type">null</span>
 
 
     </dd>
@@ -396,19 +345,6 @@ The head is used for determining the snake's current position and calculating po
 
 
 
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>const gameState = {
-  you: {
-    body: [
-      { x: 1, y: 1 },  // Head
-      { x: 1, y: 2 },
-    ],
-  },
-};
-getHead(gameState); // Returns { x: 1, y: 1 }</code></pre>
-
-
 
         
             
@@ -416,7 +352,7 @@ getHead(gameState); // Returns { x: 1, y: 1 }</code></pre>
     
 
     
-    <h4 class="name" id="~getNeck"><span class="type-signature">(inner) </span>getNeck<span class="signature">(gameState)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    <h4 class="name" id=".calculateSafeMoveDistances"><span class="type-signature">(static) </span>calculateSafeMoveDistances<span class="signature">(gameState, targetSnake, safeMoves)</span><span class="type-signature"> &rarr; {Object}</span></h4>
     
 
     
@@ -424,8 +360,7 @@ getHead(gameState); // Returns { x: 1, y: 1 }</code></pre>
 
 
 <div class="description">
-    Returns the head (first segment) of the snake from the game state.
-The head is used for determining the snake's current position and calculating possible moves.
+    Calculates distances for each safe move to the target
 </div>
 
 
@@ -477,33 +412,14 @@ The head is used for determining the snake's current position and calculating po
 
             
 
-            <td class="description last">The current state of the game.
-                <h6>Properties</h6>
-                
+            <td class="description last">The current state of the game</td>
+        </tr>
 
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
     
 
         <tr>
             
-                <td class="name"><code>you</code></td>
+                <td class="name"><code>targetSnake</code></td>
             
 
             <td class="type">
@@ -519,39 +435,23 @@ The head is used for determining the snake's current position and calculating po
 
             
 
-            <td class="description last">The player's snake object.
-                <h6>Properties</h6>
-                
+            <td class="description last">The snake we're hunting</td>
+        </tr>
 
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
     
 
         <tr>
             
-                <td class="name"><code>body</code></td>
+                <td class="name"><code>safeMoves</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Array.&lt;Object></span>
+<span class="param-type">Object</span>
+|
+
+<span class="param-type">Array.&lt;string></span>
 
 
             
@@ -561,21 +461,7 @@ The head is used for determining the snake's current position and calculating po
 
             
 
-            <td class="description last">An array of objects representing the snake's body segments, starting with the head.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-            </td>
+            <td class="description last">Object with direction:boolean pairs or array of safe move directions</td>
         </tr>
 
     
@@ -616,7 +502,7 @@ The head is used for determining the snake's current position and calculating po
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="helper_snake_body.js.html">helper/snake/body.js</a>, <a href="helper_snake_body.js.html#line53">line 53</a>
+        <a href="helper_moves_huntingStrategy.js.html">helper/moves/huntingStrategy.js</a>, <a href="helper_moves_huntingStrategy.js.html#line19">line 19</a>
     </li></ul></dd>
     
 
@@ -645,7 +531,7 @@ The head is used for determining the snake's current position and calculating po
 
         
 <div class="param-desc">
-    - The head of the snake, represented as an object with `x` and `y` coordinates.
+    Object with move directions and their distances to target
 </div>
 
 
@@ -667,18 +553,166 @@ The head is used for determining the snake's current position and calculating po
 
 
 
-    <h5>Example</h5>
+
+        
+            
+
     
-    <pre class="prettyprint"><code>const gameState = {
-  you: {
-    body: [
-      { x: 1, y: 1 },  // Head
-      { x: 1, y: 2 },  // Neck
-      { x: 1, y: 3 },  // Rest of the tail
-    ],
-  },
-};
-getHead(gameState); // Returns { x: 1, y: 2 }</code></pre>
+
+    
+    <h4 class="name" id=".getClosestMove"><span class="type-signature">(static) </span>getClosestMove<span class="signature">(moveDistances)</span><span class="type-signature"> &rarr; {string|null}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Gets the move that brings us closest to the target
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>moveDistances</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Object with move directions and distances</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="helper_moves_huntingStrategy.js.html">helper/moves/huntingStrategy.js</a>, <a href="helper_moves_huntingStrategy.js.html#line43">line 43</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    The direction that minimizes distance
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+|
+
+<span class="param-type">null</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
 
 
 
@@ -688,7 +722,7 @@ getHead(gameState); // Returns { x: 1, y: 2 }</code></pre>
     
 
     
-    <h4 class="name" id="~getTail"><span class="type-signature">(inner) </span>getTail<span class="signature">(gameState)</span><span class="type-signature"> &rarr; {Array.&lt;Object>}</span></h4>
+    <h4 class="name" id=".huntingStrategy"><span class="type-signature">(static) </span>huntingStrategy<span class="signature">(gameState)</span><span class="type-signature"> &rarr; {string|null}</span></h4>
     
 
     
@@ -696,8 +730,7 @@ getHead(gameState); // Returns { x: 1, y: 2 }</code></pre>
 
 
 <div class="description">
-    Returns all body segments of the snake excluding the head.
-The tail segments are used for collision detection to prevent self-collisions.
+    Main hunting strategy function
 </div>
 
 
@@ -749,105 +782,7 @@ The tail segments are used for collision detection to prevent self-collisions.
 
             
 
-            <td class="description last">The current state of the game.
-                <h6>Properties</h6>
-                
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>you</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The player's snake object.
-                <h6>Properties</h6>
-                
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>body</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;Object></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">An array of objects representing the snake's body segments, starting with the head.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-            </td>
+            <td class="description last">The current state of the game</td>
         </tr>
 
     
@@ -888,7 +823,7 @@ The tail segments are used for collision detection to prevent self-collisions.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="helper_snake_body.js.html">helper/snake/body.js</a>, <a href="helper_snake_body.js.html#line78">line 78</a>
+        <a href="helper_moves_huntingStrategy.js.html">helper/moves/huntingStrategy.js</a>, <a href="helper_moves_huntingStrategy.js.html#line83">line 83</a>
     </li></ul></dd>
     
 
@@ -917,7 +852,7 @@ The tail segments are used for collision detection to prevent self-collisions.
 
         
 <div class="param-desc">
-    - An array of objects representing the snake's body segments, excluding the head.
+    The best move for hunting or null
 </div>
 
 
@@ -928,7 +863,10 @@ The tail segments are used for collision detection to prevent self-collisions.
     </dt>
     <dd>
         
-<span class="param-type">Array.&lt;Object></span>
+<span class="param-type">string</span>
+|
+
+<span class="param-type">null</span>
 
 
     </dd>
@@ -939,18 +877,186 @@ The tail segments are used for collision detection to prevent self-collisions.
 
 
 
-    <h5>Example</h5>
+
+        
+            
+
     
-    <pre class="prettyprint"><code>const gameState = {
-  you: {
-    body: [
-      { x: 1, y: 1 },  // Head
-      { x: 1, y: 2 },
-      { x: 2, y: 2 },
-    ],
-  },
-};
-getTail(gameState); // Returns [{ x: 1, y: 2 }, { x: 2, y: 2 }]</code></pre>
+
+    
+    <h4 class="name" id=".shouldAttemptInterception"><span class="type-signature">(static) </span>shouldAttemptInterception<span class="signature">(myHead, targetHead)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Determines if we should attempt interception based on distance
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>myHead</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Our snake's head position</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>targetHead</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Target snake's head position</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="helper_moves_huntingStrategy.js.html">helper/moves/huntingStrategy.js</a>, <a href="helper_moves_huntingStrategy.js.html#line61">line 61</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    True if we should attempt interception
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
 
 
 

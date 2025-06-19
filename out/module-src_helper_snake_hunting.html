@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: src/utils/moves/avoidWalls</title>
+    <title>JSDoc: Module: src/helper/snake/hunting</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Module: src/utils/moves/avoidWalls</h1>
+    <h1 class="page-title">Module: src/helper/snake/hunting</h1>
 
     
 
@@ -38,8 +38,7 @@
     <div class="container-overview">
     
         
-            <div class="description">This file contains a function to check if the snake is at the
-edge of the board and update the isMoveSafe object accordingly to prevent wall collisions.</div>
+            <div class="description">This file contains helper functions for hunting logic including target selection and filtering.</div>
         
 
         
@@ -88,7 +87,7 @@ edge of the board and update the isMoveSafe object accordingly to prevent wall c
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_moves_avoidWalls.js.html">utils/moves/avoidWalls.js</a>, <a href="utils_moves_avoidWalls.js.html#line1">line 1</a>
+        <a href="helper_snake_hunting.js.html">helper/snake/hunting.js</a>, <a href="helper_snake_hunting.js.html#line1">line 1</a>
     </li></ul></dd>
     
 
@@ -125,12 +124,6 @@ edge of the board and update the isMoveSafe object accordingly to prevent wall c
     
 
     
-        <h3 class="subsection-title">Requires</h3>
-
-        <ul>
-            <li><a href="module-src_helper_snake_body.html">module:src/helper/snake/body</a></li>
-        </ul>
-    
 
     
 
@@ -151,7 +144,7 @@ edge of the board and update the isMoveSafe object accordingly to prevent wall c
     
 
     
-    <h4 class="name" id=".avoidWalls"><span class="type-signature">(static) </span>avoidWalls<span class="signature">(gameState, isMoveSafe)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    <h4 class="name" id=".findClosestTarget"><span class="type-signature">(static) </span>findClosestTarget<span class="signature">(gameState, huntableSnakes)</span><span class="type-signature"> &rarr; {Object|null}</span></h4>
     
 
     
@@ -159,9 +152,7 @@ edge of the board and update the isMoveSafe object accordingly to prevent wall c
 
 
 <div class="description">
-    This function checks if the snake's head is at the edge of the game board
-and updates the isMoveSafe object to prevent the snake from moving off the board.
-Hitting the boundary of the game board results in an immediate game over.
+    Finds the closest huntable snake
 </div>
 
 
@@ -213,170 +204,14 @@ Hitting the boundary of the game board results in an immediate game over.
 
             
 
-            <td class="description last">The current state of the game.
-                <h6>Properties</h6>
-                
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>board</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The board object containing game board information.
-                <h6>Properties</h6>
-                
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>width</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The width of the game board.</td>
+            <td class="description last">The current state of the game</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>height</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The height of the game board.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-            </td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>you</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The player's snake object.
-                <h6>Properties</h6>
-                
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>body</code></td>
+                <td class="name"><code>huntableSnakes</code></td>
             
 
             <td class="type">
@@ -392,162 +227,7 @@ Hitting the boundary of the game board results in an immediate game over.
 
             
 
-            <td class="description last">An array of objects representing the snake's body segments.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-            </td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>isMoveSafe</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">An object representing the safety of each move.
-                <h6>Properties</h6>
-                
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>left</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Indicates if moving left is safe.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>right</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Indicates if moving right is safe.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>up</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Indicates if moving up is safe.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>down</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Indicates if moving down is safe.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-            </td>
+            <td class="description last">Array of huntable snakes</td>
         </tr>
 
     
@@ -588,7 +268,7 @@ Hitting the boundary of the game board results in an immediate game over.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_moves_avoidWalls.js.html">utils/moves/avoidWalls.js</a>, <a href="utils_moves_avoidWalls.js.html#line61">line 61</a>
+        <a href="helper_snake_hunting.js.html">helper/snake/hunting.js</a>, <a href="helper_snake_hunting.js.html#line48">line 48</a>
     </li></ul></dd>
     
 
@@ -617,7 +297,7 @@ Hitting the boundary of the game board results in an immediate game over.
 
         
 <div class="param-desc">
-    The updated isMoveSafe object.
+    The closest huntable snake or null if none found
 </div>
 
 
@@ -629,6 +309,9 @@ Hitting the boundary of the game board results in an immediate game over.
     <dd>
         
 <span class="param-type">Object</span>
+|
+
+<span class="param-type">null</span>
 
 
     </dd>
@@ -639,37 +322,527 @@ Hitting the boundary of the game board results in an immediate game over.
 
 
 
-    <h5>Example</h5>
+
+        
+            
+
     
-    <pre class="prettyprint"><code>const gameState = {
-  board: {
-    width: 11,
-    height: 11,
-  },
-  you: {
-    body: [
-      { x: 0, y: 5 },  // Head at left edge of board
-      { x: 1, y: 5 },
-      { x: 2, y: 5 },
-    ],
-  },
-};
 
-const isMoveSafe = {
-  left: true,
-  right: true,
-  up: true,
-  down: true,
-};
+    
+    <h4 class="name" id=".getHuntableSnakes"><span class="type-signature">(static) </span>getHuntableSnakes<span class="signature">(gameState)</span><span class="type-signature"> &rarr; {Array.&lt;Object>}</span></h4>
+    
 
-avoidWalls(gameState, isMoveSafe);
-// After calling this function:
-// isMoveSafe = {
-//   left: false,  // Moving left would hit the wall
-//   right: true,
-//   up: true,
-//   down: true,
-// }</code></pre>
+    
+
+
+
+<div class="description">
+    Finds all snakes that are smaller and worth hunting
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>gameState</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The current state of the game</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="helper_snake_hunting.js.html">helper/snake/hunting.js</a>, <a href="helper_snake_hunting.js.html#line36">line 36</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    Array of smaller snake objects worth hunting
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array.&lt;Object></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".isSmallerSnake"><span class="type-signature">(static) </span>isSmallerSnake<span class="signature">(ourSnake, otherSnake)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Checks if a snake is smaller than our snake
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>ourSnake</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Our snake object</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>otherSnake</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The other snake to compare</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="helper_snake_hunting.js.html">helper/snake/hunting.js</a>, <a href="helper_snake_hunting.js.html#line16">line 16</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    True if the other snake is smaller
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".isWorthwhileTarget"><span class="type-signature">(static) </span>isWorthwhileTarget<span class="signature">(ourSnake, targetSnake)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Filters out snakes that are not worth hunting
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>ourSnake</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Our snake object</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>targetSnake</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The potential target snake</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="helper_snake_hunting.js.html">helper/snake/hunting.js</a>, <a href="helper_snake_hunting.js.html#line26">line 26</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    True if the snake is worth hunting
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
 
 
 

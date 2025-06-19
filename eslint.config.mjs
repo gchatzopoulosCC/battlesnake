@@ -5,11 +5,17 @@ import sonarjs from "eslint-plugin-sonarjs";
 import eslintComments from "eslint-plugin-eslint-comments";
 import noCommentedCode from "eslint-plugin-no-commented-code";
 import unicorn from "eslint-plugin-unicorn";
-import { defineConfig, globalIgnores } from "eslint/config";
+import { defineConfig } from "eslint-define-config";
 
 export default defineConfig([
   js.configs.recommended,
-  globalIgnores(["node_modules/", "out/"]),
+  {
+    ignores: ["node_modules/", "out/"]
+  },
+  {
+    files: ["**/*.{js,mjs,cjs}"],
+    plugins: { js },
+  },
   {
     files: ["**/*.{js,mjs,cjs}"],
     plugins: { js },

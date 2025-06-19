@@ -38,8 +38,7 @@
     <div class="container-overview">
     
         
-            <div class="description">This file contains the core functions for managing the Battlesnake game lifecycle.
-It includes functions to start and end the game, print the board state, and provide bot information.</div>
+            <div class="description">This file contains the core functions for managing the Battlesnake game lifecycle.It includes functions to start and end the game, print the board state, and provide bot information.</div>
         
 
         
@@ -153,9 +152,7 @@ It includes functions to start and end the game, print the board state, and prov
 
 
 <div class="description">
-    This function is called when the game ends. It logs a message to indicate
-the end of the current game session, which can be useful for debugging and separating logs
-between multiple game runs.
+    This function is called when the game ends. It logs a message to indicatethe end of the current game session, which can be useful for debugging and separating logsbetween multiple game runs.
 </div>
 
 
@@ -230,8 +227,7 @@ between multiple game runs.
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>end();
-// Console output: "GAME OVER"</code></pre>
+    <pre class="prettyprint"><code>end();// Console output: "GAME OVER"</code></pre>
 
 
 
@@ -249,9 +245,7 @@ between multiple game runs.
 
 
 <div class="description">
-    This function returns metadata about your Battlesnake including appearance
-customizations and API version compatibility. This information is used by the game server
-to render your snake correctly and ensure compatibility.
+    This function returns metadata about your Battlesnake including appearancecustomizations and API version compatibility. This information is used by the game serverto render your snake correctly and ensure compatibility.
 </div>
 
 
@@ -448,16 +442,7 @@ to render your snake correctly and ensure compatibility.
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>const botInfo = info();
-console.log(botInfo);
-// Output:
-// {
-//   apiversion: "1",
-//   author: "gchatzopoulosCC",
-//   color: "#F64A91",
-//   head: "silly",
-//   tail: "bolt"
-// }</code></pre>
+    <pre class="prettyprint"><code>const botInfo = info();console.log(botInfo);// Output:// {//   apiversion: "1",//   author: "gchatzopoulosCC",//   color: "#F64A91",//   head: "silly",//   tail: "bolt"// }</code></pre>
 
 
 
@@ -475,8 +460,7 @@ console.log(botInfo);
 
 
 <div class="description">
-    This function prints the current state of the game board to the console.
-It's primarily used for debugging to visualize the board state during gameplay.
+    This function prints the current state of the game board to the console.It's primarily used for debugging to visualize the board state during gameplay.
 </div>
 
 
@@ -718,14 +702,7 @@ It's primarily used for debugging to visualize the board state during gameplay.
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>const board = {
-  width: 11,
-  height: 11,
-  food: [{ x: 5, y: 5 }],
-  snakes: [{ id: "1", body: [{ x: 1, y: 1 }, { x: 1, y: 2 }] }]
-};
-printBoard(board);
-// Logs the complete board object to the console for inspection</code></pre>
+    <pre class="prettyprint"><code>const board = {  width: 11,  height: 11,  food: [{ x: 5, y: 5 }],  snakes: [{ id: "1", body: [{ x: 1, y: 1 }, { x: 1, y: 2 }] }]};printBoard(board);// Logs the complete board object to the console for inspection</code></pre>
 
 
 
@@ -743,8 +720,7 @@ printBoard(board);
 
 
 <div class="description">
-    This function is called when the game starts. It logs a message to indicate
-the beginning of a new game, which can be useful for debugging and tracking game sessions.
+    This function is called when the game starts. It logs a message to indicatethe beginning of a new game, which can be useful for debugging and tracking game sessions.
 </div>
 
 
@@ -819,8 +795,7 @@ the beginning of a new game, which can be useful for debugging and tracking game
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>start();
-// Console output: "GAME START"</code></pre>
+    <pre class="prettyprint"><code>start();// Console output: "GAME START"</code></pre>
 
 
 
@@ -840,13 +815,13 @@ the beginning of a new game, which can be useful for debugging and tracking game
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-src_core_game.html">src/core/game</a></li><li><a href="module-src_core_snake.html">src/core/snake</a></li><li><a href="module-src_helper_moves_avoidanceChecker.html">src/helper/moves/avoidanceChecker</a></li><li><a href="module-src_helper_sets_adjacentPositions.html">src/helper/sets/adjacentPositions</a></li><li><a href="module-src_helper_sets_bodySet.html">src/helper/sets/bodySet</a></li><li><a href="module-src_helper_sets_collisionSet.html">src/helper/sets/collisionSet</a></li><li><a href="module-src_helper_sets_coordinates.html">src/helper/sets/coordinates</a></li><li><a href="module-src_helper_sets_moves.html">src/helper/sets/moves</a></li><li><a href="module-src_helper_snake_body.html">src/helper/snake/body</a></li><li><a href="module-src_utils_moves_avoidGoingBackwards.html">src/utils/moves/avoidGoingBackwards</a></li><li><a href="module-src_utils_moves_avoidOthers.html">src/utils/moves/avoidOthers</a></li><li><a href="module-src_utils_moves_avoidSelf.html">src/utils/moves/avoidSelf</a></li><li><a href="module-src_utils_moves_avoidWalls.html">src/utils/moves/avoidWalls</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-src_core_game.html">src/core/game</a></li><li><a href="module-src_core_snake.html">src/core/snake</a></li><li><a href="module-src_helper_moves_avoidanceChecker.html">src/helper/moves/avoidanceChecker</a></li><li><a href="module-src_helper_moves_huntingStrategy.html">src/helper/moves/huntingStrategy</a></li><li><a href="module-src_helper_sets_adjacentPositions.html">src/helper/sets/adjacentPositions</a></li><li><a href="module-src_helper_sets_bodySet.html">src/helper/sets/bodySet</a></li><li><a href="module-src_helper_sets_collisionSet.html">src/helper/sets/collisionSet</a></li><li><a href="module-src_helper_sets_coordinates.html">src/helper/sets/coordinates</a></li><li><a href="module-src_helper_sets_moves.html">src/helper/sets/moves</a></li><li><a href="module-src_helper_sets_validation.html">src/helper/sets/validation</a></li><li><a href="module-src_helper_snake_body.html">src/helper/snake/body</a></li><li><a href="module-src_helper_snake_hunting.html">src/helper/snake/hunting</a></li><li><a href="module-src_utils_moves_avoidGoingBackwards.html">src/utils/moves/avoidGoingBackwards</a></li><li><a href="module-src_utils_moves_avoidOthers.html">src/utils/moves/avoidOthers</a></li><li><a href="module-src_utils_moves_avoidSelf.html">src/utils/moves/avoidSelf</a></li><li><a href="module-src_utils_moves_avoidWalls.html">src/utils/moves/avoidWalls</a></li><li><a href="module-src_utils_moves_avoidanceChecker.html">src/utils/moves/avoidanceChecker</a></li><li><a href="module-src_utils_moves_huntSmallerSnakes.html">src/utils/moves/huntSmallerSnakes</a></li><li><a href="module-src_utils_sets_bodySet.html">src/utils/sets/bodySet</a></li><li><a href="module-src_utils_sets_collisionSet.html">src/utils/sets/collisionSet</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Fri Jun 06 2025 13:51:11 GMT+0300 (Eastern European Summer Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Thu Jun 19 2025 23:38:05 GMT+0300 (Eastern European Summer Time)
 </footer>
 
 <script> prettyPrint(); </script>
