@@ -7,19 +7,14 @@
  * @requires module:src/helper/snake/body
  * @requires module:src/helper/sets/collisionSet
  * @requires module:src/helper/sets/bodySet
- * @requires module:src/helper/sets/adjacentPositions
+ * @requires module:src/helper/sets/validation
  * @requires module:src/helper/sets/coordinates
  */
 
 import { getHead } from "../../helper/snake/body.js";
 import { getCollisionSet } from "../../helper/sets/collisionSet.js";
 import { getBodySet } from "../../helper/sets/bodySet.js";
-import { 
-  getLeftAdjacentPosition, 
-  getRightAdjacentPosition, 
-  getUpAdjacentPosition, 
-  getDownAdjacentPosition 
-} from "../../helper/sets/adjacentPositions.js";
+import { getAdjacentPositions } from "../../helper/sets/validation.js";
 import { parseCoordinates } from "../../helper/sets/coordinates.js";
 
 /**
@@ -79,12 +74,8 @@ export function floodFill(gameState, possibleMoves) {
     right: 0
   };
 
-  const adjacentFunctions = {
-    up: getUpAdjacentPosition,
-    down: getDownAdjacentPosition,
-    left: getLeftAdjacentPosition,
-    right: getRightAdjacentPosition
-  };
+  // Get adjacent positions using existing function
+  const adjacentPositions = getAdjacentPositions(head);
 
   // For each possible move direction, calculate reachable cells
   for (const [direction, isPossible] of Object.entries(possibleMoves)) {
@@ -93,9 +84,14 @@ export function floodFill(gameState, possibleMoves) {
       continue;
     }
 
-    // Get the adjacent position for this direction
-    const nextPositionStr = adjacentFunctions[direction](head);
-    const [x, y] = nextPositionStr.split(',').map(Number);
+    // Find the adjacent position for this direction
+    const adjacentPos = adjacentPositions.find(adj => adj.direction === direction);
+    if (!adjacentPos) {
+      result[direction] = 0;
+      continue;
+    }
+
+    const [x, y] = adjacentPos.position.split(',').map(Number);
 
     // Check if the new position is valid
     if (x < 0 || x >= boardWidth || y < 0 || y >= boardHeight) {
@@ -156,28 +152,23 @@ function performFloodFill(blockedPositions, startX, startY, width, height) {
   visited.add(startPos);
   let count = 0;
 
-  const adjacentFunctions = [
-    getUpAdjacentPosition,
-    getDownAdjacentPosition,
-    getLeftAdjacentPosition,
-    getRightAdjacentPosition
-  ];
-
   while (queue.length > 0) {
     const current = queue.shift();
     count++;
 
+    // Get adjacent positions using existing function
+    const adjacentPositions = getAdjacentPositions(current);
+
     // Check all four directions
-    for (const getAdjacent of adjacentFunctions) {
-      const adjacentPosStr = getAdjacent(current);
-      const [newX, newY] = adjacentPosStr.split(',').map(Number);
+    for (const adj of adjacentPositions) {
+      const [newX, newY] = adj.position.split(',').map(Number);
 
       // Check if the new position is valid and not visited
       if (newX >= 0 && newX < width && 
           newY >= 0 && newY < height && 
-          !visited.has(adjacentPosStr) && 
-          !blockedPositions.has(adjacentPosStr)) {
-        visited.add(adjacentPosStr);
+          !visited.has(adj.position) && 
+          !blockedPositions.has(adj.position)) {
+        visited.add(adj.position);
         queue.push({ x: newX, y: newY });
       }
     }

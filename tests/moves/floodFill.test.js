@@ -3,7 +3,7 @@ import { expect } from "@jest/globals";
 
 describe("floodFill Algorithm", () => {
   describe("Basic functionality", () => {
-    test("should count all reachable cells in an empty board", () => {
+    test("1. should count all reachable cells in an empty board", () => {
       const gameState = {
         board: {
           width: 3,
@@ -20,14 +20,15 @@ describe("floodFill Algorithm", () => {
       const possibleMoves = { up: true, down: true, left: true, right: true };
       const result = floodFill(gameState, possibleMoves);
 
-      // From center position (1,1), all 8 surrounding cells should be reachable
+      // From center position (1,1) in a 3x3 board, each direction should reach the same 8 cells
+      // (total 9 cells - 1 occupied by head = 8 reachable cells)
       expect(result.up).toBe(8);
       expect(result.down).toBe(8);
       expect(result.left).toBe(8);
       expect(result.right).toBe(8);
     });
 
-    test("should return 0 for moves that would hit walls", () => {
+    test("2. should return 0 for moves that would hit walls", () => {
       const gameState = {
         board: {
           width: 3,
@@ -55,7 +56,7 @@ describe("floodFill Algorithm", () => {
   });
 
   describe("Snake body obstacles", () => {
-    test("should not count cells occupied by snake bodies", () => {
+    test("3. should not count cells occupied by snake bodies", () => {
       const gameState = {
         board: {
           width: 5,
@@ -91,7 +92,7 @@ describe("floodFill Algorithm", () => {
       expect(result.right).toBeLessThan(result.down);
     });
 
-    test("should identify trapped positions", () => {
+    test("4. should identify trapped positions", () => {
       const gameState = {
         board: {
           width: 5,
@@ -126,7 +127,7 @@ describe("floodFill Algorithm", () => {
   });
 
   describe("Complex scenarios", () => {
-    test("should prefer moves with more available space", () => {
+    test("5. should prefer moves with more available space", () => {
       const gameState = {
         board: {
           width: 7,
@@ -158,7 +159,7 @@ describe("floodFill Algorithm", () => {
       expect(result.left).toBeGreaterThan(result.right);
     });
 
-    test("should handle board edges correctly", () => {
+    test("6. should handle board edges correctly", () => {
       const gameState = {
         board: {
           width: 11,
@@ -182,7 +183,7 @@ describe("floodFill Algorithm", () => {
       expect(result.right).toBe(0);
     });
 
-    test("should consider food as passable cells", () => {
+    test("7. should consider food as passable cells", () => {
       const gameState = {
         board: {
           width: 5,
@@ -209,7 +210,7 @@ describe("floodFill Algorithm", () => {
   });
 
   describe("Performance and edge cases", () => {
-    test("should handle large boards efficiently", () => {
+    test("8. should handle large boards efficiently", () => {
       const gameState = {
         board: {
           width: 19,
@@ -236,7 +237,7 @@ describe("floodFill Algorithm", () => {
       expect(result.up).toBe(360); // 19x19 - 1 (head position) = 360
     });
 
-    test("should handle single cell snake correctly", () => {
+    test("9. should handle single cell snake correctly", () => {
       const gameState = {
         board: {
           width: 3,
@@ -253,7 +254,7 @@ describe("floodFill Algorithm", () => {
       const possibleMoves = { up: true, down: true, left: true, right: true };
       const result = floodFill(gameState, possibleMoves);
 
-      // All moves should have same accessible space
+      // All moves should have same accessible space (8 cells in 3x3 grid minus head position)
       expect(result.up).toBe(8);
       expect(result.down).toBe(8);
       expect(result.left).toBe(8);

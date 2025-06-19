@@ -22,6 +22,30 @@ import { floodFill } from "../utils/moves/floodFill.js";
  */
 
 /**
+ * @description Finds the moves with the most available space from safe moves
+ * @param {string[]} safeMoves - Array of safe move directions
+ * @param {Object} floodFillResults - Results from flood fill algorithm
+ * @returns {Object} Object containing bestMoves array and maxSpace value
+ */
+function findBestMoves(safeMoves, floodFillResults) {
+  let maxSpace = 0;
+  const bestMoves = [];
+  
+  for (const move of safeMoves) {
+    const space = floodFillResults[move];
+    if (space > maxSpace) {
+      maxSpace = space;
+      bestMoves.length = 0; // Clear array
+      bestMoves.push(move);
+    } else if (space === maxSpace) {
+      bestMoves.push(move);
+    }
+  }
+
+  return { bestMoves, maxSpace };
+}
+
+/**
  * @description Determines the next move for the Battlesnake based on the current game state.
  * The function evaluates possible moves and avoids unsafe options such as walls, the snake's own body, and other snakes.
  * If no safe moves are available, it defaults to moving "down".
@@ -98,19 +122,7 @@ function move(gameState) {
   }
   
   // Find moves with the most available space
-  let maxSpace = 0;
-  const bestMoves = [];
-  
-  for (const move of safeMoves) {
-    const space = floodFillResults[move];
-    if (space > maxSpace) {
-      maxSpace = space;
-      bestMoves.length = 0; // Clear array
-      bestMoves.push(move);
-    } else if (space === maxSpace) {
-      bestMoves.push(move);
-    }
-  }
+  const { bestMoves, maxSpace } = findBestMoves(safeMoves, floodFillResults);
 
   // If all moves have very limited space, warn about potential trap
   if (maxSpace < 10) {
