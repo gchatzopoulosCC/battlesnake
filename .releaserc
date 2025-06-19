@@ -1,7 +1,11 @@
 {
   "branches": [
     "main",
-    {"name": "release/*", "prerelease": "${name.replace(/^release\\//g, '')}-rc"}
+    {
+      "name": "release/*",
+      "channel": "${name.replace(/^release\\//g, '')}",
+      "prerelease": "rc"
+      }
   ],
   "repositoryUrl": "https://github.com/gchatzopoulosCC/battlesnake.git",
   "plugins": [
