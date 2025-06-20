@@ -1,5 +1,27 @@
 # Changelog
 
+# [2.4.0](https://github.com/gchatzopoulosCC/battlesnake/compare/v2.3.0...v2.4.0) (2025-06-20)
+
+
+### Bug Fixes
+
+* **astar:** Remove unused imports and ignore fonts ([09e9966](https://github.com/gchatzopoulosCC/battlesnake/commit/09e99666b9757f88e122dd9e680b08fe80ecfad2))
+* **core:** Update floodFill import path and function call ([bc084f7](https://github.com/gchatzopoulosCC/battlesnake/commit/bc084f77df2c3f65d4a306a7cad6db54769df7ee))
+* **movement:** Improve snake movement logic and prevent out-of-bounds errors ([debbf1d](https://github.com/gchatzopoulosCC/battlesnake/commit/debbf1d8c303479e712ce68081ce243d2b2dbb2d))
+* **moves:** Correct flood fill algorithm and move to helper directory ([7976c9c](https://github.com/gchatzopoulosCC/battlesnake/commit/7976c9c601603ed6b1afa400b6472f52f253b848))
+* **moves:** Integrate hunting strategy with flood fill for safer decisions ([aa9c8f1](https://github.com/gchatzopoulosCC/battlesnake/commit/aa9c8f105902e40f96a877a2386cdad7fae1ee9a))
+* **moves:** Restore proper flood fill algorithm behavior ([70d2f9b](https://github.com/gchatzopoulosCC/battlesnake/commit/70d2f9b34fc8c431b0667d199ea096f81b1ec233))
+* **package-lock:** Reinstall jest ([b8d64d5](https://github.com/gchatzopoulosCC/battlesnake/commit/b8d64d5c3486ebe2e81600dec64c0f5615872552))
+* **package-lock:** Replace brace-expansion 2.0.1 with 2.0.1 and all its dependencies ([d3d59ac](https://github.com/gchatzopoulosCC/battlesnake/commit/d3d59ac360e5e62590080e0e9ff85d9bf97eaf24))
+
+
+### Features
+
+* **astar:** Astar tests and implementantion ([351532d](https://github.com/gchatzopoulosCC/battlesnake/commit/351532d3ae7300bf8e2fcbdd4ec336d6beb6cae1))
+* **core:** Merge develop with flood fill hybrid approach ([3fda593](https://github.com/gchatzopoulosCC/battlesnake/commit/3fda59399f0050d88cecaee9f85b9dad4e28de31))
+* **moves:** Add flood fill algorithm and test cases ([8d26db4](https://github.com/gchatzopoulosCC/battlesnake/commit/8d26db4c1e610e4415e7a99ce6a5a93f7933e21e))
+* **moves:** Improve decision-making for equal space moves with food seeking and randomness ([944a25c](https://github.com/gchatzopoulosCC/battlesnake/commit/944a25cccdce18222ec0893da8057cf90eb0c2f4))
+
 # [2.4.0-rc.1](https://github.com/gchatzopoulosCC/battlesnake/compare/v2.3.0...v2.4.0-rc.1) (2025-06-20)
 
 
