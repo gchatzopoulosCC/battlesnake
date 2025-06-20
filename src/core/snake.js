@@ -14,7 +14,7 @@ import { avoidWalls } from "../utils/moves/avoidWalls.js";
 import { avoidSelf } from "../utils/moves/avoidSelf.js";
 import { avoidOthers } from "../utils/moves/avoidOthers.js";
 import { huntingStrategy } from "../helper/moves/huntingStrategy.js";
-import { floodFill } from "../utils/moves/floodFill.js";
+import { floodFill } from "../helper/moves/floodFill.js";
 
 /**
  * @typedef {"up" | "down" | "left" | "right"} MoveDirection
@@ -113,7 +113,7 @@ function move(gameState) {
   }
 
   // Use flood fill to determine which safe move gives us the most space
-  const floodFillResults = floodFill(gameState, isMoveSafe);
+  const floodFillResults = floodFill(gameState);
   
   // Log all safe moves and their space
   for (const move of safeMoves) {
