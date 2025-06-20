@@ -2,6 +2,8 @@ import { floodFill } from "../../src/helper/moves/floodFill.js";
 import { expect } from "@jest/globals";
 
 describe("floodFill Algorithm", () => {
+
+
   describe("Basic functionality", () => {
     test("1. should count all reachable cells in an empty board", () => {
       const gameState = {
@@ -84,9 +86,15 @@ describe("floodFill Algorithm", () => {
 
       const result = floodFill(gameState);
 
-      // Right move leads to enemy snake, should have limited space
-      expect(result.right).toBeLessThan(result.up);
-      expect(result.right).toBeLessThan(result.down);
+      // Right move to (2,2) is blocked by enemy snake body
+      expect(result.right).toBe(0);
+      
+      // Left move to (0,2) is blocked by our own snake body  
+      expect(result.left).toBe(0);
+      
+      // Up and down moves should have access to significant space
+      expect(result.up).toBeGreaterThan(10);
+      expect(result.down).toBeGreaterThan(10);
     });
 
     test("4. should identify trapped positions", () => {
