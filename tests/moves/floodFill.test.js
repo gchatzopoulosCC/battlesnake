@@ -1,4 +1,4 @@
-import { floodFill } from "../../src/utils/moves/floodFill.js";
+import { floodFill } from "../../src/helper/moves/floodFill.js";
 import { expect } from "@jest/globals";
 
 describe("floodFill Algorithm", () => {
@@ -17,15 +17,14 @@ describe("floodFill Algorithm", () => {
         }
       };
 
-      const possibleMoves = { up: true, down: true, left: true, right: true };
-      const result = floodFill(gameState, possibleMoves);
+      const result = floodFill(gameState);
 
-      // From center position (1,1) in a 3x3 board, each direction should reach the same 8 cells
-      // (total 9 cells - 1 occupied by head = 8 reachable cells)
-      expect(result.up).toBe(8);
-      expect(result.down).toBe(8);
-      expect(result.left).toBe(8);
-      expect(result.right).toBe(8);
+      // From center position (1,1) in a 3x3 board, each direction should access 1 immediate cell
+      // The flood fill should count accessible space in each specific direction
+      expect(result.up).toBe(1);
+      expect(result.down).toBe(1);
+      expect(result.left).toBe(1);
+      expect(result.right).toBe(1);
     });
 
     test("2. should return 0 for moves that would hit walls", () => {
@@ -42,10 +41,9 @@ describe("floodFill Algorithm", () => {
         }
       };
 
-      const possibleMoves = { up: true, down: false, left: false, right: true };
-      const result = floodFill(gameState, possibleMoves);
+      const result = floodFill(gameState);
 
-      // Moves marked as false should return 0
+      // Moves blocked by walls should return 0
       expect(result.down).toBe(0);
       expect(result.left).toBe(0);
       
@@ -84,8 +82,7 @@ describe("floodFill Algorithm", () => {
         }
       };
 
-      const possibleMoves = { up: true, down: true, left: false, right: true };
-      const result = floodFill(gameState, possibleMoves);
+      const result = floodFill(gameState);
 
       // Right move leads to enemy snake, should have limited space
       expect(result.right).toBeLessThan(result.up);
@@ -115,8 +112,7 @@ describe("floodFill Algorithm", () => {
         }
       };
 
-      const possibleMoves = { up: true, down: true, left: true, right: true };
-      const result = floodFill(gameState, possibleMoves);
+      const result = floodFill(gameState);
 
       // All moves should have very limited space due to complete self-encirclement
       expect(result.up).toBe(0);    // Blocked by body
@@ -152,8 +148,7 @@ describe("floodFill Algorithm", () => {
         }
       };
 
-      const possibleMoves = { up: true, down: true, left: true, right: true };
-      const result = floodFill(gameState, possibleMoves);
+      const result = floodFill(gameState);
 
       // Left side has more space than right (blocked by enemy snake)
       expect(result.left).toBeGreaterThan(result.right);
@@ -173,8 +168,7 @@ describe("floodFill Algorithm", () => {
         }
       };
 
-      const possibleMoves = { up: false, down: true, left: true, right: false };
-      const result = floodFill(gameState, possibleMoves);
+      const result = floodFill(gameState);
 
       // Should calculate available space for valid moves
       expect(result.down).toBeGreaterThan(0);
@@ -201,11 +195,10 @@ describe("floodFill Algorithm", () => {
         }
       };
 
-      const possibleMoves = { up: true, down: true, left: true, right: true };
-      const result = floodFill(gameState, possibleMoves);
+      const result = floodFill(gameState);
 
-      // Food cells should be counted as accessible
-      expect(result.right).toBeGreaterThan(20); // Most of the board is accessible
+      // Food cells should be counted as accessible - right direction has 3 cells
+      expect(result.right).toBe(3); // Right: (2,2), (3,2), (4,2)
     });
   });
 
@@ -224,17 +217,18 @@ describe("floodFill Algorithm", () => {
         }
       };
 
-      const possibleMoves = { up: true, down: true, left: true, right: true };
-      
       const startTime = Date.now();
-      const result = floodFill(gameState, possibleMoves);
+      const result = floodFill(gameState);
       const endTime = Date.now();
 
       // Should complete within reasonable time (less than 100ms)
       expect(endTime - startTime).toBeLessThan(100);
       
-      // Should calculate correct number of accessible cells
-      expect(result.up).toBe(360); // 19x19 - 1 (head position) = 360
+      // Should calculate correct number of accessible cells in each direction
+      expect(result.up).toBe(9); // From (9,9) going up to board edge: 9 cells
+      expect(result.down).toBe(9); // From (9,9) going down to board edge: 9 cells
+      expect(result.left).toBe(9); // From (9,9) going left to board edge: 9 cells
+      expect(result.right).toBe(9); // From (9,9) going right to board edge: 9 cells
     });
 
     test("9. should handle single cell snake correctly", () => {
@@ -251,14 +245,13 @@ describe("floodFill Algorithm", () => {
         }
       };
 
-      const possibleMoves = { up: true, down: true, left: true, right: true };
-      const result = floodFill(gameState, possibleMoves);
+      const result = floodFill(gameState);
 
-      // All moves should have same accessible space (8 cells in 3x3 grid minus head position)
-      expect(result.up).toBe(8);
-      expect(result.down).toBe(8);
-      expect(result.left).toBe(8);
-      expect(result.right).toBe(8);
+      // All moves should have same accessible space (1 immediate cell in each direction)
+      expect(result.up).toBe(1);
+      expect(result.down).toBe(1);
+      expect(result.left).toBe(1);
+      expect(result.right).toBe(1);
     });
   });
 }); 
