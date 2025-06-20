@@ -14,6 +14,8 @@ import { avoidWalls } from "../utils/moves/avoidWalls.js";
 import { avoidSelf } from "../utils/moves/avoidSelf.js";
 import { avoidOthers } from "../utils/moves/avoidOthers.js";
 import { huntingStrategy } from "../helper/moves/huntingStrategy.js";
+import { enhancedHuntingStrategy } from "../utils/moves/astarHunting.js";
+import { smartFoodStrategy, shouldPrioritizeFood } from "../utils/moves/astarFood.js";
 import { floodFill } from "../helper/moves/floodFill.js";
 
 /**
@@ -44,6 +46,19 @@ function findBestMoves(safeMoves, floodFillResults) {
 
   return { bestMoves, maxSpace };
 }
+
+/**
+ * @description Evaluates if a move is space-safe (has sufficient accessible cells)
+ * @param {string} move - The move direction to evaluate
+ * @param {Object} floodFillResults - Results from flood fill algorithm
+ * @param {number} minSpace - Minimum required space (default: 15)
+ * @returns {boolean} True if move has sufficient space
+ */
+function isSpaceSafe(move, floodFillResults, minSpace = 15) {
+  return floodFillResults[move] >= minSpace;
+}
+
+
 
 /**
  * @description Determines the next move for the Battlesnake based on the current game state.
@@ -99,7 +114,7 @@ function move(gameState) {
     right: true,
   };
 
-  // Moves to avoid
+  // First, determine which moves are safe
   avoidGoingBackwards(gameState, isMoveSafe);
   avoidWalls(gameState, isMoveSafe);
   avoidSelf(gameState, isMoveSafe);
@@ -112,10 +127,12 @@ function move(gameState) {
     return { move: "down" };
   }
 
-  // Use flood fill to determine which safe move gives us the most space
+  // HYBRID APPROACH: Combine A* pathfinding with flood fill space evaluation
+  
+  // Step 1: Perform flood fill analysis for space evaluation
   const floodFillResults = floodFill(gameState);
   
-  // Log all safe moves and their space
+  // Log all safe moves and their accessible space
   for (const move of safeMoves) {
     const space = floodFillResults[move];
     console.log(`MOVE ${gameState.turn}: ${move} has ${space} accessible cells`);
@@ -123,29 +140,59 @@ function move(gameState) {
   
   // Find moves with the most available space
   const { bestMoves, maxSpace } = findBestMoves(safeMoves, floodFillResults);
-
-  // If all moves have very limited space, warn about potential trap
+  
+  // Warn if all moves have very limited space
   if (maxSpace < 10) {
     console.log(`MOVE ${gameState.turn}: WARNING - Limited space available (${maxSpace} cells)`);
   }
 
-  // When multiple moves have equal space, add some intelligence
+  // Step 2: Try A* strategies but validate them with flood fill
+  
+  // Priority 1: Enhanced A* hunting (only if space-safe)
+  const astarHuntingMove = enhancedHuntingStrategy(gameState, isMoveSafe);
+  if (astarHuntingMove && isSpaceSafe(astarHuntingMove, floodFillResults, 20)) {
+    console.log(`MOVE ${gameState.turn}: A* Hunting (space-validated)! Moving ${astarHuntingMove} with ${floodFillResults[astarHuntingMove]} accessible cells`);
+    return { move: astarHuntingMove };
+  }
+
+  // Priority 2: Traditional hunting (only if space-safe)
+  const huntingMove = huntingStrategy(gameState);
+  if (huntingMove && isMoveSafe[huntingMove] && isSpaceSafe(huntingMove, floodFillResults, 20)) {
+    console.log(`MOVE ${gameState.turn}: Traditional Hunting (space-validated)! Moving ${huntingMove} with ${floodFillResults[huntingMove]} accessible cells`);
+    return { move: huntingMove };
+  }
+
+  // Priority 3: Smart food seeking with space validation
+  if (shouldPrioritizeFood(gameState)) {
+    const foodMove = smartFoodStrategy(gameState, isMoveSafe);
+    if (foodMove && isSpaceSafe(foodMove, floodFillResults, 15)) {
+      console.log(`MOVE ${gameState.turn}: A* Food Seeking (space-validated)! Moving ${foodMove} with ${floodFillResults[foodMove]} accessible cells`);
+      return { move: foodMove };
+    }
+  }
+
+  // Step 3: Fall back to flood fill space-based decision making
+  
+  // If we have moves with good space, prefer hunting among them
+  if (maxSpace >= 30) {
+    // Try hunting moves that are among the best space moves
+    if (astarHuntingMove && bestMoves.includes(astarHuntingMove)) {
+      console.log(`MOVE ${gameState.turn}: A* Hunting (best space)! Moving ${astarHuntingMove} with ${floodFillResults[astarHuntingMove]} accessible cells`);
+      return { move: astarHuntingMove };
+    }
+    
+    if (huntingMove && isMoveSafe[huntingMove] && bestMoves.includes(huntingMove)) {
+      console.log(`MOVE ${gameState.turn}: Traditional Hunting (best space)! Moving ${huntingMove} with ${floodFillResults[huntingMove]} accessible cells`);
+      return { move: huntingMove };
+    }
+  }
+  
+  // Choose intelligently from best space moves
   let finalMove = bestMoves[0];
   
-  // First, check if hunting suggests a move that's both safe and has good space
-  const huntingMove = huntingStrategy(gameState);
-  const huntingIsSafe = huntingMove && isMoveSafe[huntingMove];
-  const huntingHasSpace = huntingIsSafe && floodFillResults[huntingMove] >= 30;
-  
-  // If hunting move is among the best moves (has max space), prefer it
-  if (huntingIsSafe && bestMoves.includes(huntingMove) && huntingHasSpace) {
-    finalMove = huntingMove;
-    console.log(`MOVE ${gameState.turn}: Hunting! Moving ${finalMove} with ${floodFillResults[finalMove]} accessible cells`);
-  }
-  // Otherwise, choose intelligently from best moves
-  else if (bestMoves.length > 1) {
-    // Prefer moves towards food if health is low
-    if (gameState.you.health < 50 && gameState.board.food.length > 0) {
+  if (bestMoves.length > 1) {
+    // Prefer moves towards food if health is low and we have good space
+    if (gameState.you.health < 50 && gameState.board.food.length > 0 && maxSpace >= 20) {
       const head = gameState.you.head;
       const nearestFood = gameState.board.food.reduce((closest, food) => {
         const dist = Math.abs(food.x - head.x) + Math.abs(food.y - head.y);
@@ -167,40 +214,17 @@ function move(gameState) {
         
         if (newDist < currentDist) {
           finalMove = move;
-          console.log(`MOVE ${gameState.turn}: Moving towards food`);
+          console.log(`MOVE ${gameState.turn}: Moving towards food (flood fill guided) with ${floodFillResults[finalMove]} accessible cells`);
           break;
         }
       }
     } else {
-      // Otherwise, add some randomness to avoid predictable patterns
+      // Add some randomness to avoid predictable patterns
       finalMove = bestMoves[Math.floor(Math.random() * bestMoves.length)];
     }
-    console.log(`MOVE ${gameState.turn}: Choosing ${finalMove} with ${maxSpace} accessible cells`);
-  } else {
-    console.log(`MOVE ${gameState.turn}: Moving ${finalMove} with ${maxSpace} accessible cells`);
   }
-
-  // Final safety check - log position to help debug wall collisions
-  const head = gameState.you.head;
-  const newPos = {
-    up: { x: head.x, y: head.y + 1 },
-    down: { x: head.x, y: head.y - 1 },
-    left: { x: head.x - 1, y: head.y },
-    right: { x: head.x + 1, y: head.y }
-  }[finalMove];
   
-  // Verify the move won't go out of bounds
-  if (newPos.x < 0 || newPos.x >= gameState.board.width || 
-      newPos.y < 0 || newPos.y >= gameState.board.height) {
-    console.error(`MOVE ${gameState.turn}: ERROR! Move ${finalMove} would go out of bounds!`);
-    console.error(`Head at (${head.x}, ${head.y}), would move to (${newPos.x}, ${newPos.y})`);
-    console.error(`Board size: ${gameState.board.width}x${gameState.board.height}`);
-    // Return a different safe move
-    const fallbackMove = safeMoves.find(m => m !== finalMove) || "down";
-    console.error(`MOVE ${gameState.turn}: Using fallback move: ${fallbackMove}`);
-    return { move: fallbackMove };
-  }
-
+  console.log(`MOVE ${gameState.turn}: Flood fill decision - Moving ${finalMove} with ${maxSpace} accessible cells`);
   return { move: finalMove };
 }
 

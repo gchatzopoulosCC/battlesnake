@@ -5,6 +5,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "test:watch": "node --experimental-vm-modules node_modules/jest/bin/jest.js --watch",
     "test:coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage",
@@ -20,6 +21,7 @@
     "@types/node": "^18.0.6",
     "eslint-plugin-eslint-comments": "^3.2.0",
     "express": "^4.21.2",
+    "jest": "^30.0.2",
     "node-fetch": "^3.2.10",
     "tree-cli": "^0.6.7"
   },
