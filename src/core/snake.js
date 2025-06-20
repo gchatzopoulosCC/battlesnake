@@ -14,6 +14,8 @@ import { avoidWalls } from "../utils/moves/avoidWalls.js";
 import { avoidSelf } from "../utils/moves/avoidSelf.js";
 import { avoidOthers } from "../utils/moves/avoidOthers.js";
 import { huntingStrategy } from "../helper/moves/huntingStrategy.js";
+import { enhancedHuntingStrategy } from "../utils/moves/astarHunting.js";
+import { smartFoodStrategy, shouldPrioritizeFood } from "../utils/moves/astarFood.js";
 
 /**
  * @typedef {"up" | "down" | "left" | "right"} MoveDirection
@@ -67,13 +69,6 @@ import { huntingStrategy } from "../helper/moves/huntingStrategy.js";
  * // Returns { move: "down" }
  */
 function move(gameState) {
-  // Try to hunt smaller snakes first
-  const huntingMove = huntingStrategy(gameState);
-  if (huntingMove) {
-    console.log(`MOVE ${gameState.turn}: Hunting! Moving ${huntingMove}`);
-    return { move: huntingMove };
-  }
-
   const isMoveSafe = {
     up: true,
     down: true,
@@ -81,7 +76,7 @@ function move(gameState) {
     right: true,
   };
 
-  // Moves to avoid
+  // First, determine which moves are safe
   avoidGoingBackwards(gameState, isMoveSafe);
   avoidWalls(gameState, isMoveSafe);
   avoidSelf(gameState, isMoveSafe);
@@ -94,13 +89,32 @@ function move(gameState) {
     return { move: "down" };
   }
 
-  // Choose a random move from the safe moves
+  // Priority 1: Enhanced A* hunting for smaller snakes
+  const astarHuntingMove = enhancedHuntingStrategy(gameState, isMoveSafe);
+  if (astarHuntingMove) {
+    console.log(`MOVE ${gameState.turn}: A* Hunting! Moving ${astarHuntingMove}`);
+    return { move: astarHuntingMove };
+  }
+
+  // Priority 2: Traditional hunting as fallback
+  const huntingMove = huntingStrategy(gameState);
+  if (huntingMove && isMoveSafe[huntingMove]) {
+    console.log(`MOVE ${gameState.turn}: Traditional Hunting! Moving ${huntingMove}`);
+    return { move: huntingMove };
+  }
+
+  // Priority 3: Smart food seeking with A* (especially when health is low)
+  if (shouldPrioritizeFood(gameState)) {
+    const foodMove = smartFoodStrategy(gameState, isMoveSafe);
+    if (foodMove) {
+      console.log(`MOVE ${gameState.turn}: A* Food Seeking! Moving ${foodMove}`);
+      return { move: foodMove };
+    }
+  }
+
+  // Fallback: Choose a random safe move
   const nextMove = safeMoves[Math.floor(Math.random() * safeMoves.length)];
-
-  // TODO: Step 4 - Move towards food instead of random, to regain health and survive longer
-  // food = gameState.board.food;
-
-  console.log(`MOVE ${gameState.turn}: ${nextMove}`);
+  console.log(`MOVE ${gameState.turn}: Random safe move: ${nextMove}`);
   return { move: nextMove };
 }
 
