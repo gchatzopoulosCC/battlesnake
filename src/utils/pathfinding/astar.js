@@ -10,8 +10,6 @@ import {
   findClosestTarget,
 } from "../../helper/snake/hunting.js";
 import { getValidMovesFromPosition } from "../../helper/sets/validation.js";
-import { getCollisionSet } from "../../helper/sets/collisionSet.js";
-import { getBodySet } from "../../helper/sets/bodySet.js";
 
 /**
  * @description Priority queue implementation for A* algorithm
