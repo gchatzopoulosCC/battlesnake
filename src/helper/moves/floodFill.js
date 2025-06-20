@@ -7,7 +7,7 @@
  */
 
 /**
- * @description Performs a directional space counting to evaluate accessible spaces in each direction.
+ * @description Performs a flood fill algorithm to count accessible spaces from each direction.
  * This helps the snake avoid dead ends and choose paths with more open space.
  * 
  * @param {Object} gameState - The current state of the game
@@ -26,18 +26,32 @@ export function floodFill(gameState) {
   const boardWidth = gameState.board.width;
   const boardHeight = gameState.board.height;
   
-  // Check spaces accessible in each direction
+  // Check spaces accessible from each adjacent cell
   const directions = {
-    up: { x: 0, y: 1 },
-    down: { x: 0, y: -1 },
-    left: { x: -1, y: 0 },
-    right: { x: 1, y: 0 }
+    up: { x: head.x, y: head.y + 1 },
+    down: { x: head.x, y: head.y - 1 },
+    left: { x: head.x - 1, y: head.y },
+    right: { x: head.x + 1, y: head.y }
   };
   
-  // For each direction, count accessible spaces in that direction
+  // For each direction, if it's valid, perform flood fill
   Object.keys(directions).forEach(direction => {
-    const delta = directions[direction];
-    accessibleSpaces[direction] = countDirectionalSpaces(head, delta, gameState);
+    const pos = directions[direction];
+    
+    // Skip if out of bounds
+    if (pos.x < 0 || pos.x >= boardWidth || pos.y < 0 || pos.y >= boardHeight) {
+      accessibleSpaces[direction] = 0;
+      return;
+    }
+    
+    // Skip if position contains snake body
+    if (isSnakeBody(pos, gameState)) {
+      accessibleSpaces[direction] = 0;
+      return;
+    }
+    
+    // Perform flood fill from this position
+    accessibleSpaces[direction] = countAccessibleSpaces(pos, gameState);
   });
   
   return accessibleSpaces;
@@ -68,39 +82,47 @@ function isSnakeBody(pos, gameState) {
 }
 
 /**
- * Counts accessible spaces in a specific direction until blocked
+ * Counts accessible spaces using BFS flood fill algorithm
  * 
- * @param {Object} startPos - Starting position (head)
- * @param {Object} delta - Direction vector {x, y}
+ * @param {Object} startPos - Starting position for flood fill
  * @param {Object} gameState - The current game state
- * @returns {number} - Number of accessible spaces in that direction
+ * @returns {number} - Number of accessible spaces
  */
-function countDirectionalSpaces(startPos, delta, gameState) {
+function countAccessibleSpaces(startPos, gameState) {
   const boardWidth = gameState.board.width;
   const boardHeight = gameState.board.height;
+  
+  // Track visited cells
+  const visited = new Set();
+  const queue = [startPos];
   let count = 0;
   
-  // Start from the first position in this direction
-  let currentPos = {
-    x: startPos.x + delta.x,
-    y: startPos.y + delta.y
-  };
-  
-  // Count spaces in this direction until we hit an obstacle
-  while (currentPos.x >= 0 && currentPos.x < boardWidth && 
-         currentPos.y >= 0 && currentPos.y < boardHeight) {
+  // Queue-based BFS implementation
+  while (queue.length > 0) {
+    const pos = queue.shift();
+    const key = `${pos.x},${pos.y}`;
     
-         // If this position contains a snake body, stop counting
-     if (isSnakeBody(currentPos, gameState)) {
-       break;
-     }
+    // Skip if already visited or out of bounds
+    if (visited.has(key) || 
+        pos.x < 0 || pos.x >= boardWidth || 
+        pos.y < 0 || pos.y >= boardHeight) {
+      continue;
+    }
     
-    // This space is accessible
+    // Skip if position contains snake body
+    if (isSnakeBody(pos, gameState)) {
+      continue;
+    }
+    
+    // Mark as visited and increase count
+    visited.add(key);
     count++;
     
-    // Move to next position in the same direction
-    currentPos.x += delta.x;
-    currentPos.y += delta.y;
+    // Add neighbors to queue
+    queue.push({ x: pos.x + 1, y: pos.y }); // right
+    queue.push({ x: pos.x - 1, y: pos.y }); // left
+    queue.push({ x: pos.x, y: pos.y + 1 }); // up
+    queue.push({ x: pos.x, y: pos.y - 1 }); // down
   }
   
   return count;
